@@ -20,7 +20,7 @@ useEffect(()=>{
 },[])
 
 const getAllThePayments =  ()=>{
-   axios.get(`http://localhost:8080/api/payment/payments/getAllLeadsOfAClientManager/${clientManager}`)
+   axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/payments/getAllLeadsOfAClientManager/${clientManager}`)
   .then(res=>{
     setPaymentList(res.data.responseList)
     
@@ -30,11 +30,7 @@ const getAllThePayments =  ()=>{
 const totalPayment = paymentList?.reduce((acc,i)=>acc+i.amount,0)
   return (
     <Row  style={{background:"#F1F1FA"}} >
-     <Col md={3} xl={2}>
-     <Sidebar/> 
-     </Col>
-    
-    <Col md={9} xl={10}>
+     
     <div className='ps-4 pe-3'>
       <PaymentTop totalPayment={totalPayment}/>
 
@@ -142,7 +138,7 @@ const totalPayment = paymentList?.reduce((acc,i)=>acc+i.amount,0)
   
 
   <Col md={1} style={{fontWeight:"400",fontSize:"14px" }}>
-  {payment.paymentDate}
+  {new Date(payment.paymentDate).toLocaleDateString()}
   </Col>
 
   <Col md={2} style={{fontWeight:"400",fontSize:"14px" }}>
@@ -166,7 +162,6 @@ const totalPayment = paymentList?.reduce((acc,i)=>acc+i.amount,0)
 </Row>
 )}
 </div>
-    </Col>
    
       </Row>
   )

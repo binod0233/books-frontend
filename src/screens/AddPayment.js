@@ -25,7 +25,7 @@ const user = JSON.parse(localStorage.getItem('user'))
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': '*',    },
     }
-      axios.post(`http://localhost:8080/api/payment/registerPayment`,
+      axios.post(`${process.env.REACT_APP_BASE_URL}/api/payment/registerPayment`,
     {paymentDate:date,userId:3,remarks,updatedBy:"John abraham",amount,payee,recipient,serviceType,receiptImage,modifiesBy:"clientManager1",createdBy:"clientManager1"},config
   ).then(res=>{if(res.status===200){
     navigate(`/payment/${user?.name}`)
@@ -38,9 +38,7 @@ const user = JSON.parse(localStorage.getItem('user'))
 
   return (
     <div className='d-flex' style={{width:'100%'}} >
-    <Sidebar/> 
 <div className=' py-5 d-flex flex-column' style={{width:'100%'}} >
-  <Header/>
   <div style={{background:'#F1F1FA'}}>
   <div className='ps-4 py-4 ' style={{fontFamily:'Arial'}}>
        <h6 style={{fontWeight:'700'}}>Add New Payment</h6> 

@@ -8,6 +8,24 @@ import Sidebar from '../../components/Sidebar'
 import axios from "axios"
 import { useNavigate, useParams } from 'react-router-dom'
 
+
+export const leadsdataList=[{shortName:" NJ",name:"  Niall Johnson",email:"nialljohnson@gmail.com",serviceType:"CDR Writing",contactImage:"/c1.png",contactNo:"+27 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"},
+{shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",NextFollowup:'19 sept 2022',lastFollowup:" 10 Aug 2018"},
+{shortName:" RG",name:"  Ramana Greg ",email:"ramana@gmail.com",serviceType:"CDR Writing",contactImage:"/c2.png",contactNo:"+968 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"},
+{shortName:" NJ",name:"  Niall Johnson",email:"nialljohnson@gmail.com",serviceType:"CDR Writing",contactImage:"/c1.png",contactNo:"+27 9825364545",dealValue:"$600",NextFollowup:'30 sept 2022',lastFollowup:" 10 Aug 2018"},
+{shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",NextFollowup:'10 sept 2022',lastFollowup:" 10 Aug 2018"},
+{shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"},
+{shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"},
+{shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"},
+{shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"},
+{shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"},
+{shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"},
+{shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"},
+{shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"},
+{shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"},
+
+{shortName:" RG",name:"  Ramana Greg ",email:"ramana@gmail.com",serviceType:"CDR Writing",contactImage:"/c2.png",contactNo:"+968 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"}]
+
 const Dashboard = () => {
   const params = useParams()
   const navigate = useNavigate()
@@ -18,7 +36,6 @@ const Dashboard = () => {
   const [user, setUser] = useState({})
   const localUser = JSON.parse(localStorage.getItem('user'))
 
-console.log(localUser)
   useEffect(() => {
     if(!localUser){
       navigate('/login')
@@ -29,7 +46,7 @@ console.log(localUser)
   },[])
 
   const getAllLeadsOfAClientManager = () => {
-    axios.get(`http://localhost:8080/api/lead/leads/getAllLeadsOfAClientManager/${name}`)
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/leads/getAllLeadsOfAClientManager/${name}`)
     .then(res => {
       setLeadList(res.data.responseList)
     }
@@ -37,7 +54,7 @@ console.log(localUser)
   }
 
   const getAllPaymentsOfAClientManager = () => {
-    axios.get(`http://localhost:8080/api/payment/payments/getAllPaymentsOfAClientManager/${name}`)
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/payments/getAllPaymentsOfAClientManager/${name}`)
     .then(res => {
       setPaymentList(res.data.responseList)
     }
@@ -45,7 +62,7 @@ console.log(localUser)
   }
 
   const getUser = () => {
-    axios.get(`http://localhost:8080/api/user/appUser/byname/${name}`)
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/user/appUser/byname/${name}`)
     .then(res => {
       setUser(res.data)
     }
@@ -59,12 +76,7 @@ console.log(localUser)
   },[])
 
   console.log(name,paymentList,leadList,user)
-  // const leadsdataList=[{shortName:" NJ",name:"  Niall Johnson",email:"nialljohnson@gmail.com",serviceType:"CDR Writing",contactImage:"/c1.png",contactNo:"+27 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},
-  // {shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},
-  // {shortName:" RG",name:"  Ramana Greg ",email:"ramana@gmail.com",serviceType:"CDR Writing",contactImage:"/c2.png",contactNo:"+968 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},{shortName:" NJ",name:"  Niall Johnson",email:"nialljohnson@gmail.com",serviceType:"CDR Writing",contactImage:"/c1.png",contactNo:"+27 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},
-  // {shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},
-  // {shortName:" RG",name:"  Ramana Greg ",email:"ramana@gmail.com",serviceType:"CDR Writing",contactImage:"/c2.png",contactNo:"+968 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"}]
- 
+
   const totalDealValue = leadList.reduce((acc,lead) => acc + lead.dealValue,0)
   const totalEarned = paymentList?.reduce((acc, payment) => acc + payment.amount, 0)
   const totalSales = leadList?.filter(l=>l.status==="won").length
@@ -75,12 +87,8 @@ console.log(localUser)
 
   return (
     <Row >
-      <Col md={3} xl={2}>
-      <Sidebar/> 
-</Col>
-<Col md={9} xl={10}>
+     
     <div className='px-4' style={{background:"#F1F1FA"}}>
-      <Header />
       <Row>
         <Col md={9}>
         <StatsRow totalEarned={totalEarned} totalSales={totalSales} totalLeads={totalLeads} conversion={conversion}/>
@@ -233,7 +241,7 @@ console.log(localUser)
   </Col>
 
   <Col md={1} style={{fontWeight:"",fontSize:"19px" }}>
-    {l.createdDate.substring(0,10)}
+    {new Date(l.createdDate).toLocaleDateString()}
   </Col>
   <Col md={1} style={{fontWeight:"",fontSize:"19px" }} >
    {l.source}
@@ -264,7 +272,6 @@ console.log(localUser)
 </div>
 
     </div>
-    </Col>
     </Row>
   )
 }

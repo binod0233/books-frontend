@@ -13,11 +13,7 @@ const AllClientManagers = () => {
  
   return (
     <Row style={{background:"#F1F1FA"}}>
-      <Col md={3} xl={2}>
-        <Sidebar/>
-      </Col> 
-      <Col md={9} xl={10}>
-        <Header/>
+      
       <Form >   
 <Row className='py-3 d-flex'>
 <Col md={2}>
@@ -154,7 +150,6 @@ const AllClientManagers = () => {
 
 )}
 </div>
-        </Col>
     </Row> 
   )
 }

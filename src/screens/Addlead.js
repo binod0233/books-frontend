@@ -39,7 +39,7 @@ const Addlead = () => {
     const user = JSON.parse(localStorage.getItem('user'))
     
     
-    axios.post(`http://localhost:8080/api/lead/registerLead`,
+    axios.post(`${process.env.REACT_APP_BASE_URL}/api/lead/registerLead`,
     {name:fullName,email,phone:number,
       work,source,
       socialMedia:communicationChannel,
@@ -64,12 +64,8 @@ const Addlead = () => {
 
   return (
     <div className='d-flex' style={{width:'100%'}} >
-      <Col md={3} xl={2}>
-    <Sidebar/> 
-      </Col>
-      <Col md={9} xl={10}>
+     
 <div className=' py-5 d-flex flex-column' style={{width:'100%'}} >
-  <Header/>
   <div style={{background:'#F1F1FA'}}>
   <div className='ps-4 py-4 ' style={{fontFamily:'Arial'}}>
        <h6 style={{fontWeight:'700'}}>Add New Lead</h6> 
@@ -323,7 +319,6 @@ const Addlead = () => {
         </div>
   </div>
   </div>
-  </Col>
 
   </div>
   )

@@ -22,7 +22,7 @@ const TeamLeadLeadDashboard = () => {
   const user = JSON.parse(localStorage.getItem("user"))
 
   const getLeadsOfATeamLead = () => {
-    axios.get(`http://localhost:8080/api/lead/leads/getAllLeadsOfATeamLead/${teamLead}`)
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/leads/getAllLeadsOfATeamLead/${teamLead}`)
     .then(res => {
       setLeadList(res.data.responseList)
       console.log(res.data.responseList)
@@ -31,7 +31,7 @@ const TeamLeadLeadDashboard = () => {
   }
 
   const getPaymentsOfATeamLead = () => {
-    axios.get(`http://localhost:8080/api/payment/payments/getAllPaymentsOfATeamLead/${teamLead}`)
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/payments/getAllPaymentsOfATeamLead/${teamLead}`)
     .then(res => {
       setPaymentList(res.data)
       console.log(res.data)
@@ -39,7 +39,7 @@ const TeamLeadLeadDashboard = () => {
     )
   }
   const getClientManagersOfATeamLead = () => {
-    axios.get(`http://localhost:8080/api/salesman/salesmen/getAllClientManagersOfATeamLead/${teamLead}`)
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/salesman/salesmen/getAllClientManagersOfATeamLead/${teamLead}`)
     .then(res => {
       setClientManagersList(res.data.responseList)
       console.log(res.data.responseList)
@@ -64,11 +64,7 @@ const TeamLeadLeadDashboard = () => {
 
   return (
     <Row style={{background:"#F1F1FA"}}>
-      <Col md={3} xl={2}>
-      <Sidebar/>
-      </Col>
-      <Col md={9} xl={10}>
-        <Header/>
+     
         <TeamLeadProfile/>
         <EarningStats/>
               <PaymentRow/>
@@ -328,7 +324,6 @@ const TeamLeadLeadDashboard = () => {
 
 )}
 </div>
-      </Col>
     </Row>
   )
 }

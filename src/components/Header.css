@@ -1,1 +1,125 @@
+.main {
+  height: 10vh;
+  width: 85vw;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 99999;
+}
 
+main::-webkit-scrollbar{
+    transition:all 1s ease ;
+    background: transparent;
+}
+
+.header-wrapper {
+  width: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-title {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+
+.search-bar{
+display: flex;  
+align-items: center;
+}
+
+.search input{
+outline: none;
+  border: none;
+}
+
+.search .search-inputs{
+    display: flex;
+    align-items: center;
+height: 40px;
+    /* border: 1px solid black; */
+    background: #ffffff;
+    border: 2px solid #f1f1fa;
+    border-radius: 10px;
+}
+
+.search .search-icon{
+    padding: 0 10px;
+}
+
+
+.plus button{
+border: 2px solid #A4A4A4;
+border-radius: 50%;
+background-color: #fff;
+height: 35px;
+width: 35px;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-left: 1rem;
+cursor: pointer;
+}
+
+.account {
+    display: flex;
+    width: 12%;
+    justify-content: space-between;
+    align-items: center;
+cursor: pointer;
+  }
+  
+.acc-icon{
+    height: 40px;
+    width: 40px;
+    border-radius:5px ;
+    background-color: #EEF1FC;
+    color: #176EB3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.acc-icon:nth-child(3){
+    background-color: #176EB3;
+    color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+    .header-title{
+        font-size: 17px;
+    }
+
+    .account{
+        width: 15%;
+
+    }
+    .acc-icon{
+        height: 30px;
+        width: 30px;
+    }
+}
+
+.table-borderless > tbody > tr > td,
+.table-borderless > tbody > tr > th,
+.table-borderless > tfoot > tr > td,
+.table-borderless > tfoot > tr > th,
+.table-borderless > thead > tr > td,
+.table-borderless > thead > tr > th {
+    border: none;
+}
+
+
+td {
+    /* margin-top:20px; */
+    /* margin-bottom:20px; */
+    /* margin-right:20px;    */
+  }
+
+  .table-borderless:nth-child(1) {
+margin-top:10px ;
+  }

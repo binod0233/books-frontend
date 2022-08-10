@@ -15,16 +15,12 @@ const ClientManagerProfileEdit = () => {
   const [visibleTo,setVisibleTo] = useState('')
 
   const editProfile=()=>{
-    console.log("edit profile")
   } 
   return (
     <Row style={{background:"#F1F1FA"}}>
-      <Col md={3} xl={2}>
-        <Sidebar/>
-      </Col>
-      <Col>
+    
+      <div style={{width:"85%"}}>
       <div>
-      <Header/>
       <div className='p-4 bg-white' style={{height:"85vh",fontFamily:"sans-serif",margin:"0 20px "}}>
         <Button style={{borderRadius:"50%",background:"whitesmoke",color:'black',outline:"none",border:"none"}}><i className="fa-solid fa-arrow-left"></i></Button>
         <span style={{marginLeft:"5vw",fontSize:"25px",fontFamily:"sans-serif",fontWeight:"400"}}>Edit Client Manager Information</span>
@@ -163,7 +159,7 @@ const ClientManagerProfileEdit = () => {
         </Row>
       </div>
     </div>
-      </Col>
+      </div>
 
     </Row>
  

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import AccumulationDoughnut from '../../components/components/DonotChart'
 import Line  from '../../components/components/LineChart'
 import Pie from '../../components/components/PieChart'
@@ -34,7 +34,7 @@ const AdminDashboard = () => {
   },[])
 
   const getTopClientManagers = () => {
-    axios.get('http://localhost:5000/api/salesman/getTopClientManagers').then(res => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/salesman/getTopClientManagers`).then(res => {
       console.log(res.data)
     }).catch(err => {
       console.log(err)
@@ -42,7 +42,7 @@ const AdminDashboard = () => {
     )
   }
   const getTopTeamLeads = () => {
-    axios.get('http://localhost:5000/api/teamlead/getTopTeamLeads').then(res => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/teamlead/getTopTeamLeads`).then(res => {
       console.log(res.data)
     }).catch(err => {
       console.log(err)
@@ -50,7 +50,7 @@ const AdminDashboard = () => {
     )
   }
   const getTeamLeadStats = () => {
-    axios.get('http://localhost:5000/api/teamlead/getTeamLeadStats').then(res => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/teamlead/getTeamLeadStats`).then(res => {
       console.log(res.data)
     }).catch(err => {
       console.log(err)
@@ -58,7 +58,7 @@ const AdminDashboard = () => {
     )
   }
   const getClientManagerStats = () => {
-    axios.get('http://localhost:5000/api/teamlead/getClientManagerStats').then(res => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/teamlead/getClientManagerStats`).then(res => {
       console.log(res.data)
     }).catch(err => {
       console.log(err)
@@ -70,11 +70,8 @@ const AdminDashboard = () => {
     <div>
       
       <Row style={{background:"#F1F1FA"}}>
-      <Col md={3} xl={2}>
-      <Sidebar/>
-      </Col>
-      <Col md={9} xl={10}>
-        <Header/>
+     
+     
         <EarningStats/>
               <PaymentRow/>
               <div className='bg-white mx-4'>
@@ -246,7 +243,6 @@ const AdminDashboard = () => {
 
 )}
 </div>
-      </Col>
     </Row>
       
       </div>

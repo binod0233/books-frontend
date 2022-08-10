@@ -22,10 +22,7 @@ const TeamLeadAlllLeads = () => {
   }
   return (
     <Row style={{backgrund:"#F1F1FA"}}>
-    <Col md={3} xl={2}>
-      <Sidebar/> 
-    </Col>
-    <Col md={9} xl={10}>
+    
  
 <div className='ps-5'style={{background:"#F1F1FA"}} >
 <Leadscharts/>
@@ -260,7 +257,7 @@ Contact Number
 )}
 
 </div>
-</Col>
+
   </Row>
   )
 }

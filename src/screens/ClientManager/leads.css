@@ -1,0 +1,47 @@
+.form-control:focus {
+  box-shadow: none;
+}
+
+.leadInputs {
+  /* height: 50px; */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  margin-top: 1rem;
+}
+.selection {
+  width: 150px;
+}
+
+/* pagination */
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: rgb(2, 2, 2);
+  float: left;
+  text-decoration: none;
+  /* border: 1px solid; */
+  height: 51px;
+  width: 51px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination a {
+  margin: 0 10px;
+  background-color: white;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.pagination a.active {
+  background-color: #0f0f0f;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+}

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Col,  Row } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { BulletRangeDirective } from '@syncfusion/ej2-react-charts'
 // import Login from '../Login/Login'
 
 const Signup1 = () => {
@@ -18,7 +17,7 @@ const Signup1 = () => {
     e.preventDefault();
     const validEmail=email.substring(email.length-13)==="@copenned.com"
     if (validEmail){
-      axios.post("http://localhost:8080/api/user/registerAppUser",{userName:firstName+" "+lastName,email,password,phone,role}).then(res=>{
+      axios.post(`${process.env.REACT_APP_BASE_URL}/api/user/registerAppUser`,{userName:firstName+" "+lastName,email,password,phone,role}).then(res=>{
         if(res.status===200){
           navigate("/signup3")
         }

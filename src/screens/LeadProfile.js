@@ -10,11 +10,7 @@ import Sidebar from '../components/Sidebar'
 const LeadProfile = () => {
   return (
     <Row>
-      <Col md={3} xl={2}>
-        <Sidebar/>
-        </Col>
-        <Col md={9} xl={10}>
-          <Header/>
+     
           <Row className='p-4' style={{background:"#F1F1FA"}}>
               <Col md={4}>
                 <PersonalContainer/>
@@ -35,7 +31,6 @@ const LeadProfile = () => {
               </Col>
               
             </Row>
-        </Col>
     </Row> 
   )
 }

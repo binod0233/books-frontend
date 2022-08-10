@@ -14,14 +14,14 @@ const AdminAllLeads = () => {
   const [potential,setPotential] = React.useState([]);
   const [message,setMessage] = React.useState('')
   const getAllLeadsOfAClientManager = ()  => {
-    axios.get(`http://localhost:8080/api/lead/leads`).then(res => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/leads`).then(res => {
       setLeads(res.data.responseList);
     })
   }
   const handleInputChange=(e,leadId)=>{
     console.log(e.target.value,leadId)
     setPotential(e.target.value);
-    axios.put(`http://localhost:8080/api/lead/leads/changepotential/${leadId}`,{potential:e.target.value}).then(res => {
+    axios.put(`${process.env.REACT_APP_BASE_URL}/api/lead/leads/changepotential/${leadId}`,{potential:e.target.value}).then(res => {
       if(res.status==='ok'){
         setMessage("Difficulty Changed Successfully")
       }else{
@@ -41,10 +41,7 @@ const AdminAllLeads = () => {
   {shortName:" RG",name:"  Ramana Greg ",email:"ramana@gmail.com",serviceType:"CDR Writing",contactImage:"/c2.png",contactNo:"+968 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"}]
   return (
     <Row style={{backgrund:"#F1F1FA"}}>
-      <Col md={3} xl={2}>
-        <Sidebar/> 
-      </Col>
-      <Col md={9} xl={10}>
+      
    
 <div className='ps-5'style={{background:"#F1F1FA"}} >
   <Leadscharts/>
@@ -280,7 +277,6 @@ const AdminAllLeads = () => {
 )}
 
 </div>
-</Col>
     </Row>
   )
 }

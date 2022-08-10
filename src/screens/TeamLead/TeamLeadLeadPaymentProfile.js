@@ -7,11 +7,8 @@ import LeadPaymentProfile from '../../components/TeamLeadLeadPaymentProfile/Lead
 const TeamLeadLeadPaymentProfile = () => {
   return (
     <Row  style={{background:"#F1F1FA"}} >
-    <Col md={3} xl={2}>
-    <Sidebar/> 
-    </Col>
+    
    
-   <Col md={9} xl={10}>
    <div className='ps-4'>
      <PaymentTop/>
      <LeadPaymentProfile/>
@@ -193,7 +190,6 @@ const TeamLeadLeadPaymentProfile = () => {
 </Table>
 
 </div>
-   </Col>
   
      </Row>
   )

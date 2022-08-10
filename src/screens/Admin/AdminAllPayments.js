@@ -19,17 +19,14 @@ useEffect(()=>{
 },[])
 
 const getAllThePayments =  ()=>{
-   axios.get(`http://localhost:8080/api/payment/payments`)
+   axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/payments`)
   .then(res=>{console.log(res.data);setPaymentList(res.data.responseList)})
   
 }
   return (
     <Row  style={{background:"#F1F1FA"}} >
-     <Col md={3} xl={2}>
-     <Sidebar/> 
-     </Col>
+   
     
-    <Col md={9} xl={10}>
     <div className='ps-4'>
       <PaymentTop/>
 
@@ -213,7 +210,6 @@ const getAllThePayments =  ()=>{
 </Table>
 
 </div>
-    </Col>
    
       </Row>
   )
