@@ -95,7 +95,7 @@ const Dashboard = () => {
 
         </Col>
         <Col md={3}>
-        <OverviewRow totalSales={totalSales} totalEarned={totalEarned}  conversion={conversion} name={user.name} email={user.email}
+        <OverviewRow totalSales={totalSales} totalEarned={totalEarned}  conversion={conversion} name={localUser.name} email={localUser.email}
         // teamName={leadList && leadList[0].teamLead } teamLead={paymentList && paymentList[0].recipient} 
          />
 
