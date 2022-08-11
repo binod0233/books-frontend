@@ -3,7 +3,7 @@ import { Button, Col, Row, Stack, ProgressBar } from "react-bootstrap";
 
 const PaymentRow = ({ totalDealValue, totalEarned, totalDuePayment }) => {
   return (
-    <div className="px-4 pb-4">
+    <div className="ps-4 pb-4">
       <Row>
         <Col md={3}>
           <div style={{ background: "white", height: "50vh", width: "100%" }}>

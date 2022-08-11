@@ -60,7 +60,7 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div>
+    <div className='px-4'>
       
       <Row style={{background:"#F1F1FA"}}>
      
