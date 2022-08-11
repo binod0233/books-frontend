@@ -11,8 +11,7 @@ const LeadPaymentProfile = () => {
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/paymentId/${id}`)
     .then(res => {
-      setPayment(res.data)
-      console.log(res.data)
+      setPayment(res.data.responseList)
     }
     )
   },[id])
