@@ -150,66 +150,11 @@ const Dashboard = () => {
 
 </Row>
 
-       {/* {leadsdataList.map((l,index)=>
+      
 
-<Row key={l.index} style={{background:"#fff",height:"70px"}} className="d-flex align-items-center justify-content-center mb-3 mx-2">
-  <Col md={3} style={{fontWeight:"",fontSize:"" }}>
-  <Row> 
-       
-       <Col md={3} className="d-flex justify-content-center align-items-center  ">
-       <div style={{borderRadius:"50%",background:"#ED6F47",height:"45px",width:"45px",color:"#fff",fontWeight:"400"}} className="d-flex justify-content-center align-items-center ">
-          {l.shortName}
-          </div>
-          </Col>
-          <Col md={9} style={{color:"",fontWeight:"700"}}>
-          {l.name}
-          <div style={{color:"#666",fontWeight:"400"}}>
-           {l.email}
-          </div>
-          </Col>
-          </Row>
-  </Col>
+{leadList?.map((l)=> 
 
-  <Col md={1} style={{fontWeight:"",fontSize:"19px" }}>
-    {l.serviceType}
-  </Col>
-
-  <Col md={1} style={{fontWeight:"",fontSize:"19px" }} >
-   <img src={l.contactImage} alt="country" className='img-fluid'/>{l.contactNo}
-  </Col>
-
-  <Col md={1} style={{fontWeight:"",fontSize:"19px" }}>
-    Active
-  </Col>
-  <Col md={1} style={{fontWeight:"",fontSize:"19px" }}>
-    Active
-  </Col>
-  <Col md={1} style={{fontWeight:"",fontSize:"19px" }}>
-    Active
-  </Col>
-
-  <Col md={2} style={{fontWeight:"700",fontSize:"19px" }} className="ps-4">
-   {l.dealValue}
-  </Col>
-
-  <Col md={2} style={{fontWeight:"",fontSize:"19px" }}>
-   <Row>
-    <Col md={7}>
-  
-  {l.lastFollowup}  
-  </Col>
-  <Col md={5}>
- 
-        </Col>
-        </Row>
-  </Col>
-</Row>
-
-)} */}
-
-{leadList?.map((l,index)=> 
-
-<Row key={l.id} style={{background:"#fff",height:"70px"}} className="d-flex align-items-center justify-content-center mb-3 mx-2">
+<Row onClick={()=>navigate(`/lead/profile/${l.id}`)} key={l.id} style={{background:"#fff",height:"70px",cursor:"pointer"}} className="d-flex align-items-center justify-content-center mb-3 mx-2">
   <Col md={3} style={{fontWeight:"",fontSize:"" }}>
   <Row> 
        

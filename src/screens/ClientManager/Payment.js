@@ -14,7 +14,7 @@ const [paymentList,setPaymentList] = useState([])
 const navigate = useNavigate() 
 const params = useParams()
 const {clientManager} = params
-console.log(clientManager)
+
 useEffect(()=>{
   getAllThePayments()
 },[])
@@ -23,7 +23,6 @@ const getAllThePayments =  ()=>{
    axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/payments/getAllLeadsOfAClientManager/${clientManager}`)
   .then(res=>{
     setPaymentList(res.data.responseList)
-    
   })
   
 }
@@ -117,10 +116,12 @@ const totalPayment = paymentList?.reduce((acc,i)=>acc+i.amount,0)
    Remark
   </Col>
 </Row>
-{paymentList?.map((payment)=><Row key={payment.id} style={{background:"#fff",height:"70px",color:"#64676B"}} className="d-flex align-items-center justify-content-center mb-3">
+{paymentList?.map((payment)=>
+<Row 
+ key={payment.paymentId} onClick={()=>navigate(`/payment/lead/${payment.paymentId}`)} style={{background:"#fff",height:"70px",color:"#64676B",cursor:"pointer"}}
+ className="d-flex align-items-center justify-content-center mb-3">
 <Col md={2} style={{fontWeight:"400",fontSize:"14px" }}>
-<Row> 
-       
+  <Row> 
        <Col md={3} className="d-flex justify-content-center align-items-center  ">
        <div style={{borderRadius:"50%",background:"#ED6F47",height:"45px",width:"45px",color:"#fff",fontWeight:"400"}} className="d-flex justify-content-center align-items-center ">
           {payment.payee.split(" ").map((n)=>n[0])}
