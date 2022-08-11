@@ -5,7 +5,7 @@ import PieChart from "../Chart/PieChart";
 
 const StatsRow = ({ totalEarned, totalSales, totalLeads }) => {
   return (
-    <div className="ps-4">
+    <div className="">
       <Row className="p-3">
         <Col md={6} className="py-2 px-3">
           <Row
