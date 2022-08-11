@@ -44,6 +44,9 @@ const PaymentRow = ({ totalDealValue, totalEarned, totalDuePayment }) => {
                     // variant="primary"
                     style={{
                       background: "#B8AAEE",
+                      // height:'5px',
+                      // width:'100%'
+
                       // backgroundColor: "#B8AAEE",
                     }}
                   />
@@ -204,10 +207,10 @@ const PaymentRow = ({ totalDealValue, totalEarned, totalDuePayment }) => {
                   </span>
                 </div>
               </div>
-              <strong style={{ textAlign: "center" }}>Lead Source</strong>
+              <strong style={{ textAlign: "center", fontSize:'20px', fontWeight:'700' }}>Lead Source</strong>
             </Stack>
           </div>
-        </Col>
+        </Col>  
         <Col md={3}>
           <div
             style={{ background: "white", height: "45vh", width: "100%" }}
@@ -332,7 +335,7 @@ const PaymentRow = ({ totalDealValue, totalEarned, totalDuePayment }) => {
                   fontWeight: "600",
                 }}
               >
-                {totalEarned}
+                1000{totalEarned}
               </span>
             </span>
             <span
@@ -424,6 +427,7 @@ const PaymentRow = ({ totalDealValue, totalEarned, totalDuePayment }) => {
                 fontFamily: "sans-serif",
                 color: "#64676B",
                 textAlign: "center",
+                width:'60%'
               }}
             >
               {" "}

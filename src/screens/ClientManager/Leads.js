@@ -27,9 +27,11 @@ const localUser = JSON.parse(localStorage.getItem('user'));
 
   const [potential,setPotential] = useState([]);
   const [message,setMessage] = useState('')
+  
   const getAllLeadsOfAClientManager = ()  => {
     axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/leads/getAllLeadsOfAClientManager/${clientManager}`).then(res => {
       setLeads(res.data.responseList);
+      console.log(leads)
     })
   }
   const handleInputChange=(e,leadId)=>{

@@ -49,6 +49,7 @@ const Dashboard = () => {
     axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/leads/getAllLeadsOfAClientManager/${name}`)
     .then(res => {
       setLeadList(res.data.responseList)
+      console.log(leadList)
     }
     )
   }
@@ -104,9 +105,9 @@ const Dashboard = () => {
       </Row>
        <PaymentRow totalDealValue={totalDealValue} totalPayment={totalEarned} totalDuePayment={totalDuePayment}/>
 
-       <div style={{background:"#fff"}}>
-        <div style={{display:'flex',justifyContent:"space-around",paddingTop:"10px"}}>
-          <span style={{fontWeight:"600",margin:"10px"}}>Top Leads </span>
+       <div style={{background:"#fff"}} className='mx-4 ps-3 pe-3' >
+        <div style={{display:'flex',justifyContent:"space-between",paddingTop:"10px"}}>
+          <span style={{fontSize:'22px',fontWeight:"600",margin:"10px"}}>Top Leads </span>
           <DropdownButton
         
         
@@ -130,6 +131,8 @@ const Dashboard = () => {
         
         </DropdownButton>
         </div>
+
+        
 <Row style={{background:"#fff",height:"70px"}} className="d-flex align-items-center justify-content-center mb-3 mx-2">
   <Col md={3} style={{fontWeight:"700",fontSize:"20px" }}>
     Lead Name
