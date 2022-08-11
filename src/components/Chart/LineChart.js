@@ -34,18 +34,19 @@ export const options = {
 };
 
 const labels = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
-export const data = {
-  labels,
-  datasets: [
-    {
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 10000 })),
-      borderColor: "#3F50F0",
-      backgroundColor: "#3F50F0",
-    },
-  ],
-};
 
 function LineChart() {
+  // console.log("fakerdata", faker.datatype.number({ min: 0, max: 10000 }));
+  const data = {
+    labels,
+    datasets: [
+      {
+        data: labels.map((d) => (d === "sun" ? 100 : 500)),
+        borderColor: "#3F50F0",
+        backgroundColor: "#3F50F0",
+      },
+    ],
+  };
   return (
     <div>
       <Line options={options} data={data} />
