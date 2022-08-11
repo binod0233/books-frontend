@@ -42,19 +42,21 @@ const Sidebar = () => {
             ): user.role === "admin" ?(
                 <>
                 <div className="menu-icon">
-              <a href={`/dashboard/${user?.name}`}>
+                <a href={`/admin/dashboard`}>
+
                 <DashboardIcon className="me-4 " /> Dashboard
               </a>
             </div>
 
             <div className="menu-icon">
-              <a href={`/leads/${user?.name}`}>
+            <a href={`/admin/allleads`}>
                 <LandscapeIcon className="me-4" />
                 Leads
               </a>
             </div>
             <div className="menu-icon">
-              <a href={`/payment/${user?.name}`}>
+            <a href={`/admin/allpayments`}>
+
                 <MonetizationOnIcon className="me-4" />
                 Payments
               </a>
@@ -63,19 +65,19 @@ const Sidebar = () => {
             ):(
                <>
                <div className="menu-icon">
-               <a href={`/dashboard/${user?.name}`}>
+               <a href={`/teamlead/dashboard/${user?.name}`}>
                  <DashboardIcon className="me-4 " /> Dashboard
                </a>
              </div>
  
              <div className="menu-icon">
-               <a href={`/leads/${user?.name}`}>
+             <a href={`/teamlead/leads/${user?.name}`}>
                  <LandscapeIcon className="me-4" />
                  Leads
                </a>
              </div>
              <div className="menu-icon">
-               <a href={`/payment/${user?.name}`}>
+             <a href={`/teamlead/leads/${user?.name}`}>
                  <MonetizationOnIcon className="me-4" />
                  Payments
                </a>

@@ -42,7 +42,8 @@ const AdminAllLeads = () => {
   return (
     <Row style={{backgrund:"#F1F1FA"}}>
       
-   
+      {localStorage.getItem('user')?.type!=='admin'&&<h1>Forbidden Access</h1>}
+
 <div className='ps-5'style={{background:"#F1F1FA"}} >
   <Leadscharts/>
 
@@ -182,7 +183,6 @@ const AdminAllLeads = () => {
   </Col>
   <Col md={5}>
    <DropdownButton
-        pullLeft
        size="sm"
           variant="outline-secondary"
           title=""

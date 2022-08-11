@@ -1,48 +1,41 @@
 import React, { useEffect,useState } from 'react'
-import AccumulationDoughnut from '../../components/components/DonotChart'
-import Line  from '../../components/components/LineChart'
-import Pie from '../../components/components/PieChart'
-import { Col, Row,Table,Dropdown,DropdownButton, } from 'react-bootstrap'
+
+import { Col, Row,} from 'react-bootstrap'
 import PaymentRow from '../../components/dashboard/PaymentRow'
-import Header from '../../components/Header'
-import Sidebar from '../../components/Sidebar'
+
 import EarningStats from '../../components/TeamLeadDashboard.js/EarningStats'
-import TeamLeadProfile from '../../components/TeamLeadDashboard.js/TeamLeadProfile'
-import OverallEarningStats from '../../components/AdminDashboard.js/OverallEarningStats'
+
 import axios from 'axios'
 
 const AdminDashboard = () => {
 
   const [clientManagers,setClientManagers] = useState([])
-  const [teamLeads,setTeamLeads] = useState([])
+  const [topLeads,setTopLeads] = useState([])
   const [teamLeadStats,setTeamLeadStats] = useState({})
   const [clientManagerStats,setClientManagerStats] = useState({})
 
-  const leadsdataList=[{shortName:" NJ",name:"  Niall Johnson",email:"nialljohnson@gmail.com",serviceType:"CDR Writing",contactImage:"/c1.png",contactNo:"+27 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},
-  {shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},
-  {shortName:" RG",name:"  Ramana Greg ",email:"ramana@gmail.com",serviceType:"CDR Writing",contactImage:"/c2.png",contactNo:"+968 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},{shortName:" NJ",name:"  Niall Johnson",email:"nialljohnson@gmail.com",serviceType:"CDR Writing",contactImage:"/c1.png",contactNo:"+27 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},
-  {shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},
-  {shortName:" RG",name:"  Ramana Greg ",email:"ramana@gmail.com",serviceType:"CDR Writing",contactImage:"/c2.png",contactNo:"+968 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"}]
-  
+ 
 
   useEffect(() => {
     getTopClientManagers()
-    getTopTeamLeads()
+    getTopLeads()
     getTeamLeadStats()
     getClientManagerStats()
 
   },[])
 
   const getTopClientManagers = () => {
-    axios.get(`${process.env.REACT_APP_BASE_URL}/api/salesman/getTopClientManagers`).then(res => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/salesman/salesmen`).then(res => {
+      setClientManagers(res.data.responseList)
       console.log(res.data)
     }).catch(err => {
       console.log(err)
     }
     )
   }
-  const getTopTeamLeads = () => {
-    axios.get(`${process.env.REACT_APP_BASE_URL}/api/teamlead/getTopTeamLeads`).then(res => {
+  const  getTopLeads = () => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/leads`).then(res => {
+      setTopLeads(res.data.responseList)
       console.log(res.data)
     }).catch(err => {
       console.log(err)
@@ -104,9 +97,9 @@ const AdminDashboard = () => {
 </Row>
 
 
-{leadsdataList.map((l,index)=>
+{clientManagers?.map((l)=>
 
-<Row key={l.index} style={{background:"#fff",height:"70px"}} className="d-flex align-items-center justify-content-center mb-3 mx-2">
+<Row key={l.id} style={{background:"#fff",height:"70px"}} className="d-flex align-items-center justify-content-center mb-3 mx-2">
   <Col md={2} style={{fontWeight:"",fontSize:"" }}>
   <Row> 
        
@@ -193,9 +186,9 @@ const AdminDashboard = () => {
 </Row>
 
 
-{leadsdataList.map((l,index)=>
+{topLeads?.map((l)=>
 
-<Row key={l.index} style={{background:"#fff",height:"70px"}} className="d-flex align-items-center justify-content-center mb-3 mx-2">
+<Row key={l.id} style={{background:"#fff",height:"70px"}} className="d-flex align-items-center justify-content-center mb-3 mx-2">
   <Col md={2} style={{fontWeight:"",fontSize:"" }}>
   <Row> 
        

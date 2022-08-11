@@ -86,17 +86,19 @@ const getAllThePayments =  ()=>{
     <tr>
       
       <th>Lead Name</th>
-      <th>Date</th>
-      <th>Source</th>
-      <th>Team Name</th>
-      <th>Status</th>
-      <th>Service Plan</th>
+      <th>Amount</th>
+      <th>Payment Date</th>
+      <th>Recipient</th>
       <th>Service Type</th>
-      <th>Deal Value</th>
+      <th>Service Type</th>
+      <th>Verification</th>
+      <th>Payment Method</th>
     </tr>
   </thead>
   <tbody >
-     <tr >
+  {paymentList?.map((payment)=>(
+     <tr key={payment.id}>
+      
       
     <td style={{height:"70px"}} >
     
@@ -104,107 +106,27 @@ const getAllThePayments =  ()=>{
        
           <Col md={2} className="d-flex justify-content-center align-items-center  ">
           <div style={{borderRadius:"50px",background:"#ED6F47",height:"35px",width:"35px",color:"#fff",fontWeight:"400"}} className="d-flex justify-content-center align-items-center ">
-             NJ
+          {payment.payee?.split(" ").map((n)=>n[0])}
              </div>
              </Col>
              <Col md={10} style={{color:"",fontWeight:"700"}}>
-             Niall Johnson
-             <div style={{color:"#666",fontWeight:"400"}}>
-              nialljohnson@gmail.com
-             </div>
+             {payment.payee}
+           
              </Col>
              </Row>
            
              </td>
-      <td >2021/03/25</td>
-      <td>Linkedin</td>
-      <td>San Antonio</td>
-      <td>Active</td>
-      <td style={{fontWeight:"700"}}>Extended</td>
-      <td style={{fontWeight:"700"}}>CDR Writing</td>
-      <td style={{fontWeight:"700"}}><Row> <Col>$600</Col>  
-         <Col>
-       
-        
-       <DropdownButton
-        pullLeft
-       size="sm"
-          variant="outline-secondary"
-          title=""
-          id="dropdown-basic"
-        
-        >
-          
-          
-          <Dropdown.Item href="#"><MonetizationOnIcon/> Convert to Deal</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item href="#"><ArchiveIcon/>Archive</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item href="#"> <EditIcon/>Edit Lead Details</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item href="#"><DeleteIcon/>Delete</Dropdown.Item>
-        
-        </DropdownButton>
-        </Col>
-        
-        </Row>
-      
-      </td>
+             <td >{payment.amount}</td>
+      <td>{payment.paymentDate}</td>
+      <td>{payment.recipient}</td>
+      <td>{payment.serviceType}</td>
+      <td style={{fontWeight:"700"}}>{payment.status}</td>
+      <td style={{fontWeight:"700"}}>{payment.paymentMethod}</td>
+      <td style={{fontWeight:"700"}}>{payment.status}</td>
      
-    </tr>
+    </tr>))}
   
-    <tr>
-    <td style={{height:"70px"}} >
-        <Row> 
-          <Col md={2} className="d-flex justify-content-center align-items-center  ">
-          <div style={{borderRadius:"50px",background:"#176EB3",height:"35px",width:"35px",color:"#fff",fontWeight:"400"}} className="d-flex justify-content-center align-items-center ">
-             HS
-             </div>
-             </Col>
-             <Col md={10} style={{color:"",fontWeight:"700"}}>
-             Harjeet Singh
-             <div style={{color:"#666",fontWeight:"400"}}>
-              harjeet@gmail.com
-             </div>
-             </Col>
-             </Row>
-           
-             </td>
-      <td>2021/03/25</td>
-      <td>Facebook</td>
-      <td>San Antonio</td>
-      <td>Active</td>
-      <td>Premium</td>
-      <td>CDR Writing</td>
-      <td> <Row> <Col>$600</Col>  
-         <Col>
-
-         
-       <DropdownButton
-        pullLeft
-       size="sm"
-          variant="outline-secondary"
-          title=""
-          id="dropdown-basic"
-        
-        >
-          
-          
-          <Dropdown.Item href="#"><MonetizationOnIcon/> Convert to Deal</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item href="#"><ArchiveIcon/>Archive</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item href="#"> <EditIcon/>Edit Lead Details</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item href="#"><DeleteIcon/>Delete</Dropdown.Item>
-        
-        </DropdownButton>
-        </Col>
-        </Row>
-      </td>
-     
-
-    </tr>
+    
    
   </tbody>
 </Table>

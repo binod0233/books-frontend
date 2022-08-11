@@ -279,7 +279,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
             </div>
           </div>
 
-          {leadsdataList?.map((l, key) => (
+          {leads?.map((l, key) => (
             <div
               key={l.id}
               style={{
@@ -351,14 +351,14 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                     className="d-flex align-items-center justify-content-center"
                     style={{ height: "16px", width: "26px" }}
                   >
-                    <img
+                    {/* <img
                       src={l.contactImage}
                       alt="country"
                       className="images"
                       style={{ height: "inherit" }}
-                    />
+                    /> */}
                   </div>
-                  <div>{l.contactNo}</div>
+                  <div>{l.phone}</div>
                 </div>
 
                 <div style={{ fontWeight: "", fontSize: "19px", width: "16%" }}>

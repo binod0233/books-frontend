@@ -4,7 +4,6 @@ import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import NotificationAddIcon from "@mui/icons-material/NotificationAdd";
 import { useNavigate } from 'react-router-dom'
 import PersonIcon from "@mui/icons-material/Person";
-import { Button } from "react-bootstrap";
 const Header = () => {
     const  navigate = useNavigate();
     const [keyword,setKeyword] = React.useState('')
@@ -20,7 +19,7 @@ const Header = () => {
           <i class="fa-bold fa-greater-than" /> Dashboard
         </div>
         <div className="search">
-          <div className="search-bar">
+          {/* <div className="search-bar">
             <div className="search-inputs" onSubmit={searchKeyword}>
               <div className="search-icon">
                 <i className="fa-solid fa-magnifying-glass" />
@@ -39,7 +38,7 @@ const Header = () => {
                 <i className="fa-solid fa-plus text-black" />
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
         
         <div className="account">

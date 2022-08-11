@@ -1,7 +1,6 @@
 import React from 'react'
 import {  Col,  Dropdown, DropdownButton, Form, Row, Table } from 'react-bootstrap'
 import PaymentTop from '../../components/payments/PaymentTop'
-import Sidebar from '../../components/Sidebar'
 import LeadPaymentProfile from '../../components/TeamLeadLeadPaymentProfile/LeadPaymentProfile'
 
 const TeamLeadLeadPaymentProfile = () => {
