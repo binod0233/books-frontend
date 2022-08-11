@@ -6,11 +6,11 @@ import PieChart from "../Chart/PieChart";
 const StatsRow = ({ totalEarned, totalSales, totalLeads }) => {
   return (
     <div className="">
-      <Row className="p-3">
-        <Col md={6} className="py-2 px-3">
+      <Row className="ps-4  pe-0 py-3">
+        <Col md={6} className="py-2 px-4">
           <Row
             style={{ background: "#fff", height: "40vh" }}
-            className="px-3 py-2"
+            className="p-2"
           >
             <Col md={6} className="px-2 py-2">
               <div
@@ -130,7 +130,7 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads }) => {
             </Col>
           </Row>
         </Col>
-        <Col md={6} className="p-2">
+        <Col md={6} className="py-2">
           <div style={{ background: "#fff", height: "40vh" }}>
             {/* <Line options={options} data={data} /> */}
             <LineChart />
@@ -160,7 +160,7 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads }) => {
             </Stack>
           </div>
         </Col>
-        <Col md={6} className="p-2">
+        <Col md={6} className="py-2">
           <div className="p-2" style={{ background: "#fff", height: "40vh" }}>
             <h5>Total Sales</h5>
             <Stack direction="horizontal" gap={3}>
@@ -182,7 +182,7 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads }) => {
             <h5 className="pt-2">Total Deal Value: $2700</h5>
           </div>
         </Col>
-        <Col md={6} className="p-2">
+        <Col md={6} className="py-2">
           <Stack
             className="p-1"
             gap={1}

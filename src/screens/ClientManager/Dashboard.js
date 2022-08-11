@@ -9,22 +9,6 @@ import axios from "axios"
 import { useNavigate, useParams } from 'react-router-dom'
 
 
-export const leadsdataList=[{shortName:" NJ",name:"  Niall Johnson",email:"nialljohnson@gmail.com",serviceType:"CDR Writing",contactImage:"/c1.png",contactNo:"+27 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"},
-{shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",NextFollowup:'19 sept 2022',lastFollowup:" 10 Aug 2018"},
-{shortName:" RG",name:"  Ramana Greg ",email:"ramana@gmail.com",serviceType:"CDR Writing",contactImage:"/c2.png",contactNo:"+968 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"},
-{shortName:" NJ",name:"  Niall Johnson",email:"nialljohnson@gmail.com",serviceType:"CDR Writing",contactImage:"/c1.png",contactNo:"+27 9825364545",dealValue:"$600",NextFollowup:'30 sept 2022',lastFollowup:" 10 Aug 2018"},
-{shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",NextFollowup:'10 sept 2022',lastFollowup:" 10 Aug 2018"},
-{shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"},
-{shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"},
-{shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"},
-{shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"},
-{shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"},
-{shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"},
-{shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"},
-{shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"},
-{shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"},
-
-{shortName:" RG",name:"  Ramana Greg ",email:"ramana@gmail.com",serviceType:"CDR Writing",contactImage:"/c2.png",contactNo:"+968 9825364545",dealValue:"$600",NextFollowup:'12 sept 2022',lastFollowup:" 10 Aug 2018"}]
 
 const Dashboard = () => {
   const params = useParams()
