@@ -177,7 +177,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                   onChange={(e) => setDate(e.target.value)}
                   style={{
                     textAlign: "center",
-                    height: "40px",
+                    height: "45px",
                     border: "0.7px solid grey",
                     width: "150px",
                   }}

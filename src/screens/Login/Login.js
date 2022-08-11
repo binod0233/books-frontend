@@ -1,11 +1,8 @@
-
-
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import "../../App.css"
-import "./Login.css"
-
+import "../../App.css";
+import "./Login.css";
 
 export default function (props) {
   const navigate = useNavigate();
@@ -37,10 +34,10 @@ export default function (props) {
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
-  }
-  
-  const login=()=>{
-    const validEmail=e.substring(e.length-13) === "@copenned.com"
+  };
+
+  const login = () => {
+    const validEmail = e.substring(e.length - 13) === "@copenned.com";
     if (validEmail) {
       const userExist = users.find((user) => user.email === e);
       if (userExist) {
@@ -67,28 +64,35 @@ export default function (props) {
     }
   };
 
-  useEffect(()=>{
-    const user=JSON.parse(localStorage.getItem("user"))
-    if(user){
-      if(user.role==="teamlead"){
-        navigate(`/teamlead/dashboard/${user.name}`)
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      if (user.role === "teamlead") {
+        navigate(`/teamlead/dashboard/${user.name}`);
+      } else if (user.role === "admin") {
+        navigate(`/admin/dashboard`);
+      } else if (user.role === "clientmanager") {
+        navigate(`/dashboard/${user.name}`);
       }
-      else if(user.role==="admin"){
-        navigate(`/admin/dashboard`)
-      }
-      else if(user.role==="clientmanager"){
-        navigate(`/dashboard/${user.name}`)
-      }
-      
     }
-  },[])
+  }, []);
   return (
     <div className="Auth-form-container">
       <form onSubmit={login} className="Auth-form">
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">BOOKS</h3>
-          <p style={{ textAlign: "center" }}>
-            Dont have an account? <a href="/signup1">Sign up.</a>
+          <p
+            style={{
+              textAlign: "center",
+              fontFamily: "arial",
+              fontWeight: "700",
+              lineHeight: "28.75px",
+            }}
+          >
+            Don't have an account ?{" "}
+            <a href="/signup1" style={{ textDecoration: "none" }}>
+              Sign up
+            </a>
           </p>
           <div className="form-group mt-3">
             <label style={{ fontWeight: "300", fontSize: "20px" }}>
@@ -103,18 +107,22 @@ export default function (props) {
               required
             />
           </div>
-          <p className="forgot-password text-right mt-2">
-            <a onClick={togglePassword} style={{ color: "#176EB3" }} href="#">
-              Show/Hide password
-            </a>
-          </p>
           <div className="form-group mt-3">
             <label style={{ fontWeight: "300", fontSize: "20px" }}>
               Password
             </label>
+            <p className="forgot-password text-right ">
+              <a
+                onClick={togglePassword}
+                style={{ color: "#176EB3", textDecoration: "none" }}
+                href="#"
+              >
+                Show Password
+              </a>
+            </p>
             <input
               type={passwordShown ? "text" : "password"}
-              className="form-control mt-1"
+              className="form-control "
               placeholder=""
               value={p}
               onChange={(e) => setP(e.target.value)}
@@ -122,7 +130,7 @@ export default function (props) {
             />
           </div>
           <p className="forgot-password text-right mt-2">
-            <a style={{ color: "#176EB3" }} href="#">
+            <a style={{ color: "#176EB3", textDecoration: "none" }} href="#">
               Forgot password?
             </a>
           </p>
@@ -137,19 +145,26 @@ export default function (props) {
             <button
               type="submit"
               className="btn px-5"
-              style={{ fontSize: "20px", background: "#fff" }}
+              style={{
+                fontSize: "20px",
+                color: "#fff",
+                background: "#17A0C4",
+                fontFamily: "arial",
+                fontStyle: "normal",
+                fontWeight: "700",
+              }}
             >
               Login
             </button>
           </div>
-          <hr></hr>
-          <button
+          {/* <hr></hr> */}
+          {/* <button
             type="submit"
             className="btn px-5 ms-4"
             style={{ fontSize: "20px", color: "#fff", background: "#17A0C4" }}
           >
-            Login with Copened
-          </button>
+            Login
+          </button> */}
         </div>
       </form>
     </div>

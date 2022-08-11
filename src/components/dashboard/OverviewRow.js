@@ -1,185 +1,189 @@
 import React from "react";
 import { Row, Col, Button } from "react-bootstrap";
-
+import SettingsIcon from "@mui/icons-material/Settings";
+import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 const OverviewRow = ({ name, email, totalSales, conversion, totalEarned }) => {
   return (
     <div className="py-4">
-      <Row style={{ height: "82vh", background: "white" }}>
-        <Row style={{ height: "48vh" }}>
-          <Row
+      <div
+        className="ProfileOverview"
+        style={{ background: "white", height: "82vh", padding: "1vh" }}
+      >
+        <div
+          style={{
+            height: "13vh",
+            background: "#DD2A7B",
+            borderRadius: "2vh",
+            display: "flex",
+            justifyContent: "space-between",
+            padding: "1vh",
+            color: "white",
+          }}
+        >
+          <div style={{ fontWeight: "700", fontSize: "20px" , cursor:'pointer'}}>Profile</div>
+          <div>
+            <SettingsIcon style={{ cursor:'pointer'}} />
+          </div>
+        </div>
+        <div className="d-flex justify-content-center ">
+          <img
+            src="/images/dashboard/avatar.png"
+            alt="avatar"
             style={{
-              height: "11vh",
-              background: "#DD2A7B",
-              borderRadius: "2vh",
+              height: "13vh",
+              width: "13vh",
+              marginTop: "-9vh",
+              marginBottom: "1vh",
               marginLeft: "2vh",
-              marginTop: "2vh",
+              objectFit: "contain",
             }}
-          ></Row>
-          <div className="d-flex justify-content-center ">
-            <span
-              // bsPrefix="btns btn-primarys"
-              className="text-white font-weight-bold pb-5 "
-              style={{
-                textAlign: "left",
-                marginTop: "-13vh",
-                marginBottom: "3vh",
-                marginLeft: "-6vh",
-              }}
-            >
-              Profile
-            </span>
-            <img
-              src="/images/dashboard/avatar.png"
-              alt="avatar"
-              style={{
-                height: "13vh",
-                width: "15.5vh",
-                marginTop: "-9vh",
-                marginBottom: "3vh",
-                marginLeft: "3vh",
-              }}
-            />
-          </div>
-          <div
-            className="d-flex flex-column align-items-center"
-            style={{ marginTop: "-4vh", marginLeft: "3vh" }}
-          >
-            <span style={{ fontWeight: "700" }}>{name}</span>
-            <span>{email}</span>
-          </div>
+          />
+        </div>
+        <div className="d-flex flex-column justify-content-center align-items-center">
+          <div style={{ fontWeight: "700", fontSize: "20px" }}>{name}</div>
+          <div style={{ color: "#92959A", fontSize: "15px" }}>{email}</div>
+        </div>
 
-          <Row style={{ marginLeft: "3vh" }}>
-            <Col
-              className="d-flex flex-column align-items-center"
-              style={{
-                borderRight: "1px solid gray",
-                fontSize: "12px",
-                color: "grey",
-              }}
-            >
-              <div
-                style={{
-                  borderRadius: "50%",
-                  background: "#FFC3DE",
-                  height: "5vh",
-                  width: "5vh",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <img
-                  src="/images/dashboard/dollar.png"
-                  alt="dollar"
-                  style={{ height: "3vh" }}
-                />
-              </div>
-              <div
-                style={{ marginBottom: "-20px", marginTop: "10px" }}
-                className="d-flex flex-column align-items-center"
-              >
-                <span style={{ fontWeight: "600", color: "black" }}>
-                  {totalSales}
-                </span>
-                <span style={{ fontSize: "8px" }}>Total No. of Sales</span>
-              </div>
-            </Col>
-            <Col
-              className="d-flex flex-column align-items-center"
-              style={{ fontSize: "12px", color: "grey" }}
-            >
-              <div
-                style={{
-                  borderRadius: "50%",
-                  background: "#FFC3DE",
-                  height: "5vh",
-                  width: "5vh",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <img
-                  src="/images/dashboard/dollar.png"
-                  alt="dollar"
-                  style={{ height: "3vh" }}
-                />
-              </div>
-              <div
-                style={{ marginBottom: "-3vh", marginTop: "2vh" }}
-                className="d-flex flex-column align-items-center"
-              >
-                <span style={{ fontWeight: "600", color: "black" }}>
-                  {conversion}
-                </span>
-                <span style={{ fontSize: "8px" }}>Deal Conversion Rate</span>
-              </div>
-            </Col>
-          </Row>
+        <div
+          className="d-flex mt-2 p-2"
+          style={{ height: "13vh", width: "100%" }}
+        >
           <div
             className="d-flex flex-column align-items-center"
-            style={{ marginTop: "2vh", marginLeft: "3vh" }}
-          >
-            <Button style={{ fontSize: "12px", background: "#DD2A7B" }}>
-              Edit Profile
-            </Button>
-          </div>
-        </Row>
-        <Row style={{ height: "33vh", paddingLeft: "5vh" }}>
-          <div
-            className="d-flex flex-column"
             style={{
-              background: "#FFC3DE",
-              height: "100%",
-              width: "100%",
-              borderRadius: "5px",
-              padding: "10px",
+              borderRight: "2px solid #CDCDCD",
+              fontSize: "12px",
+              color: "grey",
+              width: "50%",
             }}
           >
-            <h6 style={{ fontFamily: "Arial", fontWeight: "600" }}>
-              Your Earning
-            </h6>
             <div
-              className="d-flex flex-column align-items-center"
               style={{
-                marginTop: "1vh",
-                height: "14.5vh",
-                background: "white",
-                margin: "0 10px",
-                borderRadius: "10px",
+                borderRadius: "50%",
+                background: "#FFC3DE",
+                height: "6vh",
+                width: "6vh",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
               <img
-                src="/images/dashboard/earning.png"
-                alt="wallet"
-                style={{ height: "5vh", marginTop: "2vh" }}
+                src="/images/dashboard/dollar.png"
+                alt="dollar"
+                style={{ height: "3vh" }}
               />
-              <span style={{ fontWeight: "700", fontSize: "12px" }}>
-                $ <span style={{ fontSize: "20px" }}>{totalEarned}</span>
-              </span>
-              <span style={{ color: "gray", fontSize: "13px" }}>
-                Total Earning
-              </span>
             </div>
             <div
-              className="d-flex flex-column justify-content-center align-items-center"
-              style={{ fontSize: "12px" }}
+              style={{ marginBottom: "-3vh", marginTop: "2vh" }}
+              className="d-flex flex-column align-items-center"
             >
-              <div>
-                <span>Team Name</span>{" "}
-                <span style={{ fontWeight: "600" }}>San Antonio</span>
-              </div>
-              <div>
-                <span>Team Lead</span>{" "}
-                <span style={{ fontWeight: "600" }}>Suman Subedi</span>
-              </div>
-              <Button style={{ fontSize: "12px", background: "#DD2A7B" }}>
-                View Team
-              </Button>
+              <span
+                style={{ fontSize: "18px", fontWeight: "700", color: "black" }}
+              >
+                {totalSales}
+              </span>
+              <span style={{ fontSize: "13px" }}>Total No. of Sales</span>
             </div>
           </div>
-        </Row>
-      </Row>
+          <div
+            className="d-flex flex-column align-items-center"
+            style={{ fontSize: "12px", color: "grey", width: "50%" }}
+          >
+            <div
+              style={{
+                borderRadius: "50%",
+                background: "#FFC3DE",
+                height: "6vh",
+                width: "6vh",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <img
+                src="/images/dashboard/followup.png"
+                alt="dollar"
+                style={{ height: "2.5vh" }}
+              />
+            </div>
+            <div
+              style={{ marginBottom: "-3vh", marginTop: "2vh" }}
+              className="d-flex flex-column align-items-center"
+            >
+              <span
+                style={{ fontSize: "18px", fontWeight: "700", color: "black" }}
+              >
+                {conversion}
+              </span>
+              <span style={{ fontSize: "13px" }}>Deal Conversion Rate</span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          className="d-flex flex-column align-items-center"
+          style={{ marginTop: "3vh",marginBottom:'1vh ' }}
+        >
+          <Button style={{ fontSize: "16px", background: "#DD2A7B" , border:'none',padding:'6px 12px', cursor:'pointer'}}>
+            <HistoryEduIcon style={{marginRight:'.3rem'}}/>Edit Profile
+          </Button>
+        </div>
+        <div style={{background:'#FFC3DE' , borderRadius:'8px'}}>
+        <div
+        className="d-flex flex-column"
+        style={{
+          background: "#FFC3DE",
+          height: "100%",
+          width: "100%",
+          borderRadius: "5px",
+          padding: "10px",
+        }}
+      >
+        <h6 style={{ fontFamily: "Arial", fontWeight: "600" }}>
+          Your Earning
+        </h6>
+        <div
+          className="d-flex flex-column align-items-center"
+          style={{
+            marginTop: "1vh",
+            height: "14vh",
+            background: "white",
+            margin: "0 15px",
+            borderRadius: "10px",
+          }}
+        >
+          <img
+            src="/images/dashboard/earning.png"
+            alt="wallet"
+            style={{ height: "4vh", marginTop: "2vh" }}
+          />
+          <span style={{ fontWeight: "700", fontSize: "12px" }}>
+            $ <span style={{ fontSize: "20px" }}>{totalEarned}</span>
+          </span>
+          <span style={{ color: "gray", fontSize: "13px" }}>
+            Total Earning
+          </span>
+        </div>
+        <div
+          className="d-flex flex-column justify-content-start align-items-center"
+          style={{ fontSize: "12px" }}
+        >
+          <div className="">
+            <span style={{fontWeight:"400",fontSize:'16px'}}>Team Name</span>
+            <span style={{ fontWeight: "600", fontSize:'16px' }}> San Antonio</span>
+          </div>
+          <div>
+            <span style={{fontWeight:"400",fontSize:'16px'}}>Team Lead</span>
+            <span style={{ fontWeight: "600", fontSize:'16px' }}> Suman Subedi</span>
+          </div>
+          <Button style={{ fontSize: "16px", background: "#DD2A7B" , border:'none', marginTop:'.5vh',  cursor:'pointer'}}>
+            View Team
+          </Button>
+        </div>
+      </div>
+        </div>
+      </div>
     </div>
   );
 };
