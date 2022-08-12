@@ -283,7 +283,6 @@ const localUser = JSON.parse(localStorage.getItem('user'));
 
           {leads?.map((l, key) => (
             <div
-            onClick={()=>navigate(`/lead/profile/${l.id}`)}
               key={l.id}
               style={{
                 background: "#fff",
@@ -291,7 +290,6 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                 color: "#64676B",
                 fontFamily: "Arial",
                 paddingLeft: "20px",
-                cursor:"pointer"
               }}
               className="d-flex mt-3 mx-3 align-items-center"
             >

@@ -158,7 +158,6 @@ const Dashboard = () => {
   
   <div
   key={l.id}
-  onClick={()=>navigate(`/lead/profile/${l.id}`)}
   style={{
       background: "#fff",
       height: "70px",

@@ -25,7 +25,6 @@ import Contacts from './screens/Contacts';
 import Editlead from './screens/TeamLead/Editlead';
 import Signup1 from './screens/Signup/Signup1';
 import Signup3 from './screens/Signup/Signup3';
-import LeadPaymentProfile from './screens/LeadPaymentProfile';
 
 
 const App = () => {
@@ -67,7 +66,6 @@ const App = () => {
       <Route path='/payment/:clientManager' element={<Payment/>}/>
       <Route path='/add-payment' element={<AddPayment/>}/>
       <Route path="/lead/profile/:id" element={<LeadProfile/>}/>
-      <Route path="/payment/lead/:id" element={<LeadPaymentProfile/>}/>
 
  </Route>
        <Route path='/' element={<Login/>} /> 

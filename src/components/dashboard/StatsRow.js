@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Stack, ProgressBar, Button } from "react-bootstrap";
+import { Row, Col, Stack, ProgressBar } from "react-bootstrap";
 import LineChart from "../Chart/LineChart";
 import PieChart from "../Chart/PieChart";
 
@@ -132,19 +132,9 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads }) => {
         </Col>
         <Col md={6} className="py-2">
           <div style={{ background: "#fff", height: "40vh" }}>
-            <span
-              className="ps-1"
-              style={{
-                textAlign: "left",
-                fontWeight: "700",
-                fontSize: "20px",
-                lineHeight: "25.3px",
-              }}
-            >
-              Earning Statistics
-            </span>
+            {/* <Line options={options} data={data} /> */}
             <LineChart />
-            <Stack direction="horizontal" gap={3} className=" ps-2">
+            <Stack direction="horizontal" gap={3} className="pt-4 ps-2">
               <span
                 style={{
                   font: "arial",
@@ -156,25 +146,16 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads }) => {
                 $1800
               </span>
               <span className="text-muted">This week</span>
-
               <span
                 className=" btn ms-auto px-1 "
                 style={{
+                  font: "arial",
+                  fontWeight: "700",
+                  fontSize: "20px",
                   lineHeight: "23px",
                 }}
               >
-                <Button
-                  bsPrefix="outline-primary"
-                  size="sm"
-                  variant="outline-primary"
-                  style={{
-                    color: "#3F50F0",
-                    borderColor: "#3F50F0",
-                    backgroundColor: "white",
-                  }}
-                >
-                  More Details
-                </Button>
+                More Details
               </span>
             </Stack>
           </div>
