@@ -1,10 +1,10 @@
+import React, { useState } from 'react';
 import axios from 'axios'
-import React, {  useState } from 'react'
 import { Button, Col, Form, Row, Dropdown, DropdownButton } from 'react-bootstrap'
-import Header from '../components/Header'
-import Sidebar from '../components/Sidebar'
 import { useNavigate } from 'react-router-dom'
  import '../App.css';
+ import ReactFlagsSelect from "react-flags-select";
+ import Select from 'react-select'
 
 const Addlead = () => {
   const navigate = useNavigate()
@@ -31,11 +31,24 @@ const Addlead = () => {
   const [dueDate,setDueDate] = useState('')
   const [recepient,setRecepient] = useState('')
   const [payee,setPayee] = useState('')
+const [activeGender, setActiveGender] = useState('1')
+
+  //for react-flags-select
+  const [select, setSelect] = useState("NP");
+  const onSelect = (code) => setSelect(code);
 
 
-  const addALead=(e)=>{
-    e.preventDefault()
-    
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
+  ]
+console.log(communicationChannel)
+
+const addALead=(e)=>{
+  e.preventDefault()
+
+   
     const user = JSON.parse(localStorage.getItem('user'))
     
     
@@ -61,6 +74,7 @@ const Addlead = () => {
   }
   )
 }
+
 
   return (
     <div className='d-flex justify-content-center ' style={{background:'#F1F1FA', height:'90vh'}} >
@@ -127,10 +141,10 @@ const Addlead = () => {
 <Form.Select  onChange={(e)=>setWork(e.target.value)} >
 <option value="none" onClick={(e)=>setWork(e.target.value)}>Engineer</option>
 
-  <option value="basic" onClick={(e)=>setWork(e.target.value)}>Basic</option>
-  <option value="extended" onClick={(e)=>setWork(e.target.value)}>Extended</option>
-  <option value="premium" onClick={(e)=>setWork(e.target.value)}>Premium</option>
-  <option value="royal" onClick={(e)=>setWork(e.target.value)}>Royal</option>
+  <option value="civil engineer" onClick={(e)=>setWork(e.target.value)}>Civil Engineer</option>
+  <option value="computer engineer" onClick={(e)=>setWork(e.target.value)}>Computer Engineer</option>
+  <option value="electrical engineer" onClick={(e)=>setWork(e.target.value)}>Electrical Engineer</option>
+  <option value="mechanical engineer" onClick={(e)=>setWork(e.target.value)}>Mechanical Engineer</option>
 
 
 </Form.Select>
@@ -144,34 +158,44 @@ const Addlead = () => {
               <Form.Label className='col-6'>Gender</Form.Label>
               <Form.Label className='col-6'>Country</Form.Label>
 
-                  <Col className='' md={1}>
-                  <Form.Group controlId="email">
+                  <Col className='' md={1} >
+                  <Form.Group controlId="email" >
 
-                  <Button className=' ' style={{border:'1px solid #DD2A7B',color:'#DD2A7B', background:'#FFE1EE'}} onClick={(e)=>setGender("male")} >Male</Button>
+                  <Button  className='bg-transparent text-black ' style={{border:activeGender==='1' && '1px solid #DD2A7B', color:activeGender==='1' && '#DD2A7B', background:activeGender==='1' && 'black'}} onClick={(e)=>{setGender("male"); setActiveGender('1')}} >Male</Button>
                 </Form.Group>
                   </Col>
-                  <Col className=' ms-4' md={1}>
-                  <Form.Group controlId="email" style={{marginTop:''}}>
-                  <Button className='bg-transparent text-black ' style={{border:'1px solid grey'}} onClick={(e)=>setGender("female")} >Female</Button>
+                  <Col className=' ms-4' md={2}  >
+                  <Form.Group controlId="email"  style={{marginTop:''}}>
+                  <Button  className='bg-transparent text-black ' style={{border:activeGender==='2' && '1px solid #DD2A7B', color:activeGender==='2' && '#DD2A7B', background:activeGender==='2' && 'black'}} onClick={(e)=>{setGender("female"); setActiveGender('2')}} >Female</Button>
                 </Form.Group>
                   </Col>
-                  <Col md={3}></Col>
+                  <Col md={2}></Col>
                   <Col md={6}>
                   <Form.Group controlId="email">
                  {/*
                  <Form.Control type="email" placeholder="India" value={country} onChange={(e)=>setCountry(e.target.value)} />
                 
-                */}
-                <Form.Select  onChange={(e)=>setCountry(e.target.value)} >
-                <option value="none" onClick={(e)=>setCountry(e.target.value)}>India</option>
+                 <Form.Select  onChange={(e)=>setCountry(e.target.value)} >
+                 <option value="none" onClick={(e)=>setCountry(e.target.value)}>India</option>
                 
                   <option value="nepal" onClick={(e)=>setCountry(e.target.value)}>Nepal</option>
                   <option value="japan" onClick={(e)=>setCountry(e.target.value)}>Japan</option>
                   <option value="america" onClick={(e)=>setCountry(e.target.value)}>America</option>
                   <option value="australia" onClick={(e)=>setCountry(e.target.value)}>Australia</option>
-                
-                
-                </Form.Select>
+                  
+                  
+                  </Form.Select>
+                */}
+                <ReactFlagsSelect 
+                style={{zIndex:'50'}} 
+                selected={select}
+                onSelect={onSelect}
+                onChange={(e)=>setSelect(e.target.value)}
+                // countries={["fi", "GB", "IE", "IT", "NL", "SE"]}
+                fullWidth
+                searchable
+                searchPlaceholder='search countries...'
+                />
                 </Form.Group>
                   </Col>
                 </Row>
@@ -205,17 +229,16 @@ const Addlead = () => {
                  {/*
                 
                  <Form.Control type="text" placeholder="WhatsApp" value={communicationChannel} onChange={(e)=>setCommunicationChannel(e.target.value)} />
+                 <Form.Select  onChange={(e)=>setCommunicationChannel(e.target.value)} >
+                 <option value="whatsapp" onClick={(e)=>setCommunicationChannel(e.target.value)}>WhatsApp</option>
+                 
+                 <option value="messenger" onClick={(e)=>setCommunicationChannel(e.target.value)}>Messenger</option>
+                 <option value="viber" onClick={(e)=>setCommunicationChannel(e.target.value)}>Viber</option>
+                 
+                 
+                 </Form.Select>
                 */}
-                <Form.Select  onChange={(e)=>setCommunicationChannel(e.target.value)} >
-                <option value="none" onClick={(e)=>setCommunicationChannel(e.target.value)}>WhatsApp</option>
-                
-                  <option value="basic" onClick={(e)=>setCommunicationChannel(e.target.value)}>Basic</option>
-                  <option value="extended" onClick={(e)=>setCommunicationChannel(e.target.value)}>Extended</option>
-                  <option value="premium" onClick={(e)=>setCommunicationChannel(e.target.value)}>Premium</option>
-                  <option value="royal" onClick={(e)=>setCommunicationChannel(e.target.value)}>Royal</option>
-                
-                
-                </Form.Select>
+                <Select options={options} isMulti onChange={(e)=>setCommunicationChannel(e)}   />
                 </Form.Group>
                   </Col>
                 </Row>
@@ -294,7 +317,16 @@ const Addlead = () => {
                   <Col >
                   <Form.Group controlId="teamlead">
                   <Form.Label>Team Lead</Form.Label>
-                  <Form.Control type="text" placeholder="San Antonio" value={teamLead} onChange={(e)=>setTeamLead(e.target.value)} />
+                {/*
+              
+                <Form.Control type="text" placeholder="San Antonio" value={teamLead} onChange={(e)=>setTeamLead(e.target.value)} />
+              */}
+              <Form.Select   onChange={(e)=>setTeamLead(e.target.value)}>
+              <option value="San Antonio" onClick={(e)=>setTeamLead(e.target.value)}>San Antonio</option>
+              <option value="Houston" onClick={(e)=>setTeamLead(e.target.value)}>Houston</option>
+              <option value="Last vegas" onClick={(e)=>setTeamLead(e.target.value)}>Last Vegas</option>
+
+            </Form.Select>
                 </Form.Group>
                   </Col>
                   <Col >
@@ -343,9 +375,9 @@ const Addlead = () => {
               <Form.Group controlId="recepient">
                 <Form.Label>Recepient</Form.Label>
                 <Form.Select   onChange={(e)=>setRecepient(e.target.value)}>
-                  <option value="San Antonio" onClick={(e)=>setRecepient(e.target.value)}>San Antinio</option>
+                  <option value="San Antonio" onClick={(e)=>setRecepient(e.target.value)}>San Antonio</option>
                   <option value="Houston" onClick={(e)=>setRecepient(e.target.value)}>Houston</option>
-                  <option value="Los Angelos" onClick={(e)=>setRecepient(e.target.value)}>Los Angelos</option>
+                  <option value="last vegas" onClick={(e)=>setRecepient(e.target.value)}>last Vegas</option>
 
                 </Form.Select>
               </Form.Group>
@@ -380,7 +412,8 @@ const Addlead = () => {
                     <option value="Remained" onClick={(e)=>setPaymentStatus(e.target.value)}>Remained</option>
                     <option value="Verified" onClick={(e)=>setPaymentStatus(e.target.value)}>Verified</option>
                     <option value="Unverified" onClick={(e)=>setPaymentStatus(e.target.value)}>Unverified</option>
-                  </Form.Select>                </Form.Group>
+                  </Form.Select>               
+                   </Form.Group>
               </Col>
             </Row>
             
@@ -395,7 +428,7 @@ const Addlead = () => {
               setActiveTab("1")
             }}  style={{border:"1px solid #DD2A7B"}} className='btn bg-white text-black mx-2'>Cancel</Button>
 
-            <Button onClick={addALead} style={{background:"#DD2A7B",color:"white"}} className='btn  mx-2'>SUBMIT</Button>
+            <Button onClick={addALead}  style={{background:"#DD2A7B",color:"white"}} className='btn  mx-2'>SUBMIT</Button>
             </Col>
             </Row>
 

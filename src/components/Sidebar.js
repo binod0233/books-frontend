@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import '../components/sideMenu.css';
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import LandscapeIcon from "@mui/icons-material/Landscape";
 import LogoutIcon from "@mui/icons-material/Logout";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
+  const [activeTab, setActiveTab] = useState("1")
 
   return (
     <div className="sidebar">
@@ -20,67 +21,67 @@ const Sidebar = () => {
           <div className="side-menus">
             {user && user.role === 'clientmanager'? (
                <>
-               <div className="menu-icon">
-               <a href={`/dashboard/${user?.name}`}>
+               <div className="menu-icon" onClick={()=>setActiveTab("1")} style={{background:activeTab==='1'&& '#35373A'}}>
+               <Link  to={`/dashboard/${user?.name}`}>
                  <DashboardIcon className="me-4 " /> Dashboard
-               </a>
+               </Link>
              </div>
  
-             <div className="menu-icon">
-               <a href={`/leads/${user?.name}`}>
+             <div className="menu-icon" onClick={()=>setActiveTab("2")} style={{background:activeTab==='2'&& '#35373A'}}>
+               <Link to={`/leads/${user?.name}`}>
                  <LandscapeIcon className="me-4" />
                  Leads
-               </a>
+              </Link>
              </div>
-             <div className="menu-icon">
-               <a href={`/payment/${user?.name}`}>
+             <div className="menu-icon" onClick={()=>setActiveTab("3")} style={{background:activeTab==='3'&& '#35373A'}}>
+               <Link to={`/payment/${user?.name}`}>
                  <MonetizationOnIcon className="me-4" />
                  Payments
-               </a>
+               </Link>
              </div>
                </>
             ): user.role === "admin" ?(
                 <>
                 <div className="menu-icon">
-                <a href={`/admin/dashboard`}>
+                <Link to={`/admin/dashboard`}>
 
                 <DashboardIcon className="me-4 " /> Dashboard
-              </a>
+              </Link>
             </div>
 
             <div className="menu-icon">
-            <a href={`/admin/allleads`}>
+            <Link to={`/admin/allleads`}>
                 <LandscapeIcon className="me-4" />
                 Leads
-              </a>
+              </Link>
             </div>
             <div className="menu-icon">
-            <a href={`/admin/allpayments`}>
+            <Link to={`/admin/allpayments`}>
 
                 <MonetizationOnIcon className="me-4" />
                 Payments
-              </a>
+              </Link>
             </div>
                 </>
             ):(
                <>
                <div className="menu-icon">
-               <a href={`/teamlead/dashboard/${user?.name}`}>
+               <Link to={`/teamlead/dashboard/${user?.name}`}>
                  <DashboardIcon className="me-4 " /> Dashboard
-               </a>
+               </Link>
              </div>
  
              <div className="menu-icon">
-             <a href={`/teamlead/leads/${user?.name}`}>
+             <Link to={`/teamlead/leads/${user?.name}`}>
                  <LandscapeIcon className="me-4" />
                  Leads
-               </a>
+               </Link>
              </div>
              <div className="menu-icon">
-             <a href={`/teamlead/leads/${user?.name}`}>
+             <Link to={`/teamlead/leads/${user?.name}`}>
                  <MonetizationOnIcon className="me-4" />
                  Payments
-               </a>
+               </Link>
              </div>
                </>
             )}
