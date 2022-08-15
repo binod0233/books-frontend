@@ -279,14 +279,14 @@ const Payment = () => {
                       style={{
                         height: "70px",
                         // width: "92%",
-                        fontSize: "22px",
+                        fontSize: "1.5rem",
                         fontWeight: "700",
                         background:'#fff'
                       }}
                     >
                       <div
                         className="d-flex align-items-center justify-content-start"
-                        style={{ width: "168px", marginRight: "" }}
+                        style={{ width: "12vw", marginRight: "" }}
                       >
                         <div
                           style={{
@@ -312,47 +312,47 @@ const Payment = () => {
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-start"
-                        style={{ width: "145px" }}
+                        style={{ width: "10vw" }}
                       >
                         <div>${payment.amount}.00</div>
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-start"
-                        style={{ width: "155px", background: "" }}
+                        style={{ width: "10vw", background: "" }}
                       >
                         {new Date(payment.paymentDate).toLocaleDateString()}
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-start"
-                        style={{ width: "155px", background: "" }}
+                        style={{ width: "12vw", background: "" }}
                       >
                         {payment.serviceType}
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-start"
-                        style={{ width: "150px", background: "" }}
+                        style={{ width: "10vw", background: "" }}
                       >
                         {payment.recipient}
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-start"
-                        style={{ width: "140px", background: "" }}
+                        style={{ width: "10vw", background: "" }}
                       >
                         {payment.status}
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-start"
-                        style={{ width: "140px", background: "" }}
+                        style={{ width: "10vw", background: "" }}
                       >
                         {payment.receipt}
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-end"
-                        style={{ width: "180px", background: "" }}
+                        style={{ width: "15vw", background: "" }}
                       >
                       <div style={{display:'flex',justifyContent:'space-between',marginRight:'1rem'}}>  {payment.remarks}</div>
-                      <div style={{borderRadius:'5px',height:'40px',width:'40px',background:'#176EB3',color:'white', display:'flex', alignItems:'center', justifyContent:'center',marginRight:'5px',cursor:'pointer'}}><AddIcon/></div>
-                      <div style={{borderRadius:'5px',height:'40px',width:'40px',background:'#F0F0F0',color:'white', display:'flex', alignItems:'center', justifyContent:'center',marginRight:'5px',cursor:'pointer'}}><KeyboardArrowDown style={{color:"#64676B"}}/></div>
+                      <div onClick={()=>navigate("/add-payment")} style={{borderRadius:'5px',height:'40px',width:'40px',background:'#176EB3',color:'white', display:'flex', alignItems:'center', justifyContent:'center',marginRight:'5px',cursor:'pointer'}}><AddIcon/></div>
+                      <div  style={{borderRadius:'5px',height:'40px',width:'40px',background:'#F0F0F0',color:'white', display:'flex', alignItems:'center', justifyContent:'center',marginRight:'5px',cursor:'pointer'}}><KeyboardArrowDown style={{color:"#64676B"}}/></div>
                       </div>
 
                     </div>

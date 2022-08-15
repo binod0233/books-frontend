@@ -327,9 +327,9 @@ const Addlead = () => {
                 <Form.Group >
                   <Form.Label>Payment Method</Form.Label>
                   <div className=' d-flex justify-content-around align-items-center'>
-                  <div style={{display:'flex' , justifyContent:'center', alignItems:'center'}}><Form.Check type="radio" name="paymenttype" label="" value="Card Payment" onChange={(e)=>setPaymentType(e.target.value)}/><div style={{border:'1px solid #7B7B7B',padding:'.5rem 4rem', fontWeight:'700',fontSize:'1.5rem'}} >Card Payment</div></div>
-                  <div style={{display:'flex' , justifyContent:'center', alignItems:'center'}}><Form.Check type="radio" name="paymenttype" label="" value="Bank Transfer" onChange={(e)=>setPaymentType(e.target.value)}></Form.Check><div style={{border:'1px solid #7B7B7B',padding:'.5rem 4rem', fontWeight:'700',fontSize:'1.5rem'}} >Bank Transfer</div></div>
-                  <div style={{display:'flex' , justifyContent:'center', alignItems:'center'}}><Form.Check type="radio" name="paymenttype" label="" value="Apple Pay" onChange={(e)=>setPaymentType(e.target.value)}></Form.Check><div style={{border:'1px solid #7B7B7B',padding:'.5rem 4rem', fontWeight:'700',fontSize:'1.5rem'}} >Apple Pay</div></div>
+                  <div style={{display:'flex' , justifyContent:'center', alignItems:'center'}}><Form.Check type="radio" name="paymenttype" label="" value="Card Payment" onChange={(e)=>setPaymentType(e.target.value)}/><div style={{border:'1px solid #7B7B7B',padding:'.5rem 4rem', fontWeight:'700',fontSize:'1.2em'}} >Card Payment</div></div>
+                  <div style={{display:'flex' , justifyContent:'center', alignItems:'center'}}><Form.Check type="radio" name="paymenttype" label="" value="Bank Transfer" onChange={(e)=>setPaymentType(e.target.value)}></Form.Check><div style={{border:'1px solid #7B7B7B',padding:'.5rem 4rem', fontWeight:'700',fontSize:'1.2em'}} >Bank Transfer</div></div>
+                  <div style={{display:'flex' , justifyContent:'center', alignItems:'center'}}><Form.Check type="radio" name="paymenttype" label="" value="Apple Pay" onChange={(e)=>setPaymentType(e.target.value)}></Form.Check><div style={{border:'1px solid #7B7B7B',padding:'.5rem 4rem', fontWeight:'700',fontSize:'1.2em'}} >Apple Pay</div></div>
                 </div>
                 </Form.Group>
               </div>

@@ -45,8 +45,8 @@ const OverviewRow = ({ name, email, totalSales, conversion, totalEarned }) => {
         </div>
 
         <div
-          className="d-flex mt-2 p-2"
-          style={{ height: "13vh", width: "100%" }}
+          className="d-flex mt-4 p-1"
+          style={{ height: "14vh", width: "100%" }}
         >
           <div
             className="d-flex flex-column align-items-center"
@@ -75,7 +75,7 @@ const OverviewRow = ({ name, email, totalSales, conversion, totalEarned }) => {
               />
             </div>
             <div
-              style={{ marginBottom: "-3vh", marginTop: "2vh" }}
+              style={{ marginBottom: "", marginTop: "2vh" }}
               className="d-flex flex-column align-items-center"
             >
               <span
@@ -123,13 +123,13 @@ const OverviewRow = ({ name, email, totalSales, conversion, totalEarned }) => {
 
         <div
           className="d-flex flex-column align-items-center"
-          style={{ marginTop: "3vh",marginBottom:'1vh ' }}
+          style={{ marginTop: "1vh",marginBottom:'1vh ' }}
         >
           <Button style={{ fontSize: "16px", background: "#DD2A7B" , border:'none',padding:'6px 12px', cursor:'pointer'}}>
             <HistoryEduIcon style={{marginRight:'.3rem'}}/>Edit Profile
           </Button>
         </div>
-        <div style={{background:'#FFC3DE' , borderRadius:'8px'}}>
+        <div style={{background:'#FFC3DE' , borderRadius:'8px', height:'32vh'}}>
         <div
         className="d-flex flex-column"
         style={{
@@ -158,18 +158,18 @@ const OverviewRow = ({ name, email, totalSales, conversion, totalEarned }) => {
             alt="wallet"
             style={{ height: "4vh", marginTop: "2vh" }}
           />
-          <span style={{ fontWeight: "700", fontSize: "12px" }}>
+          <span style={{ fontWeight: "700", fontSize: "16px" }}>
             $ <span style={{ fontSize: "20px" }}>{totalEarned}</span>
           </span>
-          <span style={{ color: "gray", fontSize: "13px" }}>
+          <span style={{ color: "#92959A", fontSize: "16px" }}>
             Total Earning
           </span>
         </div>
         <div
           className="d-flex flex-column justify-content-start align-items-center"
-          style={{ fontSize: "12px" }}
+          style={{ fontSize: "16px" }}
         >
-          <div className="">
+          <div className="mt-2">
             <span style={{fontWeight:"400",fontSize:'16px'}}>Team Name</span>
             <span style={{ fontWeight: "600", fontSize:'16px' }}> San Antonio</span>
           </div>
