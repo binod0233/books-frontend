@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import SettingsIcon from "@mui/icons-material/Settings";
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
-const OverviewRow = ({ name, email, totalSales, conversion, totalEarned }) => {
+const   OverviewRow = ({ name, email, totalSales, conversion, totalEarned }) => {
   return (
     <div className="py-4">
       <div
@@ -45,8 +45,8 @@ const OverviewRow = ({ name, email, totalSales, conversion, totalEarned }) => {
         </div>
 
         <div
-          className="d-flex mt-4 p-1"
-          style={{ height: "14vh", width: "100%" }}
+          className="d-flex mt-2 mb-3"
+          style={{ height: "13vh", width: "100%" }}
         >
           <div
             className="d-flex flex-column align-items-center"
@@ -71,11 +71,11 @@ const OverviewRow = ({ name, email, totalSales, conversion, totalEarned }) => {
               <img
                 src="/images/dashboard/dollar.png"
                 alt="dollar"
-                style={{ height: "3vh" }}
+                style={{ height: "2.5vh" }}
               />
             </div>
             <div
-              style={{ marginBottom: "", marginTop: "2vh" }}
+              style={{ marginBottom: "-5vh", marginTop: "2vh" }}
               className="d-flex flex-column align-items-center"
             >
               <span
@@ -108,7 +108,7 @@ const OverviewRow = ({ name, email, totalSales, conversion, totalEarned }) => {
               />
             </div>
             <div
-              style={{ marginBottom: "-3vh", marginTop: "2vh" }}
+              style={{ marginBottom: "-5vh", marginTop: "2vh" }}
               className="d-flex flex-column align-items-center"
             >
               <span

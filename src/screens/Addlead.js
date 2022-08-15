@@ -165,10 +165,10 @@ const Addlead = () => {
                 <Form.Select  onChange={(e)=>setCountry(e.target.value)} >
                 <option value="none" onClick={(e)=>setCountry(e.target.value)}>India</option>
                 
-                  <option value="basic" onClick={(e)=>setCountry(e.target.value)}>Basic</option>
-                  <option value="extended" onClick={(e)=>setCountry(e.target.value)}>Extended</option>
-                  <option value="premium" onClick={(e)=>setCountry(e.target.value)}>Premium</option>
-                  <option value="royal" onClick={(e)=>setCountry(e.target.value)}>Royal</option>
+                  <option value="nepal" onClick={(e)=>setCountry(e.target.value)}>Nepal</option>
+                  <option value="japan" onClick={(e)=>setCountry(e.target.value)}>Japan</option>
+                  <option value="america" onClick={(e)=>setCountry(e.target.value)}>America</option>
+                  <option value="australia" onClick={(e)=>setCountry(e.target.value)}>Australia</option>
                 
                 
                 </Form.Select>
@@ -190,10 +190,10 @@ const Addlead = () => {
           <Form.Select  onChange={(e)=>setSource(e.target.value)} >
                 <option value="none" onClick={(e)=>setSource(e.target.value)}>Website/facebook</option>
                 
-                  <option value="basic" onClick={(e)=>setSource(e.target.value)}>Basic</option>
-                  <option value="extended" onClick={(e)=>setSource(e.target.value)}>Extended</option>
-                  <option value="premium" onClick={(e)=>setSource(e.target.value)}>Premium</option>
-                  <option value="royal" onClick={(e)=>setSource(e.target.value)}>Royal</option>
+                  <option value="facebook" onClick={(e)=>setSource(e.target.value)}>Facebook</option>
+                  <option value="linkedin" onClick={(e)=>setSource(e.target.value)}>Linkedin</option>
+                  <option value="twitter" onClick={(e)=>setSource(e.target.value)}>Twitter</option>
+                  <option value="instagram" onClick={(e)=>setSource(e.target.value)}>Instagram</option>
                 
                 
                 </Form.Select>
