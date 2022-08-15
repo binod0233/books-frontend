@@ -1,7 +1,11 @@
 import React from "react";
 import { Button, Col, Row, Stack, ProgressBar } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
-const PaymentRow = ({ totalDealValue, totalEarned, totalDuePayment }) => {
+const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
+
+  const navigate = useNavigate();
+
   return (
     <div className="ps-4 pb-4">
       <Row>
@@ -282,9 +286,21 @@ const PaymentRow = ({ totalDealValue, totalEarned, totalDuePayment }) => {
               {" "}
               It includes the total value of the Deal.
             </span>
-            <Button style={{ marginTop: "10px", background: "#A326C5" }}>
-              View All
-            </Button>
+            {
+            localStorage.getItem("user").role==="clientManager"?(  <Button onClick={()=>navigate(`/leads/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+            View All
+          </Button>)
+            :
+            localStorage.getItem("user").role==="teamlead"?(  <Button onClick={()=>navigate(`/teamlead/leads/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+            View All
+          </Button>)
+            :
+            localStorage.getItem("user").role==="admin"?(  <Button onClick={()=>navigate(`/admin/allleads`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+            View All
+          </Button>)
+            :null
+            }
+          
           </div>
         </Col>
         <Col md={3}>
@@ -358,9 +374,22 @@ const PaymentRow = ({ totalDealValue, totalEarned, totalDuePayment }) => {
               {" "}
               It includes the total payment recieved.
             </span>
-            <Button style={{ marginTop: "10px", background: "#1DB7DB" }}>
-              View All
-            </Button>
+
+            {
+            localStorage.getItem("user").role==="clientManager"?(  <Button onClick={()=>navigate(`/payment/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+            View All
+          </Button>)
+            :
+            localStorage.getItem("user").role==="teamlead"?(  <Button onClick={()=>navigate(`/teamlead/payment/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+            View All
+          </Button>)
+            :
+            localStorage.getItem("user").role==="admin"?(  <Button onClick={()=>navigate(`/admin/allleads`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+            View All
+          </Button>)
+            :null
+            }
+            
           </div>
         </Col>
         <Col md={3}>
@@ -427,15 +456,29 @@ const PaymentRow = ({ totalDealValue, totalEarned, totalDuePayment }) => {
                 fontFamily: "sans-serif",
                 color: "#64676B",
                 textAlign: "center",
-                width:'60%'
               }}
             >
               {" "}
-              It includes the total due left to pay.
+              It includes the total due amt. left to pay.
             </span>
-            <Button style={{ marginTop: "10px", background: "#04CA8E" }}>
-              View All
-            </Button>
+
+            {
+            localStorage.getItem("user").role==="clientManager"?(  <Button onClick={()=>navigate(`/payment/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+            View All
+          </Button>)
+            :
+            localStorage.getItem("user").role==="teamlead"?(  <Button onClick={()=>navigate(`/teamlead/payment/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+            View All
+          </Button>)
+            :
+            localStorage.getItem("user").role==="admin"?(  <Button onClick={()=>navigate(`/admin/allpayments`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+            View All
+          </Button>)
+            :null
+            }
+
+
+         
           </div>
         </Col>
       </Row>

@@ -8,6 +8,7 @@ import Sidebar from '../../components/Sidebar'
 import axios from "axios"
 import { useNavigate, useParams } from 'react-router-dom'
 import { Button } from 'bootstrap'
+import userEvent from '@testing-library/user-event'
 
 
 
@@ -18,7 +19,7 @@ const Dashboard = () => {
 
   const [paymentList,setPaymentList] = useState([])
   const [leadList, setLeadList] = useState([])
-  const [user, setUser] = useState({})
+  const [clientManager, setClientManager] = useState({})
   const localUser = JSON.parse(localStorage.getItem('user'))
 
   useEffect(() => {
@@ -47,10 +48,10 @@ const Dashboard = () => {
     )
   }
 
-  const getUser = () => {
-    axios.get(`${process.env.REACT_APP_BASE_URL}/api/user/appUser/byname/${name}`)
+  const getClientManagerById = () => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/salesman/salesmanName/${name}`)
     .then(res => {
-      setUser(res.data)
+      setClientManager(res.data)
     }
     )
   }
@@ -58,10 +59,9 @@ const Dashboard = () => {
   useEffect(() => {
     getAllLeadsOfAClientManager();
     getAllPaymentsOfAClientManager();
-    getUser()
+    getClientManagerById()
   },[])
 
-  console.log(name,paymentList,leadList,user)
 
   const totalDealValue = leadList.reduce((acc,lead) => acc + lead.dealValue,0)
   const totalEarned = paymentList?.reduce((acc, payment) => acc + payment.amount, 0)
@@ -77,18 +77,19 @@ const Dashboard = () => {
     <div className='px-4' style={{background:"#F1F1FA"}}>
       <Row>
         <Col md={9}>
-        <StatsRow totalEarned={totalEarned} totalSales={totalSales} totalLeads={totalLeads} conversion={conversion}/>
+        <StatsRow name={name} totalEarned={totalEarned} totalSales={totalSales} totalLeads={totalLeads} conversion={conversion}/>
 
         </Col>
         <Col md={3}>
-        <OverviewRow totalSales={totalSales} totalEarned={totalEarned}  conversion={conversion} name={localUser.name} email={localUser.email}
+        <OverviewRow teamLead={clientManager.teamLead} totalSales={totalSales} totalEarned={totalEarned}  conversion={conversion} name={localUser.name} email={localUser.email}
+        id={localUser.id} role={localUser.role}
         // teamName={leadList && leadList[0].teamLead } teamLead={paymentList && paymentList[0].recipient} 
          />
 
         </Col>
 
       </Row>
-       <PaymentRow totalDealValue={totalDealValue} totalPayment={totalEarned} totalDuePayment={totalDuePayment}/>
+       <PaymentRow name={name} totalDealValue={totalDealValue} totalPayment={totalEarned} totalDuePayment={totalDuePayment}/>
 
        <div style={{background:"#fff"}} className='mx-4 ps-3 pe-3' >
         <div style={{display:'flex',justifyContent:"space-between",paddingTop:"10px"}}>
@@ -153,7 +154,7 @@ const Dashboard = () => {
       </div>
 
 
-{leadList?.map((l, key) => (
+{leadList?.map((l) => (
   <>
   
   <div
@@ -164,6 +165,7 @@ const Dashboard = () => {
       height: "70px",
       color: "#64676B",
       fontFamily: "Arial",
+      cursor:"pointer"
     
     }}
     className="d-flex mt-2 mb-2 align-items-center"
@@ -284,7 +286,7 @@ const Dashboard = () => {
     ))}
     
     <div className='d-flex justify-content-end align-items-center'>
-<button style={{ border:'none', background:'#3144E7', fontSize:'20px', color:'white', borderRadius:'2px', padding:'6px 20px',marginTop:'1rem', marginBottom:'3rem'}}>View All</button>
+<button onClick={()=>navigate("/leads/name")} style={{ border:'none', background:'#3144E7', fontSize:'20px', color:'white', borderRadius:'2px', padding:'6px 20px',marginTop:'1rem', marginBottom:'3rem'}}>View All</button>
 </div>
 
 

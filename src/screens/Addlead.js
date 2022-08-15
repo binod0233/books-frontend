@@ -31,12 +31,12 @@ const Addlead = () => {
   const [dueDate,setDueDate] = useState('')
   const [recepient,setRecepient] = useState('')
   const [payee,setPayee] = useState('')
+  const user = JSON.parse(localStorage.getItem('user'))
 
 
   const addALead=(e)=>{
     e.preventDefault()
     
-    const user = JSON.parse(localStorage.getItem('user'))
     
     
     axios.post(`${process.env.REACT_APP_BASE_URL}/api/lead/registerLead`,
@@ -54,7 +54,15 @@ const Addlead = () => {
       paymentType,
       dealValue,dueDate,recepient,payee
   }).then(res=>{if(res.status===200){
-    navigate(`/leads/${user?.name}`)
+    if(user?.role==="admin"){
+      navigate('/admin/allleads')
+    }
+    else if(user?.role==="teamlead"){
+      navigate(`/teamlead/leads/${user.name}`)
+    }else if(user?.role==="clientmanager"){
+      navigate(`/leads/${user?.name}`)
+
+    }
   }else{
     alert('Something went wrong')
   }
@@ -164,7 +172,15 @@ const Addlead = () => {
             </Row>
             <div style={{float:"right"}}>
             <Button onClick={()=>{
-              navigate('/leads')
+               if(user?.role==="admin"){
+                navigate('/admin/allleads')
+              }
+              else if(user?.role==="teamlead"){
+                navigate(`/teamlead/leads/${user.name}`)
+              }else if(user?.role==="clientmanager"){
+                navigate(`/leads/${user?.name}`)
+          
+              }
             }}style={{border:"1px solid #DD2A7B"}} className='btn bg-white text-black mx-5 mt-4'>Cancel</Button>
 
             <Button onClick={()=>setActiveTab("2")} style={{background:"#DD2A7B",color:"white"}}  className='btn  mx-5 mt-4'>SAVE & NEXT</Button>

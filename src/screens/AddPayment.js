@@ -28,7 +28,15 @@ const user = JSON.parse(localStorage.getItem('user'))
       axios.post(`${process.env.REACT_APP_BASE_URL}/api/payment/registerPayment`,
     {paymentDate:date,userId:3,remarks,updatedBy:"John abraham",amount,payee,recipient,serviceType,receiptImage,modifiesBy:"clientManager1",createdBy:"clientManager1"},config
   ).then(res=>{if(res.status===200){
-    navigate(`/payment/${user?.name}`)
+    if(user?.role==="admin"){
+      navigate('/admin/allpayments')
+    }
+    else if(user?.role==="teamlead"){
+      navigate(`/teamlead/payment/${user.name}`)
+    }else if(user?.role==="clientmanager"){
+      navigate(`/payments/${user?.name}`)
+    
+    } 
   }else{
     alert('Something went wrong')
   }})
@@ -108,7 +116,19 @@ const user = JSON.parse(localStorage.getItem('user'))
               </Col>
             </Row>
             <Button type='submit' className='btn btn-primary mx-5 mt-4'>Add Payment</Button>
-            <Button onClick={()=>navigate("/leads")}>Cancel</Button>
+            <Button onClick={()=>{
+
+if(user?.role==="admin"){
+  navigate('/admin/allpayments')
+}
+else if(user?.role==="teamlead"){
+  navigate(`/teamlead/payment/${user.name}`)
+}else if(user?.role==="clientmanager"){
+  navigate(`/payments/${user?.name}`)
+
+} 
+            }
+            }>Cancel</Button>
           </Form>
         </div>
   </div>

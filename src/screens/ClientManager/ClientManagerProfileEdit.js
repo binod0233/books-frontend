@@ -1,9 +1,13 @@
-import React,{useState} from 'react'
+import axios from 'axios'
+import React,{useEffect, useState} from 'react'
 import { Form,Button,Col,Row } from 'react-bootstrap'
-import Header from '../../components/Header'
-import Sidebar from '../../components/Sidebar'
+import { useParams } from 'react-router-dom'
+
 
 const ClientManagerProfileEdit = () => {
+
+  const {id} = useParams()
+
   const [email,setEmail] = useState('')
   const [firstName,setFirstName] = useState('')
   const [lastName,setLastName] = useState('')
@@ -14,7 +18,42 @@ const ClientManagerProfileEdit = () => {
   const [teamName,setTeamName] = useState('')
   const [visibleTo,setVisibleTo] = useState('')
 
+  useEffect(()=>{
+
+    axios.get(`${process.env.REACT_APP_API_URL}/api/salesman/salesmanId/${id}`)
+
+    .then(res=>{
+      setEmail(res.data.email)
+      setFirstName(res.data.firstName)
+      setLastName(res.data.lastName)
+      setPhone(res.data.phone)
+      setSocialMedia(res.data.socialMedia)
+      setPlatform(res.data.platform)
+      setLeadName(res.data.leadName)
+    })
+  },[id])
+ 
+
   const editProfile=()=>{
+    axios.post(`${process.env.REACT_APP_API_URL}/api/salesman/edit/${id}`,{
+      email,
+      firstName,
+      lastName,
+      phone,
+      socialMedia,
+      platform,
+      leadName,
+      teamName,
+      visibleTo,
+
+    }).then(res=>{
+      console.log(res)
+      if(res.data.status=200){
+        alert('Profile Updated Successfully')
+        
+      }
+    }
+    )
   } 
   return (
     <Row style={{background:"#F1F1FA"}}>
@@ -119,8 +158,9 @@ const ClientManagerProfileEdit = () => {
               <Col className='pe-3'>
                   
                   <Form.Group controlId="leadname">
-                  <Form.Label>Lead Name</Form.Label>
+                  <Form.Label>Team Lead</Form.Label>
                   <Form.Select value={leadName} onChange={(e)=>setLeadName(e.target.value)} >
+                  <option value="admin">Select</option>
                   <option value="neha rathi">Neha Rathi</option>
                     <option value="sharmila dangol">Sharmila Dangol</option>
                     <option value="suman subedi">Suman Subedi</option>
@@ -132,9 +172,9 @@ const ClientManagerProfileEdit = () => {
                 <Form.Group controlId="teamname">
                   <Form.Label>Team Name</Form.Label>
                   <div className='d-flex'>
-                  <Form.Check className='mx-2' type="radio" name="teamname" label="Las Vegas" onClick={(e)=>setTeamName(e.target.value)} />
-                  <Form.Check className='mx-2' type="radio" name="teamname" label="San Antonio" onClick={(e)=>setTeamName(e.target.value)} />
-                  <Form.Check className='mx-2' type="radio" name="teamname" label="Houston" onClick={(e)=>setTeamName(e.target.value)} />
+                  <Form.Check className='mx-2' type="radio" name="teamname" value="Las Vegas"  label="Las Vegas" onClick={(e)=>setTeamName(e.target.value)} />
+                  <Form.Check className='mx-2' type="radio" name="teamname"  value="San Antonio" label="San Antonio" onClick={(e)=>setTeamName(e.target.value)} />
+                  <Form.Check className='mx-2' type="radio" name="teamname"  value="Houston" label="Houston" onClick={(e)=>setTeamName(e.target.value)} />
       </div>
                 </Form.Group>
               </Col>

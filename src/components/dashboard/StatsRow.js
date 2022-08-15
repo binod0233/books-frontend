@@ -1,9 +1,11 @@
 import React from "react";
 import { Row, Col, Stack, ProgressBar, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import LineChart from "../Chart/LineChart";
 import PieChart from "../Chart/PieChart";
 
-const StatsRow = ({ totalEarned, totalSales, totalLeads }) => {
+const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
+  const navigate = useNavigate();
   return (
     <div className="">
       <Row className="ps-4  pe-0 py-3">
@@ -172,7 +174,9 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads }) => {
                     borderColor: "#3F50F0",
                     backgroundColor: "white",
                   }}
+                  onClick={() => {navigate(`/payment/${name}`)}}
                 >
+
                   More Details
                 </Button>
               </span>

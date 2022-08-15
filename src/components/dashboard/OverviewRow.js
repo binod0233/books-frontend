@@ -1,8 +1,14 @@
 import React from "react";
-import { Row, Col, Button } from "react-bootstrap";
+import {  Button } from "react-bootstrap";
 import SettingsIcon from "@mui/icons-material/Settings";
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
-const OverviewRow = ({ name, email, totalSales, conversion, totalEarned }) => {
+import { useNavigate } from "react-router-dom";
+
+
+const OverviewRow = ({ name, email,id,role,teamLead, totalSales, conversion, totalEarned }) => {
+  const navigate = useNavigate(
+
+  )
   return (
     <div className="py-4">
       <div
@@ -125,7 +131,7 @@ const OverviewRow = ({ name, email, totalSales, conversion, totalEarned }) => {
           className="d-flex flex-column align-items-center"
           style={{ marginTop: "3vh",marginBottom:'1vh ' }}
         >
-          <Button style={{ fontSize: "16px", background: "#DD2A7B" , border:'none',padding:'6px 12px', cursor:'pointer'}}>
+          <Button onClick={()=>navigate(`/clientmanager/profile/${id}`)} style={{ fontSize: "16px", background: "#DD2A7B" , border:'none',padding:'6px 12px', cursor:'pointer'}}>
             <HistoryEduIcon style={{marginRight:'.3rem'}}/>Edit Profile
           </Button>
         </div>
@@ -177,7 +183,7 @@ const OverviewRow = ({ name, email, totalSales, conversion, totalEarned }) => {
             <span style={{fontWeight:"400",fontSize:'16px'}}>Team Lead</span>
             <span style={{ fontWeight: "600", fontSize:'16px' }}> Suman Subedi</span>
           </div>
-          <Button style={{ fontSize: "16px", background: "#DD2A7B" , border:'none', marginTop:'.5vh',  cursor:'pointer'}}>
+          <Button onClick={()=>navigate(`/teamlead/dashboard/${teamLead}`)} style={{ fontSize: "16px", background: "#DD2A7B" , border:'none', marginTop:'.5vh',  cursor:'pointer'}}>
             View Team
           </Button>
         </div>

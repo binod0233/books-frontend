@@ -2,16 +2,12 @@ import React, { useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'
 import { Col, Row } from 'react-bootstrap'
 import PaymentRow from '../../components/dashboard/PaymentRow'
-import Header from '../../components/Header'
-import Sidebar from '../../components/Sidebar'
 import EarningStats from '../../components/TeamLeadDashboard.js/EarningStats'
 import TeamLeadProfile from '../../components/TeamLeadDashboard.js/TeamLeadProfile'
 
 import axios from 'axios'
 
 const TeamLeadLeadDashboard = () => {
-
-  const params = useParams()
 
   const {teamLead} = useParams()
 
@@ -33,7 +29,7 @@ const TeamLeadLeadDashboard = () => {
   const getPaymentsOfATeamLead = () => {
     axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/payments/getAllPaymentsOfATeamLead/${teamLead}`)
     .then(res => {
-      setPaymentList(res.data)
+      setPaymentList(res.data.responseList)
       console.log(res.data)
     }
     )
