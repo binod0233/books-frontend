@@ -92,180 +92,190 @@ const localUser = JSON.parse(localStorage.getItem('user'));
               leadLost={leadLost}
             />
           </div>
-          <div className="leadInputs mx-3">
-            <Form
+        <div className='leadInputs mx-3 mb-2 ' >
+        <Form 
+        style={{
+          display: "flex",
+          // justifyContent: "space-between",
+          alignItems: "center",
+          width: "100%",
+        }}
+        >
+        <div 
+       className=''
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          width: "100%",
+        }}
+        >
+            <div
+              className="input-group"
               style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                width: "100%",
+                height: "6vh",
+                background: "white",
+                border: "0.7px solid grey",
+                width: "18vw",
               }}
             >
-              <div
-                className="input-group"
+              <div className="d-flex justify-content-center align-items-center px-2">
+                <i className="fa-solid fa-user-large"></i>
+              </div>
+              <input
+                type="text"
+                style={{ border: "none", width: "5px" }}
+                placeholder="Lead Name"
+                value={clientName}
+                onChange={(e) => setClientName(e.target.value)}
+                className="form-control"
+              />
+            </div>
+
+            <div
+              className="input-group"
+              style={{
+                height: "6vh",
+                background: "white",
+                border: "0.7px solid grey",
+                width: "18vw",
+              }}
+            >
+              <span className="d-flex justify-content-center align-items-center p-2">
+                <i className="fa-solid fa-user-large"></i>
+              </span>
+              <input
+                type="text"
+                style={{ border: "none" }}
+                placeholder="Service Type"
+                value={servicePlan}
+                onChange={(e) => setServicePlan(e.target.value)}
+                className="form-control"
+              />
+            </div>
+
+            <div className="selection">
+              <select
+                className="form-select"
+                name="city"
+                onChange={(e) => setStatus(e.target.value)}
                 style={{
-                  height: "45px",
-                  background: "white",
+                  textAlign: "center",
+                  height: "6vh",
                   border: "0.7px solid grey",
-                  width: "260px",
                 }}
+                aria-label="Default select"
               >
-                <div className="d-flex justify-content-center align-items-center px-2">
-                  <i className="fa-solid fa-user-large"></i>
-                </div>
-                <input
-                  type="text"
-                  style={{ border: "none", width: "5px" }}
-                  placeholder="Lead Name"
-                  value={clientName}
-                  onChange={(e) => setClientName(e.target.value)}
-                  className="form-control"
-                />
-              </div>
+                <option selected value="">
+                  Lead Status
+                </option>
+                <option value="lost">Lost</option>
+                <option value="cold">Cold</option>
+                <option value="negotiating" style={{ background: "" }}>
+                  Negotiating
+                </option>
+                <option value="won">Won</option>
+              </select>
+            </div>
 
-              <div
-                className="input-group"
+            <div>
+              <Form.Control
+                size="sm"
+                name="foo"
+                placeholder="Date"
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
                 style={{
-                  height: "45px",
-                  background: "white",
+                  textAlign: "center",
+                  height: "6vh",
                   border: "0.7px solid grey",
-                  width: "260px",
+                  width: "9vw",
                 }}
-              >
-                <span className="d-flex justify-content-center align-items-center p-2">
-                  <i className="fa-solid fa-user-large"></i>
-                </span>
-                <input
-                  type="text"
-                  style={{ border: "none" }}
-                  placeholder="Service Type"
-                  value={servicePlan}
-                  onChange={(e) => setServicePlan(e.target.value)}
-                  className="form-control"
-                />
-              </div>
+                className=""
+              />
+            </div>
+            <div
+              className="input-group"
+              style={{
+                height: "6vh",
+                background: "white",
+                border: "0.7px solid grey",
+                width: "7vw",
+              }}
+            >
+              <span className="d-flex justify-content-center align-items-center p-2">
+                $
+              </span>
+              <input
+                type="text"
+                style={{ border: "none" }}
+                placeholder="Source"
+                value={source}
+                onChange={(e) => setSource(e.target.value)}
+                className="form-control mb-1"
+              />
+            </div>
 
-              <div className="selection">
-                <select
-                  className="form-select"
-                  name="city"
-                  onChange={(e) => setStatus(e.target.value)}
-                  style={{
-                    textAlign: "center",
-                    height: "45px",
-                    border: "0.7px solid grey",
-                  }}
-                  aria-label="Default select"
-                >
-                  <option selected value="">
-                    Lead Status
-                  </option>
-                  <option value="lost">Lost</option>
-                  <option value="cold">Cold</option>
-                  <option value="negotiating" style={{ background: "" }}>
-                    Negotiating
-                  </option>
-                  <option value="won">Won</option>
-                </select>
-              </div>
-
-              <div>
-                <Form.Control
-                  size="sm"
-                  name="foo"
-                  placeholder="Date"
-                  type="date"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  style={{
-                    textAlign: "center",
-                    height: "45px",
-                    border: "0.7px solid grey",
-                    width: "150px",
-                  }}
-                  className=""
-                />
-              </div>
-              <div
-                className="input-group"
+            <div>
+              <Button
                 style={{
-                  height: "45px",
-                  background: "white",
-                  border: "0.7px solid grey",
-                  width: "180px",
+                  height: "6vh",
+                  background: "#176EB3",
+                  width: "5vw",
                 }}
+                type="reset"
+                onClick={() => {
+                  navigate(`/leads/${clientManager}`);
+                }}
+                className=""
               >
-                <span className="d-flex justify-content-center align-items-center p-2">
-                  $
-                </span>
-                <input
-                  type="text"
-                  style={{ border: "none" }}
-                  placeholder="Source"
-                  value={source}
-                  onChange={(e) => setSource(e.target.value)}
-                  className="form-control"
-                />
-              </div>
-
-              <div>
-                <Button
-                  style={{
-                    height: "45px",
-                    background: "#176EB3",
-                    width: "100px",
-                  }}
-                  type="reset"
-                  onClick={() => {
-                    navigate(`/leads/${clientManager}`);
-                  }}
-                  className=""
-                >
-                  {" "}
-                  Reset{" "}
-                </Button>
-              </div>
-              <div>
-                <Button
-                  style={{
-                    height: "45px",
-                    background: "#222529",
-                    width: "120px",
-                  }}
-                  type="submit"
-                  onClick={applyFilter}
-                  className=""
-                >
-                  <i
-                    className="fa-solid fa-magnifying-glass "
-                    style={{ marginRight: "4px" }}
-                  ></i>
-                  Search{" "}
-                </Button>
-              </div>
-            </Form>
-          </div>
+                {" "}
+                Reset{" "}
+              </Button>
+            </div>
+            <div>
+              <Button
+                style={{
+                  height: "6vh",
+                  background: "#222529",
+                  width: "8vw",
+                }}
+                type="submit"
+                onClick={applyFilter}
+                className=""
+              >
+                <i
+                  className="fa-solid fa-magnifying-glass "
+                  style={{ marginRight: "4px" }}
+                ></i>
+                Search{" "}
+              </Button>
+            </div>
+            </div>
+          </Form>
+        </div>
           <div
             className="mx-3 mt-3"
             style={{
-              fontSize: "20px",
+              fontSize: "1.2rem",
               fontWeight: "700",
               background: "white",
-              height: "70px",
+              height: "9vh",
               display: "flex",
               alignItems: "center",
             }}
           >
-            <div style={{ width: "20%", paddingLeft: "20px" }}>Lead Name</div>
+            <div style={{ width: "20%", paddingLeft: "1.2rem" }}>Lead Name</div>
             <div
-              className=""
+              className="tab-title"
               style={{
                 width: "80%",
-                fontSize: "20px",
+                fontSize: "1.2rem",
                 fontWeight: "700",
                 // background: "white",
                 // marginLeft:'40px',
-                height: "70px",
+                height: "9vh",
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
@@ -286,10 +296,10 @@ const localUser = JSON.parse(localStorage.getItem('user'));
               key={l.id}
               style={{
                 background: "#fff",
-                height: "70px",
+                height: "9vh",
                 color: "#64676B",
                 fontFamily: "Arial",
-                paddingLeft: "20px",
+                paddingLeft: "1.2rem",
               }}
               className="d-flex mt-3 mx-3 align-items-center"
             >
@@ -314,7 +324,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                     style={{
                       color: "black",
                       fontWeight: "700",
-                      fontSize: "22px",
+                      fontSize: "1.2rem",
                       lineHeight: "25px",
                       marginLeft: "8px",
                     }}
@@ -334,7 +344,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
               </div>
 
               <div
-                className="d-flex justify-content-between align-items-center"
+                className="tab-title d-flex justify-content-between align-items-center"
                 style={{
                   width: "80%",
                   //   marginRight:'15px'

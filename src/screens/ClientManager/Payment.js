@@ -279,14 +279,14 @@ const Payment = () => {
                       style={{
                         height: "70px",
                         // width: "92%",
-                        fontSize: "1.5rem",
-                        fontWeight: "700",
-                        background:'#fff'
+                        fontSize: "1.3rem",
+                        // fontWeight: "700",
+                        background:'#FFF'
                       }}
                     >
                       <div
                         className="d-flex align-items-center justify-content-start"
-                        style={{ width: "12vw", marginRight: "" }}
+                        style={{ width: "14vw", marginRight: "" }}
                       >
                         <div
                           style={{
@@ -296,7 +296,7 @@ const Payment = () => {
                             width: "45px",
                             color: "#fff",
                             fontWeight: "400",
-                            margin: "0 10%",
+                            margin: "0 5%",
                           }}
                           className="d-flex justify-content-center align-items-center "
                         >
@@ -305,50 +305,50 @@ const Payment = () => {
                         <div
                           className="d-flex justify-content-center align-items-center"
                           md={9}
-                          style={{ color: "", fontWeight: "700", fontSize: "24px" }}
+                          style={{ color: "", fontWeight: "700", fontSize: "22px" }}
                         >
                           {payment.payee}
                         </div>
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-start"
-                        style={{ width: "10vw" }}
+                        style={{ width: "10vw", color:'#64676B'}}
                       >
                         <div>${payment.amount}.00</div>
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-start"
-                        style={{ width: "10vw", background: "" }}
+                        style={{ width: "10vw", background: "" ,color:'#64676B'}}
                       >
                         {new Date(payment.paymentDate).toLocaleDateString()}
                       </div>
                       <div
-                        className="d-flex align-items-center justify-content-start"
-                        style={{ width: "12vw", background: "" }}
+                        className="d-flex align-items-center justify-content-center"
+                        style={{ width: "12vw", background: "",color:'#64676B' }}
                       >
                         {payment.serviceType}
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-start"
-                        style={{ width: "10vw", background: "" }}
+                        style={{ width: "10vw", background: "",color:'#64676B' }}
                       >
                         {payment.recipient}
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-start"
-                        style={{ width: "10vw", background: "" }}
+                        style={{ width: "10vw", background: "",color:'#64676B' }}
                       >
                         {payment.status}
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-start"
-                        style={{ width: "10vw", background: "" }}
+                        style={{ width: "10vw", background: "",color:'#64676B' }}
                       >
                         {payment.receipt}
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-end"
-                        style={{ width: "15vw", background: "" }}
+                        style={{ width: "15vw", background: "",color:'#64676B' }}
                       >
                       <div style={{display:'flex',justifyContent:'space-between',marginRight:'1rem'}}>  {payment.remarks}</div>
                       <div onClick={()=>navigate("/add-payment")} style={{borderRadius:'5px',height:'40px',width:'40px',background:'#176EB3',color:'white', display:'flex', alignItems:'center', justifyContent:'center',marginRight:'5px',cursor:'pointer'}}><AddIcon/></div>

@@ -39,9 +39,9 @@ const [activeGender, setActiveGender] = useState('1')
 
 
   const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
+    { value: 'whatsapp', label: 'WhatsApp' },
+    { value: 'messenger', label: 'Messenger' },
+    { value: 'viber', label: 'Viber' }
   ]
 console.log(communicationChannel)
 
@@ -57,6 +57,7 @@ const addALead=(e)=>{
       work,source,
       socialMedia:communicationChannel,
       gender,
+      select,
       country,
       clientBackground:leadBackground,
       serviceType,
@@ -75,7 +76,7 @@ const addALead=(e)=>{
   )
 }
 
-
+console.log(gender)
   return (
     <div className='d-flex justify-content-center ' style={{background:'#F1F1FA', height:'90vh'}} >
      

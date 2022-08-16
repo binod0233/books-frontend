@@ -23,19 +23,19 @@ const Sidebar = () => {
                <>
                <div className="menu-icon" onClick={()=>setActiveTab("1")} style={{background:activeTab==='1'&& '#35373A'}}>
                <Link  to={`/dashboard/${user?.name}`}>
-                 <DashboardIcon className="me-4 " /> Dashboard
+                 <DashboardIcon className="me-3 " /> Dashboard
                </Link>
              </div>
  
              <div className="menu-icon" onClick={()=>setActiveTab("2")} style={{background:activeTab==='2'&& '#35373A'}}>
                <Link to={`/leads/${user?.name}`}>
-                 <LandscapeIcon className="me-4" />
+                 <LandscapeIcon className="me-3" />
                  Leads
               </Link>
              </div>
              <div className="menu-icon" onClick={()=>setActiveTab("3")} style={{background:activeTab==='3'&& '#35373A'}}>
                <Link to={`/payment/${user?.name}`}>
-                 <MonetizationOnIcon className="me-4" />
+                 <MonetizationOnIcon className="me-3" />
                  Payments
                </Link>
              </div>
@@ -45,20 +45,20 @@ const Sidebar = () => {
                 <div className="menu-icon">
                 <Link to={`/admin/dashboard`}>
 
-                <DashboardIcon className="me-4 " /> Dashboard
+                <DashboardIcon className="me-3 " /> Dashboard
               </Link>
             </div>
 
             <div className="menu-icon">
             <Link to={`/admin/allleads`}>
-                <LandscapeIcon className="me-4" />
+                <LandscapeIcon className="me-3" />
                 Leads
               </Link>
             </div>
             <div className="menu-icon">
             <Link to={`/admin/allpayments`}>
 
-                <MonetizationOnIcon className="me-4" />
+                <MonetizationOnIcon className="me-3" />
                 Payments
               </Link>
             </div>
@@ -67,19 +67,19 @@ const Sidebar = () => {
                <>
                <div className="menu-icon">
                <Link to={`/teamlead/dashboard/${user?.name}`}>
-                 <DashboardIcon className="me-4 " /> Dashboard
+                 <DashboardIcon className="me-3 " /> Dashboard
                </Link>
              </div>
  
              <div className="menu-icon">
              <Link to={`/teamlead/leads/${user?.name}`}>
-                 <LandscapeIcon className="me-4" />
+                 <LandscapeIcon className="me-3" />
                  Leads
                </Link>
              </div>
              <div className="menu-icon">
              <Link to={`/teamlead/leads/${user?.name}`}>
-                 <MonetizationOnIcon className="me-4" />
+                 <MonetizationOnIcon className="me-3" />
                  Payments
                </Link>
              </div>
@@ -91,7 +91,7 @@ const Sidebar = () => {
           <div href={"/"}onClick={()=>           { localStorage.removeItem('user'); navigate('/') 
 }} style={{ textDecoration: "none", color: "#fff" }}>
             {" "}
-            <LogoutIcon className="me-4" />
+            <LogoutIcon className="me-3" />
             Logout
           </div>
         </div>
