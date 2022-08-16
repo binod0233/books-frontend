@@ -44,12 +44,12 @@ const [activeGender, setActiveGender] = useState('1')
     { value: 'viber', label: 'Viber' }
   ]
 console.log(communicationChannel)
+const user = JSON.parse(localStorage.getItem('user'))
 
 const addALead=(e)=>{
   e.preventDefault()
 
    
-    const user = JSON.parse(localStorage.getItem('user'))
     
     
     axios.post(`${process.env.REACT_APP_BASE_URL}/api/lead/registerLead`,
@@ -278,8 +278,8 @@ console.log(gender)
             }}style={{border:"1px solid #DD2A7B"}} className='btn bg-white text-black mx-2 '>Cancel</Button>
 
             <Button onClick={()=>setActiveTab("2")} style={{background:"#DD2A7B",color:"white"}}  className='btn  mx-2 '>SAVE & NEXT</Button>
-            
-            </div>
+            </Col>
+            </Row>
               </div>
               :activeTab==="2"?<div>
               <Row className="mx-5 pt-3">

@@ -7,14 +7,6 @@ import * as Yup from "yup";
 
 const AddPayment = () => {
   const navigate = useNavigate();
-  // const [date, setDate] = useState(null);
-  // const [remarks, setRemarks] = useState("");
-  // const [payee, setPayee] = useState("");
-  // const [recipient, setRecepient] = useState("");
-  // const [serviceType, setServiceType] = useState("");
-  // const [receiptImage, setReceiptImage] = useState("");
-  // const [amount, setAmount] = useState(0);
-  // const [validated, setValidated] = useState(false);
   const [values, setValues] = useState({
     remarks: "",
     payee: "",
@@ -40,6 +32,7 @@ const AddPayment = () => {
   const onSubmit = (values, { resetForm }) => {
     resetForm();
 
+    const { remarks, payee, recipient, service, amount, date, receipt } = values;
     console.log("receipt", receipt);
     console.log("values", values);
     const formData = new FormData();
@@ -58,14 +51,14 @@ const AddPayment = () => {
         `${process.env.REACT_APP_BASE_URL}/api/payment/registerPayment`,
         {
           paymentDate: date,
-          userId: 3,
+          userId: user.id,
           remarks,
           updatedBy: "John abraham",
           amount,
           payee,
           recipient,
           serviceType: service,
-          receiptImage:formData,
+          receiptImage:"",
           modifiedBy: localStorage.getItem("user").name,
           createdBy: localStorage.getItem("user").name,
         },
@@ -86,15 +79,7 @@ const AddPayment = () => {
           alert("Something went wrong");
         }
       });
-    setValues({
-      remarks: "",
-      payee: "",
-      recipient: "",
-      service: "",
-      amount: "",
-      date: null,
-      receipt: null,
-    });
+  
   };
 
   return (
