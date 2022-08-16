@@ -17,62 +17,78 @@ const AddPayment = () => {
   // const [receiptImage, setReceiptImage] = useState("");
   // const [amount, setAmount] = useState(0);
   // const [validated, setValidated] = useState(false);
+  const [values, setValues] = useState({
+    remarks: "",
+    payee: "",
+    recipient: "",
+    service: "",
+    amount: "",
+    date: null,
+    receipt: null,
+  });
+  const { remarks, payee, recipient, service, amount, date, receipt } = values;
 
-  // const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("user"));
 
-  // const addAPayment = (event) => {
-  //   const form = event.currentTarget;
-  //   if (form.checkValidity() === false) {
-  //     event.preventDefault();
-  //     event.stopPropagation();
-  //   }
-
-  //   setValidated(true);
-  //   console.log("event", event.target);
-  //   // const config = {
-  //   //   headers: {
-  //   //     "Content-Type": "application/json",
-  //   //     "Access-Control-Allow-Origin": "*",
-  //   //     "Access-Control-Allow-Headers": "*",
-  //   //   },
-  //   // };
-  //   // axios
-  //   //   .post(
-  //   //     `${process.env.REACT_APP_BASE_URL}/api/payment/registerPayment`,
-  //   //     {
-  //   //       paymentDate: date,
-  //   //       userId: 3,
-  //   //       remarks,
-  //   //       updatedBy: "John abraham",
-  //   //       amount,
-  //   //       payee,
-  //   //       recipient,
-  //   //       serviceType,
-  //   //       receiptImage,
-  //   //       modifiesBy: "clientManager1",
-  //   //       createdBy: "clientManager1",
-  //   //     },
-  //   //     config
-  //   //   )
-  //   //   .then((res) => {
-  //   //     if (res.status === 200) {
-  //   //       navigate(`/payment/${user?.name}`);
-  //   //     } else {
-  //   //       alert("Something went wrong");
-  //   //     }
-  //   //   });
-  // };
   const schema = Yup.object().shape({
     amount: Yup.number().required("Required"),
     remarks: Yup.string().required("Required"),
     recipient: Yup.string().required("Required"),
     payee: Yup.string().required("Required"),
     service: Yup.string().required("Required"),
-    receipt: Yup.mixed().required("Required"),
+    // receipt: Yup.required("Required"),
+    date: Yup.date().required("Required"),
   });
-  const onSubmit = (values, onSubmitProps) => {
-    onSubmitProps.resetForm();
+  const onSubmit = (values, { resetForm }) => {
+    resetForm();
+
+    console.log("receipt", receipt);
     console.log("values", values);
+    const formData = new FormData();
+    formData.append("receipt", receipt);
+    console.log("formData", formData);
+
+    // const config = {
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     "Access-Control-Allow-Origin": "*",
+    //     "Access-Control-Allow-Headers": "*",
+    //   },
+    // };
+    // axios
+    //   .post(
+    //     `${process.env.REACT_APP_BASE_URL}/api/payment/registerPayment`,
+    //     {
+    //       paymentDate: date,
+    //       userId: 3,
+    //       remarks,
+    //       updatedBy: "John abraham",
+    //       amount,
+    //       payee,
+    //       recipient,
+    //       serviceType: service,
+    //       receiptImage:formData,
+    //       modifiesBy: "clientManager1",
+    //       createdBy: "clientManager1",
+    //     },
+    //     config
+    //   )
+    //   .then((res) => {
+    //     if (res.status === 200) {
+    //       navigate(`/payment/${user?.name}`);
+    //     } else {
+    //       alert("Something went wrong");
+    //     }
+    //   });
+    // setValues({
+    //   remarks: "",
+    //   payee: "",
+    //   recipient: "",
+    //   service: "",
+    //   amount: "",
+    //   date: null,
+    //   receipt: null,
+    // });
   };
 
   return (
@@ -91,13 +107,7 @@ const AddPayment = () => {
               validationSchema={schema}
               onSubmit={onSubmit}
               initialValues={{
-                remarks: "",
-                payee: "",
-                recipient: "",
-                service: "",
-                amount: "NaN",
-                date: null,
-                receipt: null,
+                ...values,
               }}
             >
               {({
@@ -121,7 +131,8 @@ const AddPayment = () => {
                               name="amount"
                               value={values.amount}
                               onChange={handleChange}
-                              isInvalid={!!errors.amount}
+                              isInvalid={touched.amount && !!errors.amount}
+                              min="0"
                             />
                             <Form.Control.Feedback type="invalid">
                               {errors.amount}
@@ -137,8 +148,12 @@ const AddPayment = () => {
                               name="date"
                               value={values.date}
                               onChange={handleChange}
+                              isInvalid={touched.date && !!errors.date}
                             />
                           </Form.Group>
+                          <Form.Control.Feedback type="invalid">
+                            {errors.date}
+                          </Form.Control.Feedback>
                         </Col>
                       </Row>
                     </Col>
@@ -152,7 +167,7 @@ const AddPayment = () => {
                           placeholder="First Payment"
                           value={values.remarks}
                           onChange={handleChange}
-                          isInvalid={!!errors.remarks}
+                          isInvalid={touched.remarks && !!errors.remarks}
                         />
                         <Form.Control.Feedback type="invalid">
                           {errors.remarks}
@@ -170,7 +185,11 @@ const AddPayment = () => {
                           placeholder="Ramesh"
                           value={values.payee}
                           onChange={handleChange}
+                          isInvalid={touched.payee && !!errors.payee}
                         />
+                        <Form.Control.Feedback type="invalid">
+                          {errors.payee}
+                        </Form.Control.Feedback>
                       </Form.Group>
                     </Col>
                     <Col>
@@ -180,9 +199,9 @@ const AddPayment = () => {
                           type="text"
                           name="recipient"
                           placeholder="Sharmila Dangal"
-                          values={values.recipient}
+                          value={values.recipient}
                           onChange={handleChange}
-                          isInvalid={!!errors.recipient}
+                          isInvalid={touched.recipient && !!errors.recipient}
                         />
                         <Form.Control.Feedback type="invalid">
                           {errors.recipient}
@@ -200,7 +219,11 @@ const AddPayment = () => {
                           placeholder="CDR Assessment"
                           value={values.service}
                           onChange={handleChange}
+                          isInvalid={touched.service && !!errors.service}
                         />
+                        <Form.Control.Feedback type="invalid">
+                          {errors.service}
+                        </Form.Control.Feedback>
                       </Form.Group>
                     </Col>
                     <Col className="ps-3">
@@ -210,13 +233,18 @@ const AddPayment = () => {
                           type="file"
                           name="receipt"
                           value={values.receipt}
-                          onChange={handleChange}
-                          isInvalid={!!errors.file}
+                          onChange={(e) => {
+                            setValues({
+                              ...values,
+                              receipt: e.target.files[0],
+                            });
+                          }}
+                          // isInvalid={touched.receipt && !!errors.receipt}
                         />
                       </Form.Group>
-                      <Form.Control.Feedback type="invalid" tooltip>
-                        {errors.file}
-                      </Form.Control.Feedback>
+                      {/* <Form.Control.Feedback type="invalid" tooltip>
+                        {errors.receipt}
+                      </Form.Control.Feedback> */}
                     </Col>
                   </Row>
                   <Button
