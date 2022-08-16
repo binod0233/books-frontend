@@ -1,9 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Col, Form, Row, InputGroup } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
@@ -22,7 +20,7 @@ const AddPayment = () => {
     payee: "",
     recipient: "",
     service: "",
-    amount: "",
+    amount: null,
     date: null,
     receipt: null,
   });
@@ -48,47 +46,55 @@ const AddPayment = () => {
     formData.append("receipt", receipt);
     console.log("formData", formData);
 
-    // const config = {
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     "Access-Control-Allow-Origin": "*",
-    //     "Access-Control-Allow-Headers": "*",
-    //   },
-    // };
-    // axios
-    //   .post(
-    //     `${process.env.REACT_APP_BASE_URL}/api/payment/registerPayment`,
-    //     {
-    //       paymentDate: date,
-    //       userId: 3,
-    //       remarks,
-    //       updatedBy: "John abraham",
-    //       amount,
-    //       payee,
-    //       recipient,
-    //       serviceType: service,
-    //       receiptImage:formData,
-    //       modifiesBy: "clientManager1",
-    //       createdBy: "clientManager1",
-    //     },
-    //     config
-    //   )
-    //   .then((res) => {
-    //     if (res.status === 200) {
-    //       navigate(`/payment/${user?.name}`);
-    //     } else {
-    //       alert("Something went wrong");
-    //     }
-    //   });
-    // setValues({
-    //   remarks: "",
-    //   payee: "",
-    //   recipient: "",
-    //   service: "",
-    //   amount: "",
-    //   date: null,
-    //   receipt: null,
-    // });
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "*",
+      },
+    };
+    axios
+      .post(
+        `${process.env.REACT_APP_BASE_URL}/api/payment/registerPayment`,
+        {
+          paymentDate: date,
+          userId: 3,
+          remarks,
+          updatedBy: "John abraham",
+          amount,
+          payee,
+          recipient,
+          serviceType: service,
+          receiptImage:formData,
+          modifiedBy: localStorage.getItem("user").name,
+          createdBy: localStorage.getItem("user").name,
+        },
+        config
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          if(user?.role==="admin"){
+      navigate('/admin/allpayments')
+    }
+    else if(user?.role==="teamlead"){
+      navigate(`/teamlead/payment/${user.name}`)
+    }else if(user?.role==="clientmanager"){
+      navigate(`/payments/${user?.name}`)
+    
+    } 
+        } else {
+          alert("Something went wrong");
+        }
+      });
+    setValues({
+      remarks: "",
+      payee: "",
+      recipient: "",
+      service: "",
+      amount: "",
+      date: null,
+      receipt: null,
+    });
   };
 
   return (
