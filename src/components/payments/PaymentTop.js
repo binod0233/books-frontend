@@ -9,7 +9,7 @@ const navigate = useNavigate()
     <div className='pe-3'>
       <Row>
 
-        <Col className="pt-5 ">
+        <Col className=" ">
         <div style={{ fontWeight: "700", fontSize: "18px" }} className="pt-5">
         Payment Dashboard
       </div>
@@ -19,31 +19,34 @@ const navigate = useNavigate()
       >
         Total Payment value generated Overview
       </div>
-      <div style={{ fontWeight: "700", fontSize: "20px" }} className="pt-3">
-            Team payment overview
-          </div>
+  
         </Col>
         <Col className="pt-5 me-5" style={{background:"#F1F1FA"}}>
-            <Button onClick={()=>navigate("/add-payment")}
+          {/*  <Button onClick={()=>navigate("/add-payment")}
              style={{background:"#176EB3",float:"right"}}
             >
                 Add New Payment +
                 </Button>
+  */}
             </Col>
       </Row>
-     
-      <Row>
+     <Row>
+     <div style={{ fontWeight: "700", fontSize: "20px", background:'#FFF' }} className="pt-3 px-5">
+     Lead Payment Overview
+   </div>
+     </Row>
+      <Row style={{background:'#FFF', padding:'2% 1%'}}>
      
         <Col md={4}>
           <div
-            style={{ height: "290px", background: "#EEF5FF", borderRadius:'15px' }}
-            className="px-4"
+            style={{ background: "#EEF5FF", borderRadius:'15px' }}
+            className="px-4 pb-4"
           >
-            <Row className="pt-5">
-              <Col style={{ color: "#64676B", fontSize: "20px" }}>
-                Las Vegas
+            <Row className="pt-4">
+              <Col  md={9} className='d-flex align-items-center' style={{fontWeight:'700', fontSize: "18 px", color: "#3144E7" }}>
+                TOTAL DEAL VALUE
               </Col>
-              <Col>
+              <Col md={3} >
                 <div className="d-flex justify-content-end">
                   <div
                     style={{
@@ -94,14 +97,14 @@ const navigate = useNavigate()
 
         <Col md={4}>
           <div
-            style={{ height: "290px", background: "#FFF6FB", borderRadius:'15px' }}
-            className="px-4"
+            style={{ background: "#FFF6FB", borderRadius:'15px' }}
+            className="px-4 pb-4"
           >
-            <Row className="pt-5">
-              <Col style={{ color: "#64676B", fontSize: "20px" }}>
-                San Antonio
+            <Row className="pt-4">
+              <Col md={9} className='d-flex align-items-center' style={{ fontWeight:'700', fontSize: "18 px", color: "#DD2A7B" }}>
+                TOTAL PAYMENT
               </Col>
-              <Col>
+              <Col md={3}>
                 <div className="d-flex justify-content-end">
                   <div
                     style={{
@@ -156,12 +159,12 @@ const navigate = useNavigate()
 
         <Col md={4}>
           <div
-            style={{ height: "290px", background: "#FFF8EF" ,  borderRadius:'15px'}}
-            className="px-4"
+            style={{ background: "#FFF8EF" ,  borderRadius:'15px'}}
+            className="px-4 pb-4"
           >
-            <Row className="pt-5">
-              <Col style={{ color: "#64676B", fontSize: "20px" }}>Houston</Col>
-              <Col>
+            <Row className="pt-4">
+              <Col md={9}  className='d-flex align-items-center' style={{ color: "#64676B",fontWeight:'700', fontSize: "18px", color: "#F0A41F", }}>DUE PAYMENT</Col>
+              <Col md={3}>
                 <div className="d-flex justify-content-end">
                   <div
                     style={{

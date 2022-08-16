@@ -8,7 +8,8 @@ import Sidebar from '../../components/Sidebar'
 import axios from "axios"
 import { useNavigate, useParams } from 'react-router-dom'
 import { Button } from 'bootstrap'
-import userEvent from '@testing-library/user-event'
+import Select from 'react-select'
+
 
 
 
@@ -21,6 +22,12 @@ const Dashboard = () => {
   const [leadList, setLeadList] = useState([])
   const [clientManager, setClientManager] = useState({})
   const localUser = JSON.parse(localStorage.getItem('user'))
+
+const options=[
+{value:'daily', label:'Daily'},
+{value:'Weekly', label:'Weekly'},
+{value:'Monthly', label:'Monthly'}
+]
 
   useEffect(() => {
     if(!localUser){
@@ -94,28 +101,32 @@ const Dashboard = () => {
        <div style={{background:"#fff"}} className='mx-4 ps-3 pe-3' >
         <div style={{display:'flex',justifyContent:"space-between",paddingTop:"10px"}}>
           <span style={{fontSize:'22px',fontWeight:"600",margin:"10px"}}>Top Leads </span>
-          <DropdownButton
+      {/*
+      <DropdownButton
         
         
-       size="sm"
-          variant="outline-secondary"
-          title="Monthly"
-          id="dropdown-basic"
-          style={{width:"fit-content"}}
-          
-        
-        >
-          
-          
-          <Dropdown.Item href="#">demo   </Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item href="#">demo</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item href="#"> demo</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item href="#">demo</Dropdown.Item>
-        
-        </DropdownButton>
+      size="sm"
+         variant="outline-secondary"
+         title="Monthly"
+         id="dropdown-basic"
+         style={{width:"fit-content"}}
+         
+       
+       >
+         
+         
+         <Dropdown.Item href="#">demo   </Dropdown.Item>
+         <Dropdown.Divider />
+         <Dropdown.Item href="#">demo</Dropdown.Item>
+         <Dropdown.Divider />
+         <Dropdown.Item href="#"> demo</Dropdown.Item>
+         <Dropdown.Divider />
+         <Dropdown.Item href="#">demo</Dropdown.Item>
+       
+       </DropdownButton>
+    */}
+<Select options={options}/>
+
         </div>
 
         <div
@@ -159,7 +170,6 @@ const Dashboard = () => {
   
   <div
   key={l.id}
-  onClick={()=>navigate(`/lead/profile/${l.id}`)}
   style={{
       background: "#fff",
       height: "70px",

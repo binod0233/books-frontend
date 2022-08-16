@@ -45,3 +45,43 @@
 .pagination a:hover:not(.active) {
   background-color: #ddd;
 }
+
+@media (max-width: 768px) {
+div *{
+  font-size: .6rem;
+}
+.tab-title{
+font-size: .7rem;
+}
+}
+
+@media (max-width: 1024px) {
+  div *{
+    font-size: .7rem;
+  }
+  .tab-title{
+  font-size: .7rem;
+  }
+  }
+  
+
+
+
+@media (max-width: 1440px) {
+  div *{
+    font-size: 1.2rem;
+  }
+  .tab-title{
+  font-size: .8rem;
+  }
+  }
+  
+
+  @media (min-width: 1920px) {
+    div *{
+      font-size: 1.5rem;
+    }
+   
+    }
+    
+  
