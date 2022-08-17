@@ -17,6 +17,8 @@ import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 
 const Payment = () => {
   const [paymentList, setPaymentList] = useState([]);
+  const [clientName, setClientName] = useState('');
+const [source, setSource] = useState('')
   const navigate = useNavigate();
   const params = useParams();
   const { clientManager } = params;
@@ -78,8 +80,8 @@ const Payment = () => {
                   type="text"
                   style={{ border: "none", width: "5px" }}
                   placeholder="Lead Name"
-                  // value={clientName}
-                  // onChange={(e) => setClientName(e.target.value)}
+                  value={clientName}
+                  onChange={(e) => setClientName(e.target.value)}
                   className="form-control"
                 />
               </div>
@@ -99,8 +101,8 @@ const Payment = () => {
                   type="text"
                   style={{ border: "none", width: "5px" }}
                   placeholder="Service Type"
-                  // value={clientName}
-                  // onChange={(e) => setClientName(e.target.value)}
+                  value={clientName}
+                  onChange={(e) => setClientName(e.target.value)}
                   className="form-control"
                 />
               </div>
@@ -118,10 +120,10 @@ const Payment = () => {
                 </span>
                 <input
                   type="text"
-                  style={{ border: "none" }}
+                  style={{ border: "none", background:'none' }}
                   placeholder="Amount"
-                  // value={source}
-                  // onChange={(e) => setSource(e.target.value)}
+                  value={source}
+                  onChange={(e) => setSource(e.target.value)}
                   className="form-control"
                 />
               </div>
@@ -151,8 +153,8 @@ const Payment = () => {
                     color: "#DD2A7B",
                   }}
                   placeholder="Recepient"
-                  // value={clientName}
-                  // onChange={(e) => setClientName(e.target.value)}
+                  value={clientName}
+                  onChange={(e) => setClientName(e.target.value)}
                   className="form-control"
                 />
               </div>
@@ -172,8 +174,8 @@ const Payment = () => {
                   type="text"
                   style={{ border: "none", width: "5px" }}
                   placeholder="Payment Method "
-                  // value={clientName}
-                  // onChange={(e) => setClientName(e.target.value)}
+                  value={clientName}
+                  onChange={(e) => setClientName(e.target.value)}
                   className="form-control"
                 />
               </div>
@@ -274,15 +276,17 @@ const Payment = () => {
           </div>
 
                   {paymentList?.map((payment) => (
-                    <div
+                    <div 
                       className="d-flex mx-4 p-1 mt-3"
                       style={{
                         height: "70px",
                         // width: "92%",
                         fontSize: "1.3rem",
                         // fontWeight: "700",
-                        background:'#FFF'
+                        background:'#FFF',
+                        cursor:'pointer'
                       }}
+                      onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
                     >
                       <div
                         className="d-flex align-items-center justify-content-start"

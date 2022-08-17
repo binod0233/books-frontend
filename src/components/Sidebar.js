@@ -9,7 +9,7 @@ import { Link, useNavigate } from 'react-router-dom';
 const Sidebar = () => {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
-  const [activeTab, setActiveTab] = useState("1")
+  const [activeTab, setActiveTab] = useState("0")
 
   return (
     <div className="sidebar">
