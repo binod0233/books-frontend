@@ -11,7 +11,7 @@ import { leadsdataList } from "./Dashboard";
 const Leads = () => {
   const navigate = useNavigate();
   const params = useParams();
-  const { clientManager } = params;
+  const { clientManager }  = params;
   const [leads, setLeads] = useState([])
    
 

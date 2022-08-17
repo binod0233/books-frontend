@@ -276,15 +276,17 @@ const [source, setSource] = useState('')
           </div>
 
                   {paymentList?.map((payment) => (
-                    <div
+                    <div 
                       className="d-flex mx-4 p-1 mt-3"
                       style={{
                         height: "70px",
                         // width: "92%",
                         fontSize: "1.3rem",
                         // fontWeight: "700",
-                        background:'#FFF'
+                        background:'#FFF',
+                        cursor:'pointer'
                       }}
+                      onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
                     >
                       <div
                         className="d-flex align-items-center justify-content-start"
