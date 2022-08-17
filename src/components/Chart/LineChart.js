@@ -21,6 +21,7 @@ ChartJS.register(
   Legend
 );
 export const options = {
+  maintainAspectRatio: false,
   responsive: true,
   plugins: {
     legend: {
@@ -47,7 +48,7 @@ export const data = {
 
 function LineChart() {
   return (
-    <div>
+    <div style={{height:"100%"}}>
       <Line options={options} data={data} />
     </div>
   );

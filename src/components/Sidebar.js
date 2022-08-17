@@ -78,7 +78,7 @@ const Sidebar = () => {
                </Link>
              </div>
              <div className="menu-icon">
-             <Link to={`/teamlead/leads/${user?.name}`}>
+             <Link to={`/teamlead/payment/${user?.name}`}>
                  <MonetizationOnIcon className="me-3" />
                  Payments
                </Link>

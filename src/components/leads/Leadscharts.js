@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Button, Col, Row } from "react-bootstrap";
+import React, { } from "react";
+import { Button, Col, ProgressBar, Row, Stack } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import BarChart from "../Chart/BarChart";
 
 const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) => {
   const navigate = useNavigate();
@@ -211,11 +212,201 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
           </Row>
         </Col>
         
-        <Col md={4} style={{ background: "#1f1f1f" }}>
-
+        <Col md={4} className="mt-5" style={{  }}>
+                  <BarChart barChartHeight="42vh"/>
         </Col>
-        <Col  md={4} style={{ background: "#2e3e" }}>
+        <Col  md={4} className="mt-5" style={{ }}>
+        <Stack className="px-3 " style={{}}>
+              <span
+                // className="m-0"
+                style={{
+                  fontFamily: "arial",
+                  fontWeight: "400",
+                  fontSize: "17px",
+                  lineHeight: "19.55px",
+                }}
+              >
+                Website:
+              </span>
+              <div className="d-flex">
+                <Col className="pe-1">
+                  <ProgressBar
+                    // bsPrefix="progress-bar"
+                    // className="progress-bar warning"
+                    now={40}
+                    // variant="primary"
+                    style={{
+                      background: "#B8AAEE",
+                      marginBottom:"3.5vh"
+                      // height:'5px',
+                      // width:'100%'
 
+                      // backgroundColor: "#B8AAEE",
+                    }}
+                  />
+                </Col>
+                <div>
+                  <span
+                    className="flex-shrink-1"
+                    style={{
+                      fontFamily: "Arial",
+                      fontStyle: "normal",
+                      fontWeight: "normal",
+                      fontSize: "17px",
+                      lineHeight: "20px",
+                      textAlign: "right",
+                    }}
+                  >
+                    700
+                  </span>
+                </div>
+              </div>
+              <span
+                // className="m-0"
+                style={{
+                  fontFamily: "arial",
+                  fontWeight: "400",
+                  fontSize: "17px",
+                  lineHeight: "19.55px",
+                }}
+              >
+                Linkedin:
+              </span>
+              <div className="d-flex">
+                <Col className="pe-1">
+                  <ProgressBar
+                    now={40}
+                    variant="danger"
+                    style={{ background: "#F9AAA7",                      marginBottom:"3.5vh"
+                  }}
+                  />
+                </Col>
+                <div>
+                  <span
+                    className="flex-shrink-1"
+                    style={{
+                      fontFamily: "Arial",
+                      fontStyle: "normal",
+                      fontWeight: "normal",
+                      fontSize: "17px",
+                      lineHeight: "20px",
+                      textAlign: "right",
+                    }}
+                  >
+                    700
+                  </span>
+                </div>
+              </div>{" "}
+              <span
+                // className="m-0"
+                style={{
+                  fontFamily: "arial",
+                  fontWeight: "400",
+                  fontSize: "17px",
+                  lineHeight: "19.55px",
+                }}
+              >
+                Facebook:
+              </span>
+              <div className="d-flex">
+                <Col className="pe-1">
+                  <ProgressBar
+                    now={40}
+                    variant="warning"
+                    style={{ background: "#F2E3B5",                      marginBottom:"3.5vh"
+                  }}
+                  />
+                </Col>
+                <div>
+                  <span
+                    className="flex-shrink-1"
+                    style={{
+                      fontFamily: "Arial",
+                      fontStyle: "normal",
+                      fontWeight: "normal",
+                      fontSize: "17px",
+                      lineHeight: "20px",
+                      textAlign: "right",
+                    }}
+                  >
+                    700
+                  </span>
+                </div>
+              </div>{" "}
+              <span
+                // className="m-0"
+                style={{
+                  fontFamily: "arial",
+                  fontWeight: "400",
+                  fontSize: "17px",
+                  lineHeight: "19.55px",
+                }}
+              >
+                Instagram:
+              </span>
+              <div className="d-flex">
+                <Col className="pe-1">
+                  <ProgressBar
+                    now={40}
+                    variant="info"
+                    style={{ background: "#EBF9FF",                      marginBottom:"3.5vh"
+                  }}
+                  />
+                </Col>
+                <div>
+                  <span
+                    className="flex-shrink-1"
+                    style={{
+                      fontFamily: "Arial",
+                      fontStyle: "normal",
+                      fontWeight: "normal",
+                      fontSize: "17px",
+                      lineHeight: "20px",
+                      textAlign: "right",
+                    }}
+                  >
+                    700
+                  </span>
+                </div>
+              </div>{" "}
+              <span
+                // className="m-0"
+                style={{
+                  fontFamily: "arial",
+                  fontWeight: "400",
+                  fontSize: "17px",
+                  lineHeight: "19.55px",
+                }}
+              >
+                Others:
+              </span>
+              <div className="d-flex">
+                <Col className="pe-1">
+                  <ProgressBar
+                    now={40}
+                    variant="success"
+                    style={{ background: "#70E765",                      marginBottom:"3.5vh"
+                  }}
+                  />
+                </Col>
+                <div>
+                  <span
+                    className="flex-shrink-1"
+                    style={{
+                      fontFamily: "Arial",
+                      fontStyle: "normal",
+                      fontWeight: "normal",
+                      fontSize: "17px",
+                      lineHeight: "20px",
+                      textAlign: "right",
+                    }}
+                  >
+                    700
+                  </span>
+                </div>
+              </div>
+              <strong style={{ textAlign: "center", fontSize:'20px', fontWeight:'700' }}>Lead Source</strong>
+            </Stack>
         </Col>
       </Row>
       

@@ -21,6 +21,7 @@ ChartJS.register(
 );
 
 export const options = {
+  maintainAspectRatio:false,
   //   responsive: true,
   plugins: {
     legend: {
@@ -59,8 +60,8 @@ export const data = {
 
 function BarChart() {
   return (
-    <div>
-      <Bar options={options} data={data} />
+    <div >
+      <Bar  options={options} data={data} style={{height:"42vh "}} />
     </div>
   );
 }

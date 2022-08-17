@@ -1,10 +1,24 @@
 import React from 'react'
-import {Row, Col} from 'react-bootstrap'
+import {Row, Col, Button} from 'react-bootstrap'
+import { useParams,useNavigate } from 'react-router-dom'
 const TeamLeadProfile = () => {
+const navigate = useNavigate()
+  const {teamLead} = useParams()
   return (
     <div className='mx-4  mb-3' style={{height:"25vh"}}>
       <Row>
-        <Col style={{background:"white",height:"25vh"}}>
+        <Col className="p-3 d-flex align-items-center " style={{background:"white",height:"25vh"}}>
+          <div className="d-flex flex-row">
+            <div >
+              <img src="/images/dashboard/avatar.png" alt="avatar" style={{height:"18vh",width:"18vh",borderRadius:"50%"}}/>
+              </div>
+              <div className='d-flex flex-column '>
+                <p style={{fontweight:"700",margin:"0"}}>Sharmila Dangal</p>
+                <p style={{color:"#64676B",fontSize:"10px",margin:"0 0 3vh 0"}}>sharmila@copenned.com</p>
+                <Button onClick={()=>navigate(`/teamlead/edit/${teamLead}`)} style={{background:"#DD2A7B",color:"white",padding:"2px 6px",fontSize:"14px"}}>Edti Profile</Button>
+
+              </div>
+            </div>
         </Col>
         <Col className='mx-2 py-2' style={{background:"white",height:"25vh"}}>
         <Row className='d-flex py2'>

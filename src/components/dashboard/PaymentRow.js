@@ -33,8 +33,8 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                 style={{
                   fontFamily: "arial",
                   fontWeight: "400",
-                  fontSize: "17px",
-                  lineHeight: "19.55px",
+                  fontSize: "2.5vh",
+                  lineHeight: "2.6vh",
                 }}
               >
                 Website:
@@ -48,7 +48,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                     // variant="primary"
                     style={{
                       background: "#B8AAEE",
-                      // height:'5px',
+                      height:'2vh',
                       // width:'100%'
 
                       // backgroundColor: "#B8AAEE",
@@ -62,8 +62,8 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                       fontFamily: "Arial",
                       fontStyle: "normal",
                       fontWeight: "normal",
-                      fontSize: "17px",
-                      lineHeight: "20px",
+                      fontSize: "2.5vh",
+                      lineHeight: "2.6vh",
                       textAlign: "right",
                     }}
                   >
@@ -76,8 +76,8 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                 style={{
                   fontFamily: "arial",
                   fontWeight: "400",
-                  fontSize: "17px",
-                  lineHeight: "19.55px",
+                  fontSize: "2.5vh",
+                  lineHeight: "2.6vh",
                 }}
               >
                 Linkedin:
@@ -87,7 +87,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                   <ProgressBar
                     now={40}
                     variant="danger"
-                    style={{ background: "#F9AAA7" }}
+                    style={{ background: "#F9AAA7" ,height:"2vh"}}
                   />
                 </Col>
                 <div>
@@ -97,8 +97,8 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                       fontFamily: "Arial",
                       fontStyle: "normal",
                       fontWeight: "normal",
-                      fontSize: "17px",
-                      lineHeight: "20px",
+                      fontSize: "2.5vh",
+                      lineHeight: "2.6vh",
                       textAlign: "right",
                     }}
                   >
@@ -111,8 +111,8 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                 style={{
                   fontFamily: "arial",
                   fontWeight: "400",
-                  fontSize: "17px",
-                  lineHeight: "19.55px",
+                   fontSize: "2.5vh",
+                  lineHeight: "2.6vh",
                 }}
               >
                 Facebook:
@@ -122,7 +122,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                   <ProgressBar
                     now={40}
                     variant="warning"
-                    style={{ background: "#F2E3B5" }}
+                    style={{ background: "#F2E3B5",height:"2vh" }}
                   />
                 </Col>
                 <div>
@@ -132,8 +132,8 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                       fontFamily: "Arial",
                       fontStyle: "normal",
                       fontWeight: "normal",
-                      fontSize: "17px",
-                      lineHeight: "20px",
+                      fontSize: "2.5vh",
+                      lineHeight: "2.6vh",
                       textAlign: "right",
                     }}
                   >
@@ -146,8 +146,8 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                 style={{
                   fontFamily: "arial",
                   fontWeight: "400",
-                  fontSize: "17px",
-                  lineHeight: "19.55px",
+                  fontSize: "2.5vh",
+                  lineHeight: "2.6vh",
                 }}
               >
                 Instagram:
@@ -157,7 +157,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                   <ProgressBar
                     now={40}
                     variant="info"
-                    style={{ background: "#EBF9FF" }}
+                    style={{ background: "#EBF9FF",height:"2vh" }}
                   />
                 </Col>
                 <div>
@@ -167,8 +167,8 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                       fontFamily: "Arial",
                       fontStyle: "normal",
                       fontWeight: "normal",
-                      fontSize: "17px",
-                      lineHeight: "20px",
+                      fontSize: "2.5vh",
+                      lineHeight: "2.6vh",
                       textAlign: "right",
                     }}
                   >
@@ -181,8 +181,8 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                 style={{
                   fontFamily: "arial",
                   fontWeight: "400",
-                  fontSize: "17px",
-                  lineHeight: "19.55px",
+                  fontSize: "2.5vh",
+                  lineHeight: "2.6vh",
                 }}
               >
                 Others:
@@ -192,7 +192,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                   <ProgressBar
                     now={40}
                     variant="success"
-                    style={{ background: "#70E765" }}
+                    style={{ background: "#70E765",height:"2vh" }}
                   />
                 </Col>
                 <div>
@@ -202,8 +202,8 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                       fontFamily: "Arial",
                       fontStyle: "normal",
                       fontWeight: "normal",
-                      fontSize: "17px",
-                      lineHeight: "20px",
+                      fontSize: "2.5vh",
+                      lineHeight: "2.6vh",
                       textAlign: "right",
                     }}
                   >
