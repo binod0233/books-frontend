@@ -8,6 +8,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../components/Header";
 import "./leads.css";
 import { leadsdataList } from "./Dashboard";
+import EditIcon from '@mui/icons-material/Edit';
+
 const Leads = () => {
   const navigate = useNavigate();
   const params = useParams();
@@ -441,7 +443,8 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                     <button
                       style={{
                         width: "inherit",
-                        height: "37px",
+                        height: "2.2rem",
+                        borderRadius:'8px',
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
@@ -449,10 +452,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                         border: "none",
                       }}
                     >
-                      <i
-                        style={{ color: "white" }}
-                        class="fa-solid fa-ellipsis"
-                      ></i>
+                    <EditIcon style={{color:'white'}}/>
                     </button>
                   </div>
                 </div>
