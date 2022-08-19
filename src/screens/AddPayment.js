@@ -83,17 +83,17 @@ const AddPayment = () => {
   };
 
   return (
-    <div className="d-flex" style={{ width: "100%" }}>
-      <div className=" py-5 d-flex flex-column" style={{ width: "100%" }}>
+    <div className="d-flex" style={{ width: "100%", height:'90vh' }}>
+      <div className=" py-4 d-flex flex-column" style={{ width: "100%" }}>
         <div style={{ background: "#F1F1FA" }}>
           <div className="ps-4 py-4 " style={{ fontFamily: "Arial" }}>
-            <h6 style={{ fontWeight: "700" }}>Add New Payment</h6>
-            <p style={{ color: "#7B7B7B", fontSize: "12px" }}>
+            <h6 style={{ fontWeight: "700", fontSize: "1.2rem" }}>Add New Payment</h6>
+            <p style={{ color: "#7B7B7B", fontSize: "1rem" }}>
               Payment From Lead
             </p>
           </div>
-          <div className="formContainer mx-5 my-3 bg-white p-4">
-            <h6 style={{ fontWeight: "700" }}>Quick Registration</h6>
+          <div className="formContainer mx-5 my-1 bg-white p-3">
+            <h6 style={{ fontWeight: "700" , fontSize:'1.5rem'}}>Add a Payment</h6>
             <Formik
               validationSchema={schema}
               onSubmit={onSubmit}
@@ -238,26 +238,34 @@ const AddPayment = () => {
                       </Form.Control.Feedback> */}
                     </Col>
                   </Row>
-                  <Button
-                    type="submit"
-                    disabled={!isValid}
-                    className="btn btn-primary mx-5 mt-4"
-                  >
-                    Add Payment
-                  </Button>
-                  <Button onClick={() => {
+                
+            <Row className='mt-4'>
+            <Col
+            className="d-flex justify-content-center align-items-center"
+            style={{ width: "100%" }}
+          >
+          <Button
+          type="submit"
+          disabled={!isValid}
+          className="btn btn-primary mx-5 "
+        >
+          Add Payment
+        </Button>
+        <Button onClick={() => {
 
 if(user?.role==="admin"){
-  navigate('/admin/allpayments')
+navigate('/admin/allpayments')
 }
 else if(user?.role==="teamlead"){
-  navigate(`/teamlead/payment/${user.name}`)
+navigate(`/teamlead/payment/${user.name}`)
 }else if(user?.role==="clientmanager"){
-  navigate(`/payments/${user?.name}`)
+navigate(`/payments/${user?.name}`)
 
 } 
-            }
-            }>Cancel</Button>
+  }
+  }>Cancel</Button>
+          </Col>
+            </Row>
                 </Form>
               )}
             </Formik>

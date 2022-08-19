@@ -99,17 +99,17 @@ console.log(gender)
         <div  style={{height:"11vh",fontFamily:"sans-serif",fontSize:"20px",fontWeight:"600",background:"#FFE1EE",display:'flex',justifyContent:"space-between",alignItems:"center",padding:"0 20px"}}>
           <div style={{borderBottom:activeTab==="1"?"3px solid #DD2A7B":"none"}} onClick={()=>{setActiveTab("1")}}>
           <span className="me-2">
-  <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+  <input className="form-check-input" type="radio" value="" id="flexCheckChecked" />
 </span>
           Basic Information</div>
           <div style={{borderBottom:activeTab==="2"?"3px solid #DD2A7B":"none"}} onClick={()=>{setActiveTab("2")}}>
           <span className="me-2">
-  <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+  <input className="form-check-input" type="radio" value="" id="flexCheckChecked" />
 </span>
           Assessment Details</div>
           <div  style={{borderBottom:activeTab==="3"?"3px solid #DD2A7B":"none"}} onClick={()=>{setActiveTab("3")}}>
           <span className="me-2">
-  <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+  <input className="form-check-input" type="radio" value="" id="flexCheckChecked" />
 </span>
           Payment Information</div>
 
