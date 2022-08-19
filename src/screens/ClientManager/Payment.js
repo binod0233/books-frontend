@@ -275,8 +275,8 @@ const [source, setSource] = useState('')
             </div>
           </div>
 
-                  {paymentList?.map((payment) => (
-                    <div 
+                  {paymentList?.map((payment, key) => (
+                    <div  key={payment.id}
                       className="d-flex mx-4 p-1 mt-3"
                       style={{
                         height: "70px",

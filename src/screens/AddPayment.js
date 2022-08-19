@@ -247,7 +247,7 @@ const AddPayment = () => {
           <Button
           type="submit"
           disabled={!isValid}
-          className="btn btn-primary mx-5 "
+          className="btn btn-primary me-5 "
         >
           Add Payment
         </Button>
