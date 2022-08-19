@@ -72,7 +72,7 @@ const AddPayment = () => {
     else if(user?.role==="teamlead"){
       navigate(`/teamlead/payment/${user.name}`)
     }else if(user?.role==="clientmanager"){
-      navigate(`/payments/${user?.name}`)
+      navigate(`/payment/${user?.name}`)
     
     } 
         } else {
@@ -259,10 +259,13 @@ navigate('/admin/allpayments')
 else if(user?.role==="teamlead"){
 navigate(`/teamlead/payment/${user.name}`)
 }else if(user?.role==="clientmanager"){
-navigate(`/payments/${user?.name}`)
-
+navigate(`/payment/${user?.name}`)
+    }
+else {
+  navigate(`/add-payment`)
+}
 } 
-  }
+  
   }>Cancel</Button>
           </Col>
             </Row>
