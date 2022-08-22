@@ -286,11 +286,12 @@ const [source, setSource] = useState('')
                         background:'#FFF',
                         cursor:'pointer'
                       }}
-                      onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
+                    
                     >
                       <div
                         className="d-flex align-items-center justify-content-start"
                         style={{ width: "14vw", marginRight: "" }}
+                        onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
                       >
                         <div
                           style={{
@@ -303,11 +304,13 @@ const [source, setSource] = useState('')
                             margin: "0 5%",
                           }}
                           className="d-flex justify-content-center align-items-center "
+                          onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
                         >
                           {payment.payee.split(" ").map((n) => n[0])}
                         </div>
                         <div
                           className="d-flex justify-content-center align-items-center"
+                          onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
                           md={9}
                           style={{ color: "", fontWeight: "700", fontSize: "22px" }}
                         >
@@ -317,42 +320,49 @@ const [source, setSource] = useState('')
                       <div
                         className="d-flex align-items-center justify-content-start"
                         style={{ width: "10vw", color:'#64676B'}}
+                        onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
                       >
                         <div>${payment.amount}.00</div>
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-start"
                         style={{ width: "10vw", background: "" ,color:'#64676B'}}
+                          onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
                       >
                         {new Date(payment.paymentDate).toLocaleDateString()}
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-center"
                         style={{ width: "12vw", background: "",color:'#64676B' }}
+                        onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
                       >
                         {payment.serviceType}
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-start"
                         style={{ width: "10vw", background: "",color:'#64676B' }}
+                        onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
                       >
                         {payment.recipient}
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-start"
                         style={{ width: "10vw", background: "",color:'#64676B' }}
+                        onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
                       >
                         {payment.status}
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-start"
                         style={{ width: "10vw", background: "",color:'#64676B' }}
+                        onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
                       >
                         {payment.receipt}
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-end"
                         style={{ width: "15vw", background: "",color:'#64676B' }}
+                    
                       >
                       <div style={{display:'flex',justifyContent:'space-between',marginRight:'1rem'}}>  {payment.remarks}</div>
                       <div onClick={()=>navigate("/add-payment")} style={{borderRadius:'5px',height:'40px',width:'40px',background:'#176EB3',color:'white', display:'flex', alignItems:'center', justifyContent:'center',marginRight:'5px',cursor:'pointer'}}><AddIcon/></div>

@@ -321,7 +321,7 @@ const LeadPaymentProfile = () => {
                 className="d-flex align-items-center"
                 style={{
                   fontWeight: "700",
-                  fontSize: "1.1rem",
+                  fontSize: "1.2rem",
                   color: "#000",
                 }}
               >
@@ -331,13 +331,15 @@ const LeadPaymentProfile = () => {
                 <div className="d-flex justify-content-end">
                   <div
                     style={{
-                      height: "60px",
-                      width: "60px",
-                      borderRadius: "50px",
+                      height: "3rem",
+                      width: "3rem",
                       cursor:'pointer',
+                    borderRadius: "5px",
+
                       fontWeight: "700",
                       color: "#000",
                       fontSize: "20px",
+                      background:'#f3f3f3'
                     }}
                     className="d-flex justify-content-center align-items-center"
                   >
@@ -440,8 +442,9 @@ const LeadPaymentProfile = () => {
               className="d-flex align-items-center"
               style={{
                 fontWeight: "700",
-                fontSize: "1.1rem ",
+                fontSize: "1.2rem ",
                 color: "#000",
+                
               }}
             >
               Payment Type  
@@ -450,13 +453,15 @@ const LeadPaymentProfile = () => {
               <div className="d-flex justify-content-end">
                 <div
                   style={{
-                    height: "60px",
-                    width: "60px",
-                    borderRadius: "50px",
+                    height: "3rem",
+                    width: "3rem",
+                    borderRadius: "5px",
                     cursor:'pointer',
                     fontWeight: "700",
                     color: "#000",
                     fontSize: "1.1rem",
+                    background:'#f3f3f3'
+
                   }}
                   className="d-flex justify-content-center align-items-center"
                 >
@@ -524,10 +529,10 @@ const LeadPaymentProfile = () => {
       <Row className='d-flex align-items-center' style={{width:"inherit"}}>
       <Col md={2} style={{fontSize:'1.2rem',fontWeight:'700'}}>{v.payee}</Col>
       <Col md={2}>{v.amount}</Col>
-      <Col md={2}>{v.status}</Col>
+      <Col md={2}><div className='d-flex align-items-center justify-content-center' style={{background:'#EEF5FF', height:'2.2rem', borderRadius:'5px',fontWeight:'700', width:'6rem', color:"#3144E7"}}>{v.status}</div></Col>
       <Col md={2}>{v.recipient}</Col>
       <Col md={2}>{new Date(v.paymentDate).toLocaleString()}</Col>
-      <Col md={2} style={{display:'flex', justifyContent:'center', alignItems:'center' }}><div>{v.paymentMethod}</div><div style={{borderRadius:'5px',height:'2.5rem',width:'2.5rem',background:'#F0F0F0',color:'white', display:'flex', alignItems:'center', justifyContent:'center',marginLeft:'5%',cursor:'pointer'}}><KeyboardArrowDown style={{color:"#64676B"}}/></div></Col>
+      <Col md={2} style={{display:'flex', justifyContent:'center', alignItems:'center' }}><div>Visa: {v.paymentMethod}</div><div style={{borderRadius:'5px',height:'2.5rem',width:'2.5rem',background:'#F0F0F0',color:'white', display:'flex', alignItems:'center', justifyContent:'center',marginLeft:'5%',cursor:'pointer'}}><KeyboardArrowDown style={{color:"#64676B"}}/></div></Col>
       </Row>
       </div>
       </Row>

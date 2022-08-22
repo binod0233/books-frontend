@@ -435,7 +435,9 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                   }}
                 >
                   <div>{new Date(l.nextFollowUp).toLocaleDateString()}</div>
-                  <div style={{ width: "40px", marginLeft: "2px" }}>
+                  <div style={{ width: "40px", marginLeft: "2px" }}  onClick={() => {
+                    navigate(`/edit-lead/${l.id}`);
+                  }}>
                     <button
                       style={{
                         width: "inherit",
