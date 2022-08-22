@@ -1,11 +1,9 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
-import Header from '../components/Header'
 import BackgroundContainer from '../components/LeadProfile/BackgroundContainer'
 import PaymentContainer from '../components/LeadProfile/PaymentContainer'
 import PersonalContainer from '../components/LeadProfile/PersonalContainer'
 import TotalDealContainer from '../components/LeadProfile/TotalDealContainer'
-import Sidebar from '../components/Sidebar'
 
 const LeadProfile = () => {
   return (

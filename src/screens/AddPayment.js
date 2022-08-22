@@ -72,7 +72,7 @@ const AddPayment = () => {
     else if(user?.role==="teamlead"){
       navigate(`/teamlead/payment/${user.name}`)
     }else if(user?.role==="clientmanager"){
-      navigate(`/payments/${user?.name}`)
+      navigate(`/payment/${user?.name}`)
     
     } 
         } else {
@@ -247,7 +247,7 @@ const AddPayment = () => {
           <Button
           type="submit"
           disabled={!isValid}
-          className="btn btn-primary mx-5 "
+          className="btn btn-primary me-5 "
         >
           Add Payment
         </Button>
@@ -259,10 +259,13 @@ navigate('/admin/allpayments')
 else if(user?.role==="teamlead"){
 navigate(`/teamlead/payment/${user.name}`)
 }else if(user?.role==="clientmanager"){
-navigate(`/payments/${user?.name}`)
-
+navigate(`/payment/${user?.name}`)
+    }
+else {
+  navigate(`/add-payment`)
+}
 } 
-  }
+  
   }>Cancel</Button>
           </Col>
             </Row>
