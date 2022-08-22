@@ -36,11 +36,16 @@ const localUser = JSON.parse(localStorage.getItem('user'));
       console.log(leads)
     })
   }
-  const handleInputChange=(e,leadId)=>{
+  const handleInputChange=(e,leadId,teamLead,leadName)=>{
     setPotential(e.target.value);
     axios
-      .put(`${process.env.REACT_APP_BASE_URL}/api/lead/leads/changepotential/${leadId}`, {
+      .put(`http://localhost:8080/api/lead/leads/changepotential/${leadId}`, {
         potential: e.target.value,
+        teamLead,
+        leadId,
+        leadName
+
+
       })
       .then((res) => {
         if (res.status === "ok") {
@@ -381,7 +386,8 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                     <select
                       className="selection "
                       name="city"
-                      onChange={(e) => handleInputChange(e, l.id)}
+                      onChange={(e) => handleInputChange(e, l.id,l.teamLead,l.name
+                        )}
                       style={{
                         fontWeight: "bold",
                         width: "130px",
