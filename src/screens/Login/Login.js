@@ -30,7 +30,7 @@ export default function (props) {
           navigate(`/dashboard/${res.data.userName}`);
         }
 
-      })
+      }).catch(error => console.log(error));
     } else {
       alert(" inavalid email. use @copenned.com");
     }
