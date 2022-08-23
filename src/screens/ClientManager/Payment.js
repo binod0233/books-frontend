@@ -1,28 +1,26 @@
 import React, { useState, useEffect } from "react";
 import {
-  Col,
-  Dropdown,
-  DropdownButton,
   Form,
-  Row,
-  Table,
 } from "react-bootstrap";
 import PaymentTop from "../../components/payments/PaymentTop";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import AddIcon from '@mui/icons-material/Add';
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 
 const Payment = () => {
   const [paymentList, setPaymentList] = useState([]);
+  const [displayList, setDisplayList] = useState([]);
   const [clientName, setClientName] = useState('');
-const [source, setSource] = useState('')
+  const [amount,setAmount] = useState(0)
+  const [serviceType,setServiceType] = useState("")
+  // const [recipient,setRecipient] = useState("")
+  const [paymentMethod,setPaymentMethod] = useState("")
+  const [data,setDate] = useState("")
   const navigate = useNavigate();
   const params = useParams();
   const { clientManager } = params;
-  console.log(clientManager);
   useEffect(() => {
     getAllThePayments();
   }, []);
@@ -34,7 +32,7 @@ const [source, setSource] = useState('')
       )
       .then((res) => {
         setPaymentList(res.data.responseList);
-        console.log(paymentList)
+        setDisplayList(res.data.responseList);
       });
   };
   const totalPayment = paymentList?.reduce((acc, i) => acc + i.amount, 0);
@@ -46,6 +44,24 @@ const [source, setSource] = useState('')
   });
   const date = `${current}`;
 
+  const filterPayment = (e) =>{
+    e.preventDefault()
+    axios.post(`http://booksbackenddev-env.eba-j6i2gjpq.us-east-1.elasticbeanstalk.com/api/payment/attributeSearch`,{
+      leadName:clientName,
+      serviceType,
+      amount1:amount,
+      amount2:999999,
+      paymentMethod,
+      date1:date,
+      date2:date,
+      recipient:clientManager,
+
+
+    }).then(res=>{
+      setDisplayList(res.data.responseList)
+    })
+  }
+
   return (
     <div style={{ background: "#F1F1FA" }}>
       <div className="">
@@ -53,7 +69,7 @@ const [source, setSource] = useState('')
           <PaymentTop totalPayment={totalPayment} />
         </div>
         <div>
-          <Form className="mx-4">
+          <Form onSubmit={filterPayment} className="mx-4">
             <div
               style={{
                 // background: "red",
@@ -97,14 +113,29 @@ const [source, setSource] = useState('')
                 <div className="d-flex justify-content-center align-items-center px-2">
                   <i className="fa-solid fa-user-large"></i>
                 </div>
-                <input
-                  type="text"
-                  style={{ border: "none", width: "5px" }}
-                  placeholder="Service Type"
-                  value={clientName}
-                  onChange={(e) => setClientName(e.target.value)}
-                  className="form-control"
-                />
+                
+                  <select
+                className="form-select"
+                name="Service Type"
+                value={serviceType}
+                onChange={(e) => setServiceType(e.target.value)}
+                style={{
+                  textAlign: "center",
+                  height: "5vh",
+                  border: "none"
+                }}
+                aria-label="Default select"
+              >
+                <option selected value="">
+                  Service Type
+                </option>
+                <option value="CDR Assessment">CDR Assessment</option>
+                <option value="CDR Report">CDR Report"</option>
+                <option value="CDR Review" >
+                CDR Review
+                </option>
+                
+              </select>
               </div>
               <div
                 className="input-group"
@@ -122,8 +153,8 @@ const [source, setSource] = useState('')
                   type="text"
                   style={{ border: "none", background:'none' }}
                   placeholder="Amount"
-                  value={source}
-                  onChange={(e) => setSource(e.target.value)}
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
                   className="form-control"
                 />
               </div>
@@ -144,7 +175,7 @@ const [source, setSource] = useState('')
                 >
                   <i className="fa-solid fa-user-large"></i>
                 </div>
-                <input
+                {/* <input
                   type="text"
                   style={{
                     border: "none",
@@ -156,7 +187,7 @@ const [source, setSource] = useState('')
                   value={clientName}
                   onChange={(e) => setClientName(e.target.value)}
                   className="form-control"
-                />
+                /> */}
               </div>
               <div
                 className="input-group"
@@ -170,14 +201,26 @@ const [source, setSource] = useState('')
                 <div className="d-flex justify-content-center align-items-center px-2">
                   <i className="fa-solid fa-user-large"></i>
                 </div>
-                <input
-                  type="text"
-                  style={{ border: "none", width: "5px" }}
-                  placeholder="Payment Method "
-                  value={clientName}
-                  onChange={(e) => setClientName(e.target.value)}
-                  className="form-control"
-                />
+               
+                  <select
+                className="form-select"
+                name="Payment Method"
+                onChange={(e) => setPaymentMethod(e.target.value)}
+                style={{
+                  textAlign: "center",
+                  height: "5vh",
+                  border: "none"
+                }}
+                aria-label="Default select"
+              >
+                <option selected value="">
+                  Service Type
+                </option>
+                <option value="Visa Card">Visa Card</option>
+                <option value="Paypal">Paypal"</option>
+               
+                
+              </select>
               </div>
               <div>
                 <Form.Control
@@ -185,8 +228,8 @@ const [source, setSource] = useState('')
                   name="foo"
                   placeholder="Date"
                   type="date"
-                  // value={date}
-                  // onChange={(e) => setDate(e.target.value)}
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
                   style={{
                     textAlign: "center",
                     height: "45px",
@@ -205,10 +248,8 @@ const [source, setSource] = useState('')
                     border: "none",
                     borderRadius: "5px",
                   }}
-                  type="reset"
-                  onClick={() => {
-                    navigate(`/leads/${clientManager}`);
-                  }}
+                  type="submit"
+                  
                   className=""
                 >
                   <FilterAltOutlinedIcon style={{ background: "#FFC3DE" }} />
@@ -275,7 +316,7 @@ const [source, setSource] = useState('')
             </div>
           </div>
 
-                  {paymentList?.map((payment, key) => (
+                  {displayList?.map((payment, key) => (
                     <div  key={payment.id}
                       className="d-flex mx-4 p-1 mt-3"
                       style={{
@@ -365,7 +406,7 @@ const [source, setSource] = useState('')
                     
                       >
                       <div style={{display:'flex',justifyContent:'space-between',marginRight:'1rem'}}>  {payment.remarks}</div>
-                      <div onClick={()=>navigate("/add-payment")} style={{borderRadius:'5px',height:'40px',width:'40px',background:'#176EB3',color:'white', display:'flex', alignItems:'center', justifyContent:'center',marginRight:'5px',cursor:'pointer'}}><AddIcon/></div>
+                      <div onClick={()=>navigate(`/add-payment/${payment.paymentId}`)} style={{borderRadius:'5px',height:'40px',width:'40px',background:'#176EB3',color:'white', display:'flex', alignItems:'center', justifyContent:'center',marginRight:'5px',cursor:'pointer'}}><AddIcon/></div>
                       <div  style={{borderRadius:'5px',height:'40px',width:'40px',background:'#F0F0F0',color:'white', display:'flex', alignItems:'center', justifyContent:'center',marginRight:'5px',cursor:'pointer'}}><KeyboardArrowDown style={{color:"#64676B"}}/></div>
                       </div>
 

@@ -22,19 +22,19 @@ const Sidebar = () => {
             {user && user.role === 'clientmanager'? (
                <>
                <div className="menu-icon" onClick={()=>setActiveTab("1")} style={{background:activeTab==='1'&& '#35373A'}}>
-               <Link  to={`/dashboard/${user?.name}`}>
+               <Link  to={`/dashboard/${user?.userName}`}>
                  <DashboardIcon className="me-3 " /> Dashboard
                </Link>
              </div>
  
              <div className="menu-icon" onClick={()=>setActiveTab("2")} style={{background:activeTab==='2'&& '#35373A'}}>
-               <Link to={`/leads/${user?.name}`}>
+               <Link to={`/leads/${user?.userName}`}>
                  <LandscapeIcon className="me-3" />
                  Leads
               </Link>
              </div>
              <div className="menu-icon" onClick={()=>setActiveTab("3")} style={{background:activeTab==='3'&& '#35373A'}}>
-               <Link to={`/payment/${user?.name}`}>
+               <Link to={`/payment/${user?.userName}`}>
                  <MonetizationOnIcon className="me-3" />
                  Payments
                </Link>
@@ -66,19 +66,19 @@ const Sidebar = () => {
             ):(
                <>
                <div className="menu-icon">
-               <Link to={`/teamlead/dashboard/${user?.name}`}>
+               <Link to={`/teamlead/dashboard/${user?.userName}`}>
                  <DashboardIcon className="me-3 " /> Dashboard
                </Link>
              </div>
  
              <div className="menu-icon">
-             <Link to={`/teamlead/leads/${user?.name}`}>
+             <Link to={`/teamlead/leads/${user?.userName}`}>
                  <LandscapeIcon className="me-3" />
                  Leads
                </Link>
              </div>
              <div className="menu-icon">
-             <Link to={`/teamlead/payment/${user?.name}`}>
+             <Link to={`/teamlead/payment/${user?.userName}`}>
                  <MonetizationOnIcon className="me-3" />
                  Payments
                </Link>

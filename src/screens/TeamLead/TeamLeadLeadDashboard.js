@@ -21,7 +21,6 @@ const TeamLeadLeadDashboard = () => {
     axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/leads/getAllLeadsOfATeamLead/${teamLead}`)
     .then(res => {
       setLeadList(res.data.responseList)
-      console.log(res.data.responseList)
     }
     )
   }
@@ -30,7 +29,6 @@ const TeamLeadLeadDashboard = () => {
     axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/payments/getAllPaymentsOfATeamLead/${teamLead}`)
     .then(res => {
       setPaymentList(res.data.responseList)
-      console.log(res.data)
     }
     )
   }
@@ -38,7 +36,6 @@ const TeamLeadLeadDashboard = () => {
     axios.get(`${process.env.REACT_APP_BASE_URL}/api/salesman/salesmen/getAllClientManagersOfATeamLead/${teamLead}`)
     .then(res => {
       setClientManagersList(res.data.responseList)
-      console.log(res.data.responseList)
     }
     )
   }
@@ -51,11 +48,6 @@ const TeamLeadLeadDashboard = () => {
 
   },[])
 
-  const leadsdataList=[{shortName:" NJ",name:"  Niall Johnson",email:"nialljohnson@gmail.com",serviceType:"CDR Writing",contactImage:"/c1.png",contactNo:"+27 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},
-  {shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},
-  {shortName:" RG",name:"  Ramana Greg ",email:"ramana@gmail.com",serviceType:"CDR Writing",contactImage:"/c2.png",contactNo:"+968 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},{shortName:" NJ",name:"  Niall Johnson",email:"nialljohnson@gmail.com",serviceType:"CDR Writing",contactImage:"/c1.png",contactNo:"+27 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},
-  {shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},
-  {shortName:" RG",name:"  Ramana Greg ",email:"ramana@gmail.com",serviceType:"CDR Writing",contactImage:"/c2.png",contactNo:"+968 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"}]
   
 
   return (
@@ -136,55 +128,7 @@ const TeamLeadLeadDashboard = () => {
 
 )}
 
-{leadsdataList.map((l)=>
 
-<Row key={l.id} style={{background:"#fff",height:"70px"}} className="d-flex align-items-center justify-content-center mb-3 mx-2">
-  <Col md={2} style={{fontWeight:"",fontSize:"" }}>
-  <Row> 
-       
-       <Col md={3} className="d-flex justify-content-center align-items-center  ">
-       <div style={{borderRadius:"50%",background:"#ED6F47",height:"45px",width:"45px",color:"#fff",fontWeight:"400"}} className="d-flex justify-content-center align-items-center ">
-          {l.shortName}
-          </div>
-          </Col>
-          <Col md={9} style={{color:"",fontWeight:"700"}}>
-          {l.name}
-          <div style={{color:"#666",fontWeight:"400"}}>
-           {l.email}
-          </div>
-          </Col>
-          </Row>
-  </Col>
-
-  <Col md={2} style={{fontWeight:"",fontSize:"19px" }}>
-    {l.serviceType}
-  </Col>
-
-  <Col md={2} style={{fontWeight:"",fontSize:"19px" }} >
-   <img src={l.contactImage} alt="country" className='img-fluid'/>{l.contactNo}
-  </Col>
-
-  <Col md={2} style={{fontWeight:"",fontSize:"19px" }}>
-  </Col>
-
-  <Col md={2} style={{fontWeight:"700",fontSize:"19px" }} className="ps-4">
-   {l.dealValue}
-  </Col>
-
-  <Col md={2} style={{fontWeight:"",fontSize:"19px" }}>
-   <Row>
-    <Col md={7}>
-  
-  {l.lastFollowup}  
-  </Col>
-  <Col md={5}>
-
-        </Col>
-        </Row>
-  </Col>
-</Row>
-
-)}
 </div>
 
 
@@ -270,55 +214,7 @@ const TeamLeadLeadDashboard = () => {
 
 )}
 
-{leadsdataList.map((l)=>
 
-<Row key={l.id} style={{background:"#fff",height:"70px"}} className="d-flex align-items-center justify-content-center mb-3 mx-2">
-  <Col md={2} style={{fontWeight:"",fontSize:"" }}>
-  <Row> 
-       
-       <Col md={3} className="d-flex justify-content-center align-items-center  ">
-       <div style={{borderRadius:"50%",background:"#ED6F47",height:"45px",width:"45px",color:"#fff",fontWeight:"400"}} className="d-flex justify-content-center align-items-center ">
-          {l.shortName}
-          </div>
-          </Col>
-          <Col md={9} style={{color:"",fontWeight:"700"}}>
-          {l.name}
-          <div style={{color:"#666",fontWeight:"400"}}>
-           {l.email}
-          </div>
-          </Col>
-          </Row>
-  </Col>
-
-  <Col md={2} style={{fontWeight:"",fontSize:"19px" }}>
-    {l.serviceType}
-  </Col>
-
-  <Col md={2} style={{fontWeight:"",fontSize:"19px" }} >
-   <img src={l.contactImage} alt="country" className='img-fluid'/>{l.contactNo}
-  </Col>
-
-  <Col md={2} style={{fontWeight:"",fontSize:"19px" }}>
-  </Col>
-
-  <Col md={2} style={{fontWeight:"700",fontSize:"19px" }} className="ps-4">
-   {l.dealValue}
-  </Col>
-
-  <Col md={2} style={{fontWeight:"",fontSize:"19px" }}>
-   <Row>
-    <Col md={7}>
-  
-  {l.lastFollowup}  
-  </Col>
-  <Col md={5}>
-
-        </Col>
-        </Row>
-  </Col>
-</Row>
-
-)}
 </div>
     </Row>
   )

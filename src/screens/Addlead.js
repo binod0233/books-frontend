@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios'
-import { Button, Col, Form, Row, Dropdown, DropdownButton } from 'react-bootstrap'
+import { Button, Col, Form, Row } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
  import '../App.css';
  import ReactFlagsSelect from "react-flags-select";
@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom'
 
 const Addlead = () => {
   const navigate = useNavigate()
+  const [teamLeadList, setTeamLeadList] = useState([])
+  const [clientManagerList, setClientManagerList] = useState([])
   const [activeTab, setActiveTab] = useState("1")
   const [fullName,setFullName] = useState('')
   const [email,setEmail] = useState('')
@@ -54,18 +56,20 @@ const addALead=(e)=>{
     
     axios.post(`${process.env.REACT_APP_BASE_URL}/api/lead/registerLead`,
     {name:fullName,email,phone:number,
-      work,source,
-      socialMedia:communicationChannel,
+      work,
+      source,
+      // socialMedia:communicationChannel,
       gender,
+      potential:"Negotiating",
       select,
-      country,
+      country:select,
       clientBackground:leadBackground,
       serviceType,
        servicePlan,discipline,
        lastFollowUpDate,
       nextFollowUpDate,teamLead,
       clientManager,paymentStatus,
-      paymentType,
+      paymentmethod:paymentType,
       dealValue,dueDate,recepient,payee
   }).then(res=>{if(res.status===200){
     if(user?.role==="admin"){
@@ -83,9 +87,24 @@ const addALead=(e)=>{
   }
   )
 }
+const getTeamLeads=()=>{
+  axios.get(`http://booksbackenddev-env.eba-j6i2gjpq.us-east-1.elasticbeanstalk.com/api/user/teamlead/getAll`).then(res=>{
+    setTeamLeadList(res.data.responseList)
+  })
+}
+const getClientManagers=()=>{
+  axios.get(`http://booksbackenddev-env.eba-j6i2gjpq.us-east-1.elasticbeanstalk.com/api/user/clientmanager/getAll`).then(res=>{
+    setClientManagerList(res.data.responseList)
+  })
+}
 
-console.log(gender)
-  return (
+console.log(teamLeadList,clientManagerList)
+
+useEffect(()=>{
+  getTeamLeads()
+  getClientManagers()
+},[])
+return (
     <div className='d-flex justify-content-center ' style={{background:'#F1F1FA', height:'90vh'}} >
      
 <div className=' d-flex flex-column justify-content-center' style={{width:'100%'}} >
@@ -121,7 +140,7 @@ console.log(gender)
               <Col className='pe-3'>
                 <Form.Group controlId="leadname">
                   <Form.Label>Lead Full Name</Form.Label>
-                  <Form.Control type="text" placeholder="Nabin Chaudhary" value={fullName} onChange={(e)=>setFullName(e.target.value)} />
+                  <Form.Control type="text" placeholder="Nabin Chaudhary" value={fullName} onChange={(e)=>{setFullName(e.target.value);setPayee(e.target.value)}} />
                 </Form.Group>
               </Col>
               <Col className='ps-3'>
@@ -143,10 +162,7 @@ console.log(gender)
                   <Col md={4}>
                   <Form.Group controlId="work">
                   <Form.Label>Work</Form.Label>
-                  {/*  
-<Form.Control type="select" placeholder="Engineer" value={work} onChange={(e)=>setWork(e.target.value)} />
-
-*/}  
+                 
 <Form.Select  onChange={(e)=>setWork(e.target.value)} >
 <option value="none" onClick={(e)=>setWork(e.target.value)}>Engineer</option>
 
@@ -181,26 +197,12 @@ console.log(gender)
                   <Col md={2}></Col>
                   <Col md={6}>
                   <Form.Group controlId="email">
-                 {/*
-                 <Form.Control type="email" placeholder="India" value={country} onChange={(e)=>setCountry(e.target.value)} />
-                
-                 <Form.Select  onChange={(e)=>setCountry(e.target.value)} >
-                 <option value="none" onClick={(e)=>setCountry(e.target.value)}>India</option>
-                
-                  <option value="nepal" onClick={(e)=>setCountry(e.target.value)}>Nepal</option>
-                  <option value="japan" onClick={(e)=>setCountry(e.target.value)}>Japan</option>
-                  <option value="america" onClick={(e)=>setCountry(e.target.value)}>America</option>
-                  <option value="australia" onClick={(e)=>setCountry(e.target.value)}>Australia</option>
-                  
-                  
-                  </Form.Select>
-                */}
+                 
                 <ReactFlagsSelect 
                 style={{zIndex:'50'}} 
                 selected={select}
                 onSelect={onSelect}
                 onChange={(e)=>setSelect(e.target.value)}
-                // countries={["fi", "GB", "IE", "IT", "NL", "SE"]}
                 fullWidth
                 searchable
                 searchPlaceholder='search countries...'
@@ -221,12 +223,14 @@ console.log(gender)
             <Form.Control type="text" placeholder="Website/facebook" value={source} onChange={(e)=>setSource(e.target.value)} />
           */}
           <Form.Select  onChange={(e)=>setSource(e.target.value)} >
-                <option value="none" onClick={(e)=>setSource(e.target.value)}>Website/facebook</option>
+                <option value="website" onClick={(e)=>setSource(e.target.value)}>Website</option>
                 
                   <option value="facebook" onClick={(e)=>setSource(e.target.value)}>Facebook</option>
                   <option value="linkedin" onClick={(e)=>setSource(e.target.value)}>Linkedin</option>
                   <option value="twitter" onClick={(e)=>setSource(e.target.value)}>Twitter</option>
                   <option value="instagram" onClick={(e)=>setSource(e.target.value)}>Instagram</option>
+                  <option value="others" onClick={(e)=>setSource(e.target.value)}>Others</option>
+
                 
                 
                 </Form.Select>
@@ -235,18 +239,7 @@ console.log(gender)
                   <Col md={6}>
                   <Form.Group controlId="work">
                   <Form.Label>Communication</Form.Label>
-                 {/*
-                
-                 <Form.Control type="text" placeholder="WhatsApp" value={communicationChannel} onChange={(e)=>setCommunicationChannel(e.target.value)} />
-                 <Form.Select  onChange={(e)=>setCommunicationChannel(e.target.value)} >
-                 <option value="whatsapp" onClick={(e)=>setCommunicationChannel(e.target.value)}>WhatsApp</option>
-                 
-                 <option value="messenger" onClick={(e)=>setCommunicationChannel(e.target.value)}>Messenger</option>
-                 <option value="viber" onClick={(e)=>setCommunicationChannel(e.target.value)}>Viber</option>
-                 
-                 
-                 </Form.Select>
-                */}
+              
                 <Select options={options} isMulti onChange={(e)=>setCommunicationChannel(e)}   />
                 </Form.Group>
                   </Col>
@@ -286,7 +279,15 @@ console.log(gender)
               <Col className='pe-3'>
                 <Form.Group controlId="servicetype">
                   <Form.Label>Service Type</Form.Label>
-                  <Form.Control type="text" placeholder="CDR Writing" value={serviceType} onChange={(e)=>setServiceType(e.target.value)} />
+                  <Form.Select  onChange={(e)=>setServiceType(e.target.value)} >
+                  <option value="" onClick={(e)=>setServiceType(e.target.value)}>Choose one</option>
+
+                    <option value="CDR Writing" onClick={(e)=>setServiceType(e.target.value)}>CDR Writing</option>
+                    <option value="CDR Assessment" onClick={(e)=>setServiceType(e.target.value)}>CDR Assessment</option>
+                    <option value="CDR Review" onClick={(e)=>setServiceType(e.target.value)}>CDR Review</option>
+
+
+                  </Form.Select>
                 </Form.Group>
               </Col>
               <Col className='ps-3'>
@@ -334,14 +335,15 @@ console.log(gender)
                   <Col >
                   <Form.Group controlId="teamlead">
                   <Form.Label>Team Lead</Form.Label>
-                {/*
-              
-                <Form.Control type="text" placeholder="San Antonio" value={teamLead} onChange={(e)=>setTeamLead(e.target.value)} />
-              */}
+                
               <Form.Select   onChange={(e)=>setTeamLead(e.target.value)}>
-              <option value="San Antonio" onClick={(e)=>setTeamLead(e.target.value)}>San Antonio</option>
-              <option value="Houston" onClick={(e)=>setTeamLead(e.target.value)}>Houston</option>
-              <option value="Last vegas" onClick={(e)=>setTeamLead(e.target.value)}>Last Vegas</option>
+              <option  value="" onClick={(e)=>setTeamLead(e.target.value)}>Choose One</option>
+
+                {teamLeadList?.map(t=>(
+              <option key={t.id} value={t.userName} onClick={(e)=>setTeamLead(e.target.value)}>{t.userName}</option>
+
+                ))}
+              
 
             </Form.Select>
                 </Form.Group>
@@ -349,7 +351,16 @@ console.log(gender)
                   <Col >
                   <Form.Group controlId="clientmanager">
                   <Form.Label>Client Manager</Form.Label>
-                  <Form.Control type="text" placeholder="Hemanta karki" value={clientManager} onChange={(e)=>setClientManager(e.target.value)} />
+                  <Form.Select   onChange={(e)=>setClientManager(e.target.value)}>
+                  <option value="" onClick={(e)=>setClientManager(e.target.value)}>Choose One</option>
+
+                {clientManagerList?.map(t=>(
+              <option key={t.id} value={t.userName} onClick={(e)=>setClientManager(e.target.value)}>{t.userName}</option>
+
+                ))}
+              
+
+            </Form.Select>
                 </Form.Group>
                   </Col>
                   </Row>
@@ -391,7 +402,8 @@ console.log(gender)
               <Col className='pe-3 mt-4' md={6}>
               <Form.Group controlId="recepient">
                 <Form.Label>Recepient</Form.Label>
-                <Form.Select   onChange={(e)=>setRecepient(e.target.value)}>
+                <Form.Select  onChange={(e)=>setRecepient(e.target.value)}>
+                <option value="" onClick={(e)=>setRecepient(e.target.value)}>Choose One</option>
                   <option value="San Antonio" onClick={(e)=>setRecepient(e.target.value)}>San Antonio</option>
                   <option value="Houston" onClick={(e)=>setRecepient(e.target.value)}>Houston</option>
                   <option value="last vegas" onClick={(e)=>setRecepient(e.target.value)}>last Vegas</option>

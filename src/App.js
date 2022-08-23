@@ -67,7 +67,7 @@ const App = () => {
       <Route path='/contact-us' element={<Contacts/>}/>
       <Route path='/edit-lead/:id' element={<Editlead/>}/>
       <Route path='/payment/:clientManager' element={<Payment/>}/>
-      <Route path='/add-payment' element={<AddPayment/>}/>
+      <Route path='/add-payment/:paymentId' element={<AddPayment/>}/>
       <Route path="/lead/profile/:id" element={<LeadProfile/>}/>
      <Route path='/payment/paymentId/:paymentId' element={<LeadPaymentProfile/>} />
 

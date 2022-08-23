@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { div, Col, Form, Button, Row } from "react-bootstrap";
+import {  Form, Button } from "react-bootstrap";
 
 import Leadscharts from "../../components/leads/Leadscharts";
-import Sidebar from "../../components/Sidebar";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import Header from "../../components/Header";
 import "./leads.css";
-import { leadsdataList } from "./Dashboard";
 import EditIcon from '@mui/icons-material/Edit';
 
 const Leads = () => {
   const navigate = useNavigate();
   const params = useParams();
   const { clientManager }  = params;
+  const [displayList,setDisplayList] = useState([]);
   const [leads, setLeads] = useState([])
    
 
@@ -22,28 +20,28 @@ const Leads = () => {
   const [status, setStatus] = useState("");
   const [servicePlan, setServicePlan] = useState("");
   const [date, setDate] = useState("");
-  const [source, setSource] = useState("");
+  const [amount, setAmount] = useState(0);
 
 const localUser = JSON.parse(localStorage.getItem('user'));
 
 
-  const [potential,setPotential] = useState([]);
   const [message,setMessage] = useState('')
   
   const getAllLeadsOfAClientManager = ()  => {
     axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/leads/getAllLeadsOfAClientManager/${clientManager}`).then(res => {
       setLeads(res.data.responseList);
+      setDisplayList(res.data.responseList);
       console.log(leads)
     })
   }
-  const handleInputChange=(e,leadId,teamLead,leadName)=>{
-    setPotential(e.target.value);
+  const handleInputChange=(e,leadId,teamLead,leadName,clientManager)=>{
     axios
-      .put(`http://localhost:8080/api/lead/leads/changepotential/${leadId}`, {
+      .put(`http://booksbackenddev-env.eba-j6i2gjpq.us-east-1.elasticbeanstalk.com/api/lead/leads/changepotential/${leadId}`, {
         potential: e.target.value,
         teamLead,
         leadId,
-        leadName
+        leadName,
+        clientManager
 
 
       })
@@ -56,14 +54,26 @@ const localUser = JSON.parse(localStorage.getItem('user'));
       });
   };
 
-  const applyFilter = () => {};
+  const applyFilter = (e) => {
+    e.preventDefault();
+    axios.post(`http://booksbackenddev-env.eba-j6i2gjpq.us-east-1.elasticbeanstalk.com/api/lead/attributeSearch`,{
+       leadName:clientName,
+      serviceType:servicePlan,
+      potential:status,
+      date1:date,
+      amount:amount,
+      clientManager
+    }).then((res) => {
+      setDisplayList(res.data.responseList);
+    })
+  };
 
   useEffect(() => {
     if(!localUser){
       navigate('/login')
     }else{
-    if(localUser?.name!==clientManager || localUser?.role!=='admin'){
-      navigate(`/leads/${localUser?.name}`)
+    if(localUser?.userName!==clientManager || localUser?.role!=='admin' ){
+      navigate(`/leads/${localUser?.userName}`)
     }}
   },[])
 
@@ -76,6 +86,13 @@ const localUser = JSON.parse(localStorage.getItem('user'));
   const totalFollowUps = leads.filter((lead) => lead.nextFollowUpDate).length;
   const leadConverted = leads.filter((lead) => lead.potential === "won").length;
   const leadLost = leads.filter((lead) => lead.potential === "lost").length;
+  const leadsFronWebsites = leads.filter((lead) => lead.source === "websites").length;
+  const leadsFronLinkedin = leads.filter((lead) => lead.source === "linkedin").length;
+  const leadsFronInstagram = leads.filter((lead) => lead.source === "instagram").length;
+  const leadsFronOthers = leads.filter((lead) => lead.source === "others").length;
+  const leadsFronFacebook = leads.filter((lead) => lead.source === "facebook").length;
+
+
 
   return (
     <>
@@ -151,14 +168,27 @@ const localUser = JSON.parse(localStorage.getItem('user'));
               <span className="d-flex justify-content-center align-items-center p-2">
                 <i className="fa-solid fa-user-large"></i>
               </span>
-              <input
-                type="text"
-                style={{ border: "none" }}
-                placeholder="Service Type"
-                value={servicePlan}
+             <select
+                className="form-select"
+                name="Service Type"
                 onChange={(e) => setServicePlan(e.target.value)}
-                className="form-control"
-              />
+                style={{
+                  textAlign: "center",
+                  height: "5vh",
+                  border: "none"
+                }}
+                aria-label="Default select"
+              >
+                <option selected value="">
+                  Service Type
+                </option>
+                <option value="CDR Assessment">CDR Assessment</option>
+                <option value="CDR Report">CDR Report"</option>
+                <option value="CDR Review" >
+                CDR Review
+                </option>
+                
+              </select>
             </div>
 
             <div className="selection">
@@ -215,11 +245,11 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                 $
               </span>
               <input
-                type="text"
+                type="number"
                 style={{ border: "none" }}
-                placeholder="Source"
-                value={source}
-                onChange={(e) => setSource(e.target.value)}
+                placeholder="Deal Value"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
                 className="form-control mb-1"
               />
             </div>
@@ -233,6 +263,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                 }}
                 type="reset"
                 onClick={() => {
+                  setDisplayList(leads);
                   navigate(`/leads/${clientManager}`);
                 }}
                 className=""
@@ -298,7 +329,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
             </div>
           </div>
 
-          {leads?.map((l, key) => (
+          {displayList?.map((l, key) => (
             <div
               key={l.id}
               style={{
@@ -386,7 +417,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                     <select
                       className="selection "
                       name="city"
-                      onChange={(e) => handleInputChange(e, l.id,l.teamLead,l.name
+                      onChange={(e) => handleInputChange(e, l.id,l.teamLead,l.name,l.clientManager
                         )}
                       style={{
                         fontWeight: "bold",
@@ -396,6 +427,16 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                         justifyContent: "center ",
                       }}
                     >
+                       <option
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center ",
+                        }}
+                        value={l.potential}
+                      >
+                        {l.potential}
+                      </option>
                       <option
                         style={{
                           display: "flex",

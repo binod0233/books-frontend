@@ -15,23 +15,25 @@ const Dashboard = () => {
   const navigate = useNavigate()
   const {name} = params
 
+  const [timeInterval,setTimeInterval] = useState(null)
   const [paymentList,setPaymentList] = useState([])
   const [leadList, setLeadList] = useState([])
   const [clientManager, setClientManager] = useState({})
+  const [displayList,setDisplayList] = useState([])
   const localUser = JSON.parse(localStorage.getItem('user'))
 
 const options=[
-{value:'daily', label:'Daily'},
-{value:'Weekly', label:'Weekly'},
-{value:'Monthly', label:'Monthly'}
+{value:'weekly', label:'Weekly'},
+{value:'semiMonthly', label:'15 days'},
+{value:'weekly', label:'Monthly'}
 ]
 
   useEffect(() => {
     if(!localUser){
       navigate('/login')
     }else{
-    if(   localUser?.name!==name || localUser?.role!=='admin'){
-      navigate(`/dashboard/${localUser?.name}`)
+    if(   localUser?.userName!==name || localUser?.role!=='admin'){
+      navigate(`/dashboard/${localUser?.userName}`)
     }}
   },[])
 
@@ -39,6 +41,7 @@ const options=[
     axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/leads/getAllLeadsOfAClientManager/${name}`)
     .then(res => {
       setLeadList(res.data.responseList)
+      setDisplayList(res.data.responseList)
       console.log(leadList)
     }
     )
@@ -65,7 +68,16 @@ const options=[
     getAllPaymentsOfAClientManager();
     getClientManagerById()
   },[])
+useEffect(()=>{
+  if(timeInterval){
 
+    axios.get(`http://booksbackenddev-env.eba-j6i2gjpq.us-east-1.elasticbeanstalk.com/api/lead/weekly-payments/client-manager/${timeInterval?.value}/${name}`).then(res => {
+      setDisplayList(res.data.responseList)
+    })
+  }
+},[timeInterval])
+
+console.log(timeInterval)
 
   const totalDealValue = leadList.reduce((acc,lead) => acc + lead.dealValue,0)
   const totalEarned = paymentList?.reduce((acc, payment) => acc + payment.amount, 0)
@@ -122,7 +134,7 @@ const options=[
        
        </DropdownButton>
     */}
-<Select options={options}/>
+<Select options={options} onChange={(e)=>setTimeInterval(e)} />
 
         </div>
 
@@ -162,7 +174,7 @@ const options=[
       </div>
 
 
-{leadList?.map((l) => (
+{displayList?.map((l) => (
   <>
   
   <div

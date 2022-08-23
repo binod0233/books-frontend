@@ -1,12 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
 const AddPayment = () => {
   const navigate = useNavigate();
+  const { paymentId } = useParams();
+  const [payment,setPayment] = useState({})
+  const [clientManagerList,setClientManagerList] = useState([])
   const [values, setValues] = useState({
     remarks: "",
     payee: "",
@@ -46,16 +49,19 @@ const AddPayment = () => {
         "Access-Control-Allow-Headers": "*",
       },
     };
+    const payer = payment?.leadName|| payee;
     axios
       .post(
         `${process.env.REACT_APP_BASE_URL}/api/payment/registerPayment`,
         {
           paymentDate: date,
+          teamLead:payment.teamLead,
+          leadId:payment?.leadId,
           userId: user.id,
           remarks,
           updatedBy: "John abraham",
           amount,
-          payee,
+          payee:payer,
           recipient,
           serviceType: service,
           receiptImage:"",
@@ -81,6 +87,13 @@ const AddPayment = () => {
       });
   
   };
+
+  useEffect(()=>{
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/paymentId/${paymentId}`).then(res=>setPayment(res.data))
+    axios.get(`http://booksbackenddev-env.eba-j6i2gjpq.us-east-1.elasticbeanstalk.com/api/user/clientmanager/getAll`).then(res=>{
+      setClientManagerList(res.data.responseList)
+    })
+  },[paymentId])
 
   return (
     <div className="d-flex" style={{ width: "100%", height:'90vh' }}>
@@ -194,6 +207,16 @@ const AddPayment = () => {
                           onChange={handleChange}
                           isInvalid={touched.recipient && !!errors.recipient}
                         />
+                         <Form.Select   onChange={handleChange}>
+                  <option value="" onClick={handleChange}>Choose One</option>
+
+                {clientManagerList?.map(t=>(
+              <option key={t.id} value={values.recipient} onClick={handleChange}>{t.userName}</option>
+
+                ))}
+              
+
+            </Form.Select>
                         <Form.Control.Feedback type="invalid">
                           {errors.recipient}
                         </Form.Control.Feedback>

@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -6,29 +7,7 @@ import "./Login.css";
 
 export default function (props) {
   const navigate = useNavigate();
-  const users = [
-    {
-      email: "teamlead@copenned.com",
-      password: "123456",
-      role: "teamlead",
-      name: "teamlead1",
-      id: "1",
-    },
-    {
-      email: "admin@copenned.com",
-      password: "123456",
-      role: "admin",
-      name: "admin1",
-      id: "2",
-    },
-    {
-      email: "clientmanager@copenned.com",
-      password: "123456",
-      role: "clientmanager",
-      name: "clientmanager1",
-      id: "3",
-    },
-  ];
+ const [loggedIn,setLoggedIn] = useState({});
   const [e, setE] = useState("");
   const [p, setP] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
@@ -36,29 +15,22 @@ export default function (props) {
     setPasswordShown(!passwordShown);
   };
 
-  const login = () => {
+  const login = (event) => {
+    event.preventDefault();
     const validEmail = e.substring(e.length - 13) === "@copenned.com";
     if (validEmail) {
-      const userExist = users.find((user) => user.email === e);
-      if (userExist) {
-        const loggedIn = users.find(
-          (user) => user.email === e && user.password === p
-        );
-        if (loggedIn) {
-          localStorage.setItem("user", JSON.stringify(loggedIn));
-          if (loggedIn.role === "teamlead") {
-            navigate(`/teamlead/dashboard/${loggedIn.name}`);
-          } else if (loggedIn.role === "admin") {
-            navigate(`/admin/dashboard`);
-          } else if (loggedIn.role === "clientmanager") {
-            navigate(`/dashboard/${loggedIn.name}`);
-          }
-        } else {
-          console.log("password is incorrect");
+      axios.get(`http://booksbackenddev-env.eba-j6i2gjpq.us-east-1.elasticbeanstalk.com/api/user/login/${e}`).then((res) => {
+        setLoggedIn(res.data);
+        localStorage.setItem("user", JSON.stringify(res.data));
+        if (res.data.role === "teamlead") {
+          navigate(`/teamlead/dashboard/${res.data.userName}`);
+        } else if (res.data.role === "admin") {
+          navigate(`/admin/dashboard`);
+        } else if (res.data.role === "clientmanager") {
+          navigate(`/dashboard/${res.data.userName}`);
         }
-      } else {
-        console.log("user not found");
-      }
+
+      })
     } else {
       alert(" inavalid email. use @copenned.com");
     }
@@ -68,11 +40,11 @@ export default function (props) {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
       if (user.role === "teamlead") {
-        navigate(`/teamlead/dashboard/${user.name}`);
+        navigate(`/teamlead/dashboard/${user.userName}`);
       } else if (user.role === "admin") {
         navigate(`/admin/dashboard`);
       } else if (user.role === "clientmanager") {
-        navigate(`/dashboard/${user.name}`);
+        navigate(`/dashboard/${user.userName}`);
       }
     }
   }, []);
