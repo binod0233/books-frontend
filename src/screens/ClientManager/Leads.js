@@ -329,7 +329,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
             </div>
           </div>
 
-          {displayList?.map((l, key) => (
+          {displayList?.map((l) => (
             <div
               key={l.id}
               style={{

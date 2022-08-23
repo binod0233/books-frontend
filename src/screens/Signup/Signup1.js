@@ -11,7 +11,7 @@ const Signup1 = () => {
   const [email,setEmail]=useState("");
   const[password,setPassword]=useState();
   const[phone,setPhone]=useState("");
-  const [role,setRole]=useState("clientmanager");
+  const [role,setRole]=useState("");
   const [activeState,setActiveState]=useState("first");
   const register=(e)=>{
     e.preventDefault();
@@ -38,18 +38,17 @@ const Signup1 = () => {
 
   useEffect(()=>{
     const user=JSON.parse(localStorage.getItem("user"))
-    if(user){
-      
+    if(user.role!=="admin"){
+      navigate("/")
        
     }
   },[])
   return (
     <div >
-       <p style={{float:"right", marginTop:""}}><a href="/">Login</a></p>
            
        <div className="sign1-form-container"  >
-      <form onSubmit={register} className="sign1-form" style={{background:"#fff"}}>
-        <div className="" style={{background:"#fff",display:activeState==="first"?"block":"none" }}>
+      <form onSubmit={register} className="sign1-form p-4" style={{background:"#fff"}}>
+        <div className="" style={{display:activeState==="first"?"block":"none" }}>
           <h3 className="Auth-form-title" style={{background:"#fff" ,color:"#7B7B7B"}}> Step 1 of 2</h3>
           <img src="/line.png"  alt='line' className="img-fluid"/>
           <p style={{textAlign:"",background:"#fff"}} className="pt-3">Welcome to the Copenned-Books. </p>
@@ -143,15 +142,17 @@ Already have an account? <a href="/">Log in</a></p>
               value={phone}
               onChange={(e)=>setPhone(e.target.value)}
              
-            />
+            /> 
             </div>
          
           <div className="form-group mt-3" style={{background:"#fff"}}>
             <label style={{fontWeight:"300",fontSize:"20px",background:"#fff"}}>What is your current Role?</label>
             <select  onChange={(e)=>setRole(e.target.value)}>
-  <option value="admin">Admin</option>
+            <option value="clientmanager">Client Manager</option>
+
   <option value="teamlead">Team Lead</option>
-  <option value="clientmanager">Client Manager</option>
+  <option value="admin">Admin</option>
+
 </select>
             
             </div>

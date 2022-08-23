@@ -19,7 +19,16 @@ export default function (props) {
     event.preventDefault();
     const validEmail = e.substring(e.length - 13) === "@copenned.com";
     if (validEmail) {
-      axios.get(`http://booksbackenddev-env.eba-j6i2gjpq.us-east-1.elasticbeanstalk.com/api/user/login/${e}`).then((res) => {
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "*",
+        },
+      };
+
+      axios.get(`http://booksbackenddev-env.eba-j6i2gjpq.us-east-1.elasticbeanstalk.com/api/user/login/${e}`,config).then((res) => {
         setLoggedIn(res.data);
         localStorage.setItem("user", JSON.stringify(res.data));
         if (res.data.role === "teamlead") {

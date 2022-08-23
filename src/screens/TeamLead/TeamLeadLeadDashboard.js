@@ -12,13 +12,12 @@ const TeamLeadLeadDashboard = () => {
   const {teamLead} = useParams()
 
   const [leadList,setLeadList] = useState([])
-  const [paymentList,setPaymentList] = useState("")
+  const [paymentList,setPaymentList] = useState([])
   const [clientManagerList,setClientManagersList] = useState([])
 
-  const user = JSON.parse(localStorage.getItem("user"))
 
   const getLeadsOfATeamLead = () => {
-    axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/leads/getAllLeadsOfATeamLead/${teamLead}`)
+    axios.get(`http://localhost:8080/api/lead/leads/getAllLeadsOfATeamLead/${teamLead}`)
     .then(res => {
       setLeadList(res.data.responseList)
     }
@@ -26,14 +25,22 @@ const TeamLeadLeadDashboard = () => {
   }
 
   const getPaymentsOfATeamLead = () => {
-    axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/payments/getAllPaymentsOfATeamLead/${teamLead}`)
+    axios.get(`http://localhost:8080/api/payment/payments/getAllPaymentsOfATeamLead/${teamLead}`)
     .then(res => {
       setPaymentList(res.data.responseList)
     }
     )
   }
   const getClientManagersOfATeamLead = () => {
-    axios.get(`${process.env.REACT_APP_BASE_URL}/api/salesman/salesmen/getAllClientManagersOfATeamLead/${teamLead}`)
+    axios.get(`http://localhost:8080/api/salesman/salesmen/getAllClientManagersOfATeamLead/${teamLead}`)
+    .then(res => {
+      setClientManagersList(res.data.responseList)
+    }
+    )
+  }
+
+  const getTeamLeadProfile = () => {
+    axios.get(`http://localhost:8080/api/teamlead/teamleadId/${teamLead}`)
     .then(res => {
       setClientManagersList(res.data.responseList)
     }
@@ -45,10 +52,24 @@ const TeamLeadLeadDashboard = () => {
     getClientManagersOfATeamLead()
     getLeadsOfATeamLead()
     getPaymentsOfATeamLead()
+    getTeamLeadProfile()
 
   },[])
 
-  
+  const totalDealValue = leadList?.reduce((acc,lead) => acc + lead.dealValue,0)
+  const totalEarned = paymentList?.reduce((acc, payment) => acc + payment.amount, 0)
+  const totalSales = leadList?.filter(l=>l.status==="won").length
+  const totalLeads = leadList?.length
+  const conversion = totalSales/totalLeads*100
+  const totalDuePayment = totalDealValue - totalEarned
+  const totalFollowUps = leadList?.filter((lead) => lead.nextFollowUpDate).length;
+  const leadConverted = leadList?.filter((lead) => lead.potential === "won").length;
+  const leadLost = leadList?.filter((lead) => lead.potential === "lost").length;
+  const leadsFronWebsites = leadList?.filter((lead) => lead.source === "websites").length;
+  const leadsFronLinkedin = leadList?.filter((lead) => lead.source === "linkedin").length;
+  const leadsFronInstagram = leadList?.filter((lead) => lead.source === "instagram").length;
+  const leadsFronOthers = leadList?.filter((lead) => lead.source === "others").length;
+  const leadsFronFacebook = leadList?.filter((lead) => lead.source === "facebook").length;
 
   return (
     <Row style={{background:"#F1F1FA"}}>
