@@ -9,7 +9,8 @@ import axios from 'axios'
 
 const AdminDashboard = () => {
 
-  const [clientManagers,setClientManagers] = useState([])
+  const [teamLeads,setTeamLeads] = useState([])
+  const [topClientManagers, setTopClientManagers] = useState([])
   const [topLeads,setTopLeads] = useState([])
   const [teamLeadStats,setTeamLeadStats] = useState({})
   const [clientManagerStats,setClientManagerStats] = useState({})
@@ -17,17 +18,17 @@ const AdminDashboard = () => {
  
 
   useEffect(() => {
-    getTopClientManagers()
+    getTopTeamLeads()
     getTopLeads()
     getTeamLeadStats()
     getClientManagerStats()
+    getTopClientManagers()
 
   },[])
 
-  const getTopClientManagers = () => {
-    axios.get(`${process.env.REACT_APP_BASE_URL}/api/salesman/salesmen`).then(res => {
-      setClientManagers(res.data.responseList)
-      console.log(res.data)
+  const getTopTeamLeads = () => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/teamLead/teamLeads`).then(res => {
+      setTeamLeads(res.data.responseList)
     }).catch(err => {
       console.log(err)
     }
@@ -36,15 +37,24 @@ const AdminDashboard = () => {
   const  getTopLeads = () => {
     axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/leads`).then(res => {
       setTopLeads(res.data.responseList)
-      console.log(res.data)
     }).catch(err => {
       console.log(err)
     }
     )
   }
+
+  const  getTopClientManagers = () => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/salesman/salesmen`).then(res => {
+      setTopClientManagers(res.data.responseList)
+    }).catch(err => {
+      console.log(err)
+    }
+    )
+  }
+
   const getTeamLeadStats = () => {
     axios.get(`${process.env.REACT_APP_BASE_URL}/api/teamlead/getTeamLeadStats`).then(res => {
-      console.log(res.data)
+      setTeamLeadStats(res.data)
     }).catch(err => {
       console.log(err)
     }
@@ -52,7 +62,7 @@ const AdminDashboard = () => {
   }
   const getClientManagerStats = () => {
     axios.get(`${process.env.REACT_APP_BASE_URL}/api/teamlead/getClientManagerStats`).then(res => {
-      console.log(res.data)
+      setClientManagerStats(res.data)
     }).catch(err => {
       console.log(err)
     }
@@ -68,7 +78,7 @@ const AdminDashboard = () => {
         <EarningStats/>
               <PaymentRow/>
               <div className='bg-white mx-4'>
-                  <h5 className='text-black p-2'>Top Client Manager</h5>
+                  <h5 className='text-black p-2'>Top Team Leads</h5>
               <Row  style={{background:"#fff",height:"70px"}} className="d-flex align-items-center justify-content-center mb-3 mx-2">
   <Col md={2} style={{fontWeight:"700",fontSize:"20px" }}>
     Client Manager
@@ -79,7 +89,7 @@ const AdminDashboard = () => {
   </Col>
 
   <Col md={2} style={{fontWeight:"700",fontSize:"20px" }}>
-  No. of leads
+  Client Managers
   </Col>
 
   <Col md={2} style={{fontWeight:"700",fontSize:"20px" }}>
@@ -91,13 +101,13 @@ const AdminDashboard = () => {
   </Col>
 
   <Col md={2} style={{fontWeight:"700",fontSize:"20px" }}>
-   Total Sales
+   Total Earnings
   </Col>
   
 </Row>
 
 
-{clientManagers?.map((l)=>
+{teamLeads?.map((l)=>
 
 <Row key={l.id} style={{background:"#fff",height:"70px"}} className="d-flex align-items-center justify-content-center mb-3 mx-2">
   <Col md={2} style={{fontWeight:"",fontSize:"" }}>
@@ -149,44 +159,36 @@ const AdminDashboard = () => {
 </div>
 
 
-
 <div className='bg-white mx-4'>
-<h5 className='text-black p-2'>Top Leads</h5>
+<h5 className='text-black p-2'>Top Client Managers</h5>
 
-              <Row  style={{background:"#fff",height:"70px"}} className="d-flex align-items-center justify-content-center mb-3 mx-2">
+  <Row  style={{background:"#fff",height:"70px"}} className="d-flex align-items-center justify-content-center mb-3 mx-2">
   <Col md={2} style={{fontWeight:"700",fontSize:"20px" }}>
-    Lead Name
-  </Col>
-
-  <Col md={1} style={{fontWeight:"700",fontSize:"20px" }}>
-    Date
-  </Col>
-
-  <Col md={1} style={{fontWeight:"700",fontSize:"20px" }}>
-  Source
+    ClientManagers
   </Col>
 
   <Col md={2} style={{fontWeight:"700",fontSize:"20px" }}>
     Team Name
   </Col>
 
-  <Col md={1} style={{fontWeight:"700",fontSize:"20px" }}>
+  <Col md={2} style={{fontWeight:"700",fontSize:"20px" }}>
+  No. of Leads
+  </Col>
+
+  <Col md={2} style={{fontWeight:"700",fontSize:"20px" }}>
    Status
   </Col>
 
   <Col md={2} style={{fontWeight:"700",fontSize:"20px" }}>
-   Deal Amount
+   Weeks
   </Col>
   <Col md={2} style={{fontWeight:"700",fontSize:"20px" }}>
-   Total Amount
-  </Col>
-  <Col md={1} style={{fontWeight:"700",fontSize:"20px" }}>
-   Due Amount
+   Total Sales
   </Col>
 </Row>
 
 
-{topLeads?.map((l)=>
+{topClientManagers?.map((l)=>
 
 <Row key={l.id} style={{background:"#fff",height:"70px"}} className="d-flex align-items-center justify-content-center mb-3 mx-2">
   <Col md={2} style={{fontWeight:"",fontSize:"" }}>

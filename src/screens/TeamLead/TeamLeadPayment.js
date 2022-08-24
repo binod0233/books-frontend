@@ -55,6 +55,7 @@ const TeamLeadPayment = () => {
       paymentMethod,
       date1:date,
       date2:date,
+      clientManager:recipient,
       teamLead,
 
 
