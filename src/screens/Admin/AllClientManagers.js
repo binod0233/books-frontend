@@ -1,62 +1,43 @@
-import React from 'react'
-import Sidebar from '../../components/Sidebar'
-import {Row,Col,Form,Button,Dropdown,DropdownButton} from 'react-bootstrap'
-import Header from '../../components/Header'
+import React, { useEffect,useState } from 'react'
+import {Row,Col,Form,Button} from 'react-bootstrap'
+import axios from 'axios'
 
 const AllClientManagers = () => {
 
-  const leadsdataList=[{shortName:" NJ",name:"  Niall Johnson",email:"nialljohnson@gmail.com",serviceType:"CDR Writing",contactImage:"/c1.png",contactNo:"+27 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},
-  {shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},
-  {shortName:" RG",name:"  Ramana Greg ",email:"ramana@gmail.com",serviceType:"CDR Writing",contactImage:"/c2.png",contactNo:"+968 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},{shortName:" NJ",name:"  Niall Johnson",email:"nialljohnson@gmail.com",serviceType:"CDR Writing",contactImage:"/c1.png",contactNo:"+27 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},
-  {shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},
-  {shortName:" RG",name:"  Ramana Greg ",email:"ramana@gmail.com",serviceType:"CDR Writing",contactImage:"/c2.png",contactNo:"+968 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"}]
- 
+  const [clientManagersList,setClientManagerList] = useState([])
+
+  useEffect(()=>{
+    axios.get(`http://localhost:8080/api/salesman/salesmen`).then((res)=>{
+      setClientManagerList()
+    })
+  },[])
   return (
     <Row style={{background:"#F1F1FA"}}>
       
       <Form >   
 <Row className='py-3 d-flex'>
-<Col md={2}>
-<DropdownButton
-        
-        
-       size="lg"
-          variant="outline-secondary"
-          title="Team Lead"
-          id="dropdown-basic"
-          style={{width:"fit-content"}}
-          
-        
-        >
-          
-          
-          <Dropdown.Item href="#">demo   </Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item href="#">demo</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item href="#"> demo</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item href="#">demo</Dropdown.Item>
-        
-        </DropdownButton>
-</Col>
+
 
       
 
        <Col md={2}>
-       <Form.Control  size="sm" name="foo" placeholder="Client Name" type="text"  style={{height:"50px"}} className="" /> 
+       <Form.Control  size="sm" name="foo" placeholder="TeamLead" type="text"  style={{height:"50px"}} className="" /> 
 
        </Col>
        <Col md={2}>
-       <Form.Control size="sm" name="foo" placeholder="Service Plan" type="text"  style={{height:"50px"}} className=""  />
+       <Form.Control size="sm" name="foo" placeholder="ClientManager" type="text"  style={{height:"50px"}} className=""  />
 
        </Col>
        <Col md={2}>
-       <Form.Control size="sm" name="foo" placeholder="Date" type="date"  style={{height:"50px"}} className=""  />
+       <Form.Control size="sm" name="foo" placeholder="ClientName" type="date"  style={{height:"50px"}} className=""  />
 
        </Col>
-       <Col md={1}>
-       <Form.Control size="sm" name="foo" placeholder="Source" type="text"  style={{height:"50px"}}  className="" />
+       <Col md={2}>
+       <Form.Control size="sm" name="foo" placeholder="date" type="date"  style={{height:"50px"}}  className="" />
+
+       </Col>
+       <Col md={2}>
+       <Form.Control size="sm" name="foo" placeholder="date" type="text"  style={{height:"50px"}}  className="" />
 
        </Col>
        <Col md={1}>
@@ -100,9 +81,9 @@ const AllClientManagers = () => {
 </Row>
 
 
-{leadsdataList.map((l,index)=>
+{clientManagersList?.map((l,index)=>
 
-<Row key={l.index} style={{background:"#fff",height:"70px"}} className="d-flex align-items-center justify-content-center mb-3 mx-2">
+<Row key={index} style={{background:"#fff",height:"70px"}} className="d-flex align-items-center justify-content-center mb-3 mx-2">
   <Col md={2} style={{fontWeight:"",fontSize:"" }}>
   <Row> 
        

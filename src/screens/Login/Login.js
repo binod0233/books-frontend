@@ -28,7 +28,7 @@ export default function (props) {
         },
       };
 
-      axios.get(`http://booksbackenddev-env.eba-j6i2gjpq.us-east-1.elasticbeanstalk.com/api/user/login/${e}`,config).then((res) => {
+      axios.get(`http://localhost:8080/api/user/login/${e}`,config).then((res) => {
         setLoggedIn(res.data);
         localStorage.setItem("user", JSON.stringify(res.data));
         if (res.data.role === "teamlead") {

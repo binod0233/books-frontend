@@ -88,12 +88,12 @@ const addALead=(e)=>{
   )
 }
 const getTeamLeads=()=>{
-  axios.get(`http://booksbackenddev-env.eba-j6i2gjpq.us-east-1.elasticbeanstalk.com/api/user/teamlead/getAll`).then(res=>{
+  axios.get(`http://localhost:8080/api/user/teamlead/getAll`).then(res=>{
     setTeamLeadList(res.data.responseList)
   })
 }
 const getClientManagers=()=>{
-  axios.get(`http://booksbackenddev-env.eba-j6i2gjpq.us-east-1.elasticbeanstalk.com/api/user/clientmanager/getAll`).then(res=>{
+  axios.get(`http://localhost:8080/api/user/clientmanager/getAll`).then(res=>{
     setClientManagerList(res.data.responseList)
   })
 }

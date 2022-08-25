@@ -17,7 +17,7 @@ const Payment = () => {
   const [serviceType,setServiceType] = useState("")
   // const [recipient,setRecipient] = useState("")
   const [paymentMethod,setPaymentMethod] = useState("")
-  const [data,setDate] = useState("")
+  const [date,setDate] = useState("")
   const navigate = useNavigate();
   const params = useParams();
   const { clientManager } = params;
@@ -37,16 +37,11 @@ const Payment = () => {
   };
   const totalPayment = paymentList?.reduce((acc, i) => acc + i.amount, 0);
 
-  const current = new Date().toLocaleDateString("en-US", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
-  const date = `${current}`;
+
 
   const filterPayment = (e) =>{
     e.preventDefault()
-    axios.post(`http://booksbackenddev-env.eba-j6i2gjpq.us-east-1.elasticbeanstalk.com/api/payment/attributeSearch`,{
+    axios.post(`http://localhost:8080/api/payment/attributeSearch`,{
       leadName:clientName,
       serviceType,
       amount1:amount,

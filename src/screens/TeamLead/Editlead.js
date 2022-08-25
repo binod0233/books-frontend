@@ -37,7 +37,7 @@ const Editlead = () => {
     e.preventDefault();
     axios
       .put(
-        `http://booksbackenddev-env.eba-j6i2gjpq.us-east-1.elasticbeanstalk.com/api/lead/teamlead/update`,
+        `http://localhost:8080/api/lead/teamlead/update`,
         {
           email,
           name,

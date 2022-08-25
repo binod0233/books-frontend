@@ -1,44 +1,59 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Row,Col, DropdownButton, Dropdown, Form, Button, } from 'react-bootstrap';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import ArchiveIcon from '@mui/icons-material/Archive';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Leadscharts from '../../components/leads/Leadscharts';
-import Sidebar from '../../components/Sidebar';
 import SelectComponent from '../../components/SelectComponent';
+import {useNavigate} from 'react-router-dom'
 import axios from 'axios';
 
 const AdminAllLeads = () => {
-  const [leads, setLeads] = React.useState([]);
-  const [potential,setPotential] = React.useState([]);
-  const [message,setMessage] = React.useState('')
-  const getAllLeadsOfAClientManager = ()  => {
+  const navigate = useNavigate();
+  const [displayList,setDisplayList] = useState([]);
+  const [leads, setLeads] = useState([])
+   
+
+  //filter states
+  const [clientName, setClientName] = useState("");
+  const [status, setStatus] = useState("");
+  const [servicePlan, setServicePlan] = useState("");
+  const [date, setDate] = useState("");
+  const [amount, setAmount] = useState(0);
+  const [message,setMessage] = useState("")
+
+const localUser = JSON.parse(localStorage.getItem('user'));
+
+
+  const getAllLeads = ()  => {
     axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/leads`).then(res => {
       setLeads(res.data.responseList);
-    })
-  }
-  const handleInputChange=(e,leadId)=>{
-    console.log(e.target.value,leadId)
-    setPotential(e.target.value);
-    axios.put(`${process.env.REACT_APP_BASE_URL}/api/lead/leads/changepotential/${leadId}`,{potential:e.target.value}).then(res => {
-      if(res.status==='ok'){
-        setMessage("Difficulty Changed Successfully")
-      }else{
-        setMessage("There was a problem changing difficulty")
+      setDisplayList(res.data.responseList);
 
-      }
     })
-  }
+  } 
+ 
+
+  const applyFilter = (e) => {
+    e.preventDefault();
+    axios.post(`http://localhost:8080/api/lead/attributeSearch`,{
+       leadName:clientName,
+      serviceType:servicePlan,
+      potential:status,
+      date1:date,
+      amount:amount,
+    }).then((res) => {
+      setDisplayList(res.data.responseList);
+    })
+  };
 
   useEffect(() => {
-    getAllLeadsOfAClientManager();
+    getAllLeads();
+    if( localUser?.role!=='admin' ){
+      navigate("/")
+    }
   }, [])
-  const leadsdataList=[{shortName:" NJ",name:"  Niall Johnson",email:"nialljohnson@gmail.com",serviceType:"CDR Writing",contactImage:"/c1.png",contactNo:"+27 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},
-  {shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},
-  {shortName:" RG",name:"  Ramana Greg ",email:"ramana@gmail.com",serviceType:"CDR Writing",contactImage:"/c2.png",contactNo:"+968 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},{shortName:" NJ",name:"  Niall Johnson",email:"nialljohnson@gmail.com",serviceType:"CDR Writing",contactImage:"/c1.png",contactNo:"+27 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},
-  {shortName:" HS",name:"  Harjeet Singh ",email:"harjeet@gmail.com",serviceType:"CDR Writing",contactImage:"/india.png",contactNo:"+91 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"},
-  {shortName:" RG",name:"  Ramana Greg ",email:"ramana@gmail.com",serviceType:"CDR Writing",contactImage:"/c2.png",contactNo:"+968 9825364545",dealValue:"$600",lastFollowup:" 10 Aug 2018"}]
   return (
     <Row style={{backgrund:"#F1F1FA"}}>
       
@@ -161,13 +176,7 @@ const AdminAllLeads = () => {
   <Col md={2} style={{fontWeight:"",fontSize:"19px" }}>
     {/* <SelectComponent/> */}
     <div className="form-group ">
-                                   <select className="form-control" name="city" onChange={(e)=>handleInputChange(e,l.id)} style={{fontWeight:"700"}}>
-                                      
-                                       <option value="lost">Lost</option>
-                                       <option value="cold">Cold</option>
-                                       <option value="negotiating" style={{background:""}}>Negotiating</option>
-                                       <option value="won">Won</option>
-                                   </select>
+        {l.leadStatus}
                                </div>
   </Col>
 
@@ -207,7 +216,7 @@ const AdminAllLeads = () => {
 
 )}
 
-{leadsdataList.map((l,index)=>
+{leads?.map((l,index)=>
 
 <Row key={l.index} style={{background:"#fff",height:"70px"}} className="d-flex align-items-center justify-content-center mb-3">
   <Col md={2} style={{fontWeight:"",fontSize:"" }}>

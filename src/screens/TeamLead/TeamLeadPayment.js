@@ -47,7 +47,7 @@ const TeamLeadPayment = () => {
 
   const filterPayment = (e) =>{
     e.preventDefault()
-    axios.post(`http://booksbackenddev-env.eba-j6i2gjpq.us-east-1.elasticbeanstalk.com/api/payment/attributeSearch`,{
+    axios.post(`http://localhost:8080/api/payment/attributeSearch`,{
       leadName:clientName,
       serviceType,
       amount1:amount,

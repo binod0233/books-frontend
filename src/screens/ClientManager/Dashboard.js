@@ -71,7 +71,7 @@ const options=[
 useEffect(()=>{
   if(timeInterval){
 
-    axios.get(`http://booksbackenddev-env.eba-j6i2gjpq.us-east-1.elasticbeanstalk.com/api/lead/weekly-payments/client-manager/${timeInterval?.value}/${name}`).then(res => {
+    axios.get(`http://localhost:8080/api/lead/weekly-payments/client-manager/${timeInterval?.value}/${name}`).then(res => {
       setDisplayList(res.data.responseList)
     })
   }
