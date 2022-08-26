@@ -3,7 +3,7 @@ import {Row ,Col,Button,Form,Dropdown,DropdownButton} from 'react-bootstrap'
 import { useParams,useNavigate } from 'react-router-dom'
 import Leadscharts from '../../components/leads/Leadscharts'
 import axios from 'axios'
-import EditIcon from '@mui/icons-material/Edit';
+import EditIcon  from '@mui/icons-material/Edit';
 
 
 const TeamLeadAlllLeads = () => {
