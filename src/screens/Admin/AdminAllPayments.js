@@ -25,7 +25,7 @@ const AdminAllPayments = () => {
 
   const filterPayment = (e) =>{
     e.preventDefault()
-    axios.post(`REACT_APP_BASE_URL/api/payment/attributeSearch`,{
+    axios.post(`${process.env.REACT_APP_BASE_URL}/api/payment/attributeSearch`,{
       serviceType,
       amount1:amount,
       amount2:999999,

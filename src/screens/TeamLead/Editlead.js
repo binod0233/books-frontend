@@ -37,7 +37,7 @@ const Editlead = () => {
     e.preventDefault();
     axios
       .put(
-        `REACT_APP_BASE_URL/api/lead/teamlead/update`,
+        `${process.env.REACT_APP_BASE_URL}/api/lead/teamlead/update`,
         {
           email,
           name,

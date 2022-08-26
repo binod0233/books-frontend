@@ -28,7 +28,7 @@ export default function (props) {
         },
       };
 
-      axios.get(`REACT_APP_BASE_URL/api/user/login/${e}`,config).then((res) => {
+      axios.get(`${process.env.REACT_APP_BASE_URL}/api/user/login/${e}`,config).then((res) => {
         setLoggedIn(res.data);
         localStorage.setItem("user", JSON.stringify(res.data));
         if (res.data.role === "teamlead") {

@@ -20,7 +20,7 @@ const TeamLeadLeadDashboard = () => {
 
 
   const getLeadsOfATeamLead = () => {
-    axios.get(`REACT_APP_BASE_URL/api/lead/leads/getAllLeadsOfATeamLead/${teamLead}`)
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/leads/getAllLeadsOfATeamLead/${teamLead}`)
     .then(res => {
       setLeadList(res.data.responseList)
     }
@@ -28,14 +28,14 @@ const TeamLeadLeadDashboard = () => {
   }
 
   const getPaymentsOfATeamLead = () => {
-    axios.get(`REACT_APP_BASE_URL/api/payment/payments/getAllPaymentsOfATeamLead/${teamLead}`)
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/payments/getAllPaymentsOfATeamLead/${teamLead}`)
     .then(res => {
       setPaymentList(res.data.responseList)
     }
     )
   }
   const getClientManagersOfATeamLead = () => {
-    axios.get(`REACT_APP_BASE_URL/api/salesman/salesmen/getAllClientManagersOfATeamLead/${teamLead}`)
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/salesman/salesmen/getAllClientManagersOfATeamLead/${teamLead}`)
     .then(res => {
       setClientManagersList(res.data.responseList)
     }
@@ -43,7 +43,7 @@ const TeamLeadLeadDashboard = () => {
   }
 
   const getTeamLeadProfile = () => {
-    axios.get(`REACT_APP_BASE_URL/api/teamlead/teamleadId/${teamLead}`)
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/teamlead/teamleadId/${teamLead}`)
     .then(res => {
       setClientManagersList(res.data.responseList)
     }
@@ -51,11 +51,11 @@ const TeamLeadLeadDashboard = () => {
   }
 
   const fetchDataOfGivenTimeInterval = (timeInterval) =>{
-    axios.get(`REACT_APP_BASE_URL/api/lead/weekly-payments/team-lead/${timeInterval?.value}/${teamLead}`).then(res => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/weekly-payments/team-lead/${timeInterval?.value}/${teamLead}`).then(res => {
       setDisplayList(res.data.responseList)
       setLeadList(res.data.responseList)
   })
-  axios.get(`REACT_APP_BASE_URL/api/payment/weekly-payments/team-lead/${timeInterval?.value}/${teamLead}`).then(res => {
+  axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-lead/${timeInterval?.value}/${teamLead}`).then(res => {
       setPaymentList(res.data.responseList)
   })
 

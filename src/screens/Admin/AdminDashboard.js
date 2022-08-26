@@ -70,11 +70,10 @@ const AdminDashboard = () => {
   }
 
   const fetchDataOfGivenTimeInterval = (timeInterval) =>{
-    axios.get(`REACT_APP_BASE_URL/api/lead/weekly-payments/${timeInterval?.value}`).then(res => {
-      console.log(res.data.responseList)
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/weekly-payments/${timeInterval?.value}`).then(res => {
       console.log(res.data.responseList)
   })
-  axios.get(`REACT_APP_BASE_URL/api/payment/weekly-payments/${timeInterval?.value}`).then(res => {
+  axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/${timeInterval?.value}`).then(res => {
     console.log(res.data.responseList)
   })
 

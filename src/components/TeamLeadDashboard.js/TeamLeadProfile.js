@@ -38,7 +38,7 @@ const navigate = useNavigate()
                 <img src="/images/dashboard/contribution.png" alt="contribution" style={{height:"3vh",width:"3vh"}} className='img-fluid'/>
               </div>
               <span className='mt-3' style={{fontWeight:"600",fontSize:"20px"}}>10%</span>
-              <span className="mt-2" style={{fontWeight:"400",fontSize:"15px",color:"#64676B"}}>Contribution on Earning</span>
+              <span className="mt-2" style={{fontWeight:"400",fontSize:"15px",color:"#64676B"}}>Lost</span>
             </div>
           </Col>
         </Row>

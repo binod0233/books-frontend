@@ -81,13 +81,13 @@ console.log(timeInterval)
   const totalDuePayment = totalDealValue - totalEarned
 
   const fetchDataOfGivenTimeInterval = (timeInterval) =>{
-    axios.get(`REACT_APP_BASE_URL/api/lead/weekly-payments/client-manager/${timeInterval?.value}/${name}`).then(res => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/weekly-payments/client-manager/${timeInterval?.value}/${name}`).then(res => {
       setDisplayList(res.data.responseList)
       setLeadList(res.data.responseList)
   }
 )
 
-axios.get(`REACT_APP_BASE_URL/api/payment/weekly-payments/team-lead/${timeInterval?.value}/${name}`).then(res => {
+axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-lead/${timeInterval?.value}/${name}`).then(res => {
   setPaymentList(res.data.responseList)
 })
 }

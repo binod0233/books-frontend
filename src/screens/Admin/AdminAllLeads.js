@@ -37,7 +37,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
 
   const applyFilter = (e) => {
     e.preventDefault();
-    axios.post(`REACT_APP_BASE_URL/api/lead/attributeSearch`,{
+    axios.post(`${process.env.REACT_APP_BASE_URL}/api/lead/attributeSearch`,{
        leadName:clientName,
       serviceType:servicePlan,
       potential:status,

@@ -27,7 +27,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
   const [message,setMessage] = useState('')
   
   const getAllLeadsOfATeamLead = ()  => {
-    axios.get(`REACT_APP_BASE_URL/api/lead/leads/getAllLeadsOfATeamLead/${teamLead}`).then(res => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/leads/getAllLeadsOfATeamLead/${teamLead}`).then(res => {
       setLeads(res.data.responseList);
       setDisplayList(res.data.responseList);
     })
@@ -54,7 +54,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
 
   const applyFilter = (e) => {
     e.preventDefault();
-    axios.post(`REACT_APP_BASE_URL/api/lead/attributeSearch`,{
+    axios.post(`${process.env.REACT_APP_BASE_URL}/api/lead/attributeSearch`,{
        leadName:clientName,
       serviceType:servicePlan,
       potential:status,

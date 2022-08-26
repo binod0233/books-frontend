@@ -36,7 +36,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
   }
   const handleInputChange=(e,leadId,teamLead,leadName,clientManager)=>{
     axios
-      .put(`REACT_APP_BASE_URL/api/lead/leads/changepotential/${leadId}`, {
+      .put(`${process.env.REACT_APP_BASE_URL}/api/lead/leads/changepotential/${leadId}`, {
         potential: e.target.value,
         teamLead,
         leadId,
@@ -56,7 +56,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
 
   const applyFilter = (e) => {
     e.preventDefault();
-    axios.post(`REACT_APP_BASE_URL/api/lead/attributeSearch`,{
+    axios.post(`${process.env.REACT_APP_BASE_URL}/api/lead/attributeSearch`,{
        leadName:clientName,
       serviceType:servicePlan,
       potential:status,

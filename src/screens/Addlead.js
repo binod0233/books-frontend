@@ -88,12 +88,12 @@ const addALead=(e)=>{
   )
 }
 const getTeamLeads=()=>{
-  axios.get(`REACT_APP_BASE_URL/api/user/teamlead/getAll`).then(res=>{
+  axios.get(`${process.env.REACT_APP_BASE_URL}/api/user/teamlead/getAll`).then(res=>{
     setTeamLeadList(res.data.responseList)
   })
 }
 const getClientManagers=()=>{
-  axios.get(`REACT_APP_BASE_URL/api/user/clientmanager/getAll`).then(res=>{
+  axios.get(`${process.env.REACT_APP_BASE_URL}/api/user/clientmanager/getAll`).then(res=>{
     setClientManagerList(res.data.responseList)
   })
 }
