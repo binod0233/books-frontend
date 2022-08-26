@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from 'react'
 
-import { Col, Row,} from 'react-bootstrap'
+import { Col, Row,Button} from 'react-bootstrap'
 import PaymentRow from '../../components/dashboard/PaymentRow'
 
 import EarningStats from '../../components/TeamLeadDashboard.js/EarningStats'
@@ -14,8 +14,8 @@ const AdminDashboard = () => {
   const [topLeads,setTopLeads] = useState([])
   const [teamLeadStats,setTeamLeadStats] = useState({})
   const [clientManagerStats,setClientManagerStats] = useState({})
+  const [clickedTime,setClickedTime] = useState("")
 
- 
 
   useEffect(() => {
     getTopTeamLeads()
@@ -69,11 +69,33 @@ const AdminDashboard = () => {
     )
   }
 
+  const fetchDataOfGivenTimeInterval = (timeInterval) =>{
+    axios.get(`REACT_APP_BASE_URL/api/lead/weekly-payments/${timeInterval?.value}`).then(res => {
+      console.log(res.data.responseList)
+      console.log(res.data.responseList)
+  })
+  axios.get(`REACT_APP_BASE_URL/api/payment/weekly-payments/${timeInterval?.value}`).then(res => {
+    console.log(res.data.responseList)
+  })
+
+}
+
+
   return (
     <div className='px-4'>
       
       <Row style={{background:"#F1F1FA"}}>
-     
+      <div className='pb-3' style={{display:"flex",justifyContent:"space-between"}}>
+        <div className="ps-5 pt-3">
+           <strong>Welcome Admin !</strong><br/>
+          
+        </div>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",width:"300px",marginLeft:"auto", marginRight:"5vh",marginTop:"3vh"}}>
+        <Button style={{background:clickedTime==="weekly"?"black":"white",height:"35px",width:"fit-content",borderRadius:"2px",width:"90px",boxShadow:"1px 1px 1px rgba(0, 0, 0, 0.05",border:" 0.7px solid #D9D9D9",color:clickedTime==="weekly"?"white":"black"}} onClick={()=>{fetchDataOfGivenTimeInterval("weekly");setClickedTime("weekly")}}>7 days</Button>
+        <Button style={{background:clickedTime==="semimonthly"?"black":"white",height:"35px",width:"fit-content",borderRadius:"2px",width:"90px",boxShadow:"1px 1px 1px rgba(0, 0, 0, 0.05",border:"0.7px solid #D9D9D9",color:clickedTime==="semimonthly"?"white":"black"}} onClick={()=>{fetchDataOfGivenTimeInterval("semimonthly");setClickedTime("semimonthly")}}>15 days</Button>
+        <Button style={{background:clickedTime==="monthly"?"black":"white",height:"35px",width:"fit-content",borderRadius:"2px",width:"90px",boxShadow:"1px 1px 1px rgba(0, 0, 0, 0.05",border:"0.7px solid #D9D9D9",color:clickedTime==="monthly"?"white":"black"}} onClick={()=>{fetchDataOfGivenTimeInterval("monthly");setClickedTime("monthly")}}>Month</Button>
+      </div>
+      </div>
      
         <EarningStats/>
               <PaymentRow/>

@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import OverviewRow from '../../components/dashboard/OverviewRow'
 import PaymentRow from '../../components/dashboard/PaymentRow'
 import StatsRow from '../../components/dashboard/StatsRow'
-import {Row,Col} from 'react-bootstrap';
+import {Row,Col, Button} from 'react-bootstrap';
 import axios from "axios"
 import { useNavigate, useParams } from 'react-router-dom'
 import Select from 'react-select'
@@ -21,6 +21,7 @@ const Dashboard = () => {
   const [clientManager, setClientManager] = useState({})
   const [displayList,setDisplayList] = useState([])
   const localUser = JSON.parse(localStorage.getItem('user'))
+  const [clickedTime,setClickedTime] = useState("")
 
 const options=[
 {value:'weekly', label:'Weekly'},
@@ -68,14 +69,7 @@ const options=[
     getAllPaymentsOfAClientManager();
     getClientManagerById()
   },[])
-useEffect(()=>{
-  if(timeInterval){
 
-    axios.get(`http://localhost:8080/api/lead/weekly-payments/client-manager/${timeInterval?.value}/${name}`).then(res => {
-      setDisplayList(res.data.responseList)
-    })
-  }
-},[timeInterval])
 
 console.log(timeInterval)
 
@@ -86,9 +80,34 @@ console.log(timeInterval)
   const conversion = totalSales/totalLeads*100
   const totalDuePayment = totalDealValue - totalEarned
 
+  const fetchDataOfGivenTimeInterval = (timeInterval) =>{
+    axios.get(`REACT_APP_BASE_URL/api/lead/weekly-payments/client-manager/${timeInterval?.value}/${name}`).then(res => {
+      setDisplayList(res.data.responseList)
+      setLeadList(res.data.responseList)
+  }
+)
+
+axios.get(`REACT_APP_BASE_URL/api/payment/weekly-payments/team-lead/${timeInterval?.value}/${name}`).then(res => {
+  setPaymentList(res.data.responseList)
+})
+}
+
 
   return (
     <Row >
+      <div style={{display:"flex",justifyContent:"space-between"}}>
+        <div className="ps-5 pt-3">
+          Hello <strong>Suman Subedi !</strong><br/>
+          Welcome to your Dashboard
+        </div>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",width:"300px",marginLeft:"auto", marginRight:"5vh",marginTop:"3vh"}}>
+        <Button style={{background:clickedTime==="weekly"?"black":"white",height:"35px",width:"fit-content",borderRadius:"2px",width:"90px",boxShadow:"1px 1px 1px rgba(0, 0, 0, 0.05",border:"0.7px solid #D9D9D9",color:clickedTime==="weekly"?"white":"black"}} onClick={()=>{fetchDataOfGivenTimeInterval("weekly");setClickedTime("weekly")}}>7 days</Button>
+        <Button style={{background:clickedTime==="semimonthly"?"black":"white",height:"35px",width:"fit-content",borderRadius:"2px",width:"90px",boxShadow:"1px 1px 1px rgba(0, 0, 0, 0.05",border:"0.7px solid #D9D9D9",color:clickedTime==="semimonthly"?"white":"black"}} onClick={()=>{fetchDataOfGivenTimeInterval("semimonthly");setClickedTime("semimonthly")}}>15 days</Button>
+        <Button style={{background:clickedTime==="monthly"?"black":"white",height:"35px",width:"fit-content",borderRadius:"2px",width:"90px",boxShadow:"1px 1px 1px rgba(0, 0, 0, 0.05",border:"0.7px solid #D9D9D9",color:clickedTime==="monthly"?"white":"black"}} onClick={()=>{fetchDataOfGivenTimeInterval("monthly");setClickedTime("monthly")}}>Month</Button>
+
+      </div>
+      </div>
+      
      
     <div className='px-4' style={{background:"#F1F1FA"}}>
       <Row>

@@ -52,6 +52,10 @@ label {
   height: 100vh;
 }
 
+.btn:focus{
+  box-shadow: none !important;
+}
+
 .sign1-form {
   width: 800px;
 

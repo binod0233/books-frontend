@@ -37,7 +37,7 @@ const Editlead = () => {
     e.preventDefault();
     axios
       .put(
-        `http://localhost:8080/api/lead/teamlead/update`,
+        `REACT_APP_BASE_URL/api/lead/teamlead/update`,
         {
           email,
           name,

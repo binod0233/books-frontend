@@ -7,7 +7,7 @@ const AllClientManagers = () => {
   const [clientManagersList,setClientManagerList] = useState([])
 
   useEffect(()=>{
-    axios.get(`http://localhost:8080/api/salesman/salesmen`).then((res)=>{
+    axios.get(`REACT_APP_BASE_URL/api/salesman/salesmen`).then((res)=>{
       setClientManagerList()
     })
   },[])

@@ -27,14 +27,14 @@ const localUser = JSON.parse(localStorage.getItem('user'));
   const [message,setMessage] = useState('')
   
   const getAllLeadsOfATeamLead = ()  => {
-    axios.get(`http://localhost:8080/api/lead/leads/getAllLeadsOfATeamLead/${teamLead}`).then(res => {
+    axios.get(`REACT_APP_BASE_URL/api/lead/leads/getAllLeadsOfATeamLead/${teamLead}`).then(res => {
       setLeads(res.data.responseList);
       setDisplayList(res.data.responseList);
     })
   }
   // const handleInputChange=(e,leadId,teamLead,leadName,clientManager)=>{
   //   axios
-  //     .put(`http://localhost:8080/api/lead/leads/changepotential/${leadId}`, {
+  //     .put(`REACT_APP_BASE_URL/api/lead/leads/changepotential/${leadId}`, {
   //       potential: e.target.value,
   //       teamLead,
   //       leadId,
@@ -54,7 +54,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
 
   const applyFilter = (e) => {
     e.preventDefault();
-    axios.post(`http://localhost:8080/api/lead/attributeSearch`,{
+    axios.post(`REACT_APP_BASE_URL/api/lead/attributeSearch`,{
        leadName:clientName,
       serviceType:servicePlan,
       potential:status,

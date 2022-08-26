@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'
-import { Col, Row } from 'react-bootstrap'
+import { Col, Row, Button } from 'react-bootstrap'
 import PaymentRow from '../../components/dashboard/PaymentRow'
 import EarningStats from '../../components/TeamLeadDashboard.js/EarningStats'
 import TeamLeadProfile from '../../components/TeamLeadDashboard.js/TeamLeadProfile'
@@ -14,10 +14,13 @@ const TeamLeadLeadDashboard = () => {
   const [leadList,setLeadList] = useState([])
   const [paymentList,setPaymentList] = useState([])
   const [clientManagerList,setClientManagersList] = useState([])
+  const [clickedTime,setClickedTime] = useState("")
+  const [displayList,setDisplayList] = useState([])
+
 
 
   const getLeadsOfATeamLead = () => {
-    axios.get(`http://localhost:8080/api/lead/leads/getAllLeadsOfATeamLead/${teamLead}`)
+    axios.get(`REACT_APP_BASE_URL/api/lead/leads/getAllLeadsOfATeamLead/${teamLead}`)
     .then(res => {
       setLeadList(res.data.responseList)
     }
@@ -25,14 +28,14 @@ const TeamLeadLeadDashboard = () => {
   }
 
   const getPaymentsOfATeamLead = () => {
-    axios.get(`http://localhost:8080/api/payment/payments/getAllPaymentsOfATeamLead/${teamLead}`)
+    axios.get(`REACT_APP_BASE_URL/api/payment/payments/getAllPaymentsOfATeamLead/${teamLead}`)
     .then(res => {
       setPaymentList(res.data.responseList)
     }
     )
   }
   const getClientManagersOfATeamLead = () => {
-    axios.get(`http://localhost:8080/api/salesman/salesmen/getAllClientManagersOfATeamLead/${teamLead}`)
+    axios.get(`REACT_APP_BASE_URL/api/salesman/salesmen/getAllClientManagersOfATeamLead/${teamLead}`)
     .then(res => {
       setClientManagersList(res.data.responseList)
     }
@@ -40,12 +43,23 @@ const TeamLeadLeadDashboard = () => {
   }
 
   const getTeamLeadProfile = () => {
-    axios.get(`http://localhost:8080/api/teamlead/teamleadId/${teamLead}`)
+    axios.get(`REACT_APP_BASE_URL/api/teamlead/teamleadId/${teamLead}`)
     .then(res => {
       setClientManagersList(res.data.responseList)
     }
     )
   }
+
+  const fetchDataOfGivenTimeInterval = (timeInterval) =>{
+    axios.get(`REACT_APP_BASE_URL/api/lead/weekly-payments/team-lead/${timeInterval?.value}/${teamLead}`).then(res => {
+      setDisplayList(res.data.responseList)
+      setLeadList(res.data.responseList)
+  })
+  axios.get(`REACT_APP_BASE_URL/api/payment/weekly-payments/team-lead/${timeInterval?.value}/${teamLead}`).then(res => {
+      setPaymentList(res.data.responseList)
+  })
+
+}
 
 
   useEffect(() => {
@@ -73,7 +87,17 @@ const TeamLeadLeadDashboard = () => {
 
   return (
     <Row style={{background:"#F1F1FA"}}>
-     
+      <div className='pb-3' style={{display:"flex",justifyContent:"space-between"}}>
+        <div className="ps-5 pt-3">
+          Hello <strong>Suman Subedi !</strong><br/>
+          Welcome to your Dashboard
+        </div>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",width:"300px",marginLeft:"auto", marginRight:"5vh",marginTop:"3vh"}}>
+        <Button style={{background:clickedTime==="weekly"?"black":"white",height:"35px",width:"fit-content",borderRadius:"2px",width:"90px",boxShadow:"1px 1px 1px rgba(0, 0, 0, 0.05",border:"0.7px solid #D9D9D9",color:clickedTime==="weekly"?"white":"black"}} onClick={()=>{fetchDataOfGivenTimeInterval("weekly");setClickedTime("weekly")}}>7 days</Button>
+        <Button style={{background:clickedTime==="semimonthly"?"black":"white",height:"35px",width:"fit-content",borderRadius:"2px",width:"90px",boxShadow:"1px 1px 1px rgba(0, 0, 0, 0.05",border:"0.7px solid #D9D9D9",color:clickedTime==="semimonthly"?"white":"black"}} onClick={()=>{fetchDataOfGivenTimeInterval("semimonthly");setClickedTime("semimonthly")}}>15 days</Button>
+        <Button style={{background:clickedTime==="monthly"?"black":"white",height:"35px",width:"fit-content",borderRadius:"2px",width:"90px",boxShadow:"1px 1px 1px rgba(0, 0, 0, 0.05",border:"0.7px solid #D9D9D9",color:clickedTime==="monthly"?"white":"black"}} onClick={()=>{fetchDataOfGivenTimeInterval("monthly");setClickedTime("monthly")}}>Month</Button>
+      </div>
+      </div>
         <TeamLeadProfile/>
         <EarningStats/>
               <PaymentRow/>

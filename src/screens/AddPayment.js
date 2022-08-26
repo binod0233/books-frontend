@@ -90,7 +90,7 @@ const AddPayment = () => {
 
   useEffect(()=>{
     axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/paymentId/${paymentId}`).then(res=>setPayment(res.data))
-    axios.get(`http://localhost:8080/api/user/clientmanager/getAll`).then(res=>{
+    axios.get(`REACT_APP_BASE_URL/api/user/clientmanager/getAll`).then(res=>{
       setClientManagerList(res.data.responseList)
     })
   },[paymentId])

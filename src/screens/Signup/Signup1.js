@@ -38,9 +38,14 @@ const Signup1 = () => {
 
   useEffect(()=>{
     const user=JSON.parse(localStorage.getItem("user"))
-    if(user.role!=="admin"){
+    if(user.role!=="admin" && user.role!=="teamlead"){
       navigate("/")
        
+    }
+    if(user.role=="admin"){
+      setRole("teamlead")
+    }else{
+      setRole("clientmanager")
     }
   },[])
   return (
@@ -145,17 +150,6 @@ Already have an account? <a href="/">Log in</a></p>
             /> 
             </div>
          
-          <div className="form-group mt-3" style={{background:"#fff"}}>
-            <label style={{fontWeight:"300",fontSize:"20px",background:"#fff"}}>What is your current Role?</label>
-            <select  onChange={(e)=>setRole(e.target.value)}>
-            <option value="clientmanager">Client Manager</option>
-
-  <option value="teamlead">Team Lead</option>
-  <option value="admin">Admin</option>
-
-</select>
-            
-            </div>
             <div className="d-grid gap-2 mt-3 " style={{background:"#fff"}}>
             <button type="submit" className="btn px-5 my-4" style={{fontSize:"20px", background:"#000",color:"#fff"}} >
               Submit
