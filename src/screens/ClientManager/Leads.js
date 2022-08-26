@@ -318,6 +318,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                         fontWeight: "400",
                       }}
                       className="d-flex justify-content-center align-items-center  "
+                      onClick={()=>navigate(`/lead/profile/${l.id}`)}
                     >
                       {l.name.split(" ").map((n) => n[0])}
                     </div>
