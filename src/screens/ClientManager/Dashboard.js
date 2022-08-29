@@ -95,15 +95,24 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
 
   return (
     <Row >
-      <div style={{display:"flex",justifyContent:"space-between"}}>
+      <div style={{display:"flex",justifyContent:"space-between, alignItems:'center'"}}>
         <div className="ps-5 pt-3">
-          Hello <strong>Suman Subedi !</strong><br/>
-          Welcome to your Dashboard
+          Hello <span style={{fontWeight:'700', fontSize:'1.2rem'}}>{name}</span><br/>
+        <div style={{color:"#64676B"}}>
+        Welcome to your Dashboard
+
+        </div> 
         </div>
-      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",width:"300px",marginLeft:"auto", marginRight:"5vh",marginTop:"3vh"}}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",width:"300px",marginLeft:"auto", marginRight:"5vh"}}>
+      <div>
         <Button style={{background:clickedTime==="weekly"?"black":"white",height:"35px",width:"fit-content",borderRadius:"2px",width:"90px",boxShadow:"1px 1px 1px rgba(0, 0, 0, 0.05",border:"0.7px solid #D9D9D9",color:clickedTime==="weekly"?"white":"black"}} onClick={()=>{fetchDataOfGivenTimeInterval("weekly");setClickedTime("weekly")}}>7 days</Button>
+      </div>
+      <div>
         <Button style={{background:clickedTime==="semimonthly"?"black":"white",height:"35px",width:"fit-content",borderRadius:"2px",width:"90px",boxShadow:"1px 1px 1px rgba(0, 0, 0, 0.05",border:"0.7px solid #D9D9D9",color:clickedTime==="semimonthly"?"white":"black"}} onClick={()=>{fetchDataOfGivenTimeInterval("semimonthly");setClickedTime("semimonthly")}}>15 days</Button>
+      </div>
+      <div>
         <Button style={{background:clickedTime==="monthly"?"black":"white",height:"35px",width:"fit-content",borderRadius:"2px",width:"90px",boxShadow:"1px 1px 1px rgba(0, 0, 0, 0.05",border:"0.7px solid #D9D9D9",color:clickedTime==="monthly"?"white":"black"}} onClick={()=>{fetchDataOfGivenTimeInterval("monthly");setClickedTime("monthly")}}>Month</Button>
+      </div>
 
       </div>
       </div>
@@ -128,31 +137,8 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
 
        <div style={{background:"#fff"}} className='mx-4 ps-3 pe-3' >
         <div style={{display:'flex',justifyContent:"space-between",paddingTop:"10px"}}>
-          <span style={{fontSize:'22px',fontWeight:"600",margin:"10px"}}>Top Leads </span>
-      {/*
-      <DropdownButton
-        
-        
-      size="sm"
-         variant="outline-secondary"
-         title="Monthly"
-         id="dropdown-basic"
-         style={{width:"fit-content"}}
-         
-       
-       >
-         
-         
-         <Dropdown.Item href="#">demo   </Dropdown.Item>
-         <Dropdown.Divider />
-         <Dropdown.Item href="#">demo</Dropdown.Item>
-         <Dropdown.Divider />
-         <Dropdown.Item href="#"> demo</Dropdown.Item>
-         <Dropdown.Divider />
-         <Dropdown.Item href="#">demo</Dropdown.Item>
-       
-       </DropdownButton>
-    */}
+          <span style={{fontSize:'1.3rem',fontWeight:"600",margin:".8rem"}}>Top Leads </span>
+     
 <Select options={options} onChange={(e)=>setTimeInterval(e)} />
 
         </div>
@@ -160,7 +146,7 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
         <div
         className="mt-3"
         style={{
-          fontSize: "22px",
+          fontSize: "1.2rem",
           fontWeight: "700",
           background: "white",
           display: "flex",
@@ -172,7 +158,7 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
           className=""
           style={{
             width: "80%",
-            fontSize: "20px",
+            fontSize: "1.1rem",
             fontWeight: "700",
             height: "70px",
             display: "flex",
@@ -229,7 +215,7 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
           style={{
             color: "black",
             fontWeight: "700",
-            fontSize: "22px",
+            fontSize: "1.2rem",
             lineHeight: "25px",
             marginLeft: "8px",
           }}
@@ -324,7 +310,7 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
     ))}
     
     <div className='d-flex justify-content-end align-items-center'>
-<button onClick={()=>navigate("/leads/name")} style={{ border:'none', background:'#3144E7', fontSize:'20px', color:'white', borderRadius:'2px', padding:'6px 20px',marginTop:'1rem', marginBottom:'3rem'}}>View All</button>
+<button onClick={()=>navigate("/leads/name")} style={{ border:'none', background:'#3144E7', fontSize:'1.1rem', color:'white', borderRadius:'2px', padding:'6px 1.1rem',marginTop:'1rem', marginBottom:'3rem'}}>View All</button>
 </div>
 
 

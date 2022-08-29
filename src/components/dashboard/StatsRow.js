@@ -8,16 +8,19 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
   const navigate = useNavigate();
   return (
     <div className="">
-      <Row className="ps-4  pe-0 py-3">
+      <Row className="ps-4  pe-0 py-2">
         <Col md={6} className="py-2 px-4">
           <Row
-            style={{ background: "#fff", height: "40vh" }}
+            style={{ background: "#fff", height: "" }}
             className="p-2"
           >
-            <Col md={6} className="px-2 py-2">
+          <Row style={{fontSize:'1.2rem',fontWeight:'700'}}>
+            Quick Stats View
+          </Row>
+            <Col md={6} className="px-2 py-2  ">
               <div
                 className="d-flex justify-content-center align-items-center"
-                style={{ border: "2px solid #DD2A7B", height: "14vh" }}
+                style={{ border: "2px solid #DD2A7B", height: "15vh" }}
               >
                 <div>
                   <div className="d-flex flex-col">
@@ -67,7 +70,7 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
                   </div>
 
                   <span style={{ color: "#64676B", fontSize: "14px" }}>
-                    TOTAL No. of Sales
+                    TOTAL NO. OF SALES
                   </span>
                 </div>
               </div>
@@ -96,7 +99,7 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
                   </div>
 
                   <span style={{ color: "#64676B", fontSize: "14px" }}>
-                    TOTAL Leads
+                    TOTAL LEADS
                   </span>
                 </div>
               </div>
@@ -132,11 +135,12 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
             </Col>
           </Row>
         </Col>
-        <Col md={6} className="py-2">
-          <div style={{ background: "#fff", height: "40vh" }}>
-            {/* <Line options={options} data={data} /> */}
-            <LineChart />
-            <Stack direction="horizontal" gap={3} className="pt-4 ps-2">
+        <Col md={6} className="py-2 pe-0">
+          <div style={{ background: "#fff", height: "" }}>
+           <Row className="ps-3 pe-3">
+           <LineChart />
+           </Row>
+            <Stack direction="horizontal" gap={3} className=" ps-2  pt-2 pb-2">
               <span
                 style={{
                   font: "arial",
@@ -149,37 +153,36 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
               </span>
               <span className="text-muted">This week</span>
               <span
-                className=" btn ms-auto px-1 "
+                className=" ms-auto px-1 "
                 style={{
                   font: "arial",
                   fontWeight: "700",
-                  fontSize: "20px",
-                  lineHeight: "23px",
+                  fontSize: "1rem",
+                  marginRight:'1%'
+
                 }}
               >
-                <Button
-                  bsPrefix="outline-primary"
-                  size="sm"
-                  variant="outline-primary"
+                <button
                   style={{
                     color: "#3F50F0",
                     borderColor: "#3F50F0",
                     backgroundColor: "white",
+                    borderRadius:'2px'
                   }}
                   onClick={() => {navigate(`/payment/${name}`)}}
                 >
 
                   More Details
-                </Button>
+                </button>
               </span>
             </Stack>
           </div>
         </Col>
         <Col md={6} className="py-2">
-          <div className="p-2" style={{ background: "#fff", height: "40vh" }}>
-            <h5>Total Sales</h5>
+          <div className="p-2" style={{ background: "#fff", height: "" }}>
+            <Row className="ps-2" style={{fontSize:"1.2rem" , fontWeight:'700'}}>Total Sales</Row>
             <Stack direction="horizontal" gap={3}>
-              <div style={{ width: "50%", height: "50%" }}>
+              <div style={{ width: "56%", height: "100%" }}>
                 {/* <Pie
                   // className="pt-5"
                   data={pieData}
@@ -194,14 +197,14 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
                 <strong className="pt-4">Due Amount:70%</strong>
               </div>
             </Stack>
-            <h5 className="pt-2">Total Deal Value: $2700</h5>
+            <Row className="pt-2  ps-5" style={{fontSize:'1.2rem', fontWeight:'700'}}>Total Deal Value: $2700</Row>
           </div>
         </Col>
         <Col md={6} className="py-2">
           <Stack
-            className="p-1"
+            className="p-2"
             gap={1}
-            style={{ background: "#fff", height: "40vh" }}
+            style={{ background: "#fff", height: "" }}
           >
             <span
               className="pb-2"
@@ -209,20 +212,21 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
                 font: "arial",
                 fontWeight: "700",
                 color: "#222529",
-                fontSize: "22px",
-                lineHeight: "25.3px",
+                fontSize: "1.2rem",
+                // lineHeight: "25.3px",
               }}
             >
               Quick Overview
             </span>
+            <div style={{height:'25vh', display:"flex", flexDirection:'column',justifyContent:"center"}}>
             <div
-              className="d-flex flex-row py-1"
+              className="d-flex flex-row pt-2 "
               style={{
                 font: "arial",
                 fontWeight: "400",
                 color: "#222529",
-                fontSize: "22px",
-                lineHeight: "23px",
+                fontSize: "1.2rem",
+                // lineHeight: "23px",
               }}
             >
               <span>Deal Amount</span>
@@ -235,13 +239,13 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
               style={{ background: "#B8AAEE" }}
             />
             <div
-              className="d-flex flex-row py-1"
+              className="d-flex flex-row pt-2 "
               style={{
                 font: "arial",
                 fontWeight: "400",
                 color: "#222529",
-                fontSize: "22px",
-                lineHeight: "23px",
+                fontSize: "1.2rem",
+                // lineHeight: "23px",
               }}
             >
               {" "}
@@ -254,13 +258,13 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
               style={{ background: "#F9AAA7" }}
             />
             <div
-              className="d-flex flex-row py-1"
+              className="d-flex flex-row pt-2"
               style={{
                 font: "arial",
                 fontWeight: "400",
                 color: "#222529",
-                fontSize: "22px",
-                lineHeight: "23px",
+                fontSize: "1.2rem",
+                // lineHeight: "23px",
               }}
             >
               {" "}
@@ -273,25 +277,28 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
               style={{ background: " #F2E3B5" }}
             />
 
+            </div>
             <span
-              className="pt-2"
+              className=""
               style={{
                 font: "arial",
                 fontWeight: "700",
                 color: "#222529",
-                fontSize: "20px",
-                lineHeight: "23px",
+                fontSize: "1.1rem",
+                // lineHeight: "23px",
               }}
             >
               Total Leads: 310
             </span>
+
             <span
               style={{
                 font: "arial",
                 fontWeight: "700",
                 color: "#222529",
-                fontSize: "20px",
-                lineHeight: "23px",
+                fontSize: "1.1rem",
+                // lineHeight: "23px",
+                paddingBottom:'1rem'
               }}
             >
               Total Sales: 2700

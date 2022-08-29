@@ -10,10 +10,10 @@ const OverviewRow = ({ name, email,id,role,teamLead, totalSales, conversion, tot
 
   )
   return (
-    <div className="py-4">
+    <div className="py-3">
       <div
         className="ProfileOverview"
-        style={{ background: "white", height: "82vh", padding: "1vh" }}
+        style={{ background: "white", height: "", padding: "1vh" }}
       >
         <div
           style={{
@@ -26,7 +26,7 @@ const OverviewRow = ({ name, email,id,role,teamLead, totalSales, conversion, tot
             color: "white",
           }}
         >
-          <div style={{ fontWeight: "700", fontSize: "20px" , cursor:'pointer'}}>Profile</div>
+          <div style={{ fontWeight: "700", fontSize: "1.2rem" , cursor:'pointer'}}>Profile</div>
           <div>
             <SettingsIcon style={{ cursor:'pointer'}} />
           </div>
@@ -46,7 +46,7 @@ const OverviewRow = ({ name, email,id,role,teamLead, totalSales, conversion, tot
           />
         </div>
         <div className="d-flex flex-column justify-content-center align-items-center">
-          <div style={{ fontWeight: "700", fontSize: "20px" }}>{name}</div>
+          <div style={{ fontWeight: "700", fontSize: "1.2rem" }}>{name}</div>
           <div style={{ color: "#92959A", fontSize: "15px" }}>{email}</div>
         </div>
 
@@ -58,7 +58,7 @@ const OverviewRow = ({ name, email,id,role,teamLead, totalSales, conversion, tot
             className="d-flex flex-column align-items-center"
             style={{
               borderRight: "2px solid #CDCDCD",
-              fontSize: "12px",
+              fontSize: ".9rem",
               color: "grey",
               width: "50%",
             }}
@@ -94,7 +94,7 @@ const OverviewRow = ({ name, email,id,role,teamLead, totalSales, conversion, tot
           </div>
           <div
             className="d-flex flex-column align-items-center"
-            style={{ fontSize: "12px", color: "grey", width: "50%" }}
+            style={{ fontSize: ".9rem", color: "grey", width: "50%" }}
           >
             <div
               style={{
@@ -129,13 +129,13 @@ const OverviewRow = ({ name, email,id,role,teamLead, totalSales, conversion, tot
 
         <div
           className="d-flex flex-column align-items-center"
-          style={{ marginTop: "1vh",marginBottom:'1vh ' }}
+          style={{ marginTop: "3vh",marginBottom:'2vh ' }}
         >
-          <Button onClick={()=>navigate(`/clientmanager/profile/${id}`)} style={{ fontSize: "16px", background: "#DD2A7B" , border:'none',padding:'6px 12px', cursor:'pointer'}}>
+          <Button onClick={()=>navigate(`/clientmanager/profile/${id}`)} style={{ fontSize: "1rem", background: "#DD2A7B" , border:'none',padding:'6px .9rem', cursor:'pointer'}}>
             <HistoryEduIcon style={{marginRight:'.3rem'}}/>Edit Profile
           </Button>
         </div>
-        <div style={{background:'#FFC3DE' , borderRadius:'8px', height:'32vh'}}>
+        <div style={{background:'#FFC3DE' , borderRadius:'8px', height:''}}>
         <div
         className="d-flex flex-column"
         style={{
@@ -143,7 +143,7 @@ const OverviewRow = ({ name, email,id,role,teamLead, totalSales, conversion, tot
           height: "100%",
           width: "100%",
           borderRadius: "5px",
-          padding: "10px",
+          padding: ".8rem",
         }}
       >
         <h6 style={{ fontFamily: "Arial", fontWeight: "600" }}>
@@ -155,8 +155,8 @@ const OverviewRow = ({ name, email,id,role,teamLead, totalSales, conversion, tot
             marginTop: "1vh",
             height: "14vh",
             background: "white",
-            margin: "0 15px",
-            borderRadius: "10px",
+            margin: "0 1rem",
+            borderRadius: ".8rem",
           }}
         >
           <img
@@ -164,26 +164,26 @@ const OverviewRow = ({ name, email,id,role,teamLead, totalSales, conversion, tot
             alt="wallet"
             style={{ height: "4vh", marginTop: "2vh" }}
           />
-          <span style={{ fontWeight: "700", fontSize: "16px" }}>
-            $ <span style={{ fontSize: "20px" }}>{totalEarned}</span>
+          <span style={{ fontWeight: "700", fontSize: "1rem" }}>
+            $ <span style={{ fontSize: "1.2rem" }}>{totalEarned}</span>
           </span>
-          <span style={{ color: "#92959A", fontSize: "16px" }}>
+          <span style={{ color: "#92959A", fontSize: "1rem" }}>
             Total Earning
           </span>
         </div>
         <div
           className="d-flex flex-column justify-content-start align-items-center"
-          style={{ fontSize: "16px" }}
+          style={{ fontSize: "1rem" }}
         >
-          <div className="mt-2">
-            <span style={{fontWeight:"400",fontSize:'16px'}}>Team Name</span>
-            <span style={{ fontWeight: "600", fontSize:'16px' }}> San Antonio</span>
+          <div className="mt-3">
+            <span style={{fontWeight:"400",fontSize:'1rem'}}>Team Name</span>
+            <span style={{ fontWeight: "600", fontSize:'1rem' }}> San Antonio</span>
           </div>
           <div>
-            <span style={{fontWeight:"400",fontSize:'16px'}}>Team Lead</span>
-            <span style={{ fontWeight: "600", fontSize:'16px' }}> Suman Subedi</span>
+            <span style={{fontWeight:"400",fontSize:'1rem'}}>Team Lead</span>
+            <span style={{ fontWeight: "600", fontSize:'1rem' }}> Suman Subedi</span>
           </div>
-          <Button onClick={()=>navigate(`/teamlead/dashboard/${teamLead}`)} style={{ fontSize: "16px", background: "#DD2A7B" , border:'none', marginTop:'.5vh',  cursor:'pointer'}}>
+          <Button onClick={()=>navigate(`/teamlead/dashboard/${teamLead}`)} style={{ fontSize: "1rem", background: "#DD2A7B" , border:'none', marginTop:'.5vh',  cursor:'pointer'}}>
             View Team
           </Button>
         </div>

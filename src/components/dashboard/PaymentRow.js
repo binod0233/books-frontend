@@ -274,7 +274,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                 marginTop: "12px",
               }}
             >
-              Total Deal Value
+              TOTAL DEAL VALUE
             </span>
             <span
               style={{
@@ -287,7 +287,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
               It includes the total value of the Deal.
             </span>
             {
-            localStorage.getItem("user").role==="clientManager"?(  <Button onClick={()=>navigate(`/leads/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+            localStorage.getItem("user").role==="clientmanager"?(  <Button onClick={()=>navigate(`/leads/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
             View All
           </Button>)
             :
@@ -376,7 +376,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
             </span>
 
             {
-            localStorage.getItem("user").role==="clientManager"?(  <Button onClick={()=>navigate(`/payment/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+            localStorage.getItem("user").role==="clientmanager"?(  <Button onClick={()=>navigate(`/payment/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
             View All
           </Button>)
             :
@@ -463,7 +463,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
             </span>
 
             {
-            localStorage.getItem("user").role==="clientManager"?(  <Button onClick={()=>navigate(`/payment/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+            localStorage.getItem("user").role==="clientmanager"?(  <Button onClick={()=>navigate(`/payment/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
             View All
           </Button>)
             :
