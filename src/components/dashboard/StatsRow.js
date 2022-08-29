@@ -182,7 +182,7 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
           <div className="p-2" style={{ background: "#fff", height: "" }}>
             <Row className="ps-2" style={{fontSize:"1.2rem" , fontWeight:'700'}}>Total Sales</Row>
             <Stack direction="horizontal" gap={3}>
-              <div style={{ width: "56%", height: "100%" }}>
+              <div style={{ width: "54%", height: "100%" }}>
                 {/* <Pie
                   // className="pt-5"
                   data={pieData}
@@ -197,7 +197,7 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
                 <strong className="pt-4">Due Amount:70%</strong>
               </div>
             </Stack>
-            <Row className="pt-2  ps-5" style={{fontSize:'1.2rem', fontWeight:'700'}}>Total Deal Value: $2700</Row>
+            <Row className="  ps-5" style={{fontSize:'1.2rem', fontWeight:'700'}}>Total Deal Value: $2700</Row>
           </div>
         </Col>
         <Col md={6} className="py-2">
@@ -298,7 +298,7 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
                 color: "#222529",
                 fontSize: "1.1rem",
                 // lineHeight: "23px",
-                paddingBottom:'1rem'
+                // paddingBottom:'1rem'
               }}
             >
               Total Sales: 2700

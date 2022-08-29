@@ -85,11 +85,11 @@ const OverviewRow = ({ name, email,id,role,teamLead, totalSales, conversion, tot
               className="d-flex flex-column align-items-center"
             >
               <span
-                style={{ fontSize: "18px", fontWeight: "700", color: "black" }}
+                style={{ fontSize: "1.1rem", fontWeight: "700", color: "black" }}
               >
                 {totalSales}
               </span>
-              <span style={{ fontSize: "13px" }}>Total No. of Sales</span>
+              <span style={{ fontSize: ".8rem" }}>Total No. of Sales</span>
             </div>
           </div>
           <div
@@ -118,18 +118,18 @@ const OverviewRow = ({ name, email,id,role,teamLead, totalSales, conversion, tot
               className="d-flex flex-column align-items-center"
             >
               <span
-                style={{ fontSize: "18px", fontWeight: "700", color: "black" }}
+                style={{ fontSize: "1.1rem", fontWeight: "700", color: "black" }}
               >
                 {conversion}
               </span>
-              <span style={{ fontSize: "13px" }}>Deal Conversion Rate</span>
+              <span style={{ fontSize: ".8rem" }}>Deal Conversion Rate</span>
             </div>
           </div>
         </div>
 
         <div
           className="d-flex flex-column align-items-center"
-          style={{ marginTop: "3vh",marginBottom:'2vh ' }}
+          style={{ paddingTop: "1vh",marginBottom:'2vh ' }}
         >
           <Button onClick={()=>navigate(`/clientmanager/profile/${id}`)} style={{ fontSize: "1rem", background: "#DD2A7B" , border:'none',padding:'6px .9rem', cursor:'pointer'}}>
             <HistoryEduIcon style={{marginRight:'.3rem'}}/>Edit Profile

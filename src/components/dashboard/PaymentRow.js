@@ -1,10 +1,13 @@
 import React from "react";
 import { Button, Col, Row, Stack, ProgressBar } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+const user=localStorage.getItem("user")
 
+console.log(user)
 const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
 
   const navigate = useNavigate();
+
 
   return (
     <div className="ps-4 pb-4">
@@ -29,7 +32,6 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
             </div>
             <Stack className="px-3 " style={{}}>
               <span
-                // className="m-0"
                 style={{
                   fontFamily: "arial",
                   fontWeight: "400",
@@ -42,16 +44,10 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
               <div className="d-flex">
                 <Col className="pe-1">
                   <ProgressBar
-                    // bsPrefix="progress-bar"
-                    // className="progress-bar warning"
                     now={40}
-                    // variant="primary"
                     style={{
                       background: "#B8AAEE",
-                      height:'2vh',
-                      // width:'100%'
-
-                      // backgroundColor: "#B8AAEE",
+                      height:'1.2vh',
                     }}
                   />
                 </Col>
@@ -72,7 +68,6 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                 </div>
               </div>
               <span
-                // className="m-0"
                 style={{
                   fontFamily: "arial",
                   fontWeight: "400",
@@ -87,7 +82,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                   <ProgressBar
                     now={40}
                     variant="danger"
-                    style={{ background: "#F9AAA7" ,height:"2vh"}}
+                    style={{ background: "#F9AAA7" ,height:"1.2vh"}}
                   />
                 </Col>
                 <div>
@@ -107,7 +102,6 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                 </div>
               </div>{" "}
               <span
-                // className="m-0"
                 style={{
                   fontFamily: "arial",
                   fontWeight: "400",
@@ -122,7 +116,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                   <ProgressBar
                     now={40}
                     variant="warning"
-                    style={{ background: "#F2E3B5",height:"2vh" }}
+                    style={{ background: "#F2E3B5",height:"1.2vh" }}
                   />
                 </Col>
                 <div>
@@ -142,7 +136,6 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                 </div>
               </div>{" "}
               <span
-                // className="m-0"
                 style={{
                   fontFamily: "arial",
                   fontWeight: "400",
@@ -157,7 +150,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                   <ProgressBar
                     now={40}
                     variant="info"
-                    style={{ background: "#EBF9FF",height:"2vh" }}
+                    style={{ background: "#EBF9FF",height:"1.2vh" }}
                   />
                 </Col>
                 <div>
@@ -177,7 +170,6 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                 </div>
               </div>{" "}
               <span
-                // className="m-0"
                 style={{
                   fontFamily: "arial",
                   fontWeight: "400",
@@ -192,7 +184,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                   <ProgressBar
                     now={40}
                     variant="success"
-                    style={{ background: "#70E765",height:"2vh" }}
+                    style={{ background: "#70E765",height:"1.2vh" }}
                   />
                 </Col>
                 <div>
@@ -245,7 +237,6 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                 />
               </svg>
 
-              {/* <img src="/images/dashboard/thailo.png" alt="thailo" style={{height:"18px"}}/> */}
             </div>
             <span
               style={{
@@ -270,7 +261,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
               style={{
                 fontFamily: "sans-serif",
                 fontWeight: "700",
-                fontSize: "18px",
+                fontSize: "1.1rem",
                 marginTop: "12px",
               }}
             >
@@ -333,7 +324,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                 />
               </svg>
 
-              {/* <img src="/images/dashboard/thailo.png" alt="thailo" style={{height:"18px"}}/> */}
+              {/* <img src="/images/dashboard/thailo.png" alt="thailo" style={{height:"1.1rem"}}/> */}
             </div>
             <span
               style={{
@@ -358,7 +349,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
               style={{
                 fontFamily: "sans-serif",
                 fontWeight: "700",
-                fontSize: "18px",
+                fontSize: "1.1rem",
                 marginTop: "12px",
               }}
             >
@@ -445,7 +436,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
               style={{
                 fontFamily: "sans-serif",
                 fontWeight: "700",
-                fontSize: "18px",
+                fontSize: "1.1rem",
                 marginTop: "12px",
               }}
             >

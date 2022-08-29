@@ -26,7 +26,7 @@ const LeadProfile = () => {
 
   useEffect(() => {
     axios
-        .get(`http://booksbackenddev-env.eba-j6i2gjpq.us-east-1.elasticbeanstalk.com/api/lead/leadId/${id}`)
+        .get(`${process.env.REACT_APP_BASE_URL}/api/lead/leadId/${id}`)
         .then((res) => {
           setLeads(res.data);
           setNextDate(res.data.nextFollowUpDate)

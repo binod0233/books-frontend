@@ -97,7 +97,7 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
     <Row >
       <div style={{display:"flex",justifyContent:"space-between, alignItems:'center'"}}>
         <div className="ps-5 pt-3">
-          Hello <span style={{fontWeight:'700', fontSize:'1.2rem'}}>{name}</span><br/>
+      <span style={{fontSize:'1.1rem'}}> Hello </span><span style={{fontWeight:'700', fontSize:'1.2rem'}}>{name}</span><br/>
         <div style={{color:"#64676B"}}>
         Welcome to your Dashboard
 
@@ -139,12 +139,12 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
         <div style={{display:'flex',justifyContent:"space-between",paddingTop:"10px"}}>
           <span style={{fontSize:'1.3rem',fontWeight:"600",margin:".8rem"}}>Top Leads </span>
      
-<Select options={options} onChange={(e)=>setTimeInterval(e)} />
+<Select isClearable options={options} onChange={(e)=>setTimeInterval(e)} />
 
         </div>
 
         <div
-        className="mt-3"
+        className=""
         style={{
           fontSize: "1.2rem",
           fontWeight: "700",
@@ -192,9 +192,9 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
       cursor:"pointer"
     
     }}
-    className="d-flex mt-2 mb-2 align-items-center"
+    className="d-flex mt-1 mb-1 align-items-center"
   >
-    <div style={{ fontWeight: "", fontSize: "18px", width: "20%" }}>
+    <div style={{ fontWeight: "", fontSize: "1.1rem", width: "20%" }}>
       <div className="d-flex justify-content-start align-items-center ">
         <div className="  ">
           <div
@@ -241,13 +241,13 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
         textAlign: "center",
       }}
     >
-      <div style={{ fontWeight: "", fontSize: "18px", width: "14%" }}>
+      <div style={{ fontWeight: "", fontSize: "1.1rem", width: "14%" }}>
         {new Date(l.createdDate).toLocaleDateString()}
       </div>
 
       <div
         className="d-flex align-items-center justify-content-center"
-        style={{ fontWeight: "", fontSize: "18px", width: "14%" }}
+        style={{ fontWeight: "", fontSize: "1.1rem", width: "14%" }}
       >
         <div>{l.source}</div>
       </div>
@@ -272,7 +272,7 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
       {l.paymentStatus}
       </div>
 
-      <div style={{ fontWeight: "700", fontSize: "18px", width: "14%" }}>
+      <div style={{ fontWeight: "700", fontSize: "1.1rem", width: "14%" }}>
       ${l.dealValue}
       </div>
 
@@ -280,7 +280,7 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
         style={{
           justifyContent: "center",
           alignItems: "center",
-          fontSize: "18px",
+          fontSize: "1.1rem",
           width: "14%",
           display: "flex",
           fontWeight: "700"
@@ -295,7 +295,7 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
         style={{
         justifyContent: "center",
         alignItems: "center",
-        fontSize: "18px",
+        fontSize: "1.1rem",
         width: "14%",
         fontWeight: "700",
         display: "flex"}} 
@@ -310,62 +310,10 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
     ))}
     
     <div className='d-flex justify-content-end align-items-center'>
-<button onClick={()=>navigate("/leads/name")} style={{ border:'none', background:'#3144E7', fontSize:'1.1rem', color:'white', borderRadius:'2px', padding:'6px 1.1rem',marginTop:'1rem', marginBottom:'3rem'}}>View All</button>
+<button onClick={()=>navigate("/leads/name")} style={{ border:'none', background:'#3144E7', fontSize:'1.1rem', color:'white', borderRadius:'2px', padding:'6px 1.1rem',marginTop:'1rem', marginBottom:'1rem'}}>View All</button>
 </div>
 
 
-
-{/*
-
-{leadList?.map((l)=> 
-
-  <Row key={l.id} style={{background:"#fff",height:"70px"}} className="d-flex align-items-center justify-content-center mb-3 mx-2">
-    <Col md={3} style={{fontWeight:"",fontSize:"" }}>
-    <Row> 
-         
-         <Col md={3} className="d-flex justify-content-center align-items-center  ">
-         <div style={{borderRadius:"50%",background:"#ED6F47",height:"45px",width:"45px",color:"#fff",fontWeight:"400"}} className="d-flex justify-content-center align-items-center ">
-            {l.shortName}
-            </div>
-            </Col>
-            <Col md={9} style={{color:"",fontWeight:"700"}}>
-            {l.name}
-            <div style={{color:"#666",fontWeight:"400"}}>
-             {l.email}
-            </div>
-            </Col>
-            </Row>
-    </Col>
-  
-    <Col md={1} style={{fontWeight:"",fontSize:"19px" }}>
-      {new Date(l.createdDate).toLocaleDateString()}
-    </Col>
-    <Col md={1} style={{fontWeight:"",fontSize:"19px" }} >
-     {l.source}
-    </Col>
-  
-    <Col md={1} style={{fontWeight:"",fontSize:"19px" }} >
-     {l.teamLead}
-    </Col>
-  
-    
-    <Col md={1} style={{fontWeight:"",fontSize:"19px" }}>
-      {l.potential}
-    </Col>
-    <Col md={1} style={{fontWeight:"",fontSize:"19px" }}>
-      ${l.dealValue}
-    </Col>
-  
-    <Col md={2} style={{fontWeight:"700",fontSize:"19px" }} className="ps-4">
-     {paymentList.filter(p=>p.payee=== l.name).amount}
-    </Col>
-  
-    <Col md={2} style={{fontWeight:"",fontSize:"19px" }}>
-    {l.dealValue - paymentList.filter(p=>p.payee=== l.name).amount}
-    </Col>
-  </Row>
-  )}
-*/}
 
 </div>
 
