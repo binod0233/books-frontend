@@ -256,7 +256,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
                   fontWeight: "600",
                 }}
               >
-                {totalDealValue}
+                {(totalDealValue).toFixed(2)}
               </span>
             </span>
             <span
@@ -344,7 +344,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
                   fontWeight: "600",
                 }}
               >
-                1000{totalEarned}
+                1000{(totalEarned)}
               </span>
             </span>
             <span
@@ -431,7 +431,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
                   fontWeight: "600",
                 }}
               >
-                {totalDuePayment}
+                {(totalDuePayment).toFixed(2)}
               </span>
             </span>
             <span

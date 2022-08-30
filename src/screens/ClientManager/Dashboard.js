@@ -274,7 +274,7 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
       </div>
 
       <div style={{ fontWeight: "700", fontSize: "1.1rem", width: "14%" }}>
-      ${l.dealValue}
+      ${(l.dealValue).toFixed(2)}
       </div>
 
       <div

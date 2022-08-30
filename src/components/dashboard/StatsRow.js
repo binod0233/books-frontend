@@ -36,7 +36,7 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
                         fontFamily: "Arial",
                       }}
                     >
-                      {totalEarned}
+                      {(totalEarned).toFixed(2)}
                     </span>
                   </div>
 
@@ -65,7 +65,7 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
                         fontFamily: "Arial",
                       }}
                     >
-                      {totalSales}
+                      {(totalSales).toFixed(2)}
                     </span>
                   </div>
 
@@ -94,7 +94,7 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
                         fontFamily: "Arial",
                       }}
                     >
-                      {totalLeads}
+                      {(totalLeads).toFixed(2)}
                     </span>
                   </div>
 
@@ -182,7 +182,7 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
           <div className="p-2" style={{ background: "#fff", height: "" }}>
             <Row className="ps-2" style={{fontSize:"1.2rem" , fontWeight:'700'}}>Total Sales</Row>
             <Stack direction="horizontal" gap={3}>
-              <div style={{ width: "56%",height:"29.5vh"  }}>
+              <div style={{ width: "50%",height:"29.5vh"  }}>
                 {/* <Pie
                   // className="pt-5"
                   data={pieData}

@@ -165,7 +165,7 @@ const OverviewRow = ({ name, email,id,role,teamLead, totalSales, conversion, tot
             style={{ height: "4vh", marginTop: "2vh" }}
           />
           <span style={{ fontWeight: "700", fontSize: "1rem" }}>
-            $ <span style={{ fontSize: "1.2rem" }}>{totalEarned}</span>
+            $ <span style={{ fontSize: "1.2rem" }}>{(totalEarned).toFixed(2)}</span>
           </span>
           <span style={{ color: "#92959A", fontSize: "1rem" }}>
             Total Earning
