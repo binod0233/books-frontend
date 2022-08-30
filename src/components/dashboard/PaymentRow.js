@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Col, Row, Stack, ProgressBar } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+
 const localUser = localStorage.getItem('user')
 const user = JSON.parse(localUser)
 console.log(user)

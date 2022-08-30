@@ -182,7 +182,7 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
           <div className="p-2" style={{ background: "#fff", height: "" }}>
             <Row className="ps-2" style={{fontSize:"1.2rem" , fontWeight:'700'}}>Total Sales</Row>
             <Stack direction="horizontal" gap={3}>
-              <div style={{ width: "54%",  }}>
+              <div style={{ width: "56%",height:"29.5vh"  }}>
                 {/* <Pie
                   // className="pt-5"
                   data={pieData}

@@ -14,6 +14,7 @@ const Dashboard = () => {
   const params = useParams()
   const navigate = useNavigate()
   const {name} = params
+  const {id} = params
 
   const [timeInterval,setTimeInterval] = useState(null)
   const [paymentList,setPaymentList] = useState([])
@@ -49,7 +50,7 @@ const options=[
   }
 
   const getAllPaymentsOfAClientManager = () => {
-    axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/payments/getAllPaymentsOfAClientManager/${name}`)
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/payments/getAllLeadsOfAClientManager/${name}`)
     .then(res => {
       setPaymentList(res.data.responseList)
     }
@@ -57,7 +58,7 @@ const options=[
   }
 
   const getClientManagerById = () => {
-    axios.get(`${process.env.REACT_APP_BASE_URL}/api/salesman/salesmanName/${name}`)
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/salesman/salesmanId/${name}`)
     .then(res => {
       setClientManager(res.data)
     }
