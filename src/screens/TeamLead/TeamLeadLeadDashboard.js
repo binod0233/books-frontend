@@ -280,9 +280,6 @@ const TeamLeadLeadDashboard = () => {
         <div style={{ background: "#fff" }} className='' >
           <div style={{ display: 'flex', justifyContent: "space-between", paddingTop: "10px" }}>
             <span style={{ fontSize: '1.3rem', fontWeight: "600", margin: ".8rem" }}>Top Leads </span>
-
-            <Select isClearable options={options} onChange={(e) => setTimeInterval(e)} />
-
           </div>
 
           <div
