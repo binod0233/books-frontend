@@ -236,23 +236,23 @@ const TeamLeadLeadDashboard = () => {
                 </div>
               </Col>
 
-              <Col md={2} style={{ fontWeight: "", fontSize: "19px" }}>
+              <Col md={2} style={{ fontWeight: "", fontSize: "1.2rem" }}>
                 {l.teamName}
               </Col>
 
-              <Col md={2} style={{ fontWeight: "", fontSize: "19px" }} >
+              <Col md={2} style={{ fontWeight: "", fontSize: "1.2rem" }} >
                 {l.numberOfLeads}
               </Col>
 
-              <Col md={2} style={{ fontWeight: "", fontSize: "19px" }}>
+              <Col md={2} style={{ fontWeight: "", fontSize: "1.2rem" }}>
                 {l.status}
               </Col>
 
-              <Col md={2} style={{ fontWeight: "700", fontSize: "19px" }} className="ps-4">
+              <Col md={2} style={{ fontWeight: "700", fontSize: "1.2rem" }} className="ps-4">
                 {l.weeks}
               </Col>
 
-              <Col md={2} style={{ fontWeight: "", fontSize: "19px" }}>
+              <Col md={2} style={{ fontWeight: "", fontSize: "1.2rem" }}>
                 {l.totalSales}
               </Col>
             <hr />
@@ -394,7 +394,7 @@ const TeamLeadLeadDashboard = () => {
                     <div>{l.source}</div>
                   </div>
 
-                  <div style={{ fontWeight: "", fontSize: "19px", width: "18%" }}>
+                  <div style={{ fontWeight: "", fontSize: "1.2rem", width: "18%" }}>
 
                     {l.teamLead}
                   </div>
@@ -402,7 +402,7 @@ const TeamLeadLeadDashboard = () => {
                   <div
                     style={{
                       fontWeight: "700",
-                      fontSize: "19px",
+                      fontSize: "1.2rem",
                       width: "14%",
                       display: "flex",
                       alignItems: "center",
