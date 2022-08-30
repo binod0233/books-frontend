@@ -8,8 +8,9 @@ import TeamLeadProfile from '../../components/TeamLeadDashboard.js/TeamLeadProfi
 import axios from 'axios'
 
 const TeamLeadLeadDashboard = () => {
+  const params = useParams()
 
-  const {teamLead} = useParams()
+  const {teamLead} = params;
 
   const [leadList,setLeadList] = useState([])
   const [paymentList,setPaymentList] = useState([])
@@ -87,15 +88,25 @@ const TeamLeadLeadDashboard = () => {
 
   return (
     <Row style={{background:"#F1F1FA"}}>
-      <div className='pb-3' style={{display:"flex",justifyContent:"space-between"}}>
-        <div className="ps-5 pt-3">
-          Hello <strong>Suman Subedi !</strong><br/>
-          Welcome to your Dashboard
+      <div style={{display:"flex",justifyContent:"space-between, alignItems:'center'"}}>
+        <div className="ps-5 pt-3 pb-2">
+      <span style={{fontSize:'1.1rem'}}> Hello </span><span style={{fontWeight:'700', fontSize:'1.2rem'}}>{teamLead}</span><br/>
+        <div style={{color:"#64676B"}}>
+        Welcome to your Dashboard
+
+        </div> 
         </div>
-      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",width:"300px",marginLeft:"auto", marginRight:"5vh",marginTop:"3vh"}}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",width:"300px",marginLeft:"auto", marginRight:"5vh"}}>
+      <div>
         <Button style={{background:clickedTime==="weekly"?"black":"white",height:"35px",width:"fit-content",borderRadius:"2px",width:"90px",boxShadow:"1px 1px 1px rgba(0, 0, 0, 0.05",border:"0.7px solid #D9D9D9",color:clickedTime==="weekly"?"white":"black"}} onClick={()=>{fetchDataOfGivenTimeInterval("weekly");setClickedTime("weekly")}}>7 days</Button>
+      </div>
+      <div>
         <Button style={{background:clickedTime==="semimonthly"?"black":"white",height:"35px",width:"fit-content",borderRadius:"2px",width:"90px",boxShadow:"1px 1px 1px rgba(0, 0, 0, 0.05",border:"0.7px solid #D9D9D9",color:clickedTime==="semimonthly"?"white":"black"}} onClick={()=>{fetchDataOfGivenTimeInterval("semimonthly");setClickedTime("semimonthly")}}>15 days</Button>
+      </div>
+      <div>
         <Button style={{background:clickedTime==="monthly"?"black":"white",height:"35px",width:"fit-content",borderRadius:"2px",width:"90px",boxShadow:"1px 1px 1px rgba(0, 0, 0, 0.05",border:"0.7px solid #D9D9D9",color:clickedTime==="monthly"?"white":"black"}} onClick={()=>{fetchDataOfGivenTimeInterval("monthly");setClickedTime("monthly")}}>Month</Button>
+      </div>
+
       </div>
       </div>
         <TeamLeadProfile/>
