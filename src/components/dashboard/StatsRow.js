@@ -200,7 +200,7 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
             <Row className="  ps-5" style={{fontSize:'1.2rem', fontWeight:'700'}}>Total Deal Value: $2700</Row>
           </div>
         </Col>
-        <Col md={6} className="py-2">
+        <Col md={6} className="py-2 pe-0">
           <Stack
             className="p-2"
             gap={1}
