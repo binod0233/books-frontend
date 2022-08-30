@@ -16,24 +16,24 @@ const TeamLeadLeadDashboard = () => {
   const [leadList, setLeadList] = useState([])
   const [paymentList, setPaymentList] = useState([])
   const [clientManagerList, setClientManagersList] = useState([{
-    name:'hari sdfj',
-    teamName:'anup',
-    email:'sajd@gamil.com',
-    numberOfLeads:12,
-    status:'hsgf',
-    weeks:7,
-    totalSales:'static data'
+    name: 'hari sdfj',
+    teamName: 'anup',
+    email: 'sajd@gamil.com',
+    numberOfLeads: 12,
+    status: 'hsgf',
+    weeks: 7,
+    totalSales: 'static data'
   },
   {
-    name:'hari sdfj',
-    teamName:'anup',
-    email:'sajd@gamil.com',
-    numberOfLeads:12,
-    status:'hsgf',
-    weeks:7,
-    totalSales:'static data'
+    name: 'hari sdfj',
+    teamName: 'anup',
+    email: 'sajd@gamil.com',
+    numberOfLeads: 12,
+    status: 'hsgf',
+    weeks: 7,
+    totalSales: 'static data'
   },
-])
+  ])
   const [clickedTime, setClickedTime] = useState("")
   const [displayList, setDisplayList] = useState([])
   const [timeInterval, setTimeInterval] = useState(null)
@@ -137,14 +137,15 @@ const TeamLeadLeadDashboard = () => {
       <TeamLeadProfile />
       <EarningStats />
       <PaymentRow name={teamLead} totalDealValue={totalDealValue} totalPayment={totalEarned} totalDuePayment={totalDuePayment} />
-      <div className=' ms-4 mb-4 row bg-white me-4 ' style={{width:'97%', margin:'0 auto'}}>
+      <div className=' ms-4 mb-4 row bg-white me-4 ' style={{ width: '97%', margin: '0 auto',  background: "#fff" }}>
         <div style={{ display: 'flex', justifyContent: "space-between", paddingTop: "10px" }}>
           <span style={{ fontSize: '1.3rem', fontWeight: "600", margin: ".8rem" }}>Top Client Manager</span>
 
           <Select isClearable options={options} onChange={(e) => setTimeInterval(e)} />
 
         </div>
-        <Row style={{ background: "#fff", height: "70px" }} className="d-flex align-items-center justify-content-center mb-3 mx-2">
+
+        <Row style={{ background: "", height: "70px" }} className="d-flex align-items-center justify-content-center mb-3 mx-2">
           <Col md={2} style={{ fontWeight: "700", fontSize: "1.2rem" }}>
             Client Manager
           </Col>
@@ -173,7 +174,7 @@ const TeamLeadLeadDashboard = () => {
 
         {clientManagerList?.map((l) =>
 
-          <Row key={l.id} style={{ background: "#fff", height: "70px" , marginBottom:'.5vh'}} className="d-flex align-items-center justify-content-center mb-3 mx-2">
+          <Row key={l.id} style={{ background: "#fff", height: "70px", marginBottom: '.5vh' }} className="d-flex align-items-center justify-content-center mb-3 mx-2">
             {/* <Col md={2} style={{ fontWeight: "", fontSize: "" }}>
               <Row>
 
@@ -190,266 +191,274 @@ const TeamLeadLeadDashboard = () => {
                 </Col>
               </Row>
             </Col> */}
-          <Row className='pb-2'>
-          <Col md={2}>
-           <div style={{ fontWeight: "", fontSize: "",  }}>
-                <div className="d-flex justify-content-start ">
-                  <div className="  ">
-                    <div
-                      style={{
-                        borderRadius: "50%",
-                        background: "#ED6F47",
-                        height: "45px",
-                        width: "45px",
-                        color: "#fff",
-                        fontWeight: "400",
-                      }}
-                      className="d-flex justify-content-center align-items-center  "
+
+            <Row className='pb-2'>
+              <Col md={2}>
+                <div style={{ fontWeight: "", fontSize: "", }}>
+                  <div className="d-flex justify-content-start ">
+                    <div className="  ">
+                      <div
+                        style={{
+                          borderRadius: "50%",
+                          background: "#ED6F47",
+                          height: "45px",
+                          width: "45px",
+                          color: "#fff",
+                          fontWeight: "400",
+                        }}
+                        className="d-flex justify-content-center align-items-center  "
                       // onClick={()=>navigate(`/lead/profile/${l.id}`)}
-                    >
-                      {l.name.split(" ").map((n) => n[0])}
+                      >
+                        {l.name.split(" ").map((n) => n[0])}
+                      </div>
                     </div>
-                  </div>
-                  <div
-                    style={{
-                      color: "black",
-                      fontWeight: "700",
-                      fontSize: "1.2rem",
-                      lineHeight: "25px",
-                      marginLeft: "8px",
-                    }}
-                  >
-                    {l.name}
                     <div
                       style={{
-                        color: "#666",
-                        fontWeight: "400",
-                        fontSize: "14px",
+                        color: "black",
+                        fontWeight: "700",
+                        fontSize: "1.2rem",
+                        lineHeight: "25px",
+                        marginLeft: "8px",
                       }}
                     >
-                      {l.email}
+                      {l.name}
+                      <div
+                        style={{
+                          color: "#666",
+                          fontWeight: "400",
+                          fontSize: "14px",
+                        }}
+                      >
+                        {l.email}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-           </Col>
+              </Col>
 
-            <Col md={2} style={{ fontWeight: "", fontSize: "19px" }}>
-              {l.teamName}
-            </Col>
+              <Col md={2} style={{ fontWeight: "", fontSize: "19px" }}>
+                {l.teamName}
+              </Col>
 
-            <Col md={2} style={{ fontWeight: "", fontSize: "19px" }} >
-            {l.numberOfLeads}
-            </Col>
+              <Col md={2} style={{ fontWeight: "", fontSize: "19px" }} >
+                {l.numberOfLeads}
+              </Col>
 
-            <Col md={2} style={{ fontWeight: "", fontSize: "19px" }}>
-              {l.status}
-            </Col>
+              <Col md={2} style={{ fontWeight: "", fontSize: "19px" }}>
+                {l.status}
+              </Col>
 
-            <Col md={2} style={{ fontWeight: "700", fontSize: "19px" }} className="ps-4">
-              {l.weeks}
-            </Col>
+              <Col md={2} style={{ fontWeight: "700", fontSize: "19px" }} className="ps-4">
+                {l.weeks}
+              </Col>
 
-            <Col md={2} style={{ fontWeight: "", fontSize: "19px" }}>
-              {l.totalSales}
-            </Col>
-          </Row>
-            <hr/>
+              <Col md={2} style={{ fontWeight: "", fontSize: "19px" }}>
+                {l.totalSales}
+              </Col>
+            <hr />
+            
+            </Row>
+         
+          
+
           </Row>
 
         )}
-
-
-      </div>
-
-
-
-      <div className='bg-white mx-4' style={{width:'97%', margin:'0 auto'}}>
-      
-
-
-   
-        <div style={{background:"#fff"}} className='' >
-        <div style={{display:'flex',justifyContent:"space-between",paddingTop:"10px"}}>
-          <span style={{fontSize:'1.3rem',fontWeight:"600",margin:".8rem"}}>Top Leads </span>
-     
-<Select isClearable options={options} onChange={(e)=>setTimeInterval(e)} />
-
-        </div>
-
-        <div
-        className=""
-        style={{
-          fontSize: "1.2rem",
-          fontWeight: "700",
-          background: "white",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <div style={{ width: "20%" }}>Lead Name</div>
-        <div
-          className=""
-          style={{
-            width: "80%",
-            fontSize: "1.1rem",
-            fontWeight: "700",
-            height: "70px",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            textAlign: "center",
-            
-          }}
-        >
-          <div style={{ width: "14%", paddingRight:'.5rem' }}>Date</div>
-          <div style={{ width: "14%",paddingRight:'.5rem' }}>Source</div>
-          <div style={{ width: "14%",paddingLeft  :'.5rem' }}>Team Name</div>
-          <div style={{ width: "14%",paddingLeft:'2rem' }}>Status</div>
-          <div style={{ width: "14%" }}>Deal Amount</div>
-          <div style={{ width: "14%" }}>Total Amount</div>
-          <div style={{ width: "14%" }}>Due Amount</div>
-        </div>
-      </div>
-
-
-{leadList?.map((l) => (
-  <>
-  
-  <div
-  key={l.id}
-  style={{
-      background: "#fff",
-      height: "70px",
-      color: "#64676B",
-      fontFamily: "Arial",
-      cursor:"pointer"
-    
-    }}
-    className="d-flex mt-1 mb-1 align-items-center"
-  >
-    <div style={{ fontWeight: "", fontSize: "1.1rem", width: "20%" }}>
-      <div className="d-flex justify-content-start align-items-center ">
-        <div className="  ">
-          <div
-            style={{
-              borderRadius: "50%",
-              background: "#ED6F47",
-              height: "45px",
-              width: "45px",
-              color: "#fff",
-              fontWeight: "400",
-            }}
-            className="d-flex justify-content-center align-items-center  "
-          >
-            {l.name.split(" ").map((n) => n[0])}
-          </div>
-        </div>
-        <div
-          style={{
-            color: "black",
-            fontWeight: "700",
-            fontSize: "1.2rem",
-            lineHeight: "25px",
-            marginLeft: "8px",
-          }}
-        >
-          {l.name}
-          <div
-            style={{
-              color: "#666",
-              fontWeight: "400",
-              fontSize: "14px",
-            }}
-          >
-            {l.email}
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div
-      className="d-flex justify-content-start align-items-center"
-      style={{
-        width: "80%",
-        textAlign: "center",
-      }}
-    >
-      <div style={{ fontWeight: "", fontSize: "1.1rem", width: "14%" }}>
-        {new Date(l.createdDate).toLocaleDateString()}
-      </div>
-
-      <div
-        className="d-flex align-items-center justify-content-center"
-        style={{ fontWeight: "", fontSize: "1.1rem", width: "14%" }}
-      >
-        <div>{l.source}</div>
-      </div>
-
-      <div style={{ fontWeight: "", fontSize: "19px", width: "18%" }}>
-       
-      {l.teamLead}
-      </div>
-
-      <div
-        style={{
-          fontWeight: "700",
-          fontSize: "19px",
-          width: "14%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-        className=""
-      >
-
-      {l.paymentStatus}
-      </div>
-
-      <div style={{ fontWeight: "700", fontSize: "1.1rem", width: "14%" }}>
-      ${(l.dealValue).toFixed(2)}
-      </div>
-
-      <div
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          fontSize: "1.1rem",
-          width: "14%",
-          display: "flex",
-          fontWeight: "700"
-        }}
-      >
-        <div>
-        ${l.dealValue - paymentList.filter(p=>p.payee=== l.name).amount}
-        </div>
-        </div>
-        
-        <div
-        style={{
-        justifyContent: "center",
-        alignItems: "center",
-        fontSize: "1.1rem",
-        width: "14%",
-        fontWeight: "700",
-        display: "flex"}} 
-        >
-        ${paymentList.filter(p=>p.payee=== l.name).amount}
-        </div>
-    </div>
-    </div>
-    <hr style={{height:'.2em'}}/>
-    </>
-    
-    ))}
-    
-    <div className='d-flex justify-content-end align-items-center'>
+        <div className='d-flex justify-content-end align-items-center'>
 <button  style={{ border:'none', background:'#3144E7', fontSize:'1.1rem', color:'white', borderRadius:'2px', padding:'6px 1.1rem',marginTop:'1rem', marginBottom:'1rem'}}>View All</button>
 </div>
 
+      </div>
 
 
-</div>
+
+      <div className='bg-white mx-4' style={{ width: '97%', margin: '0 auto' }}>
+
+
+
+
+        <div style={{ background: "#fff" }} className='' >
+          <div style={{ display: 'flex', justifyContent: "space-between", paddingTop: "10px" }}>
+            <span style={{ fontSize: '1.3rem', fontWeight: "600", margin: ".8rem" }}>Top Leads </span>
+
+            <Select isClearable options={options} onChange={(e) => setTimeInterval(e)} />
+
+          </div>
+
+          <div
+            className=""
+            style={{
+              fontSize: "1.2rem",
+              fontWeight: "700",
+              background: "white",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <div style={{ width: "20%" }}>Lead Name</div>
+            <div
+              className=""
+              style={{
+                width: "80%",
+                fontSize: "1.1rem",
+                fontWeight: "700",
+                height: "70px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                textAlign: "center",
+
+              }}
+            >
+              <div style={{ width: "14%", paddingRight: '.5rem' }}>Date</div>
+              <div style={{ width: "14%", paddingRight: '.5rem' }}>Source</div>
+              <div style={{ width: "14%", paddingLeft: '.5rem' }}>Team Name</div>
+              <div style={{ width: "14%", paddingLeft: '2rem' }}>Status</div>
+              <div style={{ width: "14%" }}>Deal Amount</div>
+              <div style={{ width: "14%" }}>Total Amount</div>
+              <div style={{ width: "14%" }}>Due Amount</div>
+            </div>
+          </div>
+
+
+          {leadList?.map((l) => (
+            <>
+
+              <div
+                key={l.id}
+                style={{
+                  background: "#fff",
+                  height: "70px",
+                  color: "#64676B",
+                  fontFamily: "Arial",
+                  cursor: "pointer"
+
+                }}
+                className="d-flex mt-1 mb-1 align-items-center"
+              >
+                <div style={{ fontWeight: "", fontSize: "1.1rem", width: "20%" }}>
+                  <div className="d-flex justify-content-start align-items-center ">
+                    <div className="  ">
+                      <div
+                        style={{
+                          borderRadius: "50%",
+                          background: "#ED6F47",
+                          height: "45px",
+                          width: "45px",
+                          color: "#fff",
+                          fontWeight: "400",
+                        }}
+                        className="d-flex justify-content-center align-items-center  "
+                      >
+                        {l.name.split(" ").map((n) => n[0])}
+                      </div>
+                    </div>
+                    <div
+                      style={{
+                        color: "black",
+                        fontWeight: "700",
+                        fontSize: "1.2rem",
+                        lineHeight: "25px",
+                        marginLeft: "8px",
+                      }}
+                    >
+                      {l.name}
+                      <div
+                        style={{
+                          color: "#666",
+                          fontWeight: "400",
+                          fontSize: "14px",
+                        }}
+                      >
+                        {l.email}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  className="d-flex justify-content-start align-items-center"
+                  style={{
+                    width: "80%",
+                    textAlign: "center",
+                  }}
+                >
+                  <div style={{ fontWeight: "", fontSize: "1.1rem", width: "14%" }}>
+                    {new Date(l.createdDate).toLocaleDateString()}
+                  </div>
+
+                  <div
+                    className="d-flex align-items-center justify-content-center"
+                    style={{ fontWeight: "", fontSize: "1.1rem", width: "14%" }}
+                  >
+                    <div>{l.source}</div>
+                  </div>
+
+                  <div style={{ fontWeight: "", fontSize: "19px", width: "18%" }}>
+
+                    {l.teamLead}
+                  </div>
+
+                  <div
+                    style={{
+                      fontWeight: "700",
+                      fontSize: "19px",
+                      width: "14%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                    className=""
+                  >
+
+                    {l.paymentStatus}
+                  </div>
+
+                  <div style={{ fontWeight: "700", fontSize: "1.1rem", width: "14%" }}>
+                    ${(l.dealValue).toFixed(2)}
+                  </div>
+
+                  <div
+                    style={{
+                      justifyContent: "center",
+                      alignItems: "center",
+                      fontSize: "1.1rem",
+                      width: "14%",
+                      display: "flex",
+                      fontWeight: "700"
+                    }}
+                  >
+                    <div>
+                      ${l.dealValue - paymentList.filter(p => p.payee === l.name).amount}
+                    </div>
+                  </div>
+
+                  <div
+                    style={{
+                      justifyContent: "center",
+                      alignItems: "center",
+                      fontSize: "1.1rem",
+                      width: "14%",
+                      fontWeight: "700",
+                      display: "flex"
+                    }}
+                  >
+                    ${paymentList.filter(p => p.payee === l.name).amount}
+                  </div>
+                </div>
+              </div>
+              <hr style={{ height: '.2em' }} />
+            </>
+
+          ))}
+
+          <div className='d-flex justify-content-end align-items-center'>
+            <button style={{ border: 'none', background: '#3144E7', fontSize: '1.1rem', color: 'white', borderRadius: '2px', padding: '6px 1.1rem', marginTop: '1rem', marginBottom: '1rem' }}>View All</button>
+          </div>
+
+
+
+        </div>
       </div>
     </Row>
   )
