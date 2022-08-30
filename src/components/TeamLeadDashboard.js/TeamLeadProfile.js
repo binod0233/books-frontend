@@ -7,7 +7,7 @@ import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 
 
 
-const TeamLeadProfile = () => {
+const   TeamLeadProfile = () => {
   const navigate = useNavigate()
   const { teamLead } = useParams()
   return (
@@ -20,7 +20,7 @@ const TeamLeadProfile = () => {
             </div>
             <div className='d-flex flex-column '>
               <div style={{ fontWeight: "700", margin: "0", fontSize: '1.2rem' }}>Sharmila Dangal</div>
-              <p style={{ color: "#64676B", fontSize: "1rem", margin: "0 0 3vh 0" }}>sharmila@copenned.com</p>
+              <p style={{ color: "#64676B", fontSize: "1rem", margin: "0 0 2vh 0" }}>sharmila@copenned.com</p>
               <span className='d-flex align-items-center pb-2'>4.9 <StarsIcon /></span>
               <Button onClick={() => navigate(`/teamlead/edit/${teamLead}`)} style={{ fontSize: "1rem", background: "#DD2A7B", border: 'none', cursor: 'pointer' }}>
                 <HistoryEduIcon style={{ marginRight: '.3rem' }} />Edit Profile
