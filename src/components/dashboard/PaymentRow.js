@@ -1,10 +1,9 @@
 import React from "react";
 import { Button, Col, Row, Stack, ProgressBar } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-const user=localStorage.getItem("user")
-
+const user = localStorage.getItem('user')
 console.log(user)
-const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
+const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
 
   const navigate = useNavigate();
 
@@ -13,21 +12,21 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
     <div className="ps-4 pb-4">
       <Row>
         <Col md={3}>
-        <div style={{ background: "white", height: "45vh", width: "100%" }}>
+          <div style={{ background: "white", height: "45vh", width: "100%" }}>
             <div className="d-flex flex-column align-items-center pb-3 ">
-            <div
-              style={{
-                height: "6vh",
-                width: "6vh",
-                marginTop: "2vh",
-                borderRadius: "50%",
-                background: "#F7E8FB",
-              }}
-              className="d-flex justify-content-center align-items-center"
-            >
-            <svg width="20" height="20" viewBox="0 0 41 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20.5 0C31.8221 0 41 8.85981 41 19.7896C41 27.9627 35.8668 34.9801 28.5422 37.998L23.3802 25.0358C24.5932 24.4149 25.5561 23.42 26.1155 22.2096C26.6749 20.9992 26.7986 19.6429 26.467 18.3567C26.1353 17.0705 25.3674 15.9285 24.2855 15.1125C23.2036 14.2965 21.8699 13.8534 20.4969 13.8539C19.1239 13.8543 17.7906 14.2983 16.7093 15.1151C15.6279 15.9318 14.8608 17.0744 14.5301 18.3608C14.1994 19.6472 14.3242 21.0034 14.8845 22.2134C15.4447 23.4235 16.4083 24.4177 17.6218 25.0378L12.4599 38C8.76315 36.4771 5.61139 33.9392 3.3962 30.7017C1.18102 27.4641 4.12991e-05 23.6696 0 19.7896C0 8.85981 9.17785 0 20.5 0Z" fill="#5B38D7"/>
-            </svg>
+              <div
+                style={{
+                  height: "6vh",
+                  width: "6vh",
+                  marginTop: "2vh",
+                  borderRadius: "50%",
+                  background: "#F7E8FB",
+                }}
+                className="d-flex justify-content-center align-items-center"
+              >
+                <svg width="20" height="20" viewBox="0 0 41 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20.5 0C31.8221 0 41 8.85981 41 19.7896C41 27.9627 35.8668 34.9801 28.5422 37.998L23.3802 25.0358C24.5932 24.4149 25.5561 23.42 26.1155 22.2096C26.6749 20.9992 26.7986 19.6429 26.467 18.3567C26.1353 17.0705 25.3674 15.9285 24.2855 15.1125C23.2036 14.2965 21.8699 13.8534 20.4969 13.8539C19.1239 13.8543 17.7906 14.2983 16.7093 15.1151C15.6279 15.9318 14.8608 17.0744 14.5301 18.3608C14.1994 19.6472 14.3242 21.0034 14.8845 22.2134C15.4447 23.4235 16.4083 24.4177 17.6218 25.0378L12.4599 38C8.76315 36.4771 5.61139 33.9392 3.3962 30.7017C1.18102 27.4641 4.12991e-05 23.6696 0 19.7896C0 8.85981 9.17785 0 20.5 0Z" fill="#5B38D7" />
+                </svg>
               </div>
             </div>
             <Stack className="px-3 " style={{}}>
@@ -47,7 +46,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                     now={40}
                     style={{
                       background: "#B8AAEE",
-                      height:'1.2vh',
+                      height: '1.2vh',
                     }}
                   />
                 </Col>
@@ -82,7 +81,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                   <ProgressBar
                     now={40}
                     variant="danger"
-                    style={{ background: "#F9AAA7" ,height:"1.2vh"}}
+                    style={{ background: "#F9AAA7", height: "1.2vh" }}
                   />
                 </Col>
                 <div>
@@ -105,7 +104,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                 style={{
                   fontFamily: "arial",
                   fontWeight: "400",
-                   fontSize: "2.5vh",
+                  fontSize: "2.5vh",
                   lineHeight: "2.6vh",
                 }}
               >
@@ -116,7 +115,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                   <ProgressBar
                     now={40}
                     variant="warning"
-                    style={{ background: "#F2E3B5",height:"1.2vh" }}
+                    style={{ background: "#F2E3B5", height: "1.2vh" }}
                   />
                 </Col>
                 <div>
@@ -150,7 +149,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                   <ProgressBar
                     now={40}
                     variant="info"
-                    style={{ background: "#EBF9FF",height:"1.2vh" }}
+                    style={{ background: "#EBF9FF", height: "1.2vh" }}
                   />
                 </Col>
                 <div>
@@ -184,7 +183,7 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                   <ProgressBar
                     now={40}
                     variant="success"
-                    style={{ background: "#70E765",height:"1.2vh" }}
+                    style={{ background: "#70E765", height: "1.2vh" }}
                   />
                 </Col>
                 <div>
@@ -203,10 +202,10 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
                   </span>
                 </div>
               </div>
-              <strong style={{ textAlign: "center", fontSize:'20px', fontWeight:'700' }}>Lead Source</strong>
+              <strong style={{ textAlign: "center", fontSize: '20px', fontWeight: '700' }}>Lead Source</strong>
             </Stack>
           </div>
-        </Col>  
+        </Col>
         <Col md={3}>
           <div
             style={{ background: "white", height: "45vh", width: "100%" }}
@@ -278,20 +277,20 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
               It includes the total value of the Deal.
             </span>
             {
-            localStorage.getItem("user").role==="clientmanager"?(  <Button onClick={()=>navigate(`/leads/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
-            View All
-          </Button>)
-            :
-            localStorage.getItem("user").role==="teamlead"?(  <Button onClick={()=>navigate(`/teamlead/leads/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
-            View All
-          </Button>)
-            :
-            localStorage.getItem("user").role==="admin"?(  <Button onClick={()=>navigate(`/admin/allleads`)} style={{ marginTop: "10px", background: "#A326C5" }}>
-            View All
-          </Button>)
-            :null
+              localStorage.getItem("user").role === "clientmanager" ? (<Button onClick={() => navigate(`/leads/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+                View All
+              </Button>)
+                :
+                localStorage.getItem("user").role === "teamlead" ? (<Button onClick={() => navigate(`/teamlead/leads/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+                  View All
+                </Button>)
+                  :
+                  localStorage.getItem("user").role === "admin" ? (<Button onClick={() => navigate(`/admin/allleads`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+                    View All
+                  </Button>)
+                    : null
             }
-          
+
           </div>
         </Col>
         <Col md={3}>
@@ -367,20 +366,20 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
             </span>
 
             {
-            localStorage.getItem("user").role==="clientmanager"?(  <Button onClick={()=>navigate(`/payment/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
-            View All
-          </Button>)
-            :
-            localStorage.getItem("user").role==="teamlead"?(  <Button onClick={()=>navigate(`/teamlead/payment/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
-            View All
-          </Button>)
-            :
-            localStorage.getItem("user").role==="admin"?(  <Button onClick={()=>navigate(`/admin/allleads`)} style={{ marginTop: "10px", background: "#A326C5" }}>
-            View All
-          </Button>)
-            :null
+              localStorage.getItem("user").role === "clientmanager" ? (<Button onClick={() => navigate(`/payment/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+                View All
+              </Button>)
+                :
+                localStorage.getItem("user").role === "teamlead" ? (<Button onClick={() => navigate(`/teamlead/payment/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+                  View All
+                </Button>)
+                  :
+                  localStorage.getItem("user").role === "admin" ? (<Button onClick={() => navigate(`/admin/allleads`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+                    View All
+                  </Button>)
+                    : null
             }
-            
+
           </div>
         </Col>
         <Col md={3}>
@@ -454,22 +453,22 @@ const PaymentRow = ({name, totalDealValue, totalEarned, totalDuePayment }) => {
             </span>
 
             {
-            localStorage.getItem("user").role==="clientmanager"?(  <Button onClick={()=>navigate(`/payment/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
-            View All
-          </Button>)
-            :
-            localStorage.getItem("user").role==="teamlead"?(  <Button onClick={()=>navigate(`/teamlead/payment/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
-            View All
-          </Button>)
-            :
-            localStorage.getItem("user").role==="admin"?(  <Button onClick={()=>navigate(`/admin/allpayments`)} style={{ marginTop: "10px", background: "#A326C5" }}>
-            View All
-          </Button>)
-            :null
+              localStorage.getItem("user").role === "clientmanager" ? (<Button onClick={() => navigate(`/payment/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+                View All
+              </Button>)
+                :
+                localStorage.getItem("user").role === "teamlead" ? (<Button onClick={() => navigate(`/teamlead/payment/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+                  View All
+                </Button>)
+                  :
+                  localStorage.getItem("user").role === "admin" ? (<Button onClick={() => navigate(`/admin/allpayments`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+                    View All
+                  </Button>)
+                    : null
             }
 
 
-         
+
           </div>
         </Col>
       </Row>
