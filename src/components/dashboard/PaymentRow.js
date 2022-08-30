@@ -1,8 +1,10 @@
 import React from "react";
 import { Button, Col, Row, Stack, ProgressBar } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-const user = localStorage.getItem('user')
+const localUser = localStorage.getItem('user')
+const user = JSON.parse(localUser)
 console.log(user)
+
 const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
 
   const navigate = useNavigate();
@@ -277,15 +279,15 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
               It includes the total value of the Deal.
             </span>
             {
-              localStorage.getItem("user").role === "clientmanager" ? (<Button onClick={() => navigate(`/leads/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+              user.role === "clientmanager" ? (<Button onClick={() => navigate(`/leads/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
                 View All
               </Button>)
                 :
-                localStorage.getItem("user").role === "teamlead" ? (<Button onClick={() => navigate(`/teamlead/leads/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+                user.role === "teamlead" ? (<Button onClick={() => navigate(`/teamlead/leads/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
                   View All
                 </Button>)
                   :
-                  localStorage.getItem("user").role === "admin" ? (<Button onClick={() => navigate(`/admin/allleads`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+                  user.role === "admin" ? (<Button onClick={() => navigate(`/admin/allleads`)} style={{ marginTop: "10px", background: "#A326C5" }}>
                     View All
                   </Button>)
                     : null
@@ -366,15 +368,15 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
             </span>
 
             {
-              localStorage.getItem("user").role === "clientmanager" ? (<Button onClick={() => navigate(`/payment/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+              user.role === "clientmanager" ? (<Button onClick={() => navigate(`/payment/${name}`)} style={{ marginTop: "10px", background: "#1DB7DB" }}>
                 View All
               </Button>)
                 :
-                localStorage.getItem("user").role === "teamlead" ? (<Button onClick={() => navigate(`/teamlead/payment/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+                user.role === "teamlead" ? (<Button onClick={() => navigate(`/teamlead/payment/${name}`)} style={{ marginTop: "10px", background: "#1DB7DB" }}>
                   View All
                 </Button>)
                   :
-                  localStorage.getItem("user").role === "admin" ? (<Button onClick={() => navigate(`/admin/allleads`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+                  user.role === "admin" ? (<Button onClick={() => navigate(`/admin/allleads`)} style={{ marginTop: "10px", background: "#1DB7DB" }}>
                     View All
                   </Button>)
                     : null
@@ -453,15 +455,15 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
             </span>
 
             {
-              localStorage.getItem("user").role === "clientmanager" ? (<Button onClick={() => navigate(`/payment/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+              user.role === "clientmanager" ? (<Button onClick={() => navigate(`/payment/${name}`)} style={{ marginTop: "10px", background: "#04CA8E" }}>
                 View All
               </Button>)
                 :
-                localStorage.getItem("user").role === "teamlead" ? (<Button onClick={() => navigate(`/teamlead/payment/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+                user.role === "teamlead" ? (<Button onClick={() => navigate(`/teamlead/payment/${name}`)} style={{ marginTop: "10px", background: "#04CA8E" }}>
                   View All
                 </Button>)
                   :
-                  localStorage.getItem("user").role === "admin" ? (<Button onClick={() => navigate(`/admin/allpayments`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+                  user.role === "admin" ? (<Button onClick={() => navigate(`/admin/allpayments`)} style={{ marginTop: "10px", background: "#04CA8E" }}>
                     View All
                   </Button>)
                     : null
