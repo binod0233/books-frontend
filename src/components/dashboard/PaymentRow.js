@@ -279,15 +279,15 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
               It includes the total value of the Deal.
             </span>
             {
-              user.role === "clientmanager" ? (<Button onClick={() => navigate(`/leads/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+              user.role === "clientmanager" ? (<Button onClick={() => navigate(`/leads/${name}`)} style={{ marginTop: "10px",border:'none', background: "#A326C5" }}>
                 View All
               </Button>)
                 :
-                user.role === "teamlead" ? (<Button onClick={() => navigate(`/teamlead/leads/${name}`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+                user.role === "teamlead" ? (<Button onClick={() => navigate(`/teamlead/leads/${name}`)} style={{ marginTop: "10px",border:'none', background: "#A326C5" }}>
                   View All
                 </Button>)
                   :
-                  user.role === "admin" ? (<Button onClick={() => navigate(`/admin/allleads`)} style={{ marginTop: "10px", background: "#A326C5" }}>
+                  user.role === "admin" ? (<Button onClick={() => navigate(`/admin/allleads`)} style={{ marginTop: "10px",border:'none', background: "#A326C5" }}>
                     View All
                   </Button>)
                     : null
@@ -368,15 +368,15 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
             </span>
 
             {
-              user.role === "clientmanager" ? (<Button onClick={() => navigate(`/payment/${name}`)} style={{ marginTop: "10px", background: "#1DB7DB" }}>
+              user.role === "clientmanager" ? (<Button onClick={() => navigate(`/payment/${name}`)} style={{ marginTop: "10px", background: "#1DB7DB",border:'none' }}>
                 View All
               </Button>)
                 :
-                user.role === "teamlead" ? (<Button onClick={() => navigate(`/teamlead/payment/${name}`)} style={{ marginTop: "10px", background: "#1DB7DB" }}>
+                user.role === "teamlead" ? (<Button onClick={() => navigate(`/teamlead/payment/${name}`)} style={{ marginTop: "10px", background: "#1DB7DB",border:'none' }}>
                   View All
                 </Button>)
                   :
-                  user.role === "admin" ? (<Button onClick={() => navigate(`/admin/allleads`)} style={{ marginTop: "10px", background: "#1DB7DB" }}>
+                  user.role === "admin" ? (<Button onClick={() => navigate(`/admin/allleads`)} style={{ marginTop: "10px", background: "#1DB7DB",border:'none' }}>
                     View All
                   </Button>)
                     : null
@@ -455,15 +455,15 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
             </span>
 
             {
-              user.role === "clientmanager" ? (<Button onClick={() => navigate(`/payment/${name}`)} style={{ marginTop: "10px", background: "#04CA8E" }}>
+              user.role === "clientmanager" ? (<Button onClick={() => navigate(`/payment/${name}`)} style={{ marginTop: "10px", background: "#04CA8E" ,border:'none'}}>
                 View All
               </Button>)
                 :
-                user.role === "teamlead" ? (<Button onClick={() => navigate(`/teamlead/payment/${name}`)} style={{ marginTop: "10px", background: "#04CA8E" }}>
+                user.role === "teamlead" ? (<Button onClick={() => navigate(`/teamlead/payment/${name}`)} style={{ marginTop: "10px", background: "#04CA8E" ,border:'none'}}>
                   View All
                 </Button>)
                   :
-                  user.role === "admin" ? (<Button onClick={() => navigate(`/admin/allpayments`)} style={{ marginTop: "10px", background: "#04CA8E" }}>
+                  user.role === "admin" ? (<Button onClick={() => navigate(`/admin/allpayments`)} style={{ marginTop: "10px", background: "#04CA8E",border:'none' }}>
                     View All
                   </Button>)
                     : null
