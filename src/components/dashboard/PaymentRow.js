@@ -451,6 +451,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
                 fontFamily: "sans-serif",
                 color: "#64676B",
                 textAlign: "center",
+                width:'80%'
               }}
             >
               {" "}
