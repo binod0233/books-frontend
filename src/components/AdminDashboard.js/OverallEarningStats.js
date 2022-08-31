@@ -1,13 +1,13 @@
 import React from 'react'
 import {Row,Col,Button} from 'react-bootstrap'
-
+import '../../App.css'
 const       OverallEarningStats = () => {
   return (
     <div className='me-4 px-3 py-2 ' style={{height:"30vh",background:"white", fontSize:'1.2rem', fontWeight:'700'}}>
         Overall Earning Stats
         <Row className='pt-2'>
             <Col>
-                <div style={{height:"22vh",background:"#EEF5FF",borderRadius:"10px"}}>
+                <div className='trans' style={{height:"22vh",background:"#EEF5FF",borderRadius:"10px"}}>
                     <Row>
                         <Col md={4} className='pt-3 ps-4 ' style={{fontWeight:"700",fontSize:"20px" }}>
                             <div className='d-flex  justify-content-center align-items-center' 
@@ -38,7 +38,7 @@ const       OverallEarningStats = () => {
                 </div>
             </Col>
             <Col>
-                <div style={{height:"22vh",background:"#FFF6FB",borderRadius:"10px"}}>
+                <div className='trans' style={{height:"22vh",background:"#FFF6FB",borderRadius:"10px"}}>
                 <Row>
                         <Col md={4} className='pt-3 ps-4 ' style={{fontWeight:"700",fontSize:"20px" }}>
                             <div className='d-flex  justify-content-center align-items-center' 
@@ -69,7 +69,7 @@ const       OverallEarningStats = () => {
                 </div>
             </Col>
             <Col>
-                <div style={{height:"22vh",background:"#FFF8EF",borderRadius:"10px"}}>
+                <div className='trans' style={{height:"22vh",background:"#FFF8EF",borderRadius:"10px"}}>
                 <Row>
                         <Col md={4} className='pt-3 ps-4 ' style={{fontWeight:"700",fontSize:"20px" }}>
                             <div className='d-flex  justify-content-center align-items-center' 
@@ -100,7 +100,7 @@ const       OverallEarningStats = () => {
                 </div>
             </Col>
             <Col>
-                <div style={{height:"22vh",background:"#E3FCF8",borderRadius:"10px"}}>
+                <div className='trans' style={{height:"22vh",background:"#E3FCF8",borderRadius:"10px"}}>
                 <Row>
                         <Col md={4} className='pt-3 ps-4 ' style={{fontWeight:"700",fontSize:"20px" }}>
                             <div className='d-flex  justify-content-center align-items-center' 

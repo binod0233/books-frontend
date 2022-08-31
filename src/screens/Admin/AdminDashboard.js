@@ -11,31 +11,58 @@ import Select from 'react-select'
 
 const AdminDashboard = () => {
 
-  const [teamLeads, setTeamLeads] = useState([{
+  const [teamLeads, setTeamLeads] = useState([
+    {
     teamName: 'Bibek Lamichhane',
     status: 'remained',
     weeks: 4,
     totalEarnings: 8000,
     name: 'anup chaudhary',
     email: 'anup@copenned.com'
-  }])
+  },
+  {
+    teamName: 'Bibek Lamichhane',
+    status: 'remained',
+    weeks: 4,
+    totalEarnings: 8000,
+    name: 'anup chaudhary',
+    email: 'anup@copenned.com'
+  }, {
+    teamName: 'Bibek Lamichhane',
+    status: 'remained',
+    weeks: 4,
+    totalEarnings: 8000,
+    name: 'Hari  Chaudhary',
+    email: 'anup@copenned.com'
+  }, {
+    teamName: 'Bibek Lamichhane',
+    status: 'remained',
+    weeks: 4,
+    totalEarnings: 8000,
+    name: 'Shyam khadka',
+    email: 'anup@copenned.com'
+  },
+])
   const [topClientManagers, setTopClientManagers] = useState([{
     name: 'hari sdfj',
     teamName: 'anup',
     email: 'sajd@gamil.com',
     numberOfLeads: 12,
-    status: 'hsgf',
+    status: 'Excellence',
     weeks: 7,
-    totalSales: 'static data'
+    totalSales: 'static data',
+    leadsNumber:700,
   },
   {
     name: 'hari sdfjstha ',
     teamName: 'anup hfsdas',
     email: 'sajd@gamil.com',
     numberOfLeads: 1252,
-    status: 'hsgfunfsdf',
+    status: 'good',
     weeks: 7,
-    totalSales: 'static data'
+    totalSales: 'static data',
+    leadsNumber:700,
+
   },
   ])
   const [topLeads, setTopLeads] = useState([])
@@ -139,7 +166,12 @@ const AdminDashboard = () => {
         <EarningStats />
         <PaymentRow />
         <div className='bg-white mx-4 mb-3' style={{ width: '97%', margin: '0 auto' }}>
-          <div className='text-black ' style={{ fontSize: '1.3rem', fontWeight: "700", margin: ".8rem" }}>Top Team Leaders</div>
+          <div className='text-black d-flex justify-content-between align-items-center' >
+          <span style={{ fontSize: '1.3rem', fontWeight: "600", margin: ".8rem" }}>Top Team Leaders</span>
+
+<Select isClearable options={options} onChange={(e) => setTimeInterval(e)} />
+
+          </div>
           <Row style={{ background: "#fff", height: "70px" }} className="d-flex align-items-center justify-content-center mb-3 mx-2">
             <Col md={7} style={{fontSize:'1.2rem', fontWeight:"700"}}>
               <Row>
@@ -161,7 +193,7 @@ const AdminDashboard = () => {
           {teamLeads?.map((l) =>
             <Row key={l.id} style={{ background: "#fff", height: "70px" }} className="d-flex align-items-center justify-content-center mb-3 mx-2">
             <Col md={7} style={{fontSize:'1.2rem', fontWeight:"400"}}>
-              <Row>
+              <Row className='d-flex align-items-center'>
               <Col md={4}>
               <div className="d-flex justify-content-start align-items-center ">
                     <div className="  ">
@@ -184,7 +216,7 @@ const AdminDashboard = () => {
                         color: "black",
                         fontWeight: "700",
                         fontSize: "1.2rem",
-                        lineHeight: "25px",
+                        // lineHeight: "25px",
                         marginLeft: "8px",
                       }}
                     >
@@ -193,7 +225,7 @@ const AdminDashboard = () => {
                         style={{
                           color: "#666",
                           fontWeight: "400",
-                          fontSize: "14px",
+                          fontSize: ".9rem",
                         }}
                       >
                         {l.email}
@@ -201,21 +233,166 @@ const AdminDashboard = () => {
                     </div>
                   </div>
               </Col>
-              <Col md={4}>{l.teamName}</Col>
-              <Col md={4}>{l.name}</Col>
+              <Col md={3} >{l.teamName}</Col>
+              <Col md={5} className='d-flex justify-content-center'>
+             <div className='d-flex'>
+             <div
+                        style={{
+                          borderRadius: "50%",
+                          background: "#D2FFC7",
+                          height: "45px",
+                          width: "45px",
+                          color: "#000",
+                          fontWeight: "400",
+                        }}
+                        className="d-flex justify-content-center align-items-center  "
+                      >
+                        {l.name.split(" ").map((n) => n[0])}
+                      </div>
+                      <div
+                        style={{
+                          borderRadius: "50%",
+                          background: "#DBD1FC",
+                          height: "45px",
+                          width: "45px",
+                          color: "#000",
+                          fontWeight: "400",
+                        }}
+                        className="d-flex justify-content-center align-items-center  "
+                      >
+                        {l.name.split(" ").map((n) => n[0])}
+                      </div>
+                      <div
+                        style={{
+                          borderRadius: "50%",
+                          background: "#FAEABC",
+                          height: "45px",
+                          width: "45px",
+                          color: "#000",
+                          fontWeight: "400",
+                        }}
+                        className="d-flex justify-content-center align-items-center  "
+                      >
+                        {l.name.split(" ").map((n) => n[0])}
+                      </div>
+                      <div
+                        style={{
+                          borderRadius: "50%",
+                          background: "#FFC7C7",
+                          height: "45px",
+                          width: "45px",
+                          color: "#000",
+                         marginLeft:'2rem',
+                         fontSize:"2.5rem"
+                        }}
+                        className="d-flex justify-content-center align-items-center  "
+                      >
+                        +
+                      </div>
+                      
+             </div>
+
+              </Col>
               </Row>
             </Col>
             <Col md={5} style={{fontSize:'1.2rem', fontWeight:"400"}}>
-             <Row>
+             <Row className='d-flex align-items-center'>
              <Col md={4}>{l.status}</Col>
               <Col md={4}>{l.weeks}</Col>
-              <Col md={4}> ${l.totalEarnings}</Col>
+              <Col md={4} style={{fontWeight:'700'}}> ${l.totalEarnings}</Col>
+             </Row>
+            </Col>
+<hr className='mt-3'/>
+          </Row>
+          )}
+        </div>
+
+        <div className='bg-white mx-4 mb-3' style={{ width: '97%', margin: '0 auto' }}>
+          <div className='text-black d-flex justify-content-between align-items-center' style={{ fontSize: '1.3rem', fontWeight: "700", margin: ".8rem" }}>
+          <span style={{ fontSize: '1.3rem', fontWeight: "600", margin: ".8rem" }}>Top Client Managers</span>
+          </div>
+          <Row style={{ background: "#fff", height: "70px" }} className="d-flex align-items-center justify-content-center mb-3 mx-2">
+            <Col md={7} style={{fontSize:'1.2rem', fontWeight:"700"}}>
+              <Row>
+              <Col md={4}>Client Managers</Col>
+              <Col md={4}>Team Name</Col>
+              <Col md={4}>No. of Leads</Col>
+              </Row>
+            </Col>
+            <Col md={5} style={{fontSize:'1.2rem', fontWeight:"700"}}>
+             <Row>
+             <Col md={4}>Status</Col>
+              <Col md={4}>Weeks</Col>
+              <Col md={4}>Total Sales</Col>
              </Row>
             </Col>
           </Row>
 
+
+          {topClientManagers?.map((l) =>
+            <Row key={l.id} style={{ background: "#fff", height: "70px" }} className="d-flex align-items-center justify-content-center mb-3 mx-2">
+            <Col md={7} style={{fontSize:'1.2rem', fontWeight:"400"}}>
+              <Row className='d-flex align-items-center'>
+              <Col md={4}>
+              <div className="d-flex justify-content-start align-items-center ">
+                    <div className="  ">
+                      <div
+                        style={{
+                          borderRadius: "50%",
+                          background: "#ED6F47",
+                          height: "45px",
+                          width: "45px",
+                          color: "#fff",
+                          fontWeight: "400",
+                        }}
+                        className="d-flex justify-content-center align-items-center  "
+                      >
+                        {l.name.split(" ").map((n) => n[0])}
+                      </div>
+                    </div>
+                    <div
+                      style={{
+                        color: "black",
+                        fontWeight: "700",
+                        fontSize: "1.2rem",
+                        // lineHeight: "25px",
+                        marginLeft: "8px",
+                      }}
+                    >
+                      {l.name}
+                      <div
+                        style={{
+                          color: "#666",
+                          fontWeight: "400",
+                          fontSize: ".9rem",
+                        }}
+                      >
+                        {l.email}
+                      </div>
+                    </div>
+                  </div>
+              </Col>
+              <Col md={3} >{l.teamName}</Col>
+              <Col md={5} className='d-flex justify-content-center'>
+            {l.leadsNumber}
+
+              </Col>
+              </Row>
+            </Col>
+            <Col md={5} style={{fontSize:'1.2rem', fontWeight:"400"}}>
+             <Row className='d-flex align-items-center'>
+             <Col md={4}>{l.status}</Col>
+              <Col md={4}>{l.weeks}</Col>
+              <Col md={4} style={{fontWeight:'700'}}> ${l.totalSales}</Col>
+             </Row>
+            </Col>
+<hr className='mt-3'/>
+
+          </Row>
+
           )}
         </div>
+
 
 
         {/* <div className='bg-white mx-4'>
