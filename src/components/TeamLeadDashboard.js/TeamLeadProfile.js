@@ -33,7 +33,7 @@ const user= JSON.parse(localStorage.getItem('user'))
         <Col className='mx-2 py-2  d-flex flex-column justify-content-center' style={{ background: "white", height: "25vh",  }}>
           <Row className='d-flex py-1'>
             <Col className="px-1">
-              <div className='d-flex flex-column align-items-center trans' style={{ height: "", background: "#F7E8FB" }}>
+              <div className='d-flex flex-column align-items-center trans' style={{ padding: '2vh 0', background: "#F7E8FB" }}>
                 <div className='d-flex justify-content-center align-items-center mt-3 ' style={{ height: "7vh", width: "7vh", background: "#A326C5", borderRadius: "50%" }}>
                   <div className='d-flex justify-content-center align-items-center ' style={{ height: "2.5vh", width: "4vh" }}>
                     <img src="/images/dashboard/conversion.png" alt="conversion" style={{ height: "inherit", width: "inherit", objectFit: "cover" }} className='img-fluid' />
@@ -46,7 +46,7 @@ const user= JSON.parse(localStorage.getItem('user'))
             </Col>
 
             <Col className="px-1" style={{ background: "white" }}>
-              <div className='d-flex flex-column align-items-center trans' style={{ height: "", background: "#E6FCF5" }}>
+              <div className='d-flex flex-column align-items-center trans' style={{  padding: '2vh 0', background: "#E6FCF5" }}>
                 <div className='d-flex justify-content-center align-items-center mt-3 ' style={{ height: "7vh", width: "7vh", background: "#04CA8E", borderRadius: "50%" }}>
                   <div className='d-flex justify-content-center align-items-center ' style={{ height: "2.5vh", width: "4vh" }}>
 

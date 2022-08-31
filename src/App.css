@@ -75,10 +75,10 @@ label {
 
 /* hover and box shadow */
 .trans {
-  transition: box-shadow 1s;
+  transition: box-shadow .6s;
 }
 
 .trans:hover {
-  box-shadow:0 3px 10px rgb(0 0 0 / 0.2);
-  ;
+  /* box-shadow:0 3px 10px rgb(0 0 0 / 0.3); */
+  box-shadow: rgba(0, 0, 0, 0.29) 0px 14px 20px, rgba(99, 99, 99, 0.22) 0px 10px 10px;
 }

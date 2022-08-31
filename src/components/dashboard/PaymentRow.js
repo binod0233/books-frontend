@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Col, Row, Stack, ProgressBar } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-
+import '../../App.css';
 const localUser = localStorage.getItem('user')
 const user = JSON.parse(localUser)
 console.log(user)
@@ -15,7 +15,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
     <div className=" ps-4 pb-4 mt-5">
       <Row>
         <Col md={3}>
-          <div style={{ background: "white", height: "45vh", width: "100%" }}>
+          <div className="trans" style={{ background: "white", height: "45vh", width: "100%" }}>
             <div className="d-flex flex-column align-items-center pb-3 ">
               <div
                 style={{
@@ -212,7 +212,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
         <Col md={3}>
           <div
             style={{ background: "white", height: "45vh", width: "100%" }}
-            className="d-flex flex-column align-items-center px-3"
+            className="d-flex flex-column align-items-center px-3 trans"
           >
             <div
               style={{
@@ -300,7 +300,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
         <Col md={3}>
           <div
             style={{ background: "white", height: "45vh", width: "100%" }}
-            className="d-flex flex-column align-items-center px-3"
+            className="d-flex flex-column align-items-center px-3 trans"
           >
             <div
               style={{
@@ -390,7 +390,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
         <Col md={3}>
           <div
             style={{ background: "white", height: "45vh", width: "100%" }}
-            className="d-flex flex-column align-items-center px-3"
+            className="d-flex flex-column align-items-center px-3 trans "
           >
             <div
               style={{
