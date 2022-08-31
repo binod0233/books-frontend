@@ -85,8 +85,20 @@ label {
 button{
   box-shadow:0 3px 10px rgb(0 0 0 / 0.3);
   /* box-shadow: rgba(0, 0, 0, 0.29) 0px 14px 20px, rgba(99, 99, 99, 0.22) 0px 10px 10px; */
+  cursor: pointer;
+  outline: 0;
+
   
 }
 button:hover{
   background: linear-gradient(rgb(0 0 0) rgb(183, 25, 25));
+  transform: translateY(-2px);
 }
+.boxshadow{
+  box-shadow: 0 0 20px rgb(221, 215, 215);
+}
+
+
+
+
+

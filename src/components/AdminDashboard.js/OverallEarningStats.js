@@ -10,7 +10,7 @@ const       OverallEarningStats = () => {
                 <div className='trans' style={{height:"22vh",background:"#EEF5FF",borderRadius:"10px"}}>
                     <Row>
                         <Col md={4} className='pt-3 ps-4 ' style={{fontWeight:"700",fontSize:"20px" }}>
-                            <div className='d-flex  justify-content-center align-items-center' 
+                            <div className='d-flex  justify-content-center align-items-center boxshadow' 
                             style={{background:"#3144E7",height:"5vh",width:"5vh",borderRadius:"50%"}}>
                                 <img src="/images/dashboard/people.png" style={{height:"2vh"}} alt="people" className='img-fluid'/>
                             </div>
@@ -41,7 +41,7 @@ const       OverallEarningStats = () => {
                 <div className='trans' style={{height:"22vh",background:"#FFF6FB",borderRadius:"10px"}}>
                 <Row>
                         <Col md={4} className='pt-3 ps-4 ' style={{fontWeight:"700",fontSize:"20px" }}>
-                            <div className='d-flex  justify-content-center align-items-center' 
+                            <div className='d-flex  justify-content-center align-items-center boxshadow' 
                             style={{background:"#DD2A7B",height:"5vh",width:"5vh",borderRadius:"50%"}}>
                                 <img src="/images/dashboard/chat.png" style={{height:"2vh"}} alt="chat" className='img-fluid'/>
                             </div>
@@ -50,7 +50,7 @@ const       OverallEarningStats = () => {
                         <div>
                            <span style={{color:"#DD2A7B",fontSize:"18px",fontWeight:"600"}}>Client Manager </span> 
                            <div className="ms-5">
-                           <span><i style={{color:"#DD2A7B",fontSize:".8rem"}} className="fa-solid fa-arrow-down-long"></i></span>
+                           <span style={{marginLeft:'2vw'}}><i style={{color:"#DD2A7B",fontSize:".8rem"}} className="fa-solid fa-arrow-down-long"></i></span>
                            <span style={{fontSize:".8rem"}}>-3.23%</span>
                            </div>
 
@@ -72,7 +72,7 @@ const       OverallEarningStats = () => {
                 <div className='trans' style={{height:"22vh",background:"#FFF8EF",borderRadius:"10px"}}>
                 <Row>
                         <Col md={4} className='pt-3 ps-4 ' style={{fontWeight:"700",fontSize:"20px" }}>
-                            <div className='d-flex  justify-content-center align-items-center' 
+                            <div className='d-flex  justify-content-center align-items-center boxshadow' 
                             style={{background:"#F0A41F",height:"5vh",width:"5vh",borderRadius:"50%"}}>
                                 <img src="/images/dashboard/leads.png" style={{height:"2vh"}} alt="leads" className='img-fluid'/>
                             </div>
@@ -103,7 +103,7 @@ const       OverallEarningStats = () => {
                 <div className='trans' style={{height:"22vh",background:"#E3FCF8",borderRadius:"10px"}}>
                 <Row >
                         <Col md={4} className='pt-3 ps-4 ' style={{fontWeight:"700",fontSize:"20px" }}>
-                            <div className='d-flex  justify-content-center align-items-center' 
+                            <div className='d-flex  justify-content-center align-items-center boxshadow' 
                             style={{background:"#05BBC0",height:"5vh",width:"5vh",borderRadius:"50%"}}>
                                 <img src="/images/dashboard/whiteDoll.png" style={{height:"2vh"}} alt="whiteDoll" className='img-fluid'/>
                             </div>

@@ -25,7 +25,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
                   borderRadius: "50%",
                   background: "#F7E8FB",
                 }}
-                className="d-flex justify-content-center align-items-center"
+                className="d-flex justify-content-center align-items-center boxshadow"
               >
                 <svg width="20" height="20" viewBox="0 0 41 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M20.5 0C31.8221 0 41 8.85981 41 19.7896C41 27.9627 35.8668 34.9801 28.5422 37.998L23.3802 25.0358C24.5932 24.4149 25.5561 23.42 26.1155 22.2096C26.6749 20.9992 26.7986 19.6429 26.467 18.3567C26.1353 17.0705 25.3674 15.9285 24.2855 15.1125C23.2036 14.2965 21.8699 13.8534 20.4969 13.8539C19.1239 13.8543 17.7906 14.2983 16.7093 15.1151C15.6279 15.9318 14.8608 17.0744 14.5301 18.3608C14.1994 19.6472 14.3242 21.0034 14.8845 22.2134C15.4447 23.4235 16.4083 24.4177 17.6218 25.0378L12.4599 38C8.76315 36.4771 5.61139 33.9392 3.3962 30.7017C1.18102 27.4641 4.12991e-05 23.6696 0 19.7896C0 8.85981 9.17785 0 20.5 0Z" fill="#5B38D7" />
@@ -222,7 +222,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
                 borderRadius: "50%",
                 background: "#F7E8FB",
               }}
-              className="d-flex justify-content-center align-items-center"
+              className="d-flex justify-content-center align-items-center boxshadow"
             >
               <svg
                 width="20"
@@ -281,11 +281,11 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
               It includes the total value of the Deal.
             </span>
             {
-              user.role === "clientmanager" ? (<Button onClick={() => navigate(`/leads/${name}`)} style={{ marginTop: "4vh",padding:'1 vh 2vw',border:'none', background: "#A326C5" }}>
+              user.role === "clientmanager" ? (<Button onClick={() => navigate(`/leads/${name}`)} style={{ marginTop: "4vh",padding:'1vh 2vw',border:'none', background: "#A326C5" }}>
                 View All
               </Button>)
                 :
-                user.role === "teamlead" ? (<Button onClick={() => navigate(`/teamlead/leads/${name}`)} style={{ marginTop: "4vh",padding:'1 vh 2vw',border:'none', background: "#A326C5" }}>
+                user.role === "teamlead" ? (<Button onClick={() => navigate(`/teamlead/leads/${name}`)} style={{ marginTop: "4vh",padding:'1vh 2vw',border:'none', background: "#A326C5" }}>
                   View All
                 </Button>)
                   :
@@ -310,7 +310,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
                 borderRadius: "50%",
                 background: "#EBF9FF",
               }}
-              className="d-flex justify-content-center align-items-center"
+              className="d-flex justify-content-center align-items-center boxshadow"
             >
               <svg
                 width="20"
@@ -371,11 +371,11 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
             </span>
 
             {
-              user.role === "clientmanager" ? (<Button onClick={() => navigate(`/payment/${name}`)} style={{ marginTop: "4vh",padding:'1 vh 2vw', background: "#1DB7DB",border:'none' }}>
+              user.role === "clientmanager" ? (<Button onClick={() => navigate(`/payment/${name}`)} style={{ marginTop: "4vh",padding:'1vh 2vw', background: "#1DB7DB",border:'none' }}>
                 View All
               </Button>)
                 :
-                user.role === "teamlead" ? (<Button onClick={() => navigate(`/teamlead/payment/${name}`)} style={{ marginTop: "4vh",padding:'1 vh 2vw', background: "#1DB7DB",border:'none' }}>
+                user.role === "teamlead" ? (<Button onClick={() => navigate(`/teamlead/payment/${name}`)} style={{ marginTop: "4vh",padding:'1vh 2vw', background: "#1DB7DB",border:'none' }}>
                   View All
                 </Button>)
                   :
@@ -400,7 +400,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
                 borderRadius: "50%",
                 background: "#E6FCF5",
               }}
-              className="d-flex justify-content-center align-items-center"
+              className="d-flex justify-content-center align-items-center boxshadow"
             >
               <svg
                 width="20"
@@ -459,15 +459,15 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
             </span>
 
             {
-              user.role === "clientmanager" ? (<Button onClick={() => navigate(`/payment/${name}`)} style={{ marginTop: "4vh",padding:'1 vh 2vw', background: "#04CA8E" ,border:'none'}}>
+              user.role === "clientmanager" ? (<Button onClick={() => navigate(`/payment/${name}`)} style={{ marginTop: "4vh",padding:'1vh 2vw', background: "#04CA8E" ,border:'none'}}>
                 View All
               </Button>)
                 :
-                user.role === "teamlead" ? (<Button onClick={() => navigate(`/teamlead/payment/${name}`)} style={{ marginTop: "4vh",padding:'1 vh 2vw', background: "#04CA8E" ,border:'none'}}>
+                user.role === "teamlead" ? (<Button onClick={() => navigate(`/teamlead/payment/${name}`)} style={{ marginTop: "4vh",padding:'1vh 2vw', background: "#04CA8E" ,border:'none'}}>
                   View All
                 </Button>)
                   :
-                  user.role === "admin" ? (<Button onClick={() => navigate(`/admin/allpayments`)} style={{ marginTop: "4vh",padding:'1 vh 2vw', background: "#04CA8E",border:'none' }}>
+                  user.role === "admin" ? (<Button onClick={() => navigate(`/admin/allpayments`)} style={{ marginTop: "4vh",padding:'1vh 2vw', background: "#04CA8E",border:'none' }}>
                     View All
                   </Button>)
                     : null
