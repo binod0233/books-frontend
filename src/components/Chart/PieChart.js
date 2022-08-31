@@ -56,7 +56,7 @@ export const pieData = {
 
 function PieChart() {
   return (
-    <div>
+    <div style={{}}>
       <Pie
         // className="pt-5"
         data={pieData}
