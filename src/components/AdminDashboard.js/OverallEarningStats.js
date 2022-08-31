@@ -1,7 +1,7 @@
 import React from 'react'
 import {Row,Col,Button} from 'react-bootstrap'
 
-const OverallEarningStats = () => {
+const       OverallEarningStats = () => {
   return (
     <div className='me-4 px-3 py-2 ' style={{height:"30vh",background:"white", fontSize:'1.2rem', fontWeight:'700'}}>
         Overall Earning Stats
@@ -28,7 +28,7 @@ const OverallEarningStats = () => {
                         <Row>
                         <Col md={7} className='pt-2  ps-4' style={{ }}>
                         
-                            <span style={{fontSize:"1.8rem",color:"black",fontWeight:"800",fontFamily:"serif"}}>$12,023<br/></span>
+                            <span style={{fontSize:"1.8rem",color:"black",fontWeight:"700",fontFamily:""}}>$12,023<br/></span>
                             <span style={{fontSize:".8rem",color:"gray",fontWeight:"400"}}>Total Earning</span>
                             </Col>
                             <Col md={5} className='pt-3  ' style={{fontWeight:"700",fontSize:"20px" }}>
@@ -59,7 +59,7 @@ const OverallEarningStats = () => {
                         </Row>
                         <Row>
                         <Col md={7} className='pt-2  ps-4' style={{ }}>
-                            <span style={{fontSize:"1.8rem",color:"black",fontWeight:"800",fontFamily:"serif"}}>$12,023<br/></span>
+                            <span style={{fontSize:"1.8rem",color:"black",fontWeight:"700",fontFamily:""}}>$12,023<br/></span>
                             <span style={{fontSize:".8rem",color:"gray",fontWeight:"400"}}>Total Earning</span>
                             </Col>
                             <Col md={5} className='pt-3  ' style={{fontWeight:"700",fontSize:"20px" }}>
@@ -90,7 +90,7 @@ const OverallEarningStats = () => {
                         </Row>
                         <Row>
                         <Col md={7} className='pt-2  ps-4' style={{ }}>
-                            <span style={{fontSize:"1.8rem",color:"black",fontWeight:"800",fontFamily:"serif"}}>$500<br/></span>
+                            <span style={{fontSize:"1.8rem",color:"black",fontWeight:"700",fontFamily:""}}>$500<br/></span>
                             <span style={{fontSize:".8rem",color:"gray",fontWeight:"400"}}>Leads</span>
                             </Col>
                             <Col md={5} className='pt-3  ' style={{fontWeight:"700",fontSize:"20px" }}>
@@ -121,7 +121,7 @@ const OverallEarningStats = () => {
                         </Row>
                         <Row>
                         <Col md={7} className='pt-2  ps-4' style={{ }}>
-                            <span style={{fontSize:"1.8rem",color:"black",fontWeight:"800",fontFamily:"serif"}}>$12,023<br/></span>
+                            <span style={{fontSize:"1.8rem",color:"black",fontWeight:"700",fontFamily:""}}>$12,023<br/></span>
                             <span style={{fontSize:".8rem",color:"gray",fontWeight:"400"}}>Total Earning</span>
                             </Col>
                             <Col md={5} className='pt-3  ' style={{fontWeight:"700",fontSize:"20px" }}>
