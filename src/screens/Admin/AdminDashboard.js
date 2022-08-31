@@ -105,7 +105,6 @@ const AdminDashboard = () => {
   })
 
 }
-console.log(teamLeads)
 
   return (
     <div className='px-4'>
