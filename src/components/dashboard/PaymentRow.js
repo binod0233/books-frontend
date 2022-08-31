@@ -12,7 +12,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
 
 
   return (
-    <div className="ps-4 pb-4">
+    <div className=" ps-4 pb-4 mt-5">
       <Row>
         <Col md={3}>
           <div style={{ background: "white", height: "45vh", width: "100%" }}>
@@ -274,6 +274,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
                 fontFamily: "sans-serif",
                 color: "#64676B",
                 textAlign: "center",
+                width:'80%'
               }}
             >
               {" "}
@@ -362,6 +363,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
                 fontFamily: "sans-serif",
                 color: "#64676B",
                 textAlign: "center",
+                width:'80%'
               }}
             >
               {" "}
