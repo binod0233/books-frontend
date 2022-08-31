@@ -25,7 +25,7 @@ const       OverallEarningStats = () => {
                           </div>
                         </Col>
                         </Row>
-                        <Row>
+                        <Row className='pt-3'>
                         <Col md={7} className='pt-2  ps-4' style={{ }}>
                         
                             <span style={{fontSize:"1.8rem",color:"black",fontWeight:"700",fontFamily:""}}>$12,023<br/></span>
@@ -57,7 +57,7 @@ const       OverallEarningStats = () => {
                         </div>
                         </Col>
                         </Row>
-                        <Row>
+                        <Row className='pt-3'>
                         <Col md={7} className='pt-2  ps-4' style={{ }}>
                             <span style={{fontSize:"1.8rem",color:"black",fontWeight:"700",fontFamily:""}}>$12,023<br/></span>
                             <span style={{fontSize:".8rem",color:"gray",fontWeight:"400"}}>Total Earning</span>
@@ -88,7 +88,7 @@ const       OverallEarningStats = () => {
                            </div>
                         </Col>
                         </Row>
-                        <Row>
+                        <Row  className='pt-3'>
                         <Col md={7} className='pt-2  ps-4' style={{ }}>
                             <span style={{fontSize:"1.8rem",color:"black",fontWeight:"700",fontFamily:""}}>$500<br/></span>
                             <span style={{fontSize:".8rem",color:"gray",fontWeight:"400"}}>Leads</span>
@@ -101,7 +101,7 @@ const       OverallEarningStats = () => {
             </Col>
             <Col>
                 <div className='trans' style={{height:"22vh",background:"#E3FCF8",borderRadius:"10px"}}>
-                <Row>
+                <Row >
                         <Col md={4} className='pt-3 ps-4 ' style={{fontWeight:"700",fontSize:"20px" }}>
                             <div className='d-flex  justify-content-center align-items-center' 
                             style={{background:"#05BBC0",height:"5vh",width:"5vh",borderRadius:"50%"}}>
@@ -119,7 +119,7 @@ const       OverallEarningStats = () => {
                            </div>
                         </Col>
                         </Row>
-                        <Row>
+                        <Row className='pt-3'>
                         <Col md={7} className='pt-2  ps-4' style={{ }}>
                             <span style={{fontSize:"1.8rem",color:"black",fontWeight:"700",fontFamily:""}}>$12,023<br/></span>
                             <span style={{fontSize:".8rem",color:"gray",fontWeight:"400"}}>Total Earning</span>
