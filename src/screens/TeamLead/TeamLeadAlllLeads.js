@@ -400,8 +400,8 @@ const localUser = JSON.parse(localStorage.getItem('user'));
 
                 <div style={{ fontWeight: "", fontSize: "19px", width: "16%" }}>
                   {/* <SelectComponent/> */}
-                  <div className="form-group ">
-                  {/* <select
+                  <div className="form-group d-flex justify-content-center">
+                  <select
                       className="selection "
                       name="city"
                       // onChange={(e) => handleInputChange(e, l.id, l.teamLead, l.name, l.clientManager )}
@@ -438,36 +438,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                         Lost
                       </option>
                       <option value="won">Won</option>
-                    </select> */}
-                    <Form.Select 
-                    // onChange={(e) => handleInputChange(e, l.id, l.teamLead, l.name, l.clientManager )}
-                    style={{ background: "#1577D9", appearance: 'button', color: 'white', textAlign: 'center' }} >
-                <option
-                  value={l.potential}
-                  // onClick={(e) => handleServicePlan(e.target.value)} 
-                
->
-                 {l.potential}
-                </option>
-                <option
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center ",
-                        }}
-                        value="Negotiating"
-                      >
-                        Negotiating
-                      </option>
-                      <option value="cold">Cold</option>
-                      <option value="lost" style={{ background: "" }}>
-                        Lost
-                      </option>
-                      <option value="won">Won</option>
-
-                
-
-              </Form.Select>
+                    </select>
                   </div>
                 </div>
 

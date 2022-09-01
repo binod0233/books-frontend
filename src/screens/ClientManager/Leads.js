@@ -417,7 +417,7 @@ const Leads = () => {
                 <div style={{ fontWeight: "", fontSize: "19px", width: "16%" }}>
                   {/* <SelectComponent/> */}
                   <div className="form-group d-flex justify-content-center align-items-center ">
-                    {/* <select
+                    <select
                       className="selection "
                       name="city"
                       onChange={(e) => handleInputChange(e, l.id, l.teamLead, l.name, l.clientManager
@@ -455,36 +455,8 @@ const Leads = () => {
                         Lost
                       </option>
                       <option value="won">Won</option>
-                    </select> */}
-                    <Form.Select 
-                    onChange={(e) => handleInputChange(e, l.id, l.teamLead, l.name, l.clientManager )}
-                    style={{ background: "#1577D9", appearance: 'button', color: 'white', textAlign: 'center' }} >
-                <option
-                  value={l.potential}
-                  // onClick={(e) => handleServicePlan(e.target.value)} 
-                
->
-                 {l.potential}
-                </option>
-                <option
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center ",
-                        }}
-                        value="Negotiating"
-                      >
-                        Negotiating
-                      </option>
-                      <option value="Cold">Cold</option>
-                      <option value="Lost" style={{ background: "" }}>
-                        Lost
-                      </option>
-                      <option value="Won">Won</option>
-
-                
-
-              </Form.Select>
+                    </select>
+                    
                   </div>
                 </div>
 
