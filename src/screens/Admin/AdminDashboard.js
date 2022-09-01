@@ -164,7 +164,11 @@ const AdminDashboard = () => {
         </div>
 
         <EarningStats />
+        <div className='mt-3'>
         <PaymentRow />
+
+        </div>
+
         <div className='bg-white mx-4 mb-3' style={{ width: '97%', margin: '0 auto' }}>
           <div className='text-black d-flex justify-content-between align-items-center' >
           <span style={{ fontSize: '1.3rem', fontWeight: "600", margin: ".8rem" }}>Top Team Leaders</span>
