@@ -57,7 +57,7 @@ font-size: .7rem;
 
 @media (max-width: 1024px) {
   div *{
-    font-size: .7rem;
+    font-size: .9rem;
   }
   .tab-title{
   font-size: .7rem;
@@ -81,7 +81,47 @@ font-size: .7rem;
     div *{
       font-size: 1.5rem;
     }
+    .leadchart{
+      height:45vh;
+      padding-top: 4vh;
+      /* background-color: red; */
+    }
+    .leadcharts{
+      height: 50vh;
+      /* background-color: red; */
+    }
+   .leadchartt{
+    /* background-color: red; */
+    /* padding-top: 50px; */
+    padding-top: 2vh;
+
+   }
+   .barchart{
+    width: 100%;
+   }
    
     }
+
+    @media (max-width: 1920px) {
+    
+      .leadchart{
+        height:45vh;
+        padding-top: 4vh;
+        /* background-color: red; */
+      }
+
+      .leadcharts{
+        height: 50vh;
+      }
+     .leadchartt{
+      /* background-color: red; */
+      padding-top: 2vh;
+     }
+
+     .barchart{
+      width: 100%;
+     }
+     
+      }
     
   
