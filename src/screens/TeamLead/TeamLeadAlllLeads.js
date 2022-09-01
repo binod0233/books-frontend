@@ -32,6 +32,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
       setDisplayList(res.data.responseList);
     })
   }
+  console.log(displayList)
   // const handleInputChange=(e,leadId,teamLead,leadName,clientManager)=>{
   //   axios
   //     .put(`REACT_APP_BASE_URL/api/lead/leads/changepotential/${leadId}`, {
@@ -92,188 +93,194 @@ const localUser = JSON.parse(localStorage.getItem('user'));
     <Row style={{backgrund:"#F1F1FA"}}>
     
  
-<div className='ps-5'style={{background:"#F1F1FA"}} >
+<div className='px-4'style={{background:"#F1F1FA"}} >
+<div className="mb-3">
 <Leadscharts/>
 
-<Form 
-        style={{
-          display: "flex",
-          // justifyContent: "space-between",
-          alignItems: "center",
-          width: "100%",
-        }}
-        >
-        <div 
-       className=''
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          width: "100%",
-        }}
-        >
-            <div
-              className="input-group"
+</div>
+     <div className='leadInputs  mb-2 ' >
+            <Form
               style={{
-                height: "6vh",
-                background: "white",
-                border: "0.7px solid grey",
-                width: "18vw",
+                display: "flex",
+                // justifyContent: "space-between",
+                alignItems: "center",
+                width: "100%",
               }}
             >
-              <div className="d-flex justify-content-center align-items-center px-2">
-                <i className="fa-solid fa-user-large"></i>
-              </div>
-              <input
-                type="text"
-                style={{ border: "none", width: "5px" }}
-                placeholder="Lead Name"
-                value={clientName}
-                onChange={(e) => setClientName(e.target.value)}
-                className="form-control"
-              />
-            </div>
-
-            <div
-              className="input-group"
-              style={{
-                height: "6vh",
-                background: "white",
-                border: "0.7px solid grey",
-                width: "18vw",
-              }}
-            >
-              <span className="d-flex justify-content-center align-items-center p-2">
-                <i className="fa-solid fa-user-large"></i>
-              </span>
-             <select
-                className="form-select"
-                name="Service Type"
-                onChange={(e) => setServicePlan(e.target.value)}
+              <div
+                className=''
                 style={{
-                  textAlign: "center",
-                  height: "5vh",
-                  border: "none"
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  width: "100%",
                 }}
-                aria-label="Default select"
               >
-                <option selected value="">
-                  Service Type
-                </option>
-                <option value="CDR Assessment">CDR Assessment</option>
-                <option value="CDR Report">CDR Report"</option>
-                <option value="CDR Review" >
-                CDR Review
-                </option>
-                
-              </select>
-            </div>
+                <div
+                  className="input-group"
+                  style={{
+                    height: "6vh",
+                    background: "white",
+                    border: "0.7px solid grey",
+                    width: "17vw",
+                  }}
+                >
+                  <div className="d-flex justify-content-center align-items-center px-2">
+                    <i className="fa-solid fa-user-large"></i>
+                  </div>
+                  <input
+                    type="text"
+                    style={{ border: "none", width: "" }}
+                    placeholder="Lead Name"
+                    value={clientName}
+                    onChange={(e) => setClientName(e.target.value)}
+                    className="form-control"
+                  />
+                </div>
 
-            <div className="selection">
-              <select
-                className="form-select"
-                name="city"
-                onChange={(e) => setStatus(e.target.value)}
-                style={{
-                  textAlign: "center",
-                  height: "6vh",
-                  border: "0.7px solid grey",
-                }}
-                aria-label="Default select"
-              >
-                <option selected value="">
-                  Lead Status
-                </option>
-                <option value="lost">Lost</option>
-                <option value="cold">Cold</option>
-                <option value="negotiating" style={{ background: "" }}>
-                  Negotiating
-                </option>
-                <option value="won">Won</option>
-              </select>
-            </div>
+                <div
+                  className="input-group"
+                  style={{
+                    height: "6vh",
+                    background: "white",
+                    border: "0.7px solid grey",
+                    width: "17vw",
+                  }}
+                >
+                  <span className="d-flex justify-content-center align-items-center p-2">
+                    <i className="fa-solid fa-user-large"></i>
+                  </span>
+                  <select
+                    className="form-select"
+                    name="Service Type"
+                    onChange={(e) => setServicePlan(e.target.value)}
+                    style={{
+                      textAlign: "center",
+                      height: "5vh",
+                      border: "none"
+                    }}
+                    aria-label="Default select"
+                  >
+                    <option selected value="">
+                      Service Type
+                    </option>
+                    <option value="CDR Assessment">CDR Assessment</option>
+                    <option value="CDR Report">CDR Report"</option>
+                    <option value="CDR Review" >
+                      CDR Review
+                    </option>
 
-            <div>
-              <Form.Control
-                size="sm"
-                name="foo"
-                placeholder="Date"
-                type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                style={{
-                  textAlign: "center",
-                  height: "6vh",
-                  border: "0.7px solid grey",
-                  width: "9vw",
-                }}
-                className=""
-              />
-            </div>
-            <div
-              className="input-group"
-              style={{
-                height: "6vh",
-                background: "white",
-                border: "0.7px solid grey",
-                width: "7vw",
-              }}
-            >
-              <span className="d-flex justify-content-center align-items-center p-2">
-                $
-              </span>
-              <input
-                type="number"
-                style={{ border: "none" }}
-                placeholder="Deal Value"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                className="form-control mb-1"
-              />
-            </div>
+                  </select>
+                </div>
 
-            <div>
-              <Button
-                style={{
-                  height: "6vh",
-                  background: "#176EB3",
-                  width: "5vw",
-                }}
-                type="reset"
-                onClick={() => {
-                  setDisplayList(leads);
+                <div className="selection">
+                  <select
+                    className="form-select"
+                    name="city"
+                    onChange={(e) => setStatus(e.target.value)}
+                    style={{
+                      textAlign: "center",
+                      height: "6vh",
+                      border: "0.7px solid grey",
+                    }}
+                    aria-label="Default select"
+                  >
+                    <option selected value="">
+                      Lead Status
+                    </option>
+                    <option value="lost">Lost</option>
+                    <option value="cold">Cold</option>
+                    <option value="negotiating" style={{ background: "" }}>
+                      Negotiating
+                    </option>
+                    <option value="won">Won</option>
+                  </select>
+                </div>
+
+                <div>
+                  <Form.Control
+                    size="sm"
+                    name="foo"
+                    placeholder="Date"
+                    type="date"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                    style={{
+                      textAlign: "center",
+                      height: "6vh",
+                      border: "0.7px solid grey",
+                      width: "9vw",
+                    }}
+                    className=""
+                  />
+                </div>
+                <div
+                  className="input-group"
+                  style={{
+                    height: "6vh",
+                    background: "white",
+                    border: "0.7px solid grey",
+                    width: "8vw",
+                  }}
+                >
+                  <span className="d-flex justify-content-center align-items-center p-2">
+                    $
+                  </span>
+                  <input
+                    type="number"
+                    style={{ border: "none" }}
+                    placeholder="Deal Value"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
+                    className="form-control mb-1"
+                  />
+                </div>
+
+                <div>
+                  <Button
+                    style={{
+                      height: "6vh",
+                      background: "#176EB3",
+                      width: "6vw",
+                      padding: '0 1vw'
+                    }}
+                    type="reset"
+                    onClick={() => {
+                      setDisplayList(leads);
                   navigate(`/teamLead/leads/${teamLead}`);
-                }}
-                className=""
-              >
-                {" "}
-                Reset{" "}
-              </Button>
-            </div>
-            <div>
-              <Button
-                style={{
-                  height: "6vh",
-                  background: "#222529",
-                  width: "8vw",
-                }}
-                type="submit"
-                onClick={applyFilter}
-                className=""
-              >
-                <i
-                  className="fa-solid fa-magnifying-glass "
-                  style={{ marginRight: "4px" }}
-                ></i>
-                Search{" "}
-              </Button>
-            </div>
-            </div>
-          </Form>
+
+                    }}
+                    className=""
+                  >
+                    {" "}
+                    Reset{" "}
+                  </Button>
+                </div>
+                <div>
+                  <Button
+                    style={{
+                      height: "6vh",
+                      background: "#222529",
+                      width: "8vw",
+                    }}
+                    type="submit"
+                    onClick={applyFilter}
+                    className=""
+                  >
+                    <i
+                      className="fa-solid fa-magnifying-glass "
+                      style={{ marginRight: "4px" }}
+                    ></i>
+                    Search{" "}
+                  </Button>
+                </div>
+              </div>
+            </Form>
+          </div>
 
  
           <div
-            className="mx-3 mt-3"
+            className="  mt-3"
             style={{
               fontSize: "1.2rem",
               fontWeight: "700",
@@ -301,7 +308,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
             >
               <div style={{ width: "16%" }}>Service Type</div>
               <div style={{ width: "16%" }}>Contact Number</div>
-              <div style={{ width: "16%" }}>Lead Status</div>
+              <div style={{ width: "16%" }}>Difficulty</div>
               <div style={{ width: "16%" }}>Deal Value</div>
               <div style={{ width: "16%" }}>Last Follow Up</div>
               <div style={{ width: "16%" }}>Next Follow Up</div>
@@ -317,7 +324,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                 fontFamily: "Arial",
                 paddingLeft: "1.2rem",
               }}
-              className="d-flex mt-3 mx-3 align-items-center"
+              className="d-flex mt-3 align-items-center"
             >
               <div style={{ fontWeight: "", fontSize: "", width: "20%" }}>
                 <div className="d-flex justify-content-start align-items-center ">
@@ -330,7 +337,9 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                         width: "45px",
                         color: "#fff",
                         fontWeight: "400",
+                        cursor:'pointer'
                       }}
+                      onClick={() => navigate(`/lead/profile/${l.id}`)}
                       className="d-flex justify-content-center align-items-center  "
                     >
                       {l.name.split(" ").map((n) => n[0])}
@@ -392,7 +401,44 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                 <div style={{ fontWeight: "", fontSize: "19px", width: "16%" }}>
                   {/* <SelectComponent/> */}
                   <div className="form-group ">
-                    {l.leadStatus}
+                  <select
+                      className="selection "
+                      name="city"
+                      // onChange={(e) => handleInputChange(e, l.id, l.teamLead, l.name, l.clientManager )}
+                      style={{
+                        fontWeight: "bold",
+                        width: "180px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center ",
+                      }}
+                    >
+                      <option
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center ",
+                        }}
+                        value={l.potential}
+                      >
+                        {l.potential}
+                      </option>
+                      <option
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center ",
+                        }}
+                        value="Negotiating"
+                      >
+                        Negotiating
+                      </option>
+                      <option value="cold">Cold</option>
+                      <option value="lost" style={{ background: "" }}>
+                        Lost
+                      </option>
+                      <option value="won">Won</option>
+                    </select>
                   </div>
                 </div>
 
@@ -407,11 +453,11 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                   }}
                   className=""
                 >
-                  {l.dealValue}
+                  ${l.dealValue}
                 </div>
 
                 <div style={{ fontWeight: "", fontSize: "19px", width: "16%" }}>
-                  {new Date(l.lastFollowup).toLocaleDateString()}
+                  {new Date(l.lastFollowUpDate).toLocaleDateString()}
                 </div>
 
                 <div
@@ -423,7 +469,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                     display: "flex",
                   }}
                 >
-                  <div>{new Date(l.nextFollowUp).toLocaleDateString()}</div>
+                  <div>{new Date(l.nextFollowUpDate).toLocaleDateString()}</div>
                   <div style={{ width: "40px", marginLeft: "2px" }}  onClick={() => {
                     navigate(`/edit-lead/${l.id}`);
                   }}>
@@ -447,7 +493,12 @@ const localUser = JSON.parse(localStorage.getItem('user'));
             </div>
           ))}
 
+     
+          
 
+        
+
+          
 </div>
 
   </Row>

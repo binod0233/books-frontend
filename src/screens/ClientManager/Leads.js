@@ -474,7 +474,7 @@ const Leads = () => {
                 </div>
 
                 <div style={{ fontWeight: "", fontSize: "19px", width: "16%" }}>
-                  {new Date(l.lastFollowup).toLocaleDateString()}
+                  {new Date(l.lastFollowupDate).toLocaleDateString()}
                 </div>
 
                 <div
@@ -486,7 +486,7 @@ const Leads = () => {
                     display: "flex",
                   }}
                 >
-                  <div>{new Date(l.nextFollowUp).toLocaleDateString()}</div>
+                  <div>{new Date(l.nextFollowUpDate).toLocaleDateString()}</div>
                   <div style={{ width: "40px", marginLeft: "2px" }} onClick={() => {
                     navigate(`/edit-lead/${l.id}`);
                   }}>
