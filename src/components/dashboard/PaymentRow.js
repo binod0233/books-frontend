@@ -12,10 +12,10 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
 
 
   return (
-    <div className=" ps-4 pb-4 mt-5">
+    <div className=" ps-4 pb-4 mt-3">
       <Row>
         <Col md={3}>
-          <div className="trans" style={{ background: "white", height: "45vh", width: "100%" }}>
+          <div className="trans" style={{ background: "white", height: "45vh", width: "" }}>
             <div className="d-flex flex-column align-items-center pb-3 ">
               <div
                 style={{

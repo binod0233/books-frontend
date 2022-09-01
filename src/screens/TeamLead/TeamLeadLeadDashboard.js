@@ -136,7 +136,10 @@ const TeamLeadLeadDashboard = () => {
       </div>
       <TeamLeadProfile />
       <EarningStats />
+      <div className='me-4 mt-4'>
       <PaymentRow name={teamLead} totalDealValue={totalDealValue} totalPayment={totalEarned} totalDuePayment={totalDuePayment} />
+
+      </div>
       <div className=' ms-4 mb-4 row bg-white me-4 ' style={{ width: '97%', margin: '0 auto',  background: "#fff" }}>
         <div style={{ display: 'flex', justifyContent: "space-between", paddingTop: "10px" }}>
           <span style={{ fontSize: '1.3rem', fontWeight: "600", margin: ".8rem" }}>Top Client Manager</span>
