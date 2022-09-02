@@ -4,11 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 import "../../App.css";
 import "./Login.css";
-import showPwdImg from "./show-password.svg";
-import hidePwdImg from "./hide-password.svg";
+
 export default function (props) {
   const navigate = useNavigate();
-  const [loggedIn, setLoggedIn] = useState({});
+ const [loggedIn,setLoggedIn] = useState({});
   const [e, setE] = useState("");
   const [p, setP] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
@@ -20,6 +19,7 @@ export default function (props) {
     event.preventDefault();
     const validEmail = e.substring(e.length - 13) === "@copenned.com";
     if (validEmail) {
+
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -28,20 +28,18 @@ export default function (props) {
         },
       };
 
-      axios
-        .get(`${process.env.REACT_APP_BASE_URL}/api/user/login/${e}`, config)
-        .then((res) => {
-          setLoggedIn(res.data);
-          localStorage.setItem("user", JSON.stringify(res.data));
-          if (res.data.role === "teamlead") {
-            navigate(`/teamlead/dashboard/${res.data.userName}`);
-          } else if (res.data.role === "admin") {
-            navigate(`/admin/dashboard`);
-          } else if (res.data.role === "clientmanager") {
-            navigate(`/dashboard/${res.data.userName}`);
-          }
-        })
-        .catch((error) => console.log(error));
+      axios.get(`${process.env.REACT_APP_BASE_URL}/api/user/login/${e}`,config).then((res) => {
+        setLoggedIn(res.data);
+        localStorage.setItem("user", JSON.stringify(res.data));
+        if (res.data.role === "teamlead") {
+          navigate(`/teamlead/dashboard/${res.data.userName}`);
+        } else if (res.data.role === "admin") {
+          navigate(`/admin/dashboard`);
+        } else if (res.data.role === "clientmanager") {
+          navigate(`/dashboard/${res.data.userName}`);
+        }
+
+      }).catch(error => console.log(error));
     } else {
       alert(" inavalid email. use @copenned.com");
     }
@@ -92,24 +90,25 @@ export default function (props) {
           </div>
           <div className="form-group mt-3">
             <label style={{ fontWeight: "300", fontSize: "20px" }}>
-              Passwords
+              Password
             </label>
-
-            <div className="pwd-container">
-              <input
-                type={passwordShown ? "text" : "password"}
-                className="form-control "
-                placeholder=""
-                value={p}
-                onChange={(e) => setP(e.target.value)}
-                required
-              />
-              <img
-                title={passwordShown ? "Hide password" : "Show password"}
-                src={passwordShown ? hidePwdImg : showPwdImg}
+            <p className="forgot-password text-right ">
+              <a
                 onClick={togglePassword}
-              />
-            </div>
+                style={{ color: "#176EB3", textDecoration: "none" }}
+                href="#"
+              >
+                Show Password
+              </a>
+            </p>
+            <input
+              type={passwordShown ? "text" : "password"}
+              className="form-control "
+              placeholder=""
+              value={p}
+              onChange={(e) => setP(e.target.value)}
+              required
+            />
           </div>
           <p className="forgot-password text-right mt-2">
             <a style={{ color: "#176EB3", textDecoration: "none" }} href="#">

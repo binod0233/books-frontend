@@ -29,7 +29,7 @@ const TeamLeadPayment = () => {
   const getAllThePayments = () => {
     axios
       .get(
-        `${process.env.REACT_APP_BASE_URL}/api/payment/payments/getAllPaymentsOfATeamLead/${teamLead}`
+        `${process.env.REACT_APP_BASE_URL}/api/payment/payments/getAllLeadsOfATeamLead/${teamLead}`
       )
       .then((res) => {
         setPaymentList(res.data.responseList);

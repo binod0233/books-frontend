@@ -49,7 +49,7 @@
   .side-menus .menu-icon a{
     text-decoration:none;
     color: #fff;
-    font-size: 19px ;
+    font-size: 18px ;
     font-weight: 700;
   }
 
@@ -73,6 +73,6 @@
 @media (min-width: 1024px) {
  .side-menus .menu-icon {
    padding: 2vh 0.6vw;
-   font-size: 1.3rem;
+   font-size: 1.1rem;
   }
   }
