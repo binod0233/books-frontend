@@ -79,17 +79,20 @@ const LeadProfile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(servicePlan)
-  console.log(serviceType);
-  console.log(leadSource)
-  console.log(leadStatus);
-  console.log(difficulty)
-  console.log(screenshot);
-  console.log(communicationChannel);
-  console.log(lastDate)
-  console.log(nextDate)
-  console.log(descipline)
-  console.log(serviceWanted)
+    axios.post(`${process.env.REACT_APP_BASE_URL}/api/lead/edit/${id}`,{
+      servicePlan,
+      serviceType,
+      source:leadSource,
+      potential:leadStatus,
+      difficulty,
+      screenshot,
+      socialMedia:communicationChannel.map(c=>c.value, ),
+      lastFollowUpDate:lastDate,
+      nextFollowUpDate:nextDate,
+      descipline,
+    
+    })
+ 
   }
 
   return (

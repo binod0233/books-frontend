@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import BarChart from "../Chart/BarChart";
 import '../../screens/ClientManager/leads.css';
-const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) => {
+const Leadscharts = ({nextFollowUps,leadsFronWebsites,leadsFronLinkedin,leadsFronInstagram,leadsFronOthers,leadsFronFacebook,  leadConverted, leadLost, totalLeads }) => {
   const navigate = useNavigate();
 
 
@@ -113,7 +113,7 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
                   }}
                   className="d-flex justify-content-center"
                 >
-                  {totalFollowUps}
+                  {nextFollowUps}
                 </div>
 
                 <div
@@ -223,7 +223,7 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
 
         </div>
 
-                  <div style={{ fontWeight: "700", fontSize: "1.2rem" }} className='d-flex justify-content-center align-items-center pt-4 leadchartt '>Total Leads: 25</div>
+                  <div style={{ fontWeight: "700", fontSize: "1.2rem" }} className='d-flex justify-content-center align-items-center pt-4 leadchartt '>Total Leads: {totalLeads}</div>
 
         </div>
         </Col>
@@ -262,7 +262,7 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
               <div className="d-flex">
                 <Col className="pe-1">
                   <ProgressBar
-                    now={40}
+                    now={leadsFronWebsites/totalLeads*100}
                     style={{
                       background: "#B8AAEE",
                       height: '1.2vh',
@@ -281,7 +281,7 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
                       textAlign: "right",
                     }}
                   >
-                    700
+                    {leadsFronWebsites/totalLeads*100}
                   </span>
                 </div>
               </div>
@@ -298,7 +298,7 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
               <div className="d-flex">
                 <Col className="pe-1">
                   <ProgressBar
-                    now={40}
+                    now={leadsFronLinkedin/totalLeads*100}
                     variant="danger"
                     style={{ background: "#F9AAA7", height: "1.2vh" }}
                   />
@@ -315,7 +315,7 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
                       textAlign: "right",
                     }}
                   >
-                    700
+                    {leadsFronLinkedin/totalLeads*100}
                   </span>
                 </div>
               </div>{" "}
@@ -332,7 +332,7 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
               <div className="d-flex">
                 <Col className="pe-1">
                   <ProgressBar
-                    now={40}
+                    now={leadsFronFacebook/totalLeads*100}
                     variant="warning"
                     style={{ background: "#F2E3B5", height: "1.2vh" }}
                   />
@@ -349,7 +349,7 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
                       textAlign: "right",
                     }}
                   >
-                    700
+                    {leadsFronFacebook/totalLeads*100}
                   </span>
                 </div>
               </div>{" "}
@@ -366,7 +366,7 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
               <div className="d-flex">
                 <Col className="pe-1">
                   <ProgressBar
-                    now={40}
+                    now={leadsFronInstagram/totalLeads*100}
                     variant="info"
                     style={{ background: "#EBF9FF", height: "1.2vh" }}
                   />
@@ -383,7 +383,8 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
                       textAlign: "right",
                     }}
                   >
-                    700
+                                        {leadsFronInstagram/totalLeads*100}
+
                   </span>
                 </div>
               </div>{" "}
@@ -400,7 +401,7 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
               <div className="d-flex">
                 <Col className="pe-1">
                   <ProgressBar
-                    now={40}
+                    now={leadsFronOthers/totalLeads*100}
                     variant="success"
                     style={{ background: "#70E765", height: "1.2vh" }}
                   />
@@ -417,7 +418,7 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
                       textAlign: "right",
                     }}
                   >
-                    700
+                    {leadsFronOthers/totalLeads*100}
                   </span>
                 </div>
               </div>

@@ -74,21 +74,29 @@ const options=[
 
 console.log(timeInterval)
 
-  const totalDealValue = leadList.reduce((acc,lead) => acc + lead.dealValue,0)
+  const totalDealValue = leadList?.reduce((acc,lead) => acc + lead.dealValue,0)
   const totalEarned = paymentList?.reduce((acc, payment) => acc + payment.amount, 0)
-  const totalSales = leadList?.filter(l=>l.status==="won").length
+  const totalSales = leadList?.filter(l=>l.potential==="won").length
   const totalLeads = leadList?.length
   const conversion = totalSales/totalLeads*100
   const totalDuePayment = totalDealValue - totalEarned
 
+  const fromWebsite = leadList?.filter(l=>l.source==="website").length
+  const fromLinkedIn = leadList?.filter(l=>l.source==="linkedin").length
+  const fromFacebook = leadList?.filter(l=>l.source==="facebook").length
+  const fromInstagram = leadList?.filter(l=>l.source==="instagram").length
+  const fromOthers = leadList?.filter(l=>l.source==="others").length
+
+
+
   const fetchDataOfGivenTimeInterval = (timeInterval) =>{
-    axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/weekly-payments/client-manager/${timeInterval?.value}/${name}`).then(res => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/weekly-payments/client-manager/${timeInterval}/${name}`).then(res => {
       setDisplayList(res.data.responseList)
       setLeadList(res.data.responseList)
   }
 )
 
-axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-lead/${timeInterval?.value}/${name}`).then(res => {
+axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/client-manager/${timeInterval}/${name}`).then(res => {
   setPaymentList(res.data.responseList)
 })
 }
@@ -122,11 +130,11 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
     <div className='px-4' style={{background:"#F1F1FA"}}>
       <Row>
         <Col md={9}>
-        <StatsRow name={name} totalEarned={totalEarned} totalSales={totalSales} totalLeads={totalLeads} conversion={conversion}/>
+        <StatsRow name={name} totalDealValue={totalDealValue} totalEarned={totalEarned} totalSales={totalSales} totalLeads={totalLeads} conversion={conversion}/>
 
         </Col>
         <Col md={3}>
-        <OverviewRow teamLead={clientManager.teamLead} totalSales={totalSales} totalEarned={totalEarned}  conversion={conversion} name={name} email={localUser.email}
+        <OverviewRow teamLead={clientManager?.teamLead} teamName={clientManager?.teamName} totalSales={totalSales} totalEarned={totalEarned}  conversion={conversion} name={name} email={localUser.email}
         id={localUser.id} role={localUser.role}
         // teamName={leadList && leadList[0].teamLead } teamLead={paymentList && paymentList[0].recipient} 
          />
@@ -134,13 +142,12 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
         </Col>
 
       </Row>
-       <PaymentRow name={name} totalDealValue={totalDealValue} totalPayment={totalEarned} totalDuePayment={totalDuePayment}/>
+       <PaymentRow totalLeads={totalLeads} fromOthers={fromOthers} fromWebsite={fromWebsite} fromInstagram={fromInstagram} fromLinkedIn={fromLinkedIn} fromFacebook={fromFacebook} name={name} totalDealValue={totalDealValue} totalEarned={totalEarned?.toFixed(2)} totalDuePayment={totalDuePayment?.toFixed(2)}/>
 
        <div style={{background:"#fff"}} className='ms-4 ps-3 pe-3' >
         <div style={{display:'flex',justifyContent:"space-between",paddingTop:"10px"}}>
           <span style={{fontSize:'1.3rem',fontWeight:"600",margin:".8rem"}}>Top Leads </span>
      
-<Select isClearable options={options} onChange={(e)=>setTimeInterval(e)} />
 
         </div>
 
@@ -288,7 +295,8 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
         }}
       >
         <div>
-        ${l.dealValue - paymentList.filter(p=>p.payee=== l.name).amount}
+        ${(paymentList.filter(p=>p.payee=== l.name).reduce((acc,p) => acc + p.amount,0).toFixed(2))}
+
         </div>
         </div>
         
@@ -301,7 +309,7 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
         fontWeight: "700",
         display: "flex"}} 
         >
-        ${paymentList.filter(p=>p.payee=== l.name).amount}
+        ${l.dealValue-(paymentList.filter(p=>p.payee=== l.name).reduce((acc,p) => acc + p.amount,0).toFixed(2))}
         </div>
     </div>
     </div>

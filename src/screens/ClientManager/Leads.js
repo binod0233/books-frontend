@@ -6,6 +6,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import "./leads.css";
 import EditIcon from '@mui/icons-material/Edit';
+import moment from "moment"
 
 const Leads = () => {
   const navigate = useNavigate();
@@ -92,8 +93,8 @@ const Leads = () => {
   const leadsFronInstagram = leads.filter((lead) => lead.source === "instagram").length;
   const leadsFronOthers = leads.filter((lead) => lead.source === "others").length;
   const leadsFronFacebook = leads.filter((lead) => lead.source === "facebook").length;
-
-
+    const nextFollowUps = leads.filter(lead=>moment(lead.nextFollowUpDate).isAfter(Date.now())).length
+console.log(leadLost)
 
   return (
     <>
@@ -111,6 +112,12 @@ const Leads = () => {
             style={{ background: "#F1F1FA", overflow: "hidden" }}
           >
             <Leadscharts
+            nextFollowUps={nextFollowUps}
+            leadsFronWebsites={leadsFronWebsites}
+            leadsFronLinkedin={leadsFronLinkedin}
+            leadsFronInstagram={leadsFronInstagram}
+            leadsFronOthers={leadsFronOthers}
+            leadsFronFacebook={leadsFronFacebook}
               totalLeads={totalLeads}
               totalFollowUps={totalFollowUps}
               leadConverted={leadConverted}
@@ -475,7 +482,7 @@ const Leads = () => {
                 </div>
 
                 <div style={{ fontWeight: "", fontSize: "19px", width: "16%" }}>
-                  {new Date(l.lastFollowupDate).toLocaleDateString()}
+                  {new Date(l.lastFollowUpDate).toLocaleDateString()}
                 </div>
 
                 <div

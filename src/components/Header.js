@@ -6,12 +6,8 @@ import { useNavigate } from 'react-router-dom'
 import PersonIcon from "@mui/icons-material/Person";
 const Header = () => {
     const  navigate = useNavigate();
-    const [keyword,setKeyword] = React.useState('')
 
-  const searchKeyword = (e) => {
-    e.preventDefault();
-    console.log(e.target.value);
-  };
+
   return (
     <div className="main px-4">
       <div className="header-wrapper">
@@ -42,7 +38,12 @@ const Header = () => {
         </div>
         
         <div className="account">
-          <div className="acc-icon">
+          <div onClick={()=>{
+            if(JSON.parse(localStorage.getItem('user')).role!=="clientmanager"){
+              navigate("/signup1")
+            }
+            
+            }} className="acc-icon">
             <PersonAddAltIcon />
           </div>
           <div className="acc-icon">
