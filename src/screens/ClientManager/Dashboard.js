@@ -126,7 +126,7 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
 
         </Col>
         <Col md={3}>
-        <OverviewRow teamLead={clientManager.teamLead} totalSales={totalSales} totalEarned={totalEarned}  conversion={conversion} name={name} email={localUser.email}
+        <OverviewRow teamLead={clientManager.teamLead} totalSales={totalSales} totalEarned={totalEarned}  conversion={conversion} name={localUser.name} email={localUser.email}
         id={localUser.id} role={localUser.role}
         // teamName={leadList && leadList[0].teamLead } teamLead={paymentList && paymentList[0].recipient} 
          />
@@ -136,7 +136,7 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
       </Row>
        <PaymentRow name={name} totalDealValue={totalDealValue} totalPayment={totalEarned} totalDuePayment={totalDuePayment}/>
 
-       <div style={{background:"#fff"}} className='ms-4 ps-3 pe-3' >
+       <div style={{background:"#fff"}} className='mx-4 ps-3 pe-3' >
         <div style={{display:'flex',justifyContent:"space-between",paddingTop:"10px"}}>
           <span style={{fontSize:'1.3rem',fontWeight:"600",margin:".8rem"}}>Top Leads </span>
      
