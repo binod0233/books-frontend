@@ -56,13 +56,14 @@ export const pieData = {
 
 function PieChart() {
   return (
-    <div>
+    
       <Pie
+      style={{width:'inherit',height:'inherit'}}
         // className="pt-5"
         data={pieData}
         options={pieOptions}
       />
-    </div>
+  
   );
 }
 

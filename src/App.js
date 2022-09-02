@@ -25,6 +25,8 @@ import Contacts from './screens/Contacts';
 import Editlead from './screens/TeamLead/Editlead';
 import Signup1 from './screens/Signup/Signup1';
 import Signup3 from './screens/Signup/Signup3';
+import LeadPaymentProfile from './screens/LeadPaymentProfile';
+import AdminLeadEdit from './screens/TeamLead/AdminLeadEdit';
 
 
 const App = () => {
@@ -55,6 +57,7 @@ const App = () => {
       <Route path='/allclientmanagers' element={<AllClientManagers/>}/>
       <Route path='/teamlead/allclientmanagers' element={<AllTeamLeadClientManagers/>}/>
       <Route path='/clientManager/profile/:id' element={<ClientManagerProfileEdit/>}/>
+      <Route path='/admin/edit-lead' element={<AdminLeadEdit/>}/>
 
 
       <Route path='/dashboard/:name' element={<Dashboard/>}/>
@@ -62,10 +65,11 @@ const App = () => {
       <Route path='/signup-success' element={<Signupsuccess/>}/>
       <Route path='/add-lead' element={<Addlead/>}/>
       <Route path='/contact-us' element={<Contacts/>}/>
-      <Route path='/edit-lead' element={<Editlead/>}/>
+      <Route path='/edit-lead/:id' element={<Editlead/>}/>
       <Route path='/payment/:clientManager' element={<Payment/>}/>
-      <Route path='/add-payment' element={<AddPayment/>}/>
+      <Route path='/add-payment/:paymentId' element={<AddPayment/>}/>
       <Route path="/lead/profile/:id" element={<LeadProfile/>}/>
+     <Route path='/payment/paymentId/:paymentId' element={<LeadPaymentProfile/>} />
 
  </Route>
        <Route path='/' element={<Login/>} /> 

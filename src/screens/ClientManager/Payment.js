@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from "react";
 import {
-  Col,
-  Dropdown,
-  DropdownButton,
   Form,
-  Row,
-  Table,
 } from "react-bootstrap";
 import PaymentTop from "../../components/payments/PaymentTop";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import AddIcon from '@mui/icons-material/Add';
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 
 const Payment = () => {
   const [paymentList, setPaymentList] = useState([]);
+  const [displayList, setDisplayList] = useState([]);
+  const [clientName, setClientName] = useState('');
+  const [amount,setAmount] = useState(0)
+  const [serviceType,setServiceType] = useState("")
+  // const [recipient,setRecipient] = useState("")
+  const [paymentMethod,setPaymentMethod] = useState("")
+  const [date,setDate] = useState("")
   const navigate = useNavigate();
   const params = useParams();
   const { clientManager } = params;
-  console.log(clientManager);
   useEffect(() => {
     getAllThePayments();
   }, []);
@@ -32,17 +32,30 @@ const Payment = () => {
       )
       .then((res) => {
         setPaymentList(res.data.responseList);
-        console.log(paymentList)
+        setDisplayList(res.data.responseList);
       });
   };
   const totalPayment = paymentList?.reduce((acc, i) => acc + i.amount, 0);
 
-  const current = new Date().toLocaleDateString("en-US", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
-  const date = `${current}`;
+
+
+  const filterPayment = (e) =>{
+    e.preventDefault()
+    axios.post(`${process.env.REACT_APP_BASE_URL}/api/payment/attributeSearch`,{
+      leadName:clientName,
+      serviceType,
+      amount1:amount,
+      amount2:999999,
+      paymentMethod,
+      date1:date,
+      date2:date,
+      recipient:clientManager,
+
+
+    }).then(res=>{
+      setDisplayList(res.data.responseList)
+    })
+  }
 
   return (
     <div style={{ background: "#F1F1FA" }}>
@@ -51,7 +64,7 @@ const Payment = () => {
           <PaymentTop totalPayment={totalPayment} />
         </div>
         <div>
-          <Form className="mx-4">
+          <Form onSubmit={filterPayment} className="mx-4">
             <div
               style={{
                 // background: "red",
@@ -78,8 +91,8 @@ const Payment = () => {
                   type="text"
                   style={{ border: "none", width: "5px" }}
                   placeholder="Lead Name"
-                  // value={clientName}
-                  // onChange={(e) => setClientName(e.target.value)}
+                  value={clientName}
+                  onChange={(e) => setClientName(e.target.value)}
                   className="form-control"
                 />
               </div>
@@ -95,14 +108,29 @@ const Payment = () => {
                 <div className="d-flex justify-content-center align-items-center px-2">
                   <i className="fa-solid fa-user-large"></i>
                 </div>
-                <input
-                  type="text"
-                  style={{ border: "none", width: "5px" }}
-                  placeholder="Service Type"
-                  // value={clientName}
-                  // onChange={(e) => setClientName(e.target.value)}
-                  className="form-control"
-                />
+                
+                  <select
+                className="form-select"
+                name="Service Type"
+                value={serviceType}
+                onChange={(e) => setServiceType(e.target.value)}
+                style={{
+                  textAlign: "center",
+                  height: "5vh",
+                  border: "none"
+                }}
+                aria-label="Default select"
+              >
+                <option selected value="">
+                  Service Type
+                </option>
+                <option value="CDR Assessment">CDR Assessment</option>
+                <option value="CDR Report">CDR Report"</option>
+                <option value="CDR Review" >
+                CDR Review
+                </option>
+                
+              </select>
               </div>
               <div
                 className="input-group"
@@ -118,10 +146,10 @@ const Payment = () => {
                 </span>
                 <input
                   type="text"
-                  style={{ border: "none" }}
+                  style={{ border: "none", background:'none' }}
                   placeholder="Amount"
-                  // value={source}
-                  // onChange={(e) => setSource(e.target.value)}
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
                   className="form-control"
                 />
               </div>
@@ -142,7 +170,7 @@ const Payment = () => {
                 >
                   <i className="fa-solid fa-user-large"></i>
                 </div>
-                <input
+                {/* <input
                   type="text"
                   style={{
                     border: "none",
@@ -151,10 +179,10 @@ const Payment = () => {
                     color: "#DD2A7B",
                   }}
                   placeholder="Recepient"
-                  // value={clientName}
-                  // onChange={(e) => setClientName(e.target.value)}
+                  value={clientName}
+                  onChange={(e) => setClientName(e.target.value)}
                   className="form-control"
-                />
+                /> */}
               </div>
               <div
                 className="input-group"
@@ -168,14 +196,26 @@ const Payment = () => {
                 <div className="d-flex justify-content-center align-items-center px-2">
                   <i className="fa-solid fa-user-large"></i>
                 </div>
-                <input
-                  type="text"
-                  style={{ border: "none", width: "5px" }}
-                  placeholder="Payment Method "
-                  // value={clientName}
-                  // onChange={(e) => setClientName(e.target.value)}
-                  className="form-control"
-                />
+               
+                  <select
+                className="form-select"
+                name="Payment Method"
+                onChange={(e) => setPaymentMethod(e.target.value)}
+                style={{
+                  textAlign: "center",
+                  height: "5vh",
+                  border: "none"
+                }}
+                aria-label="Default select"
+              >
+                <option selected value="">
+                  Service Type
+                </option>
+                <option value="Visa Card">Visa Card</option>
+                <option value="Paypal">Paypal"</option>
+               
+                
+              </select>
               </div>
               <div>
                 <Form.Control
@@ -183,8 +223,8 @@ const Payment = () => {
                   name="foo"
                   placeholder="Date"
                   type="date"
-                  // value={date}
-                  // onChange={(e) => setDate(e.target.value)}
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
                   style={{
                     textAlign: "center",
                     height: "45px",
@@ -203,10 +243,8 @@ const Payment = () => {
                     border: "none",
                     borderRadius: "5px",
                   }}
-                  type="reset"
-                  onClick={() => {
-                    navigate(`/leads/${clientManager}`);
-                  }}
+                  type="submit"
+                  
                   className=""
                 >
                   <FilterAltOutlinedIcon style={{ background: "#FFC3DE" }} />
@@ -273,20 +311,23 @@ const Payment = () => {
             </div>
           </div>
 
-                  {paymentList?.map((payment) => (
-                    <div
+                  {displayList?.map((payment, key) => (
+                    <div  key={payment.id}
                       className="d-flex mx-4 p-1 mt-3"
                       style={{
                         height: "70px",
                         // width: "92%",
                         fontSize: "1.3rem",
                         // fontWeight: "700",
-                        background:'#FFF'
+                        background:'#FFF',
+                        cursor:'pointer'
                       }}
+                    
                     >
                       <div
                         className="d-flex align-items-center justify-content-start"
                         style={{ width: "14vw", marginRight: "" }}
+                        onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
                       >
                         <div
                           style={{
@@ -299,11 +340,13 @@ const Payment = () => {
                             margin: "0 5%",
                           }}
                           className="d-flex justify-content-center align-items-center "
+                          onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
                         >
                           {payment.payee.split(" ").map((n) => n[0])}
                         </div>
                         <div
                           className="d-flex justify-content-center align-items-center"
+                          onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
                           md={9}
                           style={{ color: "", fontWeight: "700", fontSize: "22px" }}
                         >
@@ -313,45 +356,52 @@ const Payment = () => {
                       <div
                         className="d-flex align-items-center justify-content-start"
                         style={{ width: "10vw", color:'#64676B'}}
+                        onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
                       >
                         <div>${payment.amount}.00</div>
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-start"
                         style={{ width: "10vw", background: "" ,color:'#64676B'}}
+                          onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
                       >
                         {new Date(payment.paymentDate).toLocaleDateString()}
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-center"
                         style={{ width: "12vw", background: "",color:'#64676B' }}
+                        onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
                       >
                         {payment.serviceType}
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-start"
                         style={{ width: "10vw", background: "",color:'#64676B' }}
+                        onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
                       >
                         {payment.recipient}
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-start"
                         style={{ width: "10vw", background: "",color:'#64676B' }}
+                        onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
                       >
                         {payment.status}
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-start"
                         style={{ width: "10vw", background: "",color:'#64676B' }}
+                        onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
                       >
                         {payment.receipt}
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-end"
                         style={{ width: "15vw", background: "",color:'#64676B' }}
+                    
                       >
                       <div style={{display:'flex',justifyContent:'space-between',marginRight:'1rem'}}>  {payment.remarks}</div>
-                      <div onClick={()=>navigate("/add-payment")} style={{borderRadius:'5px',height:'40px',width:'40px',background:'#176EB3',color:'white', display:'flex', alignItems:'center', justifyContent:'center',marginRight:'5px',cursor:'pointer'}}><AddIcon/></div>
+                      <div onClick={()=>navigate(`/add-payment/${payment.paymentId}`)} style={{borderRadius:'5px',height:'40px',width:'40px',background:'#176EB3',color:'white', display:'flex', alignItems:'center', justifyContent:'center',marginRight:'5px',cursor:'pointer'}}><AddIcon/></div>
                       <div  style={{borderRadius:'5px',height:'40px',width:'40px',background:'#F0F0F0',color:'white', display:'flex', alignItems:'center', justifyContent:'center',marginRight:'5px',cursor:'pointer'}}><KeyboardArrowDown style={{color:"#64676B"}}/></div>
                       </div>
 

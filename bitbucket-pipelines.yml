@@ -14,15 +14,6 @@ image: node:16
 # Workflow Configuration
 
 pipelines:
-  default:
-    - parallel:
-      - step:
-          name: Build and Test
-          caches:
-            - node
-          script:
-            - npm install
-            # CI=true in default variables for Bitbucket Pipelines https://support.atlassian.com/bitbucket-cloud/docs/variables-in-pipelines/
            
   branches:
     master:

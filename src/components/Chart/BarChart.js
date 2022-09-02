@@ -60,8 +60,8 @@ export const data = {
 
 function BarChart() {
   return (
-    <div >
-      <Bar  options={options} data={data} style={{height:"42vh "}} />
+    <div  >
+      <Bar  options={options} data={data} />
     </div>
   );
 }

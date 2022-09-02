@@ -11,6 +11,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
+import { Button, Col, Row } from "react-bootstrap";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -39,7 +40,7 @@ export const data = {
   labels,
   datasets: [
     {
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 10000 })),
+      data: labels.map(() => faker.datatype.number({ min: 10, max: 30 })),
       borderColor: "#3F50F0",
       backgroundColor: "#3F50F0",
     },
@@ -48,9 +49,14 @@ export const data = {
 
 function LineChart() {
   return (
-    <div style={{height:"100%"}}>
-      <Line options={options} data={data} />
-    </div>
+    <>
+    <Row className='ps-2 py-1'>
+    <Row className="ps-4" style={{fontSize:'1.2rem',fontWeight:'700'}}>Earning Statistics</Row>
+<Row className="pt-3 pb-1">
+<Line style={{height:'25vh',width:'100%'}} options={options} data={data} />
+</Row>
+    </Row>
+    </>
   );
 }
 

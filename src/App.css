@@ -53,6 +53,10 @@ label {
   height: 85vh;
 }
 
+.btn:focus{
+  box-shadow: none !important;
+}
+
 .sign1-form {
   width: 800px;
 
@@ -71,4 +75,57 @@ label {
  align-items: center;
 }
 
+/* hover and box shadow */
+.trans {
+  transition: box-shadow .6s;
+}
 
+.trans:hover {
+  box-shadow: rgba(0, 0, 0, 0.29) 0px 14px 20px, rgba(99, 99, 99, 0.22) 0px 10px 10px;
+}
+
+button{
+  box-shadow:0 3px 10px rgb(0 0 0 / 0.3);
+  animation: 0.4s fadeIn ease-in;
+  /* box-shadow: rgba(0, 0, 0, 0.29) 0px 14px 20px, rgba(99, 99, 99, 0.22) 0px 10px 10px; */
+  cursor: pointer;
+  outline: 0;
+
+  
+}
+button:hover{
+  background: linear-gradient(rgb(0 0 0) rgb(183, 25, 25));
+  transform: translateY(-2px);
+}
+.boxshadow{
+  box-shadow: 0 0 20px rgb(221, 215, 215);
+}
+
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.fadeIn {
+  animation: 0.3s fadeIn ease-in;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+ }
+  to {
+    opacity: 1;
+ }
+}

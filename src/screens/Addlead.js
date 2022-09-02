@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios'
-import { Button, Col, Form, Row, Dropdown, DropdownButton } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
- import '../App.css';
- import ReactFlagsSelect from "react-flags-select";
- import Select from 'react-select'
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Button, Col, Form, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import "../App.css";
+import ReactFlagsSelect from "react-flags-select";
+import Select from "react-select";
 
 const Addlead = () => {
   const navigate = useNavigate()
@@ -38,7 +38,6 @@ const [activeGender, setActiveGender] = useState('1')
   const [select, setSelect] = useState("NP");
   const onSelect = (code) => setSelect(code);
 
-
   const options = [
     { value: 'whatsapp', label: 'WhatsApp' },
     { value: 'messenger', label: 'Messenger' },
@@ -57,8 +56,8 @@ teamLeads?.map(c=>{
   teamLeadSelectList.push({value:c.userName,label:c.userName})
 })
 
-const addALead=(e)=>{
-  e.preventDefault()
+  const addALead = (e) => {
+    e.preventDefault();
 
    console.log({name:fullName,email,phone:number,
     work,source,
@@ -193,26 +192,49 @@ useEffect(() => {
                   {/*  
 <Form.Control type="select" placeholder="Engineer" value={work} onChange={(e)=>setWork(e.target.value)} />
 
-*/}  
-<Form.Select  onChange={(e)=>setWork(e.target.value)} >
-<option value="none" onClick={(e)=>setWork(e.target.value)}>Engineer</option>
+                            <Form.Select
+                              onChange={(e) => setWork(e.target.value)}
+                            >
+                              <option
+                                value="none"
+                                onClick={(e) => setWork(e.target.value)}
+                              >
+                                Engineer
+                              </option>
 
-  <option value="civil engineer" onClick={(e)=>setWork(e.target.value)}>Civil Engineer</option>
-  <option value="computer engineer" onClick={(e)=>setWork(e.target.value)}>Computer Engineer</option>
-  <option value="electrical engineer" onClick={(e)=>setWork(e.target.value)}>Electrical Engineer</option>
-  <option value="mechanical engineer" onClick={(e)=>setWork(e.target.value)}>Mechanical Engineer</option>
-
-
-</Form.Select>
-                </Form.Group>
-                  </Col>
-                </Row>
-               
-              </Col>
-              <Col className='ps-3'>
-              <Row>
-              <Form.Label className='col-6'>Gender</Form.Label>
-              <Form.Label className='col-6'>Country</Form.Label>
+                              <option
+                                value="civil engineer"
+                                onClick={(e) => setWork(e.target.value)}
+                              >
+                                Civil Engineer
+                              </option>
+                              <option
+                                value="computer engineer"
+                                onClick={(e) => setWork(e.target.value)}
+                              >
+                                Computer Engineer
+                              </option>
+                              <option
+                                value="electrical engineer"
+                                onClick={(e) => setWork(e.target.value)}
+                              >
+                                Electrical Engineer
+                              </option>
+                              <option
+                                value="mechanical engineer"
+                                onClick={(e) => setWork(e.target.value)}
+                              >
+                                Mechanical Engineer
+                              </option>
+                            </Form.Select>
+                          </Form.Group>
+                        </Col>
+                      </Row>
+                    </Col>
+                    <Col className="ps-3">
+                      <Row>
+                        <Form.Label className="col-6">Gender</Form.Label>
+                        <Form.Label className="col-6">Country</Form.Label>
 
                   <Col className='' md={1} >
                   <Form.Group controlId="email" >
@@ -402,112 +424,269 @@ useEffect(() => {
                 </Form.Group>
                   </Col>
                   </Row>
-           
-           
-           
-            <Row className='mt-4 mx-5' >
-            <Col
-            className="d-flex justify-content-end align-items-center"
-            style={{ width: "100%" }}
-            >
-            <Button style={{border:"1px solid #DD2A7B"}} onClick={()=>{
-              setActiveTab("1")
-            }}  className='btn bg-white text-black mx-2'>Cancel</Button>
-            <Button onClick={()=>setActiveTab("3")} style={{background:"#DD2A7B",color:"white"}}  className='btn  mx-2'>SAVE & NEXT</Button>
 
-            </Col>
-            </Row>
-            </div>
-              
-              :<div>
-              <Row className="mx-5 pt-4">
-              <div className='pe-3'>
-                <Form.Group >
-                  <Form.Label>Payment Method</Form.Label>
-                  <div className=' d-flex justify-content-around align-items-center'>
-                  <div style={{display:'flex' , justifyContent:'center', alignItems:'center'}}><Form.Check type="radio" name="paymenttype" label="" value="Card Payment" onChange={(e)=>setPaymentType(e.target.value)}/><div style={{border:'1px solid #7B7B7B',padding:'.5rem 4rem', fontWeight:'700',fontSize:'1.2em'}} >Card Payment</div></div>
-                  <div style={{display:'flex' , justifyContent:'center', alignItems:'center'}}><Form.Check type="radio" name="paymenttype" label="" value="Bank Transfer" onChange={(e)=>setPaymentType(e.target.value)}></Form.Check><div style={{border:'1px solid #7B7B7B',padding:'.5rem 4rem', fontWeight:'700',fontSize:'1.2em'}} >Bank Transfer</div></div>
-                  <div style={{display:'flex' , justifyContent:'center', alignItems:'center'}}><Form.Check type="radio" name="paymenttype" label="" value="Apple Pay" onChange={(e)=>setPaymentType(e.target.value)}></Form.Check><div style={{border:'1px solid #7B7B7B',padding:'.5rem 4rem', fontWeight:'700',fontSize:'1.2em'}} >Apple Pay</div></div>
+                  <Row className="mt-4 mx-5">
+                    <Col
+                      className="d-flex justify-content-end align-items-center"
+                      style={{ width: "100%" }}
+                    >
+                      <Button
+                        style={{ border: "1px solid #DD2A7B" }}
+                        onClick={() => {
+                          setActiveTab("1");
+                        }}
+                        className="btn bg-white text-black mx-2"
+                      >
+                        Cancel
+                      </Button>
+                      <Button
+                        onClick={() => setActiveTab("3")}
+                        style={{ background: "#DD2A7B", color: "white" }}
+                        className="btn  mx-2"
+                      >
+                        SAVE & NEXT
+                      </Button>
+                    </Col>
+                  </Row>
                 </div>
-                </Form.Group>
-              </div>
-              <Col className='ps-3 mt-4' md={6}>
-                <Form.Group controlId="payee">
-                  <Form.Label>Payee</Form.Label>
-                  <Form.Control type="text" placeholder="Nabin Chaudhary" value={payee} onChange={(e)=>setPayee(e.target.value)} />
-                </Form.Group>
-              </Col>
-              <Col className='pe-3 mt-4' md={6}>
-              <Form.Group controlId="recepient">
-                <Form.Label>Recepient</Form.Label>
-                <Form.Select   onChange={(e)=>setRecepient(e.target.value)}>
-                  <option value="San Antonio" onClick={(e)=>setRecepient(e.target.value)}>San Antonio</option>
-                  <option value="Houston" onClick={(e)=>setRecepient(e.target.value)}>Houston</option>
-                  <option value="last vegas" onClick={(e)=>setRecepient(e.target.value)}>last Vegas</option>
+              ) : (
+                <div>
+                  <Row className="mx-5 pt-4">
+                    <div className="pe-3">
+                      <Form.Group>
+                        <Form.Label>Payment Method</Form.Label>
+                        <div className=" d-flex justify-content-around align-items-center">
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                            }}
+                          >
+                            <Form.Check
+                              type="radio"
+                              name="paymenttype"
+                              label=""
+                              value="Card Payment"
+                              onChange={(e) => setPaymentType(e.target.value)}
+                            />
+                            <div
+                              style={{
+                                border: "1px solid #7B7B7B",
+                                padding: ".5rem 4rem",
+                                fontWeight: "700",
+                                fontSize: "1.2em",
+                              }}
+                            >
+                              Card Payment
+                            </div>
+                          </div>
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                            }}
+                          >
+                            <Form.Check
+                              type="radio"
+                              name="paymenttype"
+                              label=""
+                              value="Bank Transfer"
+                              onChange={(e) => setPaymentType(e.target.value)}
+                            ></Form.Check>
+                            <div
+                              style={{
+                                border: "1px solid #7B7B7B",
+                                padding: ".5rem 4rem",
+                                fontWeight: "700",
+                                fontSize: "1.2em",
+                              }}
+                            >
+                              Bank Transfer
+                            </div>
+                          </div>
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                            }}
+                          >
+                            <Form.Check
+                              type="radio"
+                              name="paymenttype"
+                              label=""
+                              value="Apple Pay"
+                              onChange={(e) => setPaymentType(e.target.value)}
+                            ></Form.Check>
+                            <div
+                              style={{
+                                border: "1px solid #7B7B7B",
+                                padding: ".5rem 4rem",
+                                fontWeight: "700",
+                                fontSize: "1.2em",
+                              }}
+                            >
+                              Apple Pay
+                            </div>
+                          </div>
+                        </div>
+                      </Form.Group>
+                    </div>
+                    <Col className="ps-3 mt-4" md={6}>
+                      <Form.Group controlId="payee">
+                        <Form.Label>Payee</Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="Nabin Chaudhary"
+                          value={payee}
+                          onChange={(e) => setPayee(e.target.value)}
+                        />
+                      </Form.Group>
+                    </Col>
+                    <Col className="pe-3 mt-4" md={6}>
+                      <Form.Group controlId="recepient">
+                        <Form.Label>Recepient</Form.Label>
+                        <Form.Select
+                          onChange={(e) => setRecepient(e.target.value)}
+                        >
+                          <option
+                            value=""
+                            onClick={(e) => setRecepient(e.target.value)}
+                          >
+                            Choose One
+                          </option>
+                          <option
+                            value="San Antonio"
+                            onClick={(e) => setRecepient(e.target.value)}
+                          >
+                            San Antonio
+                          </option>
+                          <option
+                            value="Houston"
+                            onClick={(e) => setRecepient(e.target.value)}
+                          >
+                            Houston
+                          </option>
+                          <option
+                            value="last vegas"
+                            onClick={(e) => setRecepient(e.target.value)}
+                          >
+                            last Vegas
+                          </option>
+                        </Form.Select>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Row className="mx-5 pt-4">
+                    <Col className="ps-3">
+                      <Row>
+                        <Col md={6}>
+                          <Form.Group controlId="amount">
+                            <Form.Label>Deal Value</Form.Label>
+                            <Form.Control
+                              type="number"
+                              placeholder="1200.50"
+                              value={dealValue}
+                              onChange={(e) => setDealValue(e.target.value)}
+                            />
+                          </Form.Group>
+                        </Col>
+                        <Col md={6}>
+                          <Form.Group controlId="duedate">
+                            <Form.Label>Due Date</Form.Label>
+                            <Form.Control
+                              type="date"
+                              value={dueDate}
+                              onChange={(e) => setDueDate(e.target.value)}
+                            />
+                          </Form.Group>
+                        </Col>
+                      </Row>
+                    </Col>
+                    <Col>
+                      <Form.Group controlId="paymentStatus">
+                        <Form.Label>Payment Status</Form.Label>
+                        <Form.Select
+                          onChange={(e) => setPaymentStatus(e.target.value)}
+                        >
+                          {user?.role === "clientmanager" ? (
+                            <>
+                              <option
+                                value="Unverified"
+                                onClick={(e) =>
+                                  setPaymentStatus(e.target.value)
+                                }
+                              >
+                                Unverified
+                              </option>
+                            </>
+                          ) : (
+                            <>
+                              <option
+                                value="Remained"
+                                onClick={(e) =>
+                                  setPaymentStatus(e.target.value)
+                                }
+                              >
+                                Remained
+                              </option>
+                              <option
+                                value="Verified"
+                                onClick={(e) =>
+                                  setPaymentStatus(e.target.value)
+                                }
+                              >
+                                Verified
+                              </option>
+                              <option
+                                value="Unverified"
+                                onClick={(e) =>
+                                  setPaymentStatus(e.target.value)
+                                }
+                              >
+                                Unverified
+                              </option>
+                            </>
+                          )}
+                        </Form.Select>
+                      </Form.Group>
+                    </Col>
+                  </Row>
 
-                </Form.Select>
-              </Form.Group>
-               
-              
-             
-            </Col>
-            </Row>
-            <Row className="mx-5 pt-4">
-             
-              <Col className='ps-3'>
-                <Row>
-                  <Col md={6}>
-                  <Form.Group controlId="amount">
-                  <Form.Label>Deal Value</Form.Label>
-                  <Form.Control type="number" placeholder="1200.50" value={dealValue} onChange={(e)=>setDealValue(e.target.value)} />
-                </Form.Group>
-                 </Col>
-                  <Col md={6}>
-                  <Form.Group controlId="duedate">
-                  <Form.Label>Due Date</Form.Label>
-                  <Form.Control type="date" value={dueDate} onChange={(e)=>setDueDate(e.target.value)} />
-                </Form.Group>
-                  </Col>
-                </Row>
-               
-              </Col>
-              <Col>
-              <Form.Group controlId="paymentStatus">
-                  <Form.Label>Payment Status</Form.Label>
-                  <Form.Select onChange={(e)=>setPaymentStatus(e.target.value)}>
-                    <option value="Remained" onClick={(e)=>setPaymentStatus(e.target.value)}>Remained</option>
-                    <option value="Verified" onClick={(e)=>setPaymentStatus(e.target.value)}>Verified</option>
-                    <option value="Unverified" onClick={(e)=>setPaymentStatus(e.target.value)}>Unverified</option>
-                  </Form.Select>               
-                   </Form.Group>
-              </Col>
-            </Row>
-            
-           
+                  <Row className="mt-4">
+                    <Col
+                      className="d-flex justify-content-end align-items-center"
+                      style={{ width: "100%" }}
+                    >
+                      <Button
+                        onClick={() => {
+                          setActiveTab("1");
+                        }}
+                        style={{ border: "1px solid #DD2A7B" }}
+                        className="btn bg-white text-black mx-2"
+                      >
+                        Cancel
+                      </Button>
 
-            <Row className='mt-4' >
-            <Col
-            className="d-flex justify-content-end align-items-center"
-            style={{ width: "100%" }}
-            >
-            <Button onClick={()=>{
-              setActiveTab("1")
-            }}  style={{border:"1px solid #DD2A7B"}} className='btn bg-white text-black mx-2'>Cancel</Button>
-
-            <Button onClick={addALead}  style={{background:"#DD2A7B",color:"white"}} className='btn  mx-2'>SUBMIT</Button>
-            </Col>
-            </Row>
-
-              </div>}
-            
-            
-          </Form>
+                      <Button
+                        onClick={addALead}
+                        style={{ background: "#DD2A7B", color: "white" }}
+                        className="btn  mx-2"
+                      >
+                        SUBMIT
+                      </Button>
+                    </Col>
+                  </Row>
+                </div>
+              )}
+            </Form>
+          </div>
         </div>
-  </div>
-  </div>
+      </div>
+    </div>
+  );
+};
 
-  </div>
-  )
-}
-
-export default Addlead
+export default Addlead;

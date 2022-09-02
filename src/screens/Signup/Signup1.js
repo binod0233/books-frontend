@@ -10,7 +10,7 @@ const Signup1 = () => {
   const [email,setEmail]=useState("");
   const[password,setPassword]=useState();
   const[phone,setPhone]=useState("");
-  const [role,setRole]=useState("clientmanager");
+  const [role,setRole]=useState("");
   const [activeState,setActiveState]=useState("first");
   const register=(e)=>{
     e.preventDefault();
@@ -47,9 +47,14 @@ const Signup1 = () => {
 
   useEffect(()=>{
     const user=JSON.parse(localStorage.getItem("user"))
-    if(user){
-      
+    if(user.role!=="admin" && user.role!=="teamlead"){
+      navigate("/")
        
+    }
+    if(user.role=="admin"){
+      setRole("teamlead")
+    }else{
+      setRole("clientmanager")
     }
   },[])
   return (
@@ -152,18 +157,9 @@ Already have an account? <a href="/">Log in</a></p>
               value={phone}
               onChange={(e)=>setPhone(e.target.value)}
              
-            />
+            /> 
             </div>
          
-          <div className="form-group mt-3" style={{background:"#fff"}}>
-            <label style={{fontWeight:"300",fontSize:"20px",background:"#fff"}}>What is your current Role?</label>
-            <select  onChange={(e)=>setRole(e.target.value)}>
-  <option value="admin">Admin</option>
-  <option value="teamlead">Team Lead</option>
-  <option value="clientmanager">Client Manager</option>
-</select>
-            
-            </div>
             <div className="d-grid gap-2 mt-3 " style={{background:"#fff"}}>
             <button type="submit" className="btn px-5 my-4" style={{fontSize:"20px", background:"#000",color:"#fff"}} >
               Submit

@@ -9,7 +9,7 @@ import { Link, useNavigate } from 'react-router-dom';
 const Sidebar = () => {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
-  const [activeTab, setActiveTab] = useState("1")
+  const [activeTab, setActiveTab] = useState("0")
 
   return (
     <div className="sidebar">
@@ -43,20 +43,20 @@ const Sidebar = () => {
             ): user.role === "admin" ?(
                 <>
                 <div className="menu-icon">
-                <Link to={`/admin/dashboard`}>
+                  <Link to={`/admin/dashboard`}>
 
-                <DashboardIcon className="me-3 " /> Dashboard
-              </Link>
-            </div>
+                    <DashboardIcon className="me-3 " /> Dashboard
+                  </Link>
+                </div>
 
-            <div className="menu-icon">
-            <Link to={`/admin/allleads`}>
-                <LandscapeIcon className="me-3" />
-                Leads
-              </Link>
-            </div>
-            <div className="menu-icon">
-            <Link to={`/admin/allpayments`}>
+                <div className="menu-icon">
+                  <Link to={`/admin/allleads`}>
+                    <LandscapeIcon className="me-3" />
+                    Leads
+                  </Link>
+                </div>
+                <div className="menu-icon">
+                  <Link to={`/admin/allpayments`}>
 
                 <MonetizationOnIcon className="me-3" />
                 Payments
@@ -88,8 +88,9 @@ const Sidebar = () => {
           </div>
         </div>
         <div className="logout">
-          <div href={"/"}onClick={()=>           { localStorage.removeItem('user'); navigate('/') 
-}} style={{ textDecoration: "none", color: "#fff" }}>
+          <div href={"/"} onClick={() => {
+            localStorage.removeItem('user'); navigate('/')
+          }} style={{ textDecoration: "none", color: "#fff" }}>
             {" "}
             <LogoutIcon className="me-3" />
             Logout
