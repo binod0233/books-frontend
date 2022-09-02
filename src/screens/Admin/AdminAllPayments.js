@@ -338,7 +338,7 @@ const getAllThePayments =  ()=>{
                           className="d-flex justify-content-center align-items-center "
                           onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
                         >
-                          {payment?.payee?.split(" ").map((n) => n[0])}
+                          {payment.payee.split(" ").map((n) => n[0])}
                         </div>
                         <div
                           className="d-flex justify-content-center align-items-center"

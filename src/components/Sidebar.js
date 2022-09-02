@@ -43,12 +43,26 @@ const Sidebar = () => {
             ): user.role === "admin" ?(
                 <>
                 <div className="menu-icon">
+<<<<<<< HEAD
                   <Link to={`/admin/dashboard`}>
+=======
+                <Link to={`/admin/dashboard`}>
 
-                    <DashboardIcon className="me-3 " /> Dashboard
-                  </Link>
-                </div>
+                <DashboardIcon className="me-3 " /> Dashboard
+              </Link>
+            </div>
+>>>>>>> 0b3c66eb8f8dd8d5c7aca7f875a9b43e5915f4fd
 
+            <div className="menu-icon">
+            <Link to={`/admin/allleads`}>
+                <LandscapeIcon className="me-3" />
+                Leads
+              </Link>
+            </div>
+            <div className="menu-icon">
+            <Link to={`/admin/allpayments`}>
+
+<<<<<<< HEAD
                 <div className="menu-icon">
                   <Link to={`/admin/allleads`}>
                     <LandscapeIcon className="me-3" />
@@ -58,6 +72,8 @@ const Sidebar = () => {
                 <div className="menu-icon">
                   <Link to={`/admin/allpayments`}>
 
+=======
+>>>>>>> 0b3c66eb8f8dd8d5c7aca7f875a9b43e5915f4fd
                 <MonetizationOnIcon className="me-3" />
                 Payments
               </Link>
@@ -88,9 +104,8 @@ const Sidebar = () => {
           </div>
         </div>
         <div className="logout">
-          <div href={"/"} onClick={() => {
-            localStorage.removeItem('user'); navigate('/')
-          }} style={{ textDecoration: "none", color: "#fff" }}>
+          <div href={"/"}onClick={()=>           { localStorage.removeItem('user'); navigate('/') 
+}} style={{ textDecoration: "none", color: "#fff" }}>
             {" "}
             <LogoutIcon className="me-3" />
             Logout
