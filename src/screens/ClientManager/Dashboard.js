@@ -76,10 +76,12 @@ console.log(timeInterval)
 
   const totalDealValue = leadList.reduce((acc,lead) => acc + lead.dealValue,0)
   const totalEarned = paymentList?.reduce((acc, payment) => acc + payment.amount, 0)
-  const totalSales = leadList?.filter(l=>l.status==="won").length
+  const totalSales = leadList?.filter(l=>l.potential==="won").length
   const totalLeads = leadList?.length
   const conversion = totalSales/totalLeads*100
   const totalDuePayment = totalDealValue - totalEarned
+
+  console.log(totalSales)
 
   const fetchDataOfGivenTimeInterval = (timeInterval) =>{
     axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/weekly-payments/client-manager/${timeInterval?.value}/${name}`).then(res => {
@@ -122,7 +124,7 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
     <div className='px-4' style={{background:"#F1F1FA"}}>
       <Row>
         <Col md={9}>
-        <StatsRow name={name} totalEarned={totalEarned} totalSales={totalSales} totalLeads={totalLeads} conversion={conversion}/>
+        <StatsRow name={name} totalDealValue={totalDealValue} totalEarned={totalEarned} totalSales={totalSales} totalLeads={totalLeads} conversion={conversion}/>
 
         </Col>
         <Col md={3}>

@@ -4,8 +4,11 @@ import { useNavigate } from "react-router-dom";
 import LineChart from "../Chart/LineChart";
 import PieChart from "../Chart/PieChart";
 
-const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
+const StatsRow = ({ totalEarned, totalSales, totalLeads,name,totalDealValue }) => {
   const navigate = useNavigate();
+
+  const totalPaymentPercent = ((totalEarned)/totalDealValue*100).toFixed(2)
+  const totalDuePercent = ((totalDealValue-totalEarned)/totalDealValue*100).toFixed(2)
   return (
     <div className="">
       <Row className="ps-4  pe-0 py-2">
@@ -65,7 +68,7 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
                         fontFamily: "Arial",
                       }}
                     >
-                      {(totalSales).toFixed(2)}
+                      {(totalSales)}
                     </span>
                   </div>
 
@@ -188,16 +191,16 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
                   data={pieData}
                   options={pieOptions}
                 /> */}
-                <PieChart />
+                <PieChart totalPaymentPercent={totalPaymentPercent} totalDuePercent={totalDuePercent}/>
               </div>
               <div>
-                <strong className="pt-4">Total Payment:30%</strong>
+                <strong className="pt-4">Total Payment:{totalPaymentPercent}%</strong>
                 <br />
 
-                <strong className="pt-4">Due Amount:70%</strong>
+                <strong className="pt-4">Due Amount:{totalDuePercent}%</strong>
               </div>
             </Stack>
-            <Row className="  ps-5" style={{fontSize:'1.2rem', fontWeight:'700'}}>Total Deal Value: $2700</Row>
+            <Row className="  ps-5" style={{fontSize:'1.2rem', fontWeight:'700'}}>Total Deal Value: ${totalDealValue}</Row>
           </div>
         </Col>
         <Col md={6} className="py-2 pe-0">
@@ -230,12 +233,12 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
               }}
             >
               <span>Deal Amount</span>
-              <span className="ms-auto ">$2700</span>
+              <span className="ms-auto ">${totalDealValue}</span>
             </div>
             <ProgressBar
               // bsPrefix="pro"
               variant=""
-              now={40}
+              now={totalDealValue}
               style={{ background: "#B8AAEE" }}
             />
             <div
@@ -250,11 +253,11 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
             >
               {" "}
               <span>Total Payment</span>
-              <span className="ms-auto ">$2700</span>
+              <span className="ms-auto ">${totalEarned}</span>
             </div>
             <ProgressBar
               variant="danger"
-              now={60}
+              now={totalEarned}
               style={{ background: "#F9AAA7" }}
             />
             <div
@@ -269,11 +272,11 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name }) => {
             >
               {" "}
               <span>Due Payment</span>
-              <span className="ms-auto ">$2700</span>
+              <span className="ms-auto ">${totalDealValue-totalEarned}</span>
             </div>
             <ProgressBar
               variant="warning"
-              now={60}
+              now={totalDealValue-totalEarned}
               style={{ background: " #F2E3B5" }}
             />
 

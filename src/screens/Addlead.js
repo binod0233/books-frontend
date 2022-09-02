@@ -189,7 +189,7 @@ useEffect(() => {
                   <Col md={4}>
                   <Form.Group controlId="work">
                   <Form.Label>Work</Form.Label>
-                  {/*  
+                   
 <Form.Control type="select" placeholder="Engineer" value={work} onChange={(e)=>setWork(e.target.value)} />
 
                             <Form.Select
@@ -272,9 +272,9 @@ useEffect(() => {
                   <Col md={6}>
                   <Form.Group controlId="leadsource">
                   <Form.Label>Lead Source</Form.Label>
-            {/*
+            
             <Form.Control type="text" placeholder="Website/facebook" value={source} onChange={(e)=>setSource(e.target.value)} />
-          */}
+         
           <Form.Select  onChange={(e)=>setSource(e.target.value)} >
                 <option value="none" onClick={(e)=>setSource(e.target.value)}>Website/facebook</option>
                 
@@ -290,7 +290,7 @@ useEffect(() => {
                   <Col md={6}>
                   <Form.Group controlId="work">
                   <Form.Label>Communication</Form.Label>
-                 {/*
+                 
                 
                  <Form.Control type="text" placeholder="WhatsApp" value={communicationChannel} onChange={(e)=>setCommunicationChannel(e.target.value)} />
                  <Form.Select  onChange={(e)=>setCommunicationChannel(e.target.value)} >
@@ -301,8 +301,8 @@ useEffect(() => {
                  
                  
                  </Form.Select>
-                */}
-                {/* <Select options={options} isMulti onChange={(e)=>setCommunicationChannel(e)}   /> */}
+               
+                <Select options={options} isMulti onChange={(e)=>setCommunicationChannel(e)}   />
                 </Form.Group>
                   </Col>
                 </Row>
@@ -336,7 +336,8 @@ useEffect(() => {
             </Col>
             </Row>
               </div>
-              :activeTab==="2"?<div>
+              :activeTab==="2"?(
+              <div>
               <Row className="mx-5 pt-3">
               <Col className='pe-3'>
                 <Form.Group controlId="servicetype">
@@ -394,10 +395,10 @@ useEffect(() => {
                   <Col >
                   <Form.Group controlId="teamlead">
                   <Form.Label>Team Lead</Form.Label>
-                {/*
+              
               
                 <Form.Control type="text" placeholder="San Antonio" value={teamLead} onChange={(e)=>setTeamLead(e.target.value)} />
-              */}
+             
               <Form.Select   onChange={(e)=>setTeamLead(e.target.value)}>
               <option  value="" onClick={(e)=>setTeamLead(e.target.value)}>Select...</option>
 

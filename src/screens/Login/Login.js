@@ -60,19 +60,7 @@ export default function (props) {
       }
     }
   }, []);
-  useEffect(() => {
-    if (userExist) {
-      if (userExist.role === "teamlead") {
-        navigate(`/teamlead/dashboard/${userExist?.userName}`);
-      } else if (userExist.role === "admin") {
-        navigate(`/admin/dashboard`);
-      } else if (userExist.role === "clientmanager") {
-        navigate(`/dashboard/${userExist?.userName}`);
-
-
-      }
-    }
-  }, [userExist]);
+  
   return (
     <div className="Auth-form-container">
       <form onSubmit={login} className="Auth-form">

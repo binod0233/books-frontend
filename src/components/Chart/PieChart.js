@@ -39,22 +39,23 @@ export const pieOptions = {
     },
   },
 };
-export const pieData = {
-  //   labels: ["12", "19"],
-  datasets: [
-    {
-      label: "# of Votes",
-      data: [30, 70],
-      backgroundColor: ["#FFC928", "#ED6F47"],
-      borderColor: ["white", "white"],
 
-      borderWidth: 9,
-      hoverBorderColor: ["white", "white"],
-    },
-  ],
-};
+function PieChart({totalDuePercent,totalPaymentPercent}) {
 
-function PieChart() {
+  const pieData = {
+    //   labels: ["12", "19"],
+    datasets: [
+      {
+        label: "# of Votes",
+        data: [totalDuePercent, totalPaymentPercent],
+        backgroundColor: ["#FFC928", "#ED6F47"],
+        borderColor: ["white", "white"],
+  
+        borderWidth: 9,
+        hoverBorderColor: ["white", "white"],
+      },
+    ],
+  };
   return (
     
       <Pie
