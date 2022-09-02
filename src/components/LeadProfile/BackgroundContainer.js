@@ -3,7 +3,7 @@ import { Button, Form, Row } from 'react-bootstrap'
 import Select from 'react-select'
 
 const user = JSON.parse(localStorage.getItem("user"));
-
+console.log(user)
 const BackgroundContainer = ({servicePlan, serviceType, nextDate, handleServiceType, handleNextDateChange, handleLastDateChange, handleServicePlan, handleServiceWantedChange }) => {
 
   console.log(nextDate)
@@ -108,7 +108,7 @@ const BackgroundContainer = ({servicePlan, serviceType, nextDate, handleServiceT
             }
              {user?.role === 'teamlead' &&
 
-              <Form.Select  onChange={(e) => handleServicePlan(e.target.value)} style={{ background: "#1577D9", appearance: 'button', color: 'white', textAlign: 'center' }} >
+              <Form.Select onChange={(e) => handleServicePlan(e.target.value)} style={{ background: "#1577D9", appearance: 'button', color: 'white', textAlign: 'center' }} >
                 <option
                   value='Royal'
                   onClick={(e) => handleServicePlan(e.target.value)} >

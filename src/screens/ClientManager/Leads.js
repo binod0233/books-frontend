@@ -141,7 +141,7 @@ const Leads = () => {
                     height: "6vh",
                     background: "white",
                     border: "0.7px solid grey",
-                    width: "18vw",
+                    width: "17vw",
                   }}
                 >
                   <div className="d-flex justify-content-center align-items-center px-2">
@@ -149,7 +149,7 @@ const Leads = () => {
                   </div>
                   <input
                     type="text"
-                    style={{ border: "none", width: "5px" }}
+                    style={{ border: "none", width: "" }}
                     placeholder="Lead Name"
                     value={clientName}
                     onChange={(e) => setClientName(e.target.value)}
@@ -163,7 +163,7 @@ const Leads = () => {
                     height: "6vh",
                     background: "white",
                     border: "0.7px solid grey",
-                    width: "18vw",
+                    width: "17vw",
                   }}
                 >
                   <span className="d-flex justify-content-center align-items-center p-2">
@@ -239,7 +239,7 @@ const Leads = () => {
                     height: "6vh",
                     background: "white",
                     border: "0.7px solid grey",
-                    width: "7vw",
+                    width: "8vw",
                   }}
                 >
                   <span className="d-flex justify-content-center align-items-center p-2">
@@ -260,7 +260,8 @@ const Leads = () => {
                     style={{
                       height: "6vh",
                       background: "#176EB3",
-                      width: "5vw",
+                      width: "6vw",
+                      padding: '0 1vw'
                     }}
                     type="reset"
                     onClick={() => {
@@ -364,7 +365,7 @@ const Leads = () => {
                     style={{
                       color: "black",
                       fontWeight: "700",
-                      fontSize: "1.2rem",
+                      fontSize: "1.4rem",
                       lineHeight: "25px",
                       marginLeft: "8px",
                     }}
@@ -415,7 +416,7 @@ const Leads = () => {
 
                 <div style={{ fontWeight: "", fontSize: "19px", width: "16%" }}>
                   {/* <SelectComponent/> */}
-                  <div className="form-group ">
+                  <div className="form-group d-flex justify-content-center align-items-center ">
                     <select
                       className="selection "
                       name="city"
@@ -423,7 +424,7 @@ const Leads = () => {
                       )}
                       style={{
                         fontWeight: "bold",
-                        width: "130px",
+                        width: "180px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center ",
@@ -455,6 +456,7 @@ const Leads = () => {
                       </option>
                       <option value="won">Won</option>
                     </select>
+                    
                   </div>
                 </div>
 
@@ -473,7 +475,7 @@ const Leads = () => {
                 </div>
 
                 <div style={{ fontWeight: "", fontSize: "19px", width: "16%" }}>
-                  {new Date(l.lastFollowup).toLocaleDateString()}
+                  {new Date(l.lastFollowupDate).toLocaleDateString()}
                 </div>
 
                 <div
@@ -485,7 +487,7 @@ const Leads = () => {
                     display: "flex",
                   }}
                 >
-                  <div>{new Date(l.nextFollowUp).toLocaleDateString()}</div>
+                  <div>{new Date(l.nextFollowUpDate).toLocaleDateString()}</div>
                   <div style={{ width: "40px", marginLeft: "2px" }} onClick={() => {
                     navigate(`/edit-lead/${l.id}`);
                   }}>

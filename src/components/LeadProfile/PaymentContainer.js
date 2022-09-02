@@ -101,6 +101,60 @@ console.log(leads)
 
           </Form.Select>
           }
+          {user?.role==='teamlead' &&
+          <Form.Select
+          
+            onChange={(e) => handleDescipline(e.target.value)}
+            style={{ background: "#1577D9", color: 'white', textAlign: 'center',webkitAppearance: 'button' }} >
+            <option
+              value="Chemical"
+              onClick={(e) => handleDescipline(e.target.value)}
+            >
+              Chemical
+            </option>
+
+            <option
+              value="Reference letter"
+              onClick={(e) => handleDescipline(e.target.value)}
+            >
+              Reference Letter
+            </option>
+            <option
+              value="resume"
+              onClick={(e) => handleDescipline(e.target.value)}
+            >
+              Resume
+            </option>
+
+          </Form.Select>
+          }
+          {user?.role==='admin' &&
+          <Form.Select
+          
+            onChange={(e) => handleDescipline(e.target.value)}
+            style={{ background: "#1577D9", color: 'white', textAlign: 'center',webkitAppearance: 'button' }} >
+            <option
+              value="Chemical"
+              onClick={(e) => handleDescipline(e.target.value)}
+            >
+              Chemical
+            </option>
+
+            <option
+              value="Reference letter"
+              onClick={(e) => handleDescipline(e.target.value)}
+            >
+              Reference Letter
+            </option>
+            <option
+              value="resume"
+              onClick={(e) => handleDescipline(e.target.value)}
+            >
+              Resume
+            </option>
+
+          </Form.Select>
+          }
         </Col>
       </Row>
       <Row className="py-3" style={{ height: "", background: "white" }}>

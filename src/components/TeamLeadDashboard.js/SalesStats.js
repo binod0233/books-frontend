@@ -12,7 +12,7 @@ const SalesStats = () => {
       <Row>
         <Col md={3} className="p-2">
           <div style={{ border: "1px solid #D9D9D9" }} >
-            <strong style={{ fontSize: "1.2rem" }}>Total Sales</strong>
+            <strong style={{ fontSize: "1.2rem", padding:'.5rem' }}>Total Sales</strong>
             <div className='px-2 d-flex d-lg-flex flex-column align-items-center' style={{ height: "40vh", }}>
 
               <div style={{ width: "80%", background: "", height: '25vh', display: "flex", justifyContent: "center", alignItems: "center" }}>
