@@ -12,7 +12,7 @@ const Leads = () => {
   const [leads, setLeads] = useState([])
    
 
-  //filter states
+ 
   const [clientName, setClientName] = useState("");
   const [status, setStatus] = useState("");
   const [servicePlan, setServicePlan] = useState("");
