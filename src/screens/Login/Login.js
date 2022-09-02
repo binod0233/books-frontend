@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -6,29 +7,8 @@ import "./Login.css";
 
 export default function (props) {
   const navigate = useNavigate();
-  const users = [
-    {
-      email: "teamlead@copenned.com",
-      password: "123456",
-      role: "teamlead",
-      name: "teamlead1",
-      id: "1",
-    },
-    {
-      email: "admin@copenned.com",
-      password: "123456",
-      role: "admin",
-      name: "admin1",
-      id: "2",
-    },
-    {
-      email: "clientmanager@copenned.com",
-      password: "123456",
-      role: "clientmanager",
-      name: "clientmanager1",
-      id: "3",
-    },
-  ];
+  
+  const [userExist, setUserExist] = useState({});
   const [e, setE] = useState("");
   const [p, setP] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
@@ -36,29 +16,26 @@ export default function (props) {
     setPasswordShown(!passwordShown);
   };
 
-  const login = () => {
+  const login = (event) => {
+    event.preventDefault();
     const validEmail = e.substring(e.length - 13) === "@copenned.com";
     if (validEmail) {
-      const userExist = users.find((user) => user.email === e);
-      if (userExist) {
-        const loggedIn = users.find(
-          (user) => user.email === e && user.password === p
-        );
-        if (loggedIn) {
-          localStorage.setItem("user", JSON.stringify(loggedIn));
-          if (loggedIn.role === "teamlead") {
-            navigate(`/teamlead/dashboard/${loggedIn.name}`);
-          } else if (loggedIn.role === "admin") {
-            navigate(`/admin/dashboard`);
-          } else if (loggedIn.role === "clientmanager") {
-            navigate(`/dashboard/${loggedIn.name}`);
-          }
-        } else {
-          console.log("password is incorrect");
-        }
-      } else {
-        console.log("user not found");
-      }
+      axios.get(`http://localhost:8080/api/user/login/${e}`).then(res=>{
+        setUserExist(res.data);   
+              localStorage.setItem("user", JSON.stringify(res.data));
+    })
+      // if (userExist) {
+      //     if (userExist.role === "teamlead") {
+      //       navigate(`/teamlead/dashboard/${userExist?.userName}`);
+      //     } else if (userExist.role === "admin") {
+      //       navigate(`/admin/dashboard`);
+      //     } else if (userExist.role === "clientmanager") {
+      //       navigate(`/dashboard/${userExist?.userName}`);
+      //     }
+       
+      // } else {
+      //   console.log("user not found");
+      // }
     } else {
       alert(" inavalid email. use @copenned.com");
     }
@@ -67,15 +44,30 @@ export default function (props) {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
+
       if (user.role === "teamlead") {
-        navigate(`/teamlead/dashboard/${user.name}`);
+        navigate(`/teamlead/dashboard/${user.userName}`);
       } else if (user.role === "admin") {
         navigate(`/admin/dashboard`);
       } else if (user.role === "clientmanager") {
-        navigate(`/dashboard/${user.name}`);
+        // navigate(`/dashboard/${user.userName}`);
+        console.log(user.userName)
       }
     }
   }, []);
+  useEffect(() => {
+    if (userExist) {
+      if (userExist.role === "teamlead") {
+        navigate(`/teamlead/dashboard/${userExist?.userName}`);
+      } else if (userExist.role === "admin") {
+        navigate(`/admin/dashboard`);
+      } else if (userExist.role === "clientmanager") {
+        navigate(`/dashboard/${userExist?.userName}`);
+
+
+      }
+    }
+  }, [userExist]);
   return (
     <div className="Auth-form-container">
       <form onSubmit={login} className="Auth-form">

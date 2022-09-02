@@ -23,7 +23,7 @@ ChartJS.register(
 );
 
 export const pieOptions = {
-  
+  maintainAspectRatio: false,
   responsive: true,
   plugins: {
     legend: {

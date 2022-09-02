@@ -30,7 +30,7 @@ const options=[
     if(!localUser){
       navigate('/login')
     }else{
-    if(   localUser?.name!==name || localUser?.role!=='admin'){
+    if(   localUser?.userName!==name || localUser?.role!=='admin'){
       navigate(`/dashboard/${localUser?.name}`)
     }}
   },[])

@@ -16,7 +16,7 @@ const Header = () => {
     <div className="main px-4">
       <div className="header-wrapper">
         <div className="header-title">
-          <i class="fa-bold fa-greater-than" /> Dashboard
+          <i className="fa-bold fa-greater-than" /> Dashboard
         </div>
         <div className="search">
           {/* <div className="search-bar">

@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { div, Col, Form, Button, Row } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 import Leadscharts from "../../components/leads/Leadscharts";
-import Sidebar from "../../components/Sidebar";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import Header from "../../components/Header";
 import "./leads.css";
-import { leadsdataList } from "./Dashboard";
 const Leads = () => {
   const navigate = useNavigate();
   const params = useParams();
@@ -39,6 +36,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
     axios
       .put(`${process.env.REACT_APP_BASE_URL}/api/lead/leads/changepotential/${leadId}`, {
         potential: e.target.value,
+
       })
       .then((res) => {
         if (res.status === "ok") {
@@ -49,27 +47,40 @@ const localUser = JSON.parse(localStorage.getItem('user'));
       });
   };
 
-  const applyFilter = () => {};
+  const applyFilter = (e) => {
+    axios
+    .put(`http://localhost:8080/api/lead/attributeSearch/clientManager`, {
+      potential: e.target.value,
+
+    })
+    .then((res) => {
+      if (res.status === "ok") {
+        setMessage("Difficulty Changed Successfully");
+      } else {
+        setMessage("There was a problem changing difficulty");
+      }
+    });
+  };
 
   useEffect(() => {
     if(!localUser){
       navigate('/login')
     }else{
-    if(localUser?.name!==clientManager || localUser?.role!=='admin'){
-      navigate(`/leads/${localUser?.name}`)
+    if(localUser?.userName!==clientManager || localUser?.role!=='admin'){
+      navigate(`/leads/${localUser?.userName}`)
     }}
   },[])
 
 
   useEffect(() => {
     getAllLeadsOfAClientManager();
-  }, []);
+  }, [message]);
 
   const totalLeads = leads?.length;
   const totalFollowUps = leads.filter((lead) => lead.nextFollowUpDate).length;
   const leadConverted = leads.filter((lead) => lead.potential === "won").length;
   const leadLost = leads.filter((lead) => lead.potential === "lost").length;
-
+console.log(servicePlan)
   return (
     <>
       <div style={{ backgrund: "#F1F1FA", display: "flex" }}>
@@ -94,6 +105,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
           </div>
         <div className='leadInputs mx-3 mb-2 ' >
         <Form 
+        onSubmit={applyFilter}
         style={{
           display: "flex",
           // justifyContent: "space-between",
@@ -139,19 +151,35 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                 background: "white",
                 border: "0.7px solid grey",
                 width: "18vw",
+                padding:"1px"
               }}
             >
               <span className="d-flex justify-content-center align-items-center p-2">
                 <i className="fa-solid fa-user-large"></i>
               </span>
-              <input
-                type="text"
-                style={{ border: "none" }}
-                placeholder="Service Type"
-                value={servicePlan}
+              
+              <select
+                className="form-select"
+                name="city"
                 onChange={(e) => setServicePlan(e.target.value)}
-                className="form-control"
-              />
+                style={{
+                  textAlign: "center",
+                  height: "fit-content",
+                  border: "none",
+                  marginTop:"-1px"
+                }}
+                aria-label="Default select"
+              >
+                <option selected value="">
+                  Service Type
+                </option>
+                <option value="Basic">Basic</option>
+                <option value="Extended">Extended</option>
+                <option value="Premium" style={{ background: "" }}>
+                  Premium
+                </option>
+                <option value="Royal">Royal</option>
+              </select>
             </div>
 
             <div className="selection">
@@ -202,19 +230,37 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                 background: "white",
                 border: "0.7px solid grey",
                 width: "7vw",
+                padding:"2px"
               }}
             >
-              <span className="d-flex justify-content-center align-items-center p-2">
+              {/* <span className="d-flex justify-content-center align-items-center p-2">
                 $
               </span>
-              <input
-                type="text"
-                style={{ border: "none" }}
-                placeholder="Source"
-                value={source}
+               */}
+              <select
+                className="form-select"
+                name="source"
                 onChange={(e) => setSource(e.target.value)}
-                className="form-control mb-1"
-              />
+                style={{
+                  textAlign: "center",
+                  border: "none",
+                  height:"5vh"
+                }}
+                aria-label="Default select"
+              >
+                <option selected value="">
+                  Source
+                </option>
+                <option value="facebook">Facebook</option>
+                <option value="instagram">Instagram</option>
+                <option value="google" >
+                  Google
+                </option>
+                <option value="referral">Referral</option>
+
+
+                
+              </select>
             </div>
 
             <div>
@@ -242,7 +288,6 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                   width: "8vw",
                 }}
                 type="submit"
-                onClick={applyFilter}
                 className=""
               >
                 <i
@@ -394,6 +439,14 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                           alignItems: "center",
                           justifyContent: "center ",
                         }}
+                        value={l.potential}
+                      >{l.potential}</option>
+                      <option
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center ",
+                        }}
                         value="Negotiating"
                       >
                         Negotiating
@@ -449,7 +502,7 @@ const localUser = JSON.parse(localStorage.getItem('user'));
                     >
                       <i
                         style={{ color: "white" }}
-                        class="fa-solid fa-ellipsis"
+                        className="fa-solid fa-ellipsis"
                       ></i>
                     </button>
                   </div>
@@ -466,12 +519,12 @@ const localUser = JSON.parse(localStorage.getItem('user'));
               justifyContent: "center ",
             }}
           >
-            <div class="pagination m-5">
+            <div className="pagination m-5">
               <a href="#">
                 <i className="fa-solid fa-less-than" />
               </a>
               <a href="#">1</a>
-              <a class="active" href="#">
+              <a className="active" href="#">
                 2
               </a>
               <a href="#">3</a>

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Col,  Row } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-// import Login from '../Login/Login'
 
 const Signup1 = () => {
   const navigate=useNavigate();
@@ -17,7 +16,17 @@ const Signup1 = () => {
     e.preventDefault();
     const validEmail=email.substring(email.length-13)==="@copenned.com"
     if (validEmail){
-      axios.post(`${process.env.REACT_APP_BASE_URL}/api/user/registerAppUser`,{userName:firstName+" "+lastName,email,password,phone,role}).then(res=>{
+      axios.post(`${process.env.REACT_APP_BASE_URL}/api/user/registerAppUser`,{
+        userName:firstName+" "+lastName,
+        email,
+        password,
+        phone,
+        role,
+        createdBy:localStorage.getItem("user").userName,
+        firstName,
+        lastName,
+    
+  }).then(res=>{
         if(res.status===200){
           navigate("/signup3")
         }
@@ -45,10 +54,10 @@ const Signup1 = () => {
   },[])
   return (
     <div >
-       <p style={{float:"right", marginTop:""}}><a href="/">Login</a></p>
-           
+                   <h1>Register User</h1>
+
        <div className="sign1-form-container"  >
-      <form onSubmit={register} className="sign1-form" style={{background:"#fff"}}>
+      <form onSubmit={register} className="sign1-form px-4" style={{background:"#fff"}}>
         <div className="" style={{background:"#fff",display:activeState==="first"?"block":"none" }}>
           <h3 className="Auth-form-title" style={{background:"#fff" ,color:"#7B7B7B"}}> Step 1 of 2</h3>
           <img src="/line.png"  alt='line' className="img-fluid"/>

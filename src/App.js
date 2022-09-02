@@ -28,12 +28,12 @@ import Signup3 from './screens/Signup/Signup3';
 
 
 const App = () => {
-  const [loggedIn, setLoggedIn] = React.useState(localStorage.getItem('user'));
-  useEffect(() => {
-    setLoggedIn(localStorage.getItem('user'));
+  // const [loggedIn, setLoggedIn] = React.useState(localStorage.getItem('user'));
+  // useEffect(() => {
+  //   setLoggedIn(localStorage.getItem('user'));
 
 
-  }, [localStorage.getItem('user')]);
+  // }, [localStorage.getItem('user')]);
   return (
 <div  className='backgoundKo'>
     <Router>

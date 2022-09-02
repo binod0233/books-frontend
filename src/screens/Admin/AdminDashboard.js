@@ -27,7 +27,6 @@ const AdminDashboard = () => {
   const getTopClientManagers = () => {
     axios.get(`${process.env.REACT_APP_BASE_URL}/api/salesman/salesmen`).then(res => {
       setClientManagers(res.data.responseList)
-      console.log(res.data)
     }).catch(err => {
       console.log(err)
     }
@@ -36,7 +35,6 @@ const AdminDashboard = () => {
   const  getTopLeads = () => {
     axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/leads`).then(res => {
       setTopLeads(res.data.responseList)
-      console.log(res.data)
     }).catch(err => {
       console.log(err)
     }

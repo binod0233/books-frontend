@@ -59,8 +59,8 @@ const AddPayment = () => {
           recipient,
           serviceType: service,
           receiptImage:"",
-          modifiedBy: localStorage.getItem("user").name,
-          createdBy: localStorage.getItem("user").name,
+          modifiedBy: localStorage.getItem("user").userName,
+          createdBy: localStorage.getItem("user").userName,
         },
         config
       )
@@ -70,9 +70,9 @@ const AddPayment = () => {
       navigate('/admin/allpayments')
     }
     else if(user?.role==="teamlead"){
-      navigate(`/teamlead/payment/${user.name}`)
+      navigate(`/teamlead/payment/${user.userName}`)
     }else if(user?.role==="clientmanager"){
-      navigate(`/payments/${user?.name}`)
+      navigate(`/payments/${user?.userName}`)
     
     } 
         } else {
