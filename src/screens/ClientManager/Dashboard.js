@@ -126,7 +126,7 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/team-le
 
         </Col>
         <Col md={3}>
-        <OverviewRow teamLead={clientManager.teamLead} totalSales={totalSales} totalEarned={totalEarned}  conversion={conversion} name={localUser.name} email={localUser.email}
+        <OverviewRow teamLead={clientManager.teamLead} totalSales={totalSales} totalEarned={totalEarned}  conversion={conversion} name={name} email={localUser.email}
         id={localUser.id} role={localUser.role}
         // teamName={leadList && leadList[0].teamLead } teamLead={paymentList && paymentList[0].recipient} 
          />
