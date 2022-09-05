@@ -3,8 +3,8 @@ import { Button, Col, ProgressBar, Row, Stack } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import BarChart from "../Chart/BarChart";
-
-const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) => {
+import '../../screens/ClientManager/leads.css';
+const Leadscharts = ({nextFollowUps,leadsFronWebsites,leadsFronLinkedin,leadsFronInstagram,leadsFronOthers,leadsFronFacebook,  leadConverted, leadLost, totalLeads }) => {
   const navigate = useNavigate();
 
 
@@ -112,7 +112,7 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
                   }}
                   className="d-flex justify-content-center"
                 >
-                  {totalFollowUps}
+                  {nextFollowUps}
                 </div>
 
                 <div
@@ -212,8 +212,18 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
           </Row>
         </Col>
         
-        <Col md={4} className="mt-5" style={{  }}>
-                  <BarChart barChartHeight="42vh"/>
+        <Col md={4}  >
+        <div className= 'leadcharts' style={{height:'52vh', background:'#FFF',padding:'.5rem 1rem'}}>
+
+        <div className="pt-3" style={{ fontWeight: "700", fontSize: "1.2rem" , }}>Leads Stats</div>
+        <div className='d-flex justify-content-center barchart ' style={{height:"35vh ", width:'90%'}}>
+        <BarChart />
+
+        </div>
+
+                  <div style={{ fontWeight: "700", fontSize: "1.2rem" }} className='d-flex justify-content-center align-items-center pt-4 leadchartt '>Total Leads: {totalLeads}</div>
+
+        </div>
         </Col>
         <Col  md={4} className="mt-5" style={{ }}>
         <Stack className="px-3 " style={{}}>
@@ -231,10 +241,7 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
               <div className="d-flex">
                 <Col className="pe-1">
                   <ProgressBar
-                    // bsPrefix="progress-bar"
-                    // className="progress-bar warning"
-                    now={40}
-                    // variant="primary"
+                    now={leadsFronWebsites/totalLeads*100}
                     style={{
                       background: "#B8AAEE",
                       marginBottom:"3.5vh"
@@ -257,7 +264,7 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
                       textAlign: "right",
                     }}
                   >
-                    700
+                    {leadsFronWebsites/totalLeads*100}
                   </span>
                 </div>
               </div>
@@ -275,7 +282,7 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
               <div className="d-flex">
                 <Col className="pe-1">
                   <ProgressBar
-                    now={40}
+                    now={leadsFronLinkedin/totalLeads*100}
                     variant="danger"
                     style={{ background: "#F9AAA7",                      marginBottom:"3.5vh"
                   }}
@@ -293,7 +300,7 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
                       textAlign: "right",
                     }}
                   >
-                    700
+                    {leadsFronLinkedin/totalLeads*100}
                   </span>
                 </div>
               </div>{" "}
@@ -311,7 +318,7 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
               <div className="d-flex">
                 <Col className="pe-1">
                   <ProgressBar
-                    now={40}
+                    now={leadsFronFacebook/totalLeads*100}
                     variant="warning"
                     style={{ background: "#F2E3B5",                      marginBottom:"3.5vh"
                   }}
@@ -329,7 +336,7 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
                       textAlign: "right",
                     }}
                   >
-                    700
+                    {leadsFronFacebook/totalLeads*100}
                   </span>
                 </div>
               </div>{" "}
@@ -347,7 +354,7 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
               <div className="d-flex">
                 <Col className="pe-1">
                   <ProgressBar
-                    now={40}
+                    now={leadsFronInstagram/totalLeads*100}
                     variant="info"
                     style={{ background: "#EBF9FF",                      marginBottom:"3.5vh"
                   }}
@@ -365,7 +372,8 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
                       textAlign: "right",
                     }}
                   >
-                    700
+                                        {leadsFronInstagram/totalLeads*100}
+
                   </span>
                 </div>
               </div>{" "}
@@ -383,7 +391,7 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
               <div className="d-flex">
                 <Col className="pe-1">
                   <ProgressBar
-                    now={40}
+                    now={leadsFronOthers/totalLeads*100}
                     variant="success"
                     style={{ background: "#70E765",                      marginBottom:"3.5vh"
                   }}
@@ -401,7 +409,7 @@ const Leadscharts = ({ totalFollowUps, leadConverted, leadLost, totalLeads }) =>
                       textAlign: "right",
                     }}
                   >
-                    700
+                    {leadsFronOthers/totalLeads*100}
                   </span>
                 </div>
               </div>

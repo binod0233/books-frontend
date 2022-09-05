@@ -4,9 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 const localUser = localStorage.getItem('user')
 const user = JSON.parse(localUser)
-console.log(user)
 
-const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
+const PaymentRow = ({fromOthers, fromWebsite, fromInstagram, fromLinkedIn, fromFacebook ,totalLeads, name, totalDealValue, totalEarned, totalDuePayment }) => {
 
   const navigate = useNavigate();
 
@@ -46,7 +45,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
               <div className="d-flex">
                 <Col className="pe-1">
                   <ProgressBar
-                    now={40}
+                    now={fromWebsite/totalLeads*100}
                     style={{
                       background: "#B8AAEE",
                       height: '1.2vh',
@@ -65,7 +64,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
                       textAlign: "right",
                     }}
                   >
-                    700
+                    {fromWebsite/totalLeads*100}
                   </span>
                 </div>
               </div>
@@ -82,7 +81,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
               <div className="d-flex">
                 <Col className="pe-1">
                   <ProgressBar
-                    now={40}
+                    now={fromLinkedIn/totalLeads*100}
                     variant="danger"
                     style={{ background: "#F9AAA7", height: "1.2vh" }}
                   />
@@ -99,7 +98,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
                       textAlign: "right",
                     }}
                   >
-                    700
+                    {fromLinkedIn/totalLeads*100}
                   </span>
                 </div>
               </div>{" "}
@@ -116,7 +115,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
               <div className="d-flex">
                 <Col className="pe-1">
                   <ProgressBar
-                    now={40}
+                    now={fromFacebook/totalLeads*100}
                     variant="warning"
                     style={{ background: "#F2E3B5", height: "1.2vh" }}
                   />
@@ -133,7 +132,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
                       textAlign: "right",
                     }}
                   >
-                    700
+                    {fromFacebook/totalLeads*100}
                   </span>
                 </div>
               </div>{" "}
@@ -150,7 +149,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
               <div className="d-flex">
                 <Col className="pe-1">
                   <ProgressBar
-                    now={40}
+                    now={fromInstagram/totalLeads*100}
                     variant="info"
                     style={{ background: "#EBF9FF", height: "1.2vh" }}
                   />
@@ -167,7 +166,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
                       textAlign: "right",
                     }}
                   >
-                    700
+                   {fromInstagram/totalLeads*100}
                   </span>
                 </div>
               </div>{" "}
@@ -184,7 +183,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
               <div className="d-flex">
                 <Col className="pe-1">
                   <ProgressBar
-                    now={40}
+                    now={fromOthers/totalLeads*100}
                     variant="success"
                     style={{ background: "#70E765", height: "1.2vh" }}
                   />
@@ -201,7 +200,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
                       textAlign: "right",
                     }}
                   >
-                    700
+                    {fromOthers/totalLeads*100}
                   </span>
                 </div>
               </div>
@@ -345,7 +344,7 @@ const PaymentRow = ({ name, totalDealValue, totalEarned, totalDuePayment }) => {
                   fontWeight: "600",
                 }}
               >
-                1000{(totalEarned)}
+                {(totalEarned)}
               </span>
             </span>
             <span

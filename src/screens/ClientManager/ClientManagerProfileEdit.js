@@ -8,18 +8,21 @@ const ClientManagerProfileEdit = () => {
 
   const {id} = useParams()
 
+  
+
   const [email,setEmail] = useState('')
   const [firstName,setFirstName] = useState('')
   const [lastName,setLastName] = useState('')
   const [phone,setPhone] = useState('')
   const [socialMedia,setSocialMedia] = useState('')
   const [platform,setPlatform] = useState('')
-  const [leadName,setLeadName] = useState('')
+  const [teamLead,setTeamLead] = useState('')
   const [teamName,setTeamName] = useState('')
   const [visibleTo,setVisibleTo] = useState('')
+  const [makeDisabled,setMakeDisabled] = useState(false)
 
   useEffect(()=>{
-
+setMakeDisabled(JSON.parse(localStorage.getItem('user')).role!=="admin")
     axios.get(`${process.env.REACT_APP_API_URL}/api/salesman/salesmanId/${id}`)
 
     .then(res=>{
@@ -29,7 +32,8 @@ const ClientManagerProfileEdit = () => {
       setPhone(res.data.phone)
       setSocialMedia(res.data.socialMedia)
       setPlatform(res.data.platform)
-      setLeadName(res.data.leadName)
+      setTeamLead(res.data.teamLead)
+      setTeamName(res.data.teamName)
     })
   },[id])
  
@@ -40,14 +44,13 @@ const ClientManagerProfileEdit = () => {
       firstName,
       lastName,
       phone,
-      socialMedia,
+      // socialMedia,
       platform,
-      leadName,
-      teamName,
+      teamLead,
+      team:teamName,
       visibleTo,
 
     }).then(res=>{
-      console.log(res)
       if(res.data.status=200){
         alert('Profile Updated Successfully')
         
@@ -94,7 +97,7 @@ const ClientManagerProfileEdit = () => {
                  
                 <Form.Group controlId="email">
                   <Form.Label>Email Address</Form.Label>
-                  <Form.Control type="email"value={email} placeholder="bibek@copenned.com" onChange={(e)=>{setEmail(e.target.value)}} />
+                  <Form.Control disabled={makeDisabled} type="email"value={email} placeholder="bibek@copenned.com" onChange={(e)=>{setEmail(e.target.value)}} />
                 </Form.Group>
                 </Col>
 
@@ -159,7 +162,7 @@ const ClientManagerProfileEdit = () => {
                   
                   <Form.Group controlId="leadname">
                   <Form.Label>Team Lead</Form.Label>
-                  <Form.Select value={leadName} onChange={(e)=>setLeadName(e.target.value)} >
+                  <Form.Select disabled={makeDisabled} value={teamLead} onChange={(e)=>setTeamLead(e.target.value)} >
                   <option value="admin">Select</option>
                   <option value="neha rathi">Neha Rathi</option>
                     <option value="sharmila dangol">Sharmila Dangol</option>
@@ -172,9 +175,9 @@ const ClientManagerProfileEdit = () => {
                 <Form.Group controlId="teamname">
                   <Form.Label>Team Name</Form.Label>
                   <div className='d-flex'>
-                  <Form.Check className='mx-2' type="radio" name="teamname" value="Las Vegas"  label="Las Vegas" onClick={(e)=>setTeamName(e.target.value)} />
-                  <Form.Check className='mx-2' type="radio" name="teamname"  value="San Antonio" label="San Antonio" onClick={(e)=>setTeamName(e.target.value)} />
-                  <Form.Check className='mx-2' type="radio" name="teamname"  value="Houston" label="Houston" onClick={(e)=>setTeamName(e.target.value)} />
+                  <Form.Check disabled={makeDisabled} className='mx-2' type="radio" name="teamname" value="Las Vegas"  label="Las Vegas"  />
+                  <Form.Check disabled={makeDisabled} className='mx-2' type="radio" name="teamname"  value="San Antonio" label="San Antonio"  />
+                  <Form.Check disabled={makeDisabled} className='mx-2' type="radio" name="teamname"  value="Houston" label="Houston" />
       </div>
                 </Form.Group>
               </Col>
@@ -184,7 +187,7 @@ const ClientManagerProfileEdit = () => {
             <Col>
             <Form.Group controlId="visibleto">
                   <Form.Label>Visible To</Form.Label>
-                  <Form.Select  onChange={(e)=>setVisibleTo(e.target.value)} >
+                  <Form.Select disabled={makeDisabled}  onChange={(e)=>setVisibleTo(e.target.value)} >
                   <option value="all">All</option>
                     <option value="admin">Admin</option>
                     <option value="teamLead">Team Lead</option>

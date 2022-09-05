@@ -39,74 +39,85 @@ const [activeGender, setActiveGender] = useState('1')
   const onSelect = (code) => setSelect(code);
 
   const options = [
-    { value: 'whatsapp', label: 'WhatsApp' },
-    { value: 'messenger', label: 'Messenger' },
-    { value: 'viber', label: 'Viber' }
-  ]
-const user = JSON.parse(localStorage.getItem('user'))
-const clientManagerSelectList= []
-const teamLeadSelectList= []
+    { value: "whatsapp", label: "WhatsApp" },
+    { value: "messenger", label: "Messenger" },
+    { value: "viber", label: "Viber" },
+  ];
 
-
-clientManagers?.map(c=>{
-  clientManagerSelectList.push({value:c.userName,label:c.userName})
-})
-
-teamLeads?.map(c=>{
-  teamLeadSelectList.push({value:c.userName,label:c.userName})
-})
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const addALead = (e) => {
+    let socialMedia = ""
+      for(let c of communicationChannel)
+      {
+          socialMedia= socialMedia.concat(c.value,",");
+         
+          
+      }
+ 
+
     e.preventDefault();
 
-   console.log({name:fullName,email,phone:number,
-    work,source,
-    socialMedia:communicationChannel,
-    gender,
-    select,
-    country:select,
-    clientBackground:leadBackground,
-    serviceType,
-     servicePlan,discipline,
-     lastFollowUpDate,
-    nextFollowUpDate,teamLead,
-    clientManager,paymentStatus,
-    paymentMethod:paymentType,
-    dealValue,dueDate,recepient,payee
-})
-    
-    
-    axios.post(`${process.env.REACT_APP_BASE_URL}/api/lead/registerLead`,
-    {name:fullName,email,phone:number,
-      work,source,
-      // socialMedia:communicationChannel,
-      gender,
-      select,
-      country:select,
-      clientBackground:leadBackground,
-      serviceType,
-       servicePlan,discipline,
-       lastFollowUpDate,
-      nextFollowUpDate,teamLead,
-      clientManager,paymentStatus,
-      paymentMethod:paymentType,
-      dealValue,dueDate,recepient,payee
-  }).then(res=>{if(res.status===200){
-    if(user?.role==="admin"){
-      navigate('/admin/allleads')
-    }
-    else if(user?.role==="teamlead"){
-      navigate(`/teamlead/leads/${user.userName}`)
-    }else if(user?.role==="clientmanager"){
-      navigate(`/leads/${user?.userName}`)
+    axios
+      .post(`${process.env.REACT_APP_BASE_URL}/api/lead/registerLead`, {
+        name: fullName,
+        email,
+        phone: number,
+        work,
+        source,
+      
+        createdBy:JSON.parse(localStorage.getItem("user")).userName,
+        modifiedBy:JSON.parse(localStorage.getItem("user")).userName,
+        // socialMedia:communicationChannel?.map((c)=>c.value+","),
+        socialMedia,
+        gender,
+        potential: "Negotiating",
+        select,
+        country: select, 
+        clientBackground: leadBackground,
+        serviceType,
+        servicePlan,
+        discipline,
+        lastFollowUpDate,
+        nextFollowUpDate,
+        teamLead,
+        clientManager,
+        status:paymentStatus,
+        paymentMethod: paymentType,
+        dealValue,
+        dueDate,
+        recipient:recepient,
+        payee,
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          if (user?.role === "admin") {
+            navigate("/admin/allleads");
+          } else if (user?.role === "teamlead") {
+            navigate(`/teamlead/leads/${user.name}`);
+          } else if (user?.role === "clientmanager") {
+            navigate(`/leads/${user?.name}`);
+          }
+        } else {
+          alert("Something went wrong");
+        }
+      });
+  };
+  const getTeamLeads = () => {
+    axios
+      .get(`${process.env.REACT_APP_BASE_URL}/api/user/teamlead/getAll`)
+      .then((res) => {
+        setTeamLeadList(res.data.responseList);
+      });
+  };
+  const getClientManagers = () => {
+    axios
+      .get(`${process.env.REACT_APP_BASE_URL}/api/user/clientmanager/getAll`)
+      .then((res) => {
+        setClientManagerList(res.data.responseList);
+      });
+  };
 
-    }
-  }else{
-    alert('Something went wrong')
-  }
-  }
-  )
-}
 
 const getTeamLeads=()=>{
   axios.get(`http://localhost:8080/api/user/teamlead/getAll`)
@@ -548,7 +559,7 @@ useEffect(() => {
                     </Col>
                     <Col className="pe-3 mt-4" md={6}>
                       <Form.Group controlId="recepient">
-                        <Form.Label>Recepient</Form.Label>
+                        <Form.Label>Team</Form.Label>
                         <Form.Select
                           onChange={(e) => setRecepient(e.target.value)}
                         >

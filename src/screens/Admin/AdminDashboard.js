@@ -9,12 +9,72 @@ import axios from 'axios'
 
 const AdminDashboard = () => {
 
-  const [teamLeads,setTeamLeads] = useState([])
-  const [topClientManagers, setTopClientManagers] = useState([])
-  const [topLeads,setTopLeads] = useState([])
-  const [teamLeadStats,setTeamLeadStats] = useState({})
-  const [clientManagerStats,setClientManagerStats] = useState({})
-  const [clickedTime,setClickedTime] = useState("")
+  const [teamLeads, setTeamLeads] = useState([
+    {
+    teamName: 'Bibek Lamichhane',
+    status: 'remained',
+    weeks: 4,
+    totalEarnings: 8000,
+    name: 'anup chaudhary',
+    email: 'anup@copenned.com'
+  },
+  {
+    teamName: 'Bibek Lamichhane',
+    status: 'remained',
+    weeks: 4,
+    totalEarnings: 8000,
+    name: 'anup chaudhary',
+    email: 'anup@copenned.com'
+  }, {
+    teamName: 'Bibek Lamichhane',
+    status: 'remained',
+    weeks: 4,
+    totalEarnings: 8000,
+    name: 'Hari  Chaudhary',
+    email: 'anup@copenned.com'
+  }, {
+    teamName: 'Bibek Lamichhane',
+    status: 'remained',
+    weeks: 4,
+    totalEarnings: 8000,
+    name: 'Shyam khadka',
+    email: 'anup@copenned.com'
+  },
+])
+  const [topClientManagers, setTopClientManagers] = useState([{
+    name: 'hari sdfj',
+    teamName: 'anup',
+    email: 'sajd@gamil.com',
+    numberOfLeads: 12,
+    status: 'Excellence',
+    weeks: 7,
+    totalSales: 'static data',
+    leadsNumber:700,
+  },
+  {
+    name: 'hari sdfjstha ',
+    teamName: 'anup hfsdas',
+    email: 'sajd@gamil.com',
+    numberOfLeads: 1252,
+    status: 'good',
+    weeks: 7,
+    totalSales: 'static data',
+    leadsNumber:700,
+
+  },
+  ])
+  const [payments,setPayments] = useState([])
+  const [topLeads, setTopLeads] = useState([])
+  const [teamLeadStats, setTeamLeadStats] = useState({})
+  const [clientManagerStats, setClientManagerStats] = useState({})
+  const [clickedTime, setClickedTime] = useState("")
+  const [timeInterval, setTimeInterval] = useState(null)
+
+  const options = [
+    { value: 'weekly', label: 'Weekly' },
+    { value: 'semiMonthly', label: '15 days' },
+    { value: 'weekly', label: 'Monthly' }
+  ]
 
 
   useEffect(() => {
@@ -71,11 +131,11 @@ const AdminDashboard = () => {
 
   const fetchDataOfGivenTimeInterval = (timeInterval) =>{
     axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/weekly-payments/${timeInterval?.value}`).then(res => {
-      console.log(res.data.responseList)
-  })
-  axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/${timeInterval?.value}`).then(res => {
-    console.log(res.data.responseList)
-  })
+      setTopLeads(res.data.responseList)
+    })
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/${timeInterval?.value}`).then(res => {
+      setPayments(res.data.responseList)
+    })
 
 }
 

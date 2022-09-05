@@ -15,7 +15,6 @@ const LeadPaymentProfile = () => {
   const { paymentId } = params;
   const { clientManager } = params;
 
-  console.log(paymentId);
   const totalPayment =10;
   //  paymentList?.reduce((acc, i) => acc + i.amount, 0);
 
@@ -26,7 +25,6 @@ const LeadPaymentProfile = () => {
       )
       .then((res) => {
       setPaymentList([...paymentList, res.data]);
-        console.log(paymentList);
       });
   };
 

@@ -5,6 +5,9 @@ import Leadscharts from "../../components/leads/Leadscharts";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import "./leads.css";
+import EditIcon from '@mui/icons-material/Edit';
+import moment from "moment"
+
 const Leads = () => {
   const navigate = useNavigate();
   const params = useParams();
@@ -80,7 +83,14 @@ const localUser = JSON.parse(localStorage.getItem('user'));
   const totalFollowUps = leads.filter((lead) => lead.nextFollowUpDate).length;
   const leadConverted = leads.filter((lead) => lead.potential === "won").length;
   const leadLost = leads.filter((lead) => lead.potential === "lost").length;
-console.log(servicePlan)
+  const leadsFronWebsites = leads.filter((lead) => lead.source === "websites").length;
+  const leadsFronLinkedin = leads.filter((lead) => lead.source === "linkedin").length;
+  const leadsFronInstagram = leads.filter((lead) => lead.source === "instagram").length;
+  const leadsFronOthers = leads.filter((lead) => lead.source === "others").length;
+  const leadsFronFacebook = leads.filter((lead) => lead.source === "facebook").length;
+    const nextFollowUps = leads.filter(lead=>moment(lead.nextFollowUpDate).isAfter(Date.now())).length
+console.log(leadLost)
+
   return (
     <>
       <div style={{ backgrund: "#F1F1FA", display: "flex" }}>
@@ -97,6 +107,12 @@ console.log(servicePlan)
             style={{ background: "#F1F1FA", overflow: "hidden" }}
           >
             <Leadscharts
+            nextFollowUps={nextFollowUps}
+            leadsFronWebsites={leadsFronWebsites}
+            leadsFronLinkedin={leadsFronLinkedin}
+            leadsFronInstagram={leadsFronInstagram}
+            leadsFronOthers={leadsFronOthers}
+            leadsFronFacebook={leadsFronFacebook}
               totalLeads={totalLeads}
               totalFollowUps={totalFollowUps}
               leadConverted={leadConverted}
@@ -475,7 +491,7 @@ console.log(servicePlan)
                 </div>
 
                 <div style={{ fontWeight: "", fontSize: "19px", width: "16%" }}>
-                  {new Date(l.lastFollowup).toLocaleDateString()}
+                  {new Date(l.lastFollowUpDate).toLocaleDateString()}
                 </div>
 
                 <div
@@ -487,9 +503,11 @@ console.log(servicePlan)
                     display: "flex",
                   }}
                 >
-                  <div>{new Date(l.nextFollowUp).toLocaleDateString()}</div>
-                  <div style={{ width: "40px", marginLeft: "2px" }}>
-                    <button
+                  <div>{new Date(l.nextFollowUpDate).toLocaleDateString()}</div>
+                  <div style={{ width: "40px", marginLeft: "2px" }} onClick={() => {
+                    navigate(`/edit-lead/${l.id}`);
+                  }}>
+                    {/* <button
                       style={{
                         width: "inherit",
                         height: "37px",
@@ -500,11 +518,8 @@ console.log(servicePlan)
                         border: "none",
                       }}
                     >
-                      <i
-                        style={{ color: "white" }}
-                        className="fa-solid fa-ellipsis"
-                      ></i>
-                    </button>
+                      <EditIcon style={{ color: 'white' }} />
+                    </button> */}
                   </div>
                 </div>
               </div>

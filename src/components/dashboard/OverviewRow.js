@@ -5,7 +5,7 @@ import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 import { useNavigate } from "react-router-dom";
 
 
-const OverviewRow = ({ name, email,id,role,teamLead, totalSales, conversion, totalEarned }) => {
+const OverviewRow = ({ name, email,id,role,teamLead,teamName, totalSales, conversion, totalEarned }) => {
   const navigate = useNavigate(
 
   )
@@ -165,7 +165,7 @@ const OverviewRow = ({ name, email,id,role,teamLead, totalSales, conversion, tot
             style={{ height: "4vh", marginTop: "2vh" }}
           />
           <span style={{ fontWeight: "700", fontSize: "1rem" }}>
-            $ <span style={{ fontSize: "1.2rem" }}>{(totalEarned).toFixed(2)}</span>
+            $ <span style={{ fontSize: "1.2rem" }}>{(totalEarned)?.toFixed(2)}</span>
           </span>
           <span style={{ color: "#92959A", fontSize: "1rem" }}>
             Total Earning
@@ -177,11 +177,11 @@ const OverviewRow = ({ name, email,id,role,teamLead, totalSales, conversion, tot
         >
           <div className="mt-3">
             <span style={{fontWeight:"400",fontSize:'1rem'}}>Team Name</span>
-            <span style={{ fontWeight: "600", fontSize:'1rem' }}> San Antonio</span>
+            <span style={{ fontWeight: "600", fontSize:'1rem' }}> {teamName}</span>
           </div>
           <div>
             <span style={{fontWeight:"400",fontSize:'1rem'}}>Team Lead</span>
-            <span style={{ fontWeight: "600", fontSize:'1rem' }}> Suman Subedi</span>
+            <span style={{ fontWeight: "600", fontSize:'1rem' }}> {teamLead}</span>
           </div>
           <Button onClick={()=>navigate(`/teamlead/dashboard/${teamLead}`)} style={{ fontSize: "1rem", background: "#DD2A7B" , border:'none', marginTop:'.5vh',  cursor:'pointer'}}>
             View Team

@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-const PaymentTop = ({totalPayment}) => {
+const PaymentTop = ({totalEarned, totalDealValue, totalDuePayment}) => {
 const navigate = useNavigate()
 
   return (
@@ -74,7 +74,7 @@ const navigate = useNavigate()
               <Col>
                 <span style={{ fontSize: "40px", fontWeight: "700" }}>
                     
-                  $500.00
+                  ${totalDealValue.toFixed(2)}
                 </span>
               </Col>
               <Col
@@ -132,7 +132,8 @@ const navigate = useNavigate()
               <Col>
                 <span style={{ fontSize: "40px", fontWeight: "700" }}>
                  
-                  ${totalPayment}
+                ${totalEarned.toFixed(2)}
+
                 </span>
               </Col>
               <Col
@@ -192,7 +193,8 @@ const navigate = useNavigate()
               <Col>
                 <span style={{ fontSize: "40px", fontWeight: "700" }}>
                 
-                  $700.00
+                ${totalDuePayment.toFixed(2)}
+
                 </span>
               </Col>
               <Col

@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 import LineChart from "../Chart/LineChart";
 import PieChart from "../Chart/PieChart";
 
-const StatsRow = ({ totalEarned, totalSales, totalLeads,name,totalDealValue }) => {
+const StatsRow = ({ totalEarned,totalDealValue, totalSales, totalLeads,name }) => {
   const navigate = useNavigate();
 
-  const totalPaymentPercent = ((totalEarned)/totalDealValue*100).toFixed(2)
-  const totalDuePercent = ((totalDealValue-totalEarned)/totalDealValue*100).toFixed(2)
+  const totalPaymentPercent = (totalEarned/totalDealValue*100)?.toFixed(2)
+  const duePaymentPercent = ((totalDealValue-totalEarned)/totalDealValue*100)?.toFixed(2)
+
   return (
     <div className="">
       <Row className="ps-4  pe-0 py-2">
@@ -39,7 +40,7 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name,totalDealValue }) =
                         fontFamily: "Arial",
                       }}
                     >
-                      {(totalEarned).toFixed(2)}
+                      {(totalEarned)?.toFixed(2)}
                     </span>
                   </div>
 
@@ -68,7 +69,7 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name,totalDealValue }) =
                         fontFamily: "Arial",
                       }}
                     >
-                      {(totalSales)}
+                      {totalSales}
                     </span>
                   </div>
 
@@ -97,7 +98,7 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name,totalDealValue }) =
                         fontFamily: "Arial",
                       }}
                     >
-                      {(totalLeads).toFixed(2)}
+                      {(totalLeads)?.toFixed(2)}
                     </span>
                   </div>
 
@@ -126,12 +127,12 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name,totalDealValue }) =
                         fontFamily: "Arial",
                       }}
                     >
-                      1,800
+                      0
                     </span>
                   </div>
 
                   <span style={{ color: "#64676B", fontSize: "14px" }}>
-                    TOTAL EARNING
+                    Rating
                   </span>
                 </div>
               </div>
@@ -191,13 +192,13 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name,totalDealValue }) =
                   data={pieData}
                   options={pieOptions}
                 /> */}
-                <PieChart totalPaymentPercent={totalPaymentPercent} totalDuePercent={totalDuePercent}/>
+                <PieChart totalPaymentPercent={totalPaymentPercent} duePaymentPercent={duePaymentPercent}/>
               </div>
               <div>
                 <strong className="pt-4">Total Payment:{totalPaymentPercent}%</strong>
                 <br />
 
-                <strong className="pt-4">Due Amount:{totalDuePercent}%</strong>
+                <strong className="pt-4">Due Amount:{duePaymentPercent}%</strong>
               </div>
             </Stack>
             <Row className="  ps-5" style={{fontSize:'1.2rem', fontWeight:'700'}}>Total Deal Value: ${totalDealValue}</Row>
@@ -253,7 +254,7 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name,totalDealValue }) =
             >
               {" "}
               <span>Total Payment</span>
-              <span className="ms-auto ">${totalEarned}</span>
+              <span className="ms-auto ">${totalEarned?.toFixed(2)}</span>
             </div>
             <ProgressBar
               variant="danger"
@@ -272,7 +273,7 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name,totalDealValue }) =
             >
               {" "}
               <span>Due Payment</span>
-              <span className="ms-auto ">${totalDealValue-totalEarned}</span>
+              <span className="ms-auto ">${(totalDealValue-totalEarned)?.toFixed(2)}</span>
             </div>
             <ProgressBar
               variant="warning"
@@ -291,7 +292,7 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name,totalDealValue }) =
                 // lineHeight: "23px",
               }}
             >
-              Total Leads: 310
+              Total Leads: {totalLeads}
             </span>
 
             <span
@@ -304,7 +305,7 @@ const StatsRow = ({ totalEarned, totalSales, totalLeads,name,totalDealValue }) =
                 // paddingBottom:'1rem'
               }}
             >
-              Total Sales: 2700
+              Total Sales: {totalSales}
             </span>
           </Stack>
         </Col>
