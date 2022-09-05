@@ -12,6 +12,7 @@ import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 const Payment = () => {
   const [paymentList, setPaymentList] = useState([]);
   const [displayList, setDisplayList] = useState([]);
+  const [leads, setLeads] = useState([])
   const [clientName, setClientName] = useState('');
   const [amount,setAmount] = useState(0)
   const [serviceType,setServiceType] = useState("")
@@ -26,6 +27,11 @@ const Payment = () => {
   }, []);
 
   const getAllThePayments = () => {
+
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/leads/getAllLeadsOfAClientManager/${clientManager}`).then(res => {
+      setLeads(res.data.responseList)
+    })
+
     axios
       .get(
         `${process.env.REACT_APP_BASE_URL}/api/payment/payments/getAllLeadsOfAClientManager/${clientManager}`
@@ -35,7 +41,6 @@ const Payment = () => {
         setDisplayList(res.data.responseList);
       });
   };
-  const totalPayment = paymentList?.reduce((acc, i) => acc + i.amount, 0);
 
 
 
@@ -57,11 +62,16 @@ const Payment = () => {
     })
   }
 
+  const totalDealValue = leads?.reduce((acc,lead) => acc + lead.dealValue,0)
+  const totalEarned = paymentList?.reduce((acc,payment) => acc + payment.amount,0)
+  const totalDuePayment = totalDealValue - totalEarned
+
+
   return (
     <div style={{ background: "#F1F1FA" }}>
       <div className="">
         <div className="ps-4 pe-3">
-          <PaymentTop totalPayment={totalPayment} />
+          <PaymentTop totalEarned={totalEarned}  totalDealValue={totalDealValue} totalDuePayment={totalDuePayment}/>
         </div>
         <div>
           <Form onSubmit={filterPayment} className="mx-4">
@@ -358,7 +368,7 @@ const Payment = () => {
                         style={{ width: "10vw", color:'#64676B'}}
                         onClick={()=>navigate(`/payment/paymentId/${payment.paymentId}`)}
                       >
-                        <div>${payment.amount}.00</div>
+                        <div>${payment.amount?.toFixed(2)}</div>
                       </div>
                       <div
                         className="d-flex align-items-center justify-content-start"
