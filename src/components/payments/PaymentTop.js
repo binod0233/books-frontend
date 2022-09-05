@@ -74,7 +74,7 @@ const navigate = useNavigate()
               <Col>
                 <span style={{ fontSize: "40px", fontWeight: "700" }}>
                     
-                  ${totalDealValue.toFixed(2)}
+                  ${totalDealValue?.toFixed(2)}
                 </span>
               </Col>
               <Col
@@ -132,7 +132,7 @@ const navigate = useNavigate()
               <Col>
                 <span style={{ fontSize: "40px", fontWeight: "700" }}>
                  
-                ${totalEarned.toFixed(2)}
+                ${totalEarned?.toFixed(2)}
 
                 </span>
               </Col>
@@ -193,7 +193,7 @@ const navigate = useNavigate()
               <Col>
                 <span style={{ fontSize: "40px", fontWeight: "700" }}>
                 
-                ${totalDuePayment.toFixed(2)}
+                ${totalDuePayment?.toFixed(2)}
 
                 </span>
               </Col>
