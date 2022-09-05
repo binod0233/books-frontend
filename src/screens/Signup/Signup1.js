@@ -17,7 +17,8 @@ const Signup1 = () => {
     e.preventDefault();
     const validEmail=email.substring(email.length-13)==="@copenned.com"
     if (validEmail){
-      axios.post(`${process.env.REACT_APP_BASE_URL}/api/user/registerAppUser`,{userName:firstName+" "+lastName,email,password,phone,role}).then(res=>{
+      
+      axios.post(`${process.env.REACT_APP_BASE_URL}/api/user/registerAppUser`,{userName:firstName+" "+lastName,email,password,phone,role,firstName,lastName,modifiedBy:JSON.parse(localStorage.getItem('user')).userName,createdBy:JSON.parse(localStorage.getItem('user')).userName}).then(res=>{
         if(res.status===200){
           navigate("/signup3")
         }

@@ -10,11 +10,6 @@ import { useParams } from 'react-router-dom';
 
 const PersonalContainer = ({leads, handleLeadSource, handleLeadStatus, handleDifficulty, handleCommunicationChannel, handleScreenshot, leadSource, leadStatus, difficulty, communicationChannel, screenshot }) => {
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user)
-
-
-  console.log(leads)
-
 
   const [active, setActive]=useState('');
   return (

@@ -44,10 +44,19 @@ const Addlead = () => {
     { value: "messenger", label: "Messenger" },
     { value: "viber", label: "Viber" },
   ];
-  console.log(communicationChannel);
+
   const user = JSON.parse(localStorage.getItem("user"));
 
   const addALead = (e) => {
+    let socialMedia = ""
+      for(let c of communicationChannel)
+      {
+          socialMedia= socialMedia.concat(c.value,",");
+         
+          
+      }
+ 
+
     e.preventDefault();
 
     axios
@@ -57,11 +66,15 @@ const Addlead = () => {
         phone: number,
         work,
         source,
-        // socialMedia:communicationChannel,
+      
+        createdBy:JSON.parse(localStorage.getItem("user")).userName,
+        modifiedBy:JSON.parse(localStorage.getItem("user")).userName,
+        // socialMedia:communicationChannel?.map((c)=>c.value+","),
+        socialMedia,
         gender,
         potential: "Negotiating",
         select,
-        country: select,
+        country: select, 
         clientBackground: leadBackground,
         serviceType,
         servicePlan,
@@ -70,11 +83,11 @@ const Addlead = () => {
         nextFollowUpDate,
         teamLead,
         clientManager,
-        paymentStatus,
-        paymentmethod: paymentType,
+        status:paymentStatus,
+        paymentMethod: paymentType,
         dealValue,
         dueDate,
-        recepient,
+        recipient:recepient,
         payee,
       })
       .then((res) => {
@@ -106,7 +119,6 @@ const Addlead = () => {
       });
   };
 
-  console.log(teamLeadList, clientManagerList);
 
   useEffect(() => {
     getTeamLeads();
@@ -754,7 +766,7 @@ const Addlead = () => {
                     </Col>
                     <Col className="pe-3 mt-4" md={6}>
                       <Form.Group controlId="recepient">
-                        <Form.Label>Recepient</Form.Label>
+                        <Form.Label>Team</Form.Label>
                         <Form.Select
                           onChange={(e) => setRecepient(e.target.value)}
                         >

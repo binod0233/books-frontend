@@ -26,8 +26,8 @@ const AddPayment = () => {
   const schema = Yup.object().shape({
     amount: Yup.number().required("Required"),
     remarks: Yup.string().required("Required"),
-    recipient: Yup.string().required("Required"),
-    payee: Yup.string().required("Required"),
+    // recipient: Yup.string().required("Required"),
+    // payee: Yup.string().required("Required"),
     service: Yup.string().required("Required"),
     // receipt: Yup.required("Required"),
     date: Yup.date().required("Required"),
@@ -36,12 +36,7 @@ const AddPayment = () => {
     resetForm();
 
     const { remarks, payee, recipient, service, amount, date, receipt } = values;
-    console.log("receipt", receipt);
-    console.log("values", values);
-    const formData = new FormData();
-    formData.append("receipt", receipt);
-    console.log("formData", formData);
-
+    
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -49,24 +44,25 @@ const AddPayment = () => {
         "Access-Control-Allow-Headers": "*",
       },
     };
-    const payer = payment?.leadName|| payee;
+    // const payer = payment?.leadName|| payee;
     axios
       .post(
         `${process.env.REACT_APP_BASE_URL}/api/payment/registerPayment`,
         {
           paymentDate: date,
+          paymentMethod:"Other",
           teamLead:payment.teamLead,
           leadId:payment?.leadId,
           userId: user.id,
           remarks,
-          updatedBy: "John abraham",
           amount,
-          payee:payer,
-          recipient,
+          payee:payment?.payee,
+          recipient:payment?.recipient,
+          status:"unverified",
           serviceType: service,
-          receiptImage:"",
-          modifiedBy: localStorage.getItem("user").name,
-          createdBy: localStorage.getItem("user").name,
+          receipt:"",
+          modifiedBy: JSON.parse(localStorage.getItem("user")).userName,
+          createdBy: JSON.parse(localStorage.getItem("user")).userName,
         },
         config
       )
@@ -76,10 +72,10 @@ const AddPayment = () => {
       navigate('/admin/allpayments')
     }
     else if(user?.role==="teamlead"){
-      navigate(`/teamlead/payment/${user.name}`)
+      navigate(`/teamlead/payment/${user?.userName}`)
     }else if(user?.role==="clientmanager"){
-      navigate(`/payment/${user?.name}`)
-    
+      navigate(`/payment/${user?.userName}`)
+      
     } 
         } else {
           alert("Something went wrong");
@@ -186,10 +182,10 @@ const AddPayment = () => {
                         <Form.Control
                           type="text"
                           name="payee"
-                          placeholder="Ramesh"
-                          value={values.payee}
+                          value={payment?.payee}
                           onChange={handleChange}
                           isInvalid={touched.payee && !!errors.payee}
+                          disabled
                         />
                         <Form.Control.Feedback type="invalid">
                           {errors.payee}
@@ -202,21 +198,21 @@ const AddPayment = () => {
                         <Form.Control
                           type="text"
                           name="recipient"
-                          placeholder="Sharmila Dangal"
-                          value={values.recipient}
+                          value={payment?.recipient}
                           onChange={handleChange}
                           isInvalid={touched.recipient && !!errors.recipient}
+                          disabled
                         />
-                         <Form.Select   onChange={handleChange}>
+                         {/* <Form.Select   onChange={handleChange}>
                   <option value="" onClick={handleChange}>Choose One</option>
 
                 {clientManagerList?.map(t=>(
-              <option key={t.id} value={values.recipient} onClick={handleChange}>{t.userName}</option>
+              <option key={t.id} value={values.recipient} >{t.userName}</option>
 
                 ))}
               
 
-            </Form.Select>
+            </Form.Select> */}
                         <Form.Control.Feedback type="invalid">
                           {errors.recipient}
                         </Form.Control.Feedback>

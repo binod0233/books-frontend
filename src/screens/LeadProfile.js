@@ -39,7 +39,6 @@ const LeadProfile = () => {
         });
       }, [id]);
       
-      console.log(leads);
 
   const handleServiceType = (serviceType) => {
     setServiceType(serviceType);

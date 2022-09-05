@@ -498,7 +498,7 @@ console.log(leadLost)
                   <div style={{ width: "40px", marginLeft: "2px" }} onClick={() => {
                     navigate(`/edit-lead/${l.id}`);
                   }}>
-                    <button
+                    {/* <button
                       style={{
                         width: "inherit",
                         height: "2.2rem",
@@ -511,7 +511,7 @@ console.log(leadLost)
                       }}
                     >
                       <EditIcon style={{ color: 'white' }} />
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               </div>

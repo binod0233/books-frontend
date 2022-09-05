@@ -65,6 +65,7 @@ const AdminDashboard = () => {
 
   },
   ])
+  const [payments,setPayments] = useState([])
   const [topLeads, setTopLeads] = useState([])
   const [teamLeadStats, setTeamLeadStats] = useState({})
   const [clientManagerStats, setClientManagerStats] = useState({})
@@ -132,10 +133,10 @@ const AdminDashboard = () => {
 
   const fetchDataOfGivenTimeInterval = (timeInterval) => {
     axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/weekly-payments/${timeInterval?.value}`).then(res => {
-      console.log(res.data.responseList)
+      setTopLeads(res.data.responseList)
     })
     axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/${timeInterval?.value}`).then(res => {
-      console.log(res.data.responseList)
+      setPayments(res.data.responseList)
     })
 
   }

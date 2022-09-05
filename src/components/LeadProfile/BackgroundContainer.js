@@ -3,10 +3,8 @@ import { Button, Form, Row } from 'react-bootstrap'
 import Select from 'react-select'
 
 const user = JSON.parse(localStorage.getItem("user"));
-console.log(user)
 const BackgroundContainer = ({servicePlan, serviceType, nextDate, handleServiceType, handleNextDateChange, handleLastDateChange, handleServicePlan, handleServiceWantedChange }) => {
 
-  console.log(nextDate)
 
   const options = [
     { value: 'cdrwriting', label: 'CDR Writing' },

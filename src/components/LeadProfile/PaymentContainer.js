@@ -4,7 +4,6 @@ import SaveAsIcon from "@mui/icons-material/SaveAs";
 
 const PaymentContainer = ({ leads,descipline,handleDescipline }) => {
   const user = JSON.parse(localStorage.getItem("user"));
-console.log(leads)
   return (
     <div className='ps-3'>
       <Row style={{ height: "", marginBottom: ".6rem", background: "white" }}>

@@ -127,12 +127,12 @@ const StatsRow = ({ totalEarned,totalDealValue, totalSales, totalLeads,name }) =
                         fontFamily: "Arial",
                       }}
                     >
-                      1,800
+                      0
                     </span>
                   </div>
 
                   <span style={{ color: "#64676B", fontSize: "14px" }}>
-                    TOTAL EARNING
+                    Rating
                   </span>
                 </div>
               </div>

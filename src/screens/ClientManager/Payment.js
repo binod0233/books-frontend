@@ -24,6 +24,7 @@ const Payment = () => {
   const { clientManager } = params;
   useEffect(() => {
     getAllThePayments();
+    
   }, []);
 
   const getAllThePayments = () => {

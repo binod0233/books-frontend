@@ -46,7 +46,7 @@ useEffect(()=>{
 
 const getAllThePayments =  ()=>{
    axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/payments`)
-  .then(res=>{console.log(res.data);setPaymentList(res.data.responseList);    
+  .then(res=>{setPaymentList(res.data.responseList);    
      setDisplayList(res.data.responseList);
      setDisplayList(res.data.responseList);
 

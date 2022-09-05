@@ -44,7 +44,6 @@ const options=[
     .then(res => {
       setLeadList(res.data.responseList)
       setDisplayList(res.data.responseList)
-      console.log(leadList)
     }
     )
   }
