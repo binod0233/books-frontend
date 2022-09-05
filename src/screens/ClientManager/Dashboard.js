@@ -143,7 +143,7 @@ axios.get(`${process.env.REACT_APP_BASE_URL}/api/payment/weekly-payments/client-
       </Row>
        <PaymentRow totalLeads={totalLeads} fromOthers={fromOthers} fromWebsite={fromWebsite} fromInstagram={fromInstagram} fromLinkedIn={fromLinkedIn} fromFacebook={fromFacebook} name={name} totalDealValue={totalDealValue} totalEarned={totalEarned?.toFixed(2)} totalDuePayment={totalDuePayment?.toFixed(2)}/>
 
-       <div style={{background:"#fff"}} className='mx-4 ps-3 pe-3' >
+       <div style={{background:"#fff"}} className='ms-4 ps-3 pe-3' >
         <div style={{display:'flex',justifyContent:"space-between",paddingTop:"10px"}}>
           <span style={{fontSize:'1.3rem',fontWeight:"600",margin:".8rem"}}>Top Leads </span>
      

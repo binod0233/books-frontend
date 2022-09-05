@@ -19,50 +19,36 @@ const Sidebar = () => {
             <img src="/logo.png" alt="logo" />
           </div>
           <div className="side-menus">
-            {user && user.role === 'clientmanager'? (
-               <>
-               <div className="menu-icon" onClick={()=>setActiveTab("1")} style={{background:activeTab==='1'&& '#35373A'}}>
-               <Link  to={`/dashboard/${user?.userName}`}>
-                 <DashboardIcon className="me-3 " /> Dashboard
-               </Link>
-             </div>
- 
-             <div className="menu-icon" onClick={()=>setActiveTab("2")} style={{background:activeTab==='2'&& '#35373A'}}>
-               <Link to={`/leads/${user?.userName}`}>
-                 <LandscapeIcon className="me-3" />
-                 Leads
-              </Link>
-             </div>
-             <div className="menu-icon" onClick={()=>setActiveTab("3")} style={{background:activeTab==='3'&& '#35373A'}}>
-               <Link to={`/payment/${user?.userName}`}>
-                 <MonetizationOnIcon className="me-3" />
-                 Payments
-               </Link>
-             </div>
-               </>
-            ): user.role === "admin" ?(
-                <>
+            {user && user.role === 'clientmanager' ? (
+              <>
+                <div className="menu-icon" onClick={() => setActiveTab("1")} style={{ background: activeTab === '1' && '#35373A' }}>
+                  <Link to={`/dashboard/${user?.userName}`}>
+                    <DashboardIcon className="me-3 " /> Dashboard
+                  </Link>
+                </div>
+
+                <div className="menu-icon" onClick={() => setActiveTab("2")} style={{ background: activeTab === '2' && '#35373A' }}>
+                  <Link to={`/leads/${user?.userName}`}>
+                    <LandscapeIcon className="me-3" />
+                    Leads
+                  </Link>
+                </div>
+                <div className="menu-icon" onClick={() => setActiveTab("3")} style={{ background: activeTab === '3' && '#35373A' }}>
+                  <Link to={`/payment/${user?.userName}`}>
+                    <MonetizationOnIcon className="me-3" />
+                    Payments
+                  </Link>
+                </div>
+              </>
+            ) : user.role === "admin" ? (
+              <>
                 <div className="menu-icon">
-<<<<<<< HEAD
                   <Link to={`/admin/dashboard`}>
-=======
-                <Link to={`/admin/dashboard`}>
 
-                <DashboardIcon className="me-3 " /> Dashboard
-              </Link>
-            </div>
->>>>>>> 0b3c66eb8f8dd8d5c7aca7f875a9b43e5915f4fd
+                    <DashboardIcon className="me-3 " /> Dashboard
+                  </Link>
+                </div>
 
-            <div className="menu-icon">
-            <Link to={`/admin/allleads`}>
-                <LandscapeIcon className="me-3" />
-                Leads
-              </Link>
-            </div>
-            <div className="menu-icon">
-            <Link to={`/admin/allpayments`}>
-
-<<<<<<< HEAD
                 <div className="menu-icon">
                   <Link to={`/admin/allleads`}>
                     <LandscapeIcon className="me-3" />
@@ -72,40 +58,39 @@ const Sidebar = () => {
                 <div className="menu-icon">
                   <Link to={`/admin/allpayments`}>
 
-=======
->>>>>>> 0b3c66eb8f8dd8d5c7aca7f875a9b43e5915f4fd
-                <MonetizationOnIcon className="me-3" />
-                Payments
-              </Link>
-            </div>
-                </>
-            ):(
-               <>
-               <div className="menu-icon">
-               <Link to={`/teamlead/dashboard/${user?.userName}`}>
-                 <DashboardIcon className="me-3 " /> Dashboard
-               </Link>
-             </div>
- 
-             <div className="menu-icon">
-             <Link to={`/teamlead/leads/${user?.userName}`}>
-                 <LandscapeIcon className="me-3" />
-                 Leads
-               </Link>
-             </div>
-             <div className="menu-icon">
-             <Link to={`/teamlead/payment/${user?.userName}`}>
-                 <MonetizationOnIcon className="me-3" />
-                 Payments
-               </Link>
-             </div>
-               </>
+                    <MonetizationOnIcon className="me-3" />
+                    Payments
+                  </Link>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="menu-icon">
+                  <Link to={`/teamlead/dashboard/${user?.userName}`}>
+                    <DashboardIcon className="me-3 " /> Dashboard
+                  </Link>
+                </div>
+
+                <div className="menu-icon">
+                  <Link to={`/teamlead/leads/${user?.userName}`}>
+                    <LandscapeIcon className="me-3" />
+                    Leads
+                  </Link>
+                </div>
+                <div className="menu-icon">
+                  <Link to={`/teamlead/payment/${user?.userName}`}>
+                    <MonetizationOnIcon className="me-3" />
+                    Payments
+                  </Link>
+                </div>
+              </>
             )}
           </div>
         </div>
         <div className="logout">
-          <div href={"/"}onClick={()=>           { localStorage.removeItem('user'); navigate('/') 
-}} style={{ textDecoration: "none", color: "#fff" }}>
+          <div href={"/"} onClick={() => {
+            localStorage.removeItem('user'); navigate('/')
+          }} style={{ textDecoration: "none", color: "#fff" }}>
             {" "}
             <LogoutIcon className="me-3" />
             Logout
