@@ -33,10 +33,7 @@ const options=[
   useEffect(() => {
     if(!localUser){
       navigate('/login')
-    }else{
-    if(   localUser?.userName!==name || localUser?.role!=='admin'){
-      navigate(`/dashboard/${localUser?.userName}`)
-    }}
+    }
   },[])
 
   const getAllLeadsOfAClientManager = () => {
