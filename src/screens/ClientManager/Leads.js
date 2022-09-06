@@ -12,33 +12,38 @@ const Leads = () => {
   const navigate = useNavigate();
   const params = useParams();
   const { clientManager } = params;
+  const [displayList, setDisplayList] = useState([]);
   const [leads, setLeads] = useState([])
-   
+
 
  
   const [clientName, setClientName] = useState("");
   const [status, setStatus] = useState("");
   const [servicePlan, setServicePlan] = useState("");
   const [date, setDate] = useState("");
-  const [source, setSource] = useState("");
+  const [amount, setAmount] = useState(0);
 
-const localUser = JSON.parse(localStorage.getItem('user'));
+  const localUser = JSON.parse(localStorage.getItem('user'));
 
 
-  const [potential,setPotential] = useState([]);
-  const [message,setMessage] = useState('')
-  
-  const getAllLeadsOfAClientManager = ()  => {
+  const [message, setMessage] = useState('')
+
+  const getAllLeadsOfAClientManager = () => {
     axios.get(`${process.env.REACT_APP_BASE_URL}/api/lead/leads/getAllLeadsOfAClientManager/${clientManager}`).then(res => {
       setLeads(res.data.responseList);
+      setDisplayList(res.data.responseList);
       console.log(leads)
     })
   }
-  const handleInputChange=(e,leadId)=>{
-    setPotential(e.target.value);
+  const handleInputChange = (e, leadId, teamLead, leadName, clientManager) => {
     axios
       .put(`${process.env.REACT_APP_BASE_URL}/api/lead/leads/changepotential/${leadId}`, {
         potential: e.target.value,
+        teamLead,
+        leadId,
+        leadName,
+        clientManager,
+
 
       })
       .then((res) => {
@@ -51,33 +56,30 @@ const localUser = JSON.parse(localStorage.getItem('user'));
   };
 
   const applyFilter = (e) => {
-    axios
-    .put(`http://localhost:8080/api/lead/attributeSearch/clientManager`, {
-      potential: e.target.value,
-
+    e.preventDefault();
+    axios.post(`${process.env.REACT_APP_BASE_URL}/api/lead/attributeSearch`, {
+      leadName: clientName,
+      serviceType: servicePlan,
+      potential: status,
+      date1: date,
+      amount: amount,
+      clientManager
+    }).then((res) => {
+      setDisplayList(res.data.responseList);
     })
-    .then((res) => {
-      if (res.status === "ok") {
-        setMessage("Difficulty Changed Successfully");
-      } else {
-        setMessage("There was a problem changing difficulty");
-      }
-    });
   };
 
   useEffect(() => {
-    if(!localUser){
+    if (!localUser) {
       navigate('/login')
-    }else{
-    if(localUser?.userName!==clientManager || localUser?.role!=='admin'){
-      navigate(`/leads/${localUser?.userName}`)
-    }}
-  },[])
+    }
+    
+  }, [])
 
 
   useEffect(() => {
     getAllLeadsOfAClientManager();
-  }, [message]);
+  }, []);
 
   const totalLeads = leads?.length;
   const totalFollowUps = leads.filter((lead) => lead.nextFollowUpDate).length;
@@ -94,7 +96,7 @@ console.log(leadLost)
   return (
     <>
       <div style={{ backgrund: "#F1F1FA", display: "flex" }}>
-       
+
         <div
           style={{
             width: "100%",
@@ -119,203 +121,184 @@ console.log(leadLost)
               leadLost={leadLost}
             />
           </div>
-        <div className='leadInputs mx-3 mb-2 ' >
-        <Form 
-        onSubmit={applyFilter}
-        style={{
-          display: "flex",
-          // justifyContent: "space-between",
-          alignItems: "center",
-          width: "100%",
-        }}
-        >
-        <div 
-       className=''
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          width: "100%",
-        }}
-        >
-            <div
-              className="input-group"
+          <div className='leadInputs mx-3 mb-2 ' >
+            <Form
               style={{
-                height: "6vh",
-                background: "white",
-                border: "0.7px solid grey",
-                width: "18vw",
+                display: "flex",
+                // justifyContent: "space-between",
+                alignItems: "center",
+                width: "100%",
               }}
             >
-              <div className="d-flex justify-content-center align-items-center px-2">
-                <i className="fa-solid fa-user-large"></i>
+              <div
+                className=''
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                <div
+                  className="input-group"
+                  style={{
+                    height: "6vh",
+                    background: "white",
+                    border: "0.7px solid grey",
+                    width: "17vw",
+                  }}
+                >
+                  <div className="d-flex justify-content-center align-items-center px-2">
+                    <i className="fa-solid fa-user-large"></i>
+                  </div>
+                  <input
+                    type="text"
+                    style={{ border: "none", width: "" }}
+                    placeholder="Lead Name"
+                    value={clientName}
+                    onChange={(e) => setClientName(e.target.value)}
+                    className="form-control"
+                  />
+                </div>
+
+                <div
+                  className="input-group"
+                  style={{
+                    height: "6vh",
+                    background: "white",
+                    border: "0.7px solid grey",
+                    width: "17vw",
+                  }}
+                >
+                  <span className="d-flex justify-content-center align-items-center p-2">
+                    <i className="fa-solid fa-user-large"></i>
+                  </span>
+                  <select
+                    className="form-select"
+                    name="Service Type"
+                    onChange={(e) => setServicePlan(e.target.value)}
+                    style={{
+                      textAlign: "center",
+                      height: "5vh",
+                      border: "none"
+                    }}
+                    aria-label="Default select"
+                  >
+                    <option selected value="">
+                      Service Type
+                    </option>
+                    <option value="CDR Assessment">CDR Assessment</option>
+                    <option value="CDR Report">CDR Report"</option>
+                    <option value="CDR Review" >
+                      CDR Review
+                    </option>
+
+                  </select>
+                </div>
+
+                <div className="selection">
+                  <select
+                    className="form-select"
+                    name="city"
+                    onChange={(e) => setStatus(e.target.value)}
+                    style={{
+                      textAlign: "center",
+                      height: "6vh",
+                      border: "0.7px solid grey",
+                    }}
+                    aria-label="Default select"
+                  >
+                    <option selected value="">
+                      Lead Status
+                    </option>
+                    <option value="lost">Lost</option>
+                    <option value="cold">Cold</option>
+                    <option value="negotiating" style={{ background: "" }}>
+                      Negotiating
+                    </option>
+                    <option value="won">Won</option>
+                  </select>
+                </div>
+
+                <div>
+                  <Form.Control
+                    size="sm"
+                    name="foo"
+                    placeholder="Date"
+                    type="date"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                    style={{
+                      textAlign: "center",
+                      height: "6vh",
+                      border: "0.7px solid grey",
+                      width: "9vw",
+                    }}
+                    className=""
+                  />
+                </div>
+                <div
+                  className="input-group"
+                  style={{
+                    height: "6vh",
+                    background: "white",
+                    border: "0.7px solid grey",
+                    width: "8vw",
+                  }}
+                >
+                  <span className="d-flex justify-content-center align-items-center p-2">
+                    $
+                  </span>
+                  <input
+                    type="number"
+                    style={{ border: "none" }}
+                    placeholder="Deal Value"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
+                    className="form-control mb-1"
+                  />
+                </div>
+
+                <div>
+                  <Button
+                    style={{
+                      height: "6vh",
+                      background: "#176EB3",
+                      width: "6vw",
+                      padding: '0 1vw'
+                    }}
+                    type="reset"
+                    onClick={() => {
+                      setDisplayList(leads);
+                      navigate(`/leads/${clientManager}`);
+                    }}
+                    className=""
+                  >
+                    {" "}
+                    Reset{" "}
+                  </Button>
+                </div>
+                <div>
+                  <Button
+                    style={{
+                      height: "6vh",
+                      background: "#222529",
+                      width: "8vw",
+                    }}
+                    type="submit"
+                    onClick={applyFilter}
+                    className=""
+                  >
+                    <i
+                      className="fa-solid fa-magnifying-glass "
+                      style={{ marginRight: "4px" }}
+                    ></i>
+                    Search{" "}
+                  </Button>
+                </div>
               </div>
-              <input
-                type="text"
-                style={{ border: "none", width: "5px" }}
-                placeholder="Lead Name"
-                value={clientName}
-                onChange={(e) => setClientName(e.target.value)}
-                className="form-control"
-              />
-            </div>
-
-            <div
-              className="input-group"
-              style={{
-                height: "6vh",
-                background: "white",
-                border: "0.7px solid grey",
-                width: "18vw",
-                padding:"1px"
-              }}
-            >
-              <span className="d-flex justify-content-center align-items-center p-2">
-                <i className="fa-solid fa-user-large"></i>
-              </span>
-              
-              <select
-                className="form-select"
-                name="city"
-                onChange={(e) => setServicePlan(e.target.value)}
-                style={{
-                  textAlign: "center",
-                  height: "fit-content",
-                  border: "none",
-                  marginTop:"-1px"
-                }}
-                aria-label="Default select"
-              >
-                <option selected value="">
-                  Service Type
-                </option>
-                <option value="Basic">Basic</option>
-                <option value="Extended">Extended</option>
-                <option value="Premium" style={{ background: "" }}>
-                  Premium
-                </option>
-                <option value="Royal">Royal</option>
-              </select>
-            </div>
-
-            <div className="selection">
-              <select
-                className="form-select"
-                name="city"
-                onChange={(e) => setStatus(e.target.value)}
-                style={{
-                  textAlign: "center",
-                  height: "6vh",
-                  border: "0.7px solid grey",
-                }}
-                aria-label="Default select"
-              >
-                <option selected value="">
-                  Lead Status
-                </option>
-                <option value="lost">Lost</option>
-                <option value="cold">Cold</option>
-                <option value="negotiating" style={{ background: "" }}>
-                  Negotiating
-                </option>
-                <option value="won">Won</option>
-              </select>
-            </div>
-
-            <div>
-              <Form.Control
-                size="sm"
-                name="foo"
-                placeholder="Date"
-                type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                style={{
-                  textAlign: "center",
-                  height: "6vh",
-                  border: "0.7px solid grey",
-                  width: "9vw",
-                }}
-                className=""
-              />
-            </div>
-            <div
-              className="input-group"
-              style={{
-                height: "6vh",
-                background: "white",
-                border: "0.7px solid grey",
-                width: "7vw",
-                padding:"2px"
-              }}
-            >
-              {/* <span className="d-flex justify-content-center align-items-center p-2">
-                $
-              </span>
-               */}
-              <select
-                className="form-select"
-                name="source"
-                onChange={(e) => setSource(e.target.value)}
-                style={{
-                  textAlign: "center",
-                  border: "none",
-                  height:"5vh"
-                }}
-                aria-label="Default select"
-              >
-                <option selected value="">
-                  Source
-                </option>
-                <option value="facebook">Facebook</option>
-                <option value="instagram">Instagram</option>
-                <option value="google" >
-                  Google
-                </option>
-                <option value="referral">Referral</option>
-
-
-                
-              </select>
-            </div>
-
-            <div>
-              <Button
-                style={{
-                  height: "6vh",
-                  background: "#176EB3",
-                  width: "5vw",
-                }}
-                type="reset"
-                onClick={() => {
-                  navigate(`/leads/${clientManager}`);
-                }}
-                className=""
-              >
-                {" "}
-                Reset{" "}
-              </Button>
-            </div>
-            <div>
-              <Button
-                style={{
-                  height: "6vh",
-                  background: "#222529",
-                  width: "8vw",
-                }}
-                type="submit"
-                className=""
-              >
-                <i
-                  className="fa-solid fa-magnifying-glass "
-                  style={{ marginRight: "4px" }}
-                ></i>
-                Search{" "}
-              </Button>
-            </div>
-            </div>
-          </Form>
-        </div>
+            </Form>
+          </div>
           <div
             className="mx-3 mt-3"
             style={{
@@ -352,7 +335,7 @@ console.log(leadLost)
             </div>
           </div>
 
-          {leads?.map((l, key) => (
+          {displayList?.map((l) => (
             <div
               key={l.id}
               style={{
@@ -377,6 +360,7 @@ console.log(leadLost)
                         fontWeight: "400",
                       }}
                       className="d-flex justify-content-center align-items-center  "
+                      onClick={() => navigate(`/lead/profile/${l.id}`)}
                     >
                       {l.name.split(" ").map((n) => n[0])}
                     </div>
@@ -385,7 +369,7 @@ console.log(leadLost)
                     style={{
                       color: "black",
                       fontWeight: "700",
-                      fontSize: "1.2rem",
+                      fontSize: "1.4rem",
                       lineHeight: "25px",
                       marginLeft: "8px",
                     }}
@@ -436,14 +420,15 @@ console.log(leadLost)
 
                 <div style={{ fontWeight: "", fontSize: "19px", width: "16%" }}>
                   {/* <SelectComponent/> */}
-                  <div className="form-group ">
+                  <div className="form-group d-flex justify-content-center align-items-center ">
                     <select
                       className="selection "
                       name="city"
-                      onChange={(e) => handleInputChange(e, l.id)}
+                      onChange={(e) => handleInputChange(e, l.id, l.teamLead, l.name, l.clientManager
+                      )}
                       style={{
                         fontWeight: "bold",
-                        width: "130px",
+                        width: "180px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center ",
@@ -456,7 +441,9 @@ console.log(leadLost)
                           justifyContent: "center ",
                         }}
                         value={l.potential}
-                      >{l.potential}</option>
+                      >
+                        {l.potential}
+                      </option>
                       <option
                         style={{
                           display: "flex",
@@ -473,6 +460,7 @@ console.log(leadLost)
                       </option>
                       <option value="won">Won</option>
                     </select>
+                    
                   </div>
                 </div>
 
@@ -510,7 +498,8 @@ console.log(leadLost)
                     {/* <button
                       style={{
                         width: "inherit",
-                        height: "37px",
+                        height: "2.2rem",
+                        borderRadius: '8px',
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
@@ -534,12 +523,12 @@ console.log(leadLost)
               justifyContent: "center ",
             }}
           >
-            <div className="pagination m-5">
+            <div class="pagination m-5">
               <a href="#">
                 <i className="fa-solid fa-less-than" />
               </a>
               <a href="#">1</a>
-              <a className="active" href="#">
+              <a class="active" href="#">
                 2
               </a>
               <a href="#">3</a>

@@ -789,10 +789,10 @@ const Addlead = () => {
                             Houston
                           </option>
                           <option
-                            value="last vegas"
+                            value="las vegas"
                             onClick={(e) => setRecepient(e.target.value)}
                           >
-                            last Vegas
+                            Las Vegas
                           </option>
                         </Form.Select>
                       </Form.Group>

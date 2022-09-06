@@ -55,6 +55,7 @@ const AddPayment = () => {
           leadId:payment?.leadId,
           userId: user.id,
           remarks,
+          clientId:JSON.parse(localStorage.getItem("user")).roleId,
           amount,
           payee:payment?.payee,
           recipient:payment?.recipient,
